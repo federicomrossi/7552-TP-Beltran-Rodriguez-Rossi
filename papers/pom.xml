@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ar.com.taller2</groupId>
+  <artifactId>papers</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>papers</name>
+
+  <developers>
+    <developer>
+      <id>pablo</id>
+      <name>Pablo Rodriguez Manzi</name>
+      <email>rodriguez.pabloariel@gmail.com</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-3</timezone>
+    </developer>
+     <developer>
+      <id>beluGILA</id>
+      <name>Belén Beltrán</name>
+      <email>belubeltran@gmail.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>-3</timezone>
+    </developer>
+     <developer>
+      <id>fede</id>
+      <name>Federico Martín Rossi</name>
+      <email>federicomrossi@gmail.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>-3</timezone>
+    </developer>
+  </developers>
+
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.log4j.filename>taller2.log</project.log4j.filename>
+  </properties>
+
+  <dependencies>
+  	 <dependency>
+	   <groupId>org.apache.logging.log4j</groupId>
+	   <artifactId>log4j-api</artifactId>
+	   <version>2.0.2</version>
+	   <scope>compile</scope>
+	 </dependency>
+	 <dependency>
+	   <groupId>org.apache.logging.log4j</groupId>
+	   <artifactId>log4j-core</artifactId>
+	   <version>2.0.2</version>
+	   <scope>compile</scope>
+	  </dependency>
+  	<dependency>
+      <groupId>jgraph</groupId>
+      <artifactId>jgraph</artifactId>
+      <version>5.13.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+  	<dependency>
+      <groupId>org.jgrapht</groupId>
+      <artifactId>jgrapht-jdk1.5</artifactId>
+      <version>0.7.3</version>
+      <scope>compile</scope>
+    </dependency>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+   
+  </dependencies>
+</project>

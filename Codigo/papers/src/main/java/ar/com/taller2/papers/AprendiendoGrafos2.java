@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -17,12 +18,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
+import javax.swing.UIManager;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,6 +37,8 @@ import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
+import javax.swing.UIManager.*;
+
 public class AprendiendoGrafos2 extends JApplet {
 
 	private static final long serialVersionUID = 5320477892293342036L;
@@ -41,8 +46,6 @@ public class AprendiendoGrafos2 extends JApplet {
 	
 	private static final Color DEFAULT_BG_COLOR = Color.decode("#FAFBFF");
     private static final Dimension DEFAULT_SIZE = new Dimension(530, 320);
-	
-    private JScrollPane scrollPane;
     
     
     private JGraphModelAdapter m_jgAdapter;
@@ -148,12 +151,17 @@ public class AprendiendoGrafos2 extends JApplet {
 		
 		JLabel label = new JLabel("Modo");
 		panelModo.add(label);
-		
+				
 		JRadioButton radioButton = new JRadioButton("Aprendizaje");
+		radioButton.setSelected(true);
 		panelModo.add(radioButton);
 		
 		JRadioButton radioButton_1 = new JRadioButton("Autoevaluación");
 		panelModo.add(radioButton_1);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(radioButton);
+		group.add(radioButton_1);
 		
 		JSplitPane splitPane_2 = new JSplitPane();
 		splitPane_1.setRightComponent(splitPane_2);
@@ -185,9 +193,6 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_3.setAlignmentY(0.5f);
 		splitPane_3.setAlignmentX(0.5f);
 		panelCentro.add(splitPane_3);
-		
-		scrollPane = new JScrollPane();
-		splitPane_3.setLeftComponent(scrollPane);
 		
 		JTextPane textPane_1 = new JTextPane();
 		textPane_1.setText("Salida:");
@@ -221,20 +226,32 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_1.setResizeWeight(0.03d);
 		splitPane_2.setResizeWeight(0.8d);
 		splitPane_3.setResizeWeight(0.90d);
+		
+		JPanel panel_grafo = new JPanel();
+		splitPane_3.setLeftComponent(panel_grafo);
 		panelAlgorimos.setSize(panelAlgorimos.getSize().width, 200);
+		
+		JButton btnrbolDeExpansin = new JButton("Árbol de Expansión de Coste Mínimo");
+		panelAlgorimos.add(btnrbolDeExpansin);
 		
         // create a JGraphT graph
         ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );
 
         // create a visualization using JGraph, via an adapter
         m_jgAdapter = new JGraphModelAdapter( g );
-		
-		JGraph jgraph = new JGraph( m_jgAdapter );
-
+        
+        JGraph jgraph = new JGraph( m_jgAdapter );
+        panel_grafo.add(jgraph);
+        
+        		jgraph.setAutoscrolls(true);
+        		jgraph.setAutoResizeGraph(true);
+        		
+        		//jgraph.setPreferredSize(new Dimension(1,1));
+        		
         adjustDisplaySettings( jgraph );
-        getContentPane().add(jgraph);
         resize( DEFAULT_SIZE );
 
+        
         // add some sample data (graph manipulated via JGraphT)
         g.addVertex( "v1" );
         g.addVertex( "v2" );
@@ -253,6 +270,17 @@ public class AprendiendoGrafos2 extends JApplet {
         positionVertexAt( "v4", 380, 70 );
 
         // that's all there is to it!...
+        
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            // If Nimbus is not available, you can set the GUI to another look and feel.
+        }
 	}
 
 	
@@ -265,7 +293,7 @@ public class AprendiendoGrafos2 extends JApplet {
 
 
     private void adjustDisplaySettings( JGraph jg ) {
-        jg.setPreferredSize( DEFAULT_SIZE );
+        jg.setPreferredSize(new Dimension(400,400));        
 
         Color  c        = DEFAULT_BG_COLOR;
         String colorStr = null;

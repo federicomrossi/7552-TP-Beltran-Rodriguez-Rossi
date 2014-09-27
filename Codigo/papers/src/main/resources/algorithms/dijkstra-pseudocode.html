@@ -1,0 +1,27 @@
+
+<html>
+<body>
+
+<p>Estructura de datos auxiliar: Q = Estructura de datos <a href="http://es.wikipedia.org/wiki/Cola_de_prioridad_(estructura_de_datos)" title="Cola de prioridad (estructura de datos)" class="mw-redirect">Cola de prioridad</a> (se puede implementar con un <a href="http://es.wikipedia.org/wiki/Mont%C3%ADculo_(programaci%C3%B3n)" title="Montículo (programación)" class="mw-redirect">montículo</a>)</p>
+<br/><br/>
+<pre>
+<b>DIJKSTRA</b> (Grafo <i>G</i>, nodo_fuente <i>s</i>)
+  <b>para</b> <i>u</i> ∈ <i>V[G]</i> <b>hacer</b>
+    distancia[<i>u</i>] = INFINITO
+    padre[<i>u</i>] = NULL
+  distancia[<i>s</i>] = 0
+  adicionar (cola, (s, distancia[<i>s</i>]))
+  <b>mientras que</b> cola no es vacía <b>hacer</b>
+    <i>u</i> = extraer_mínimo(cola)
+    <b>para</b> todos <i>v</i> ∈ adyacencia[<i>u</i>] <b>hacer</b>
+      <b>si</b> distancia[<i>v</i>] &gt; distancia[<i>u</i>] + peso (u, v) <b>hacer</b>
+        distancia[<i>v</i>] = distancia[<i>u</i>] + peso (u, v)
+        padre[<i>v</i>] = <i>u</i>
+        adicionar(cola,(v, distancia[<i>v</i>]))
+</pre>
+
+</body>
+</html>
+
+
+

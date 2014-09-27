@@ -38,6 +38,8 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
 import javax.swing.UIManager.*;
+import javax.swing.ImageIcon;
+import javax.swing.JSpinner;
 
 public class AprendiendoGrafos2 extends JApplet {
 
@@ -181,22 +183,28 @@ public class AprendiendoGrafos2 extends JApplet {
 		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 		
 		JToolBar toolBar = new JToolBar();
+		toolBar.setFloatable(false);
 		panelCentro.add(toolBar);
 		
-		JButton button = new JButton("<");
-		toolBar.add(button);
+		JButton buttonInit = new JButton("");
+		buttonInit.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-ini-24.png")));
+		toolBar.add(buttonInit);
 		
-		JButton button_1 = new JButton("<<");
-		toolBar.add(button_1);
+		JButton buttonPrevious = new JButton("");
+		buttonPrevious.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-reverse-24.png")));
+		toolBar.add(buttonPrevious);
 		
-		JButton btnPlay = new JButton("PLAY");
-		toolBar.add(btnPlay);
+		JButton buttonPlay = new JButton("");
+		buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
+		toolBar.add(buttonPlay);
 		
-		JButton button_2 = new JButton(">");
-		toolBar.add(button_2);
+		JButton buttonNext = new JButton("");
+		buttonNext.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-forward-24.png")));
+		toolBar.add(buttonNext);
 		
-		JButton button_3 = new JButton(">>");
-		toolBar.add(button_3);
+		JButton buttonEnd = new JButton("");
+		buttonEnd.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-end-24.png")));
+		toolBar.add(buttonEnd);
 		
 		JSplitPane splitPane_3 = new JSplitPane();
 		splitPane_3.setOrientation(JSplitPane.VERTICAL_SPLIT);

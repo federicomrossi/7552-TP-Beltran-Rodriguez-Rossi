@@ -56,6 +56,16 @@ public class AprendiendoGrafos2 extends JApplet {
 	 */
 	public AprendiendoGrafos2() {
 		
+		try {
+            // Set System L&F
+        UIManager.setLookAndFeel(
+            UIManager.getSystemLookAndFeelClassName());
+	    } 
+	    catch (Exception e) {
+	       // handle exception
+	    }
+
+		
 		logger.info("BELEN GILA");
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -271,16 +281,16 @@ public class AprendiendoGrafos2 extends JApplet {
 
         // that's all there is to it!...
         
-        try {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            // If Nimbus is not available, you can set the GUI to another look and feel.
-        }
+//        try {
+//            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (Exception e) {
+//            // If Nimbus is not available, you can set the GUI to another look and feel.
+//        }
 	}
 
 	

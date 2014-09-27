@@ -52,6 +52,8 @@ import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AprendiendoGrafos2 extends JApplet {
 
@@ -130,6 +132,13 @@ public class AprendiendoGrafos2 extends JApplet {
 		mnHelp.add(separator_2);
 		
 		JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
+		mntmAcercaDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				About about = new About();
+				about.setLocationRelativeTo(null);
+				about.setVisible(true);
+			}
+		});
 		mnHelp.add(mntmAcercaDe);
 		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		

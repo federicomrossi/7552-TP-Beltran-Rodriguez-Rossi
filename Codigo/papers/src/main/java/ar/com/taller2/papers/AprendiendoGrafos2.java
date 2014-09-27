@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JApplet;
@@ -138,7 +140,7 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_1.setLeftComponent(panelIzquierda);
 		panelIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel panelAlgorimos = new JPanel();
+		final JPanel panelAlgorimos = new JPanel();
 		panelAlgorimos.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelAlgorimos);
 		panelAlgorimos.setLayout(new GridLayout(0, 1, 0, 0));
@@ -175,7 +177,7 @@ public class AprendiendoGrafos2 extends JApplet {
 		
 		radioButtonAlgoritmoPruebaAciclidad.setSelected(true);
 		
-		ButtonGroup groupAlgoritmos = new ButtonGroup();
+		final ButtonGroup groupAlgoritmos = new ButtonGroup();
 		groupAlgoritmos.add(radioButtonAlgoritmoPruebaAciclidad);
 		groupAlgoritmos.add(radioButtonAlgoritmoRecorridoTopologicoAnchura);
 		groupAlgoritmos.add(radioButtonAlgoritmoCerraduraTransitiva);
@@ -236,7 +238,7 @@ public class AprendiendoGrafos2 extends JApplet {
 		JRadioButton radioButton_1 = new JRadioButton("Autoevaluación");
 		panelModo.add(radioButton_1);
 		
-		ButtonGroup groupModoEjecucion = new ButtonGroup();
+		final ButtonGroup groupModoEjecucion = new ButtonGroup();
 		groupModoEjecucion.add(radioButton);
 		groupModoEjecucion.add(radioButton_1);
 		
@@ -251,17 +253,30 @@ public class AprendiendoGrafos2 extends JApplet {
 		toolBar.setFloatable(false);
 		panelCentro.add(toolBar);
 		
-		JButton buttonInit = new JButton("");
+		final JButton buttonInit = new JButton("");
+		buttonInit.setEnabled(false);
 		buttonInit.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-ini-24.png")));
 		toolBar.add(buttonInit);
 		
-		JButton buttonPrevious = new JButton("");
+		final JButton buttonPrevious = new JButton("");
+		buttonPrevious.setEnabled(false);
 		buttonPrevious.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-reverse-24.png")));
 		toolBar.add(buttonPrevious);
 		
 		final JButton buttonPlay = new JButton("");
 		buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
 		toolBar.add(buttonPlay);
+		
+		final JButton buttonNext = new JButton("");
+		buttonNext.setEnabled(false);
+		buttonNext.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-forward-24.png")));
+		toolBar.add(buttonNext);
+		
+		final JButton buttonEnd = new JButton("");
+		buttonEnd.setEnabled(false);
+		buttonEnd.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-end-24.png")));
+		toolBar.add(buttonEnd);
+		
 		buttonPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -269,23 +284,54 @@ public class AprendiendoGrafos2 extends JApplet {
 				if(tempPlay) {
 					tempPlay = false;
 					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
+					
+					// deshabilitamos botones de ejecución
+					buttonNext.setEnabled(false);
+					buttonEnd.setEnabled(false);
+					buttonInit.setEnabled(false);
+					buttonPrevious.setEnabled(false);
+					
+					// Habilitamos botones del grupo de algoritmos
+					Enumeration<AbstractButton> groupAlgoritmosBotones = groupAlgoritmos.getElements();
+					while (groupAlgoritmosBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupAlgoritmosBotones.nextElement();
+						element.setEnabled(true);
+					}
+					
+					// Habilitamos botones del grupo de modode ejecución
+					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+					while (groupModoBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+						element.setEnabled(true);
+					}
 				}
 				else {
 					tempPlay = true;
 					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-stop-24.png")));
+					
+					// Habilitamos botones de ejecución
+					buttonNext.setEnabled(true);
+					buttonEnd.setEnabled(true);
+					buttonInit.setEnabled(true);
+					buttonPrevious.setEnabled(true);
+					
+					// Deshabilitamos botones del grupo de algoritmos
+					Enumeration<AbstractButton> enume = groupAlgoritmos.getElements();
+					while (enume.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) enume.nextElement();
+						element.setEnabled(false);
+					}
+					
+					// Deshabilitamos botones del grupo de modode ejecución
+					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+					while (groupModoBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+						element.setEnabled(false);
+					}
 				}
 				// END TEMP
 			}
 		});
-		
-		
-		JButton buttonNext = new JButton("");
-		buttonNext.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-forward-24.png")));
-		toolBar.add(buttonNext);
-		
-		JButton buttonEnd = new JButton("");
-		buttonEnd.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-end-24.png")));
-		toolBar.add(buttonEnd);
 		
 		JSplitPane splitPane_3 = new JSplitPane();
 		splitPane_3.setOrientation(JSplitPane.VERTICAL_SPLIT);

@@ -40,6 +40,8 @@ import org.jgrapht.graph.ListenableDirectedGraph;
 import javax.swing.UIManager.*;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AprendiendoGrafos2 extends JApplet {
 
@@ -51,6 +53,10 @@ public class AprendiendoGrafos2 extends JApplet {
     
     
     private JGraphModelAdapter m_jgAdapter;
+    
+    // TEMP
+    private static boolean tempPlay = false;
+    // END TEMP
 	
 	
 	/**
@@ -194,9 +200,25 @@ public class AprendiendoGrafos2 extends JApplet {
 		buttonPrevious.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-reverse-24.png")));
 		toolBar.add(buttonPrevious);
 		
-		JButton buttonPlay = new JButton("");
+		final JButton buttonPlay = new JButton("");
 		buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
 		toolBar.add(buttonPlay);
+		buttonPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// TEMP
+				if(tempPlay) {
+					tempPlay = false;
+					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
+				}
+				else {
+					tempPlay = true;
+					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-stop-24.png")));
+				}
+				// END TEMP
+			}
+		});
+		
 		
 		JButton buttonNext = new JButton("");
 		buttonNext.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-forward-24.png")));

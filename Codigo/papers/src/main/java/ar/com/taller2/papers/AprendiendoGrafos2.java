@@ -1,5 +1,6 @@
 package ar.com.taller2.papers;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -38,10 +39,13 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
 import javax.swing.UIManager.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class AprendiendoGrafos2 extends JApplet {
 
@@ -130,45 +134,95 @@ public class AprendiendoGrafos2 extends JApplet {
 		panelIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JPanel panelAlgorimos = new JPanel();
+		panelAlgorimos.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelAlgorimos);
 		panelAlgorimos.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JButton button_4 = new JButton("Prueba de Aciclidad");
-		panelAlgorimos.add(button_4);
+		JLabel lblAlgoritmos = new JLabel("Algoritmos:");
+		lblAlgoritmos.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblAlgoritmos.setBorder(new EmptyBorder(15, 0, 20, 0));
+		panelAlgorimos.add(lblAlgoritmos);
 		
-		JButton button_5 = new JButton("Recorrido topológico en Anchura");
-		panelAlgorimos.add(button_5);
+
+		// Selección de algoritmos
+		JRadioButton radioButtonAlgoritmoPruebaAciclidad = new JRadioButton("Prueba de Aciclidad");
+		panelAlgorimos.add(radioButtonAlgoritmoPruebaAciclidad);
+		JRadioButton radioButtonAlgoritmoRecorridoTopologicoAnchura = new JRadioButton("Recorrido topológico en Anchura");
+		panelAlgorimos.add(radioButtonAlgoritmoRecorridoTopologicoAnchura);
+		JRadioButton radioButtonAlgoritmoCerraduraTransitiva = new JRadioButton("Cerradura Transitiva");
+		panelAlgorimos.add(radioButtonAlgoritmoCerraduraTransitiva);
+		JRadioButton radioButtonAlgoritmoComponentesFuertementeConexas = new JRadioButton("Componentes Fuertemente Conexas");
+		panelAlgorimos.add(radioButtonAlgoritmoComponentesFuertementeConexas);
+		JRadioButton radioButtonAlgoritmoDijkstra = new JRadioButton("Algoritmo de Dijkstra");
+		panelAlgorimos.add(radioButtonAlgoritmoDijkstra);
+		JRadioButton radioButtonAlgoritmoFloyd = new JRadioButton("Algoritmo de Floyd");
+		panelAlgorimos.add(radioButtonAlgoritmoFloyd);
+		JRadioButton radioButtonAlgoritmoFordFulkerson = new JRadioButton("Algoritmo de Ford-Fulkerson");
+		panelAlgorimos.add(radioButtonAlgoritmoFordFulkerson);
+		JRadioButton radioButtonAlgoritmoRecorridoProfundidad = new JRadioButton("Recorrido en Profundidad");
+		panelAlgorimos.add(radioButtonAlgoritmoRecorridoProfundidad);
+		JRadioButton radioButtonAlgoritmoRecorridoAnchura = new JRadioButton("Recorrido en Anchura");
+		panelAlgorimos.add(radioButtonAlgoritmoRecorridoAnchura);
+		JRadioButton radioButtonAlgoritmoRecorridoTopologicoProfundidad = new JRadioButton("Recorrido topológico en Profundidad");
+		panelAlgorimos.add(radioButtonAlgoritmoRecorridoTopologicoProfundidad);
+		JRadioButton radioButtonAlgoritmoArbolExpansionCosteMinimo = new JRadioButton("Árbol de Expansión de Coste Mínimo");
+		panelAlgorimos.add(radioButtonAlgoritmoArbolExpansionCosteMinimo);
 		
-		JButton button_6 = new JButton("Cerradura Transitiva");
-		panelAlgorimos.add(button_6);
+		radioButtonAlgoritmoPruebaAciclidad.setSelected(true);
 		
-		JButton button_7 = new JButton("Componentes Fuertemente Conexas");
-		panelAlgorimos.add(button_7);
+		ButtonGroup groupAlgoritmos = new ButtonGroup();
+		groupAlgoritmos.add(radioButtonAlgoritmoPruebaAciclidad);
+		groupAlgoritmos.add(radioButtonAlgoritmoRecorridoTopologicoAnchura);
+		groupAlgoritmos.add(radioButtonAlgoritmoCerraduraTransitiva);
+		groupAlgoritmos.add(radioButtonAlgoritmoComponentesFuertementeConexas);
+		groupAlgoritmos.add(radioButtonAlgoritmoDijkstra);
+		groupAlgoritmos.add(radioButtonAlgoritmoFloyd);
+		groupAlgoritmos.add(radioButtonAlgoritmoFordFulkerson);
+		groupAlgoritmos.add(radioButtonAlgoritmoRecorridoProfundidad);
+		groupAlgoritmos.add(radioButtonAlgoritmoRecorridoAnchura);
+		groupAlgoritmos.add(radioButtonAlgoritmoRecorridoTopologicoProfundidad);
+		groupAlgoritmos.add(radioButtonAlgoritmoArbolExpansionCosteMinimo);
 		
-		JButton button_8 = new JButton("Algoritmo de Dijkstra");
-		panelAlgorimos.add(button_8);
 		
-		JButton button_9 = new JButton("Algoritmo de Floyd");
-		panelAlgorimos.add(button_9);
-		
-		JButton button_10 = new JButton("Algoritmo de Ford-Fulkerson");
-		panelAlgorimos.add(button_10);
-		
-		JButton button_11 = new JButton("Recorrido en Profundidad");
-		panelAlgorimos.add(button_11);
-		
-		JButton button_12 = new JButton("Recorrido en Anchura");
-		panelAlgorimos.add(button_12);
-		
-		JButton button_13 = new JButton("Recorrido topológico en Profundidad");
-		panelAlgorimos.add(button_13);
+//		JButton button_4 = new JButton("Prueba de Aciclidad");
+//		panelAlgorimos.add(button_4);
+//		
+//		JButton button_5 = new JButton("Recorrido topológico en Anchura");
+//		panelAlgorimos.add(button_5);
+//		
+//		JButton button_6 = new JButton("Cerradura Transitiva");
+//		panelAlgorimos.add(button_6);
+//		
+//		JButton button_7 = new JButton("Componentes Fuertemente Conexas");
+//		panelAlgorimos.add(button_7);
+//		
+//		JButton button_8 = new JButton("Algoritmo de Dijkstra");
+//		panelAlgorimos.add(button_8);
+//		
+//		JButton button_9 = new JButton("Algoritmo de Floyd");
+//		panelAlgorimos.add(button_9);
+//		
+//		JButton button_10 = new JButton("Algoritmo de Ford-Fulkerson");
+//		panelAlgorimos.add(button_10);
+//		
+//		JButton button_11 = new JButton("Recorrido en Profundidad");
+//		panelAlgorimos.add(button_11);
+//		
+//		JButton button_12 = new JButton("Recorrido en Anchura");
+//		panelAlgorimos.add(button_12);
+//		
+//		JButton button_13 = new JButton("Recorrido topológico en Profundidad");
+//		panelAlgorimos.add(button_13);
 		
 		JPanel panelModo = new JPanel();
+		panelModo.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelModo);
 		panelModo.setLayout(new BoxLayout(panelModo, BoxLayout.Y_AXIS));
 		
-		JLabel label = new JLabel("Modo");
-		panelModo.add(label);
+		JLabel lblModoDeEjecucion = new JLabel("Modo de ejecución:");
+		lblModoDeEjecucion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblModoDeEjecucion.setBorder(new EmptyBorder(0, 0, 10, 0) );
+		panelModo.add(lblModoDeEjecucion);
 				
 		JRadioButton radioButton = new JRadioButton("Aprendizaje");
 		radioButton.setSelected(true);
@@ -177,9 +231,9 @@ public class AprendiendoGrafos2 extends JApplet {
 		JRadioButton radioButton_1 = new JRadioButton("Autoevaluación");
 		panelModo.add(radioButton_1);
 		
-		ButtonGroup group = new ButtonGroup();
-		group.add(radioButton);
-		group.add(radioButton_1);
+		ButtonGroup groupModoEjecucion = new ButtonGroup();
+		groupModoEjecucion.add(radioButton);
+		groupModoEjecucion.add(radioButton_1);
 		
 		JSplitPane splitPane_2 = new JSplitPane();
 		splitPane_1.setRightComponent(splitPane_2);
@@ -271,8 +325,6 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_3.setLeftComponent(panel_grafo);
 		panelAlgorimos.setSize(panelAlgorimos.getSize().width, 200);
 		
-		JButton btnrbolDeExpansin = new JButton("Árbol de Expansión de Coste Mínimo");
-		panelAlgorimos.add(btnrbolDeExpansin);
 		
         // create a JGraphT graph
         ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );

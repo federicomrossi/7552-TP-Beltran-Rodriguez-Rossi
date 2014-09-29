@@ -1,23 +1,18 @@
 package ar.com.taller2.papers;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.swing.JApplet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.GraphConstants;
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
+
+import ar.com.taller2.papers.adapters.JGraphXAdapter;
+
+import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxGeometry;
+import com.mxgraph.swing.mxGraphComponent;
 
 /**
  * @author Pablo Rodriguez Manzi
@@ -26,48 +21,56 @@ import org.jgrapht.graph.ListenableDirectedGraph;
 public class AprendiendoGrafos extends JApplet {
 	private static final long serialVersionUID = 5320477892293342036L;
 	private static final Logger logger = LogManager.getLogger();
-	
-	private static final Color DEFAULT_BG_COLOR = Color.decode("#FAFBFF");
-    private static final Dimension DEFAULT_SIZE = new Dimension(530, 320);
-	
-    
-    private JGraphModelAdapter m_jgAdapter;
 
     @Override
     public void init(  ) {
-        // create a JGraphT graph
-        ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );
+    	 ListenableGraph<String, DefaultEdge> g = new ListenableDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 
-        // create a visualization using JGraph, via an adapter
-        m_jgAdapter = new JGraphModelAdapter( g );
+         // add some sample data (graph manipulated via JGraphT)
+         g.addVertex( "v1" );
+         g.addVertex( "v2" );
+         g.addVertex( "v3" );
+         g.addVertex( "v4" );
 
-        JGraph jgraph = new JGraph( m_jgAdapter );
+         g.addEdge( "v1", "v2" );
+         g.addEdge( "v2", "v3" );
+         g.addEdge( "v3", "v1" );
+         g.addEdge( "v4", "v3" );
 
-        adjustDisplaySettings( jgraph );
-        getContentPane(  ).add( jgraph );
-        resize( DEFAULT_SIZE );
+         JGraphXAdapter<String, DefaultEdge> graph = new JGraphXAdapter<String, DefaultEdge>(g);
+         graph.setDisconnectOnMove(false);
+         graph.setAllowDanglingEdges(false);
+         mxGraphComponent graphComponent = new mxGraphComponent(graph);
+         this.getContentPane().add(graphComponent);
+         this.setSize(400, 320);
+         this.setVisible(true);
 
-        // add some sample data (graph manipulated via JGraphT)
-        g.addVertex( "v1" );
-        g.addVertex( "v2" );
-        g.addVertex( "v3" );
-        g.addVertex( "v4" );
-
-        g.addEdge( "v1", "v2" );
-        g.addEdge( "v2", "v3" );
-        g.addEdge( "v3", "v1" );
-        g.addEdge( "v4", "v3" );
-
-        // position vertices nicely within JGraph component
-        positionVertexAt( "v1", 130, 40 );
-        positionVertexAt( "v2", 60, 200 );
-        positionVertexAt( "v3", 310, 230 );
-        positionVertexAt( "v4", 380, 70 );
+         g.addVertex( "v5" );
+         g.addVertex( "v6" );
+         g.addVertex( "v7" );
+         g.addVertex( "v8" );
+         try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+         graph.getModel().beginUpdate();
+         double x = 20, y = 20;
+         for (mxCell cell : graph.getVertexToCellMap().values()) {
+             graph.getModel().setGeometry(cell, new mxGeometry(x, y, 20, 20));
+             x += 40;
+             if (x > 200) {
+                 x = 20;
+                 y += 40;
+             }
+         }
+         graph.getModel().endUpdate();
 
         // that's all there is to it!...
     }
 
-
+/*
     private void adjustDisplaySettings( JGraph jg ) {
         jg.setPreferredSize( DEFAULT_SIZE );
 
@@ -97,5 +100,5 @@ public class AprendiendoGrafos extends JApplet {
         Map cellAttr = new HashMap(  );
         cellAttr.put( cell, attr );
         m_jgAdapter.edit( cellAttr,  null, null, null );
-    }
+    }*/
 }

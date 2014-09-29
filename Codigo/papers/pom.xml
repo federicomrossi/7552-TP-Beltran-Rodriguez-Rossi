@@ -60,11 +60,11 @@
 	   <scope>compile</scope>
 	  </dependency>
   	<dependency>
-      <groupId>jgraph</groupId>
-      <artifactId>jgraph</artifactId>
-      <version>5.13.0.0</version>
-      <scope>compile</scope>
-    </dependency>
+  	  <groupId>org.tinyjee.jgraphx</groupId>
+  	  <artifactId>jgraphx</artifactId>
+  	  <version>2.3.0.5</version>
+  	  <scope>compile</scope>
+	</dependency>
   	<dependency>
       <groupId>org.jgrapht</groupId>
       <artifactId>jgrapht-jdk1.5</artifactId>

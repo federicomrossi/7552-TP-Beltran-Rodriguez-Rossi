@@ -1,11 +1,15 @@
 package ar.com.taller2.papers;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +17,7 @@ import java.util.Map;
 import javax.swing.AbstractButton;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,7 +26,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
@@ -29,31 +33,20 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.GraphConstants;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
-import javax.swing.UIManager.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
-import javax.swing.JSpinner;
+import com.mxgraph.model.mxCell;
+import com.mxgraph.model.mxGeometry;
+import com.mxgraph.swing.mxGraphComponent;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Component;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import ar.com.taller2.papers.adapters.JGraphXAdapter;
 
 public class AprendiendoGrafos2 extends JApplet {
 
@@ -409,29 +402,14 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_3.setResizeWeight(0.90d);
 		
 		JPanel panel_grafo = new JPanel();
-		splitPane_3.setLeftComponent(panel_grafo);
+		//splitPane_3.setLeftComponent(panel_grafo);
 		panelAlgorimos.setSize(panelAlgorimos.getSize().width, 200);
 		
 		
         // create a JGraphT graph
-        ListenableGraph g = new ListenableDirectedGraph( DefaultEdge.class );
+		ListenableGraph<String, DefaultEdge> g = new ListenableDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 
-        // create a visualization using JGraph, via an adapter
-        m_jgAdapter = new JGraphModelAdapter( g );
-        
-        JGraph jgraph = new JGraph( m_jgAdapter );
-        panel_grafo.add(jgraph);
-        
-        		jgraph.setAutoscrolls(true);
-        		jgraph.setAutoResizeGraph(true);
-        		
-        		//jgraph.setPreferredSize(new Dimension(1,1));
-        		
-        adjustDisplaySettings( jgraph );
-        resize( DEFAULT_SIZE );
-
-        
-        // add some sample data (graph manipulated via JGraphT)
+		// add some sample data (graph manipulated via JGraphT)
         g.addVertex( "v1" );
         g.addVertex( "v2" );
         g.addVertex( "v3" );
@@ -441,14 +419,39 @@ public class AprendiendoGrafos2 extends JApplet {
         g.addEdge( "v2", "v3" );
         g.addEdge( "v3", "v1" );
         g.addEdge( "v4", "v3" );
+		
+		
+        // create a visualization using JGraph, via an adapter
+		JGraphXAdapter<String, DefaultEdge> graph = new JGraphXAdapter<String, DefaultEdge>(g);
+        
+		graph.setDisconnectOnMove(false);
+        graph.setAllowDanglingEdges(false);
+        mxGraphComponent graphComponent = new mxGraphComponent(graph);
+        splitPane_3.setLeftComponent(graphComponent);
+        this.setSize(400, 320);
+        this.setVisible(true);
 
-        // position vertices nicely within JGraph component
-        positionVertexAt( "v1", 130, 40 );
-        positionVertexAt( "v2", 60, 200 );
-        positionVertexAt( "v3", 310, 230 );
-        positionVertexAt( "v4", 380, 70 );
-
-        // that's all there is to it!...
+        g.addVertex( "v5" );
+        g.addVertex( "v6" );
+        g.addVertex( "v7" );
+        g.addVertex( "v8" );
+        try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        graph.getModel().beginUpdate();
+        double x = 20, y = 20;
+        for (mxCell cell : graph.getVertexToCellMap().values()) {
+            graph.getModel().setGeometry(cell, new mxGeometry(x, y, 20, 20));
+            x += 40;
+            if (x > 200) {
+                x = 20;
+                y += 40;
+            }
+        }
+        graph.getModel().endUpdate();
 
         
         //
@@ -467,36 +470,4 @@ public class AprendiendoGrafos2 extends JApplet {
         
     }
 
-
-    private void adjustDisplaySettings( JGraph jg ) {
-        jg.setPreferredSize(new Dimension(400,400));        
-
-        Color  c        = DEFAULT_BG_COLOR;
-        String colorStr = null;
-
-        try {
-            colorStr = getParameter( "bgcolor" );
-        }
-         catch( Exception e ) {}
-
-        if( colorStr != null ) {
-            c = Color.decode( colorStr );
-        }
-
-        jg.setBackground( c );
-    }
-
-
-    private void positionVertexAt( Object vertex, int x, int y ) {
-        DefaultGraphCell cell = m_jgAdapter.getVertexCell( vertex );
-        Map              attr = cell.getAttributes(  );
-        Rectangle2D        b    = GraphConstants.getBounds( attr );
-
-        GraphConstants.setBounds( attr, new Rectangle(x,y,(int)b.getWidth(),(int)b.getHeight()));
-
-        Map cellAttr = new HashMap(  );
-        cellAttr.put( cell, attr );
-        m_jgAdapter.edit( cellAttr,  null, null, null );
-    }
-	
 }

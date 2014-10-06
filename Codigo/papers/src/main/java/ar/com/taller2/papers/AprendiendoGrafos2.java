@@ -80,7 +80,7 @@ public class AprendiendoGrafos2 extends JApplet {
 	    }
 
 		
-		logger.info("BELEN GILA");
+		logger.info("BELEN IDOLA");
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);

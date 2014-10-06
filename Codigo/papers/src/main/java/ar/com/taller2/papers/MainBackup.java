@@ -12,6 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.AbstractButton;
@@ -37,7 +38,9 @@ import javax.swing.border.EmptyBorder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jgrapht.Graph;
 import org.jgrapht.ListenableGraph;
+import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.ext.JGraphModelAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
@@ -47,8 +50,9 @@ import com.mxgraph.model.mxGeometry;
 import com.mxgraph.swing.mxGraphComponent;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
+import ar.com.taller2.papers.model.graphs.Dijkstra;
 
-public class AprendiendoGrafos2 extends JApplet {
+public class MainBackup extends JApplet implements ActionListener {
 
 	private static final long serialVersionUID = 5320477892293342036L;
 	private static final Logger logger = LogManager.getLogger();
@@ -56,11 +60,14 @@ public class AprendiendoGrafos2 extends JApplet {
 	private static final Color DEFAULT_BG_COLOR = Color.decode("#FAFBFF");
     private static final Dimension DEFAULT_SIZE = new Dimension(800, 320);
     
+    private static ListenableGraph<String, DefaultEdge> g = new ListenableDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+    private static JGraphXAdapter<String, DefaultEdge> graph = new JGraphXAdapter<String, DefaultEdge>(g);
     
     private JGraphModelAdapter m_jgAdapter;
     
     // TEMP
     private static boolean tempPlay = false;
+    private JLabel lblTituloInformacion;
     // END TEMP
 	
 	
@@ -68,7 +75,7 @@ public class AprendiendoGrafos2 extends JApplet {
 	 * Create the applet.
 	 * @throws IOException 
 	 */
-	public AprendiendoGrafos2() throws IOException {
+	public MainBackup() throws IOException {
 		
 		try {
             // Set System L&F
@@ -78,9 +85,6 @@ public class AprendiendoGrafos2 extends JApplet {
 	    catch (Exception e) {
 	       // handle exception
 	    }
-
-		
-		logger.info("BELEN IDOLA");
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -257,26 +261,26 @@ public class AprendiendoGrafos2 extends JApplet {
 		
 		final JButton buttonInit = new JButton("");
 		buttonInit.setEnabled(false);
-		buttonInit.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-ini-24.png")));
+		buttonInit.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-arrow-ini-24.png")));
 		toolBar.add(buttonInit);
 		
 		final JButton buttonPrevious = new JButton("");
 		buttonPrevious.setEnabled(false);
-		buttonPrevious.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-reverse-24.png")));
+		buttonPrevious.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-arrow-reverse-24.png")));
 		toolBar.add(buttonPrevious);
 		
 		final JButton buttonPlay = new JButton("");
-		buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
+		buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-24.png")));
 		toolBar.add(buttonPlay);
 		
 		final JButton buttonNext = new JButton("");
 		buttonNext.setEnabled(false);
-		buttonNext.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-forward-24.png")));
+		buttonNext.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-arrow-forward-24.png")));
 		toolBar.add(buttonNext);
 		
 		final JButton buttonEnd = new JButton("");
 		buttonEnd.setEnabled(false);
-		buttonEnd.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-arrow-end-24.png")));
+		buttonEnd.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-arrow-end-24.png")));
 		toolBar.add(buttonEnd);
 		
 		buttonPlay.addActionListener(new ActionListener() {
@@ -285,7 +289,7 @@ public class AprendiendoGrafos2 extends JApplet {
 				// TEMP
 				if(tempPlay) {
 					tempPlay = false;
-					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-play-24.png")));
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-24.png")));
 					
 					// deshabilitamos botones de ejecución
 					buttonNext.setEnabled(false);
@@ -309,7 +313,7 @@ public class AprendiendoGrafos2 extends JApplet {
 				}
 				else {
 					tempPlay = true;
-					buttonPlay.setIcon(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/icon-stop-24.png")));
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-stop-24.png")));
 					
 					// Habilitamos botones de ejecución
 					buttonNext.setEnabled(true);
@@ -330,9 +334,13 @@ public class AprendiendoGrafos2 extends JApplet {
 						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
 						element.setEnabled(false);
 					}
+					
+					
+
+				
 				}
 				// END TEMP
-			}
+			}		
 		});
 		
 		JSplitPane splitPane_3 = new JSplitPane();
@@ -341,9 +349,9 @@ public class AprendiendoGrafos2 extends JApplet {
 		splitPane_3.setAlignmentX(0.5f);
 		panelCentro.add(splitPane_3);
 		
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setText("Salida:");
-		splitPane_3.setRightComponent(textPane_1);
+		JTextPane txtSalida = new JTextPane();
+		txtSalida.setText("Salida:");
+		splitPane_3.setRightComponent(txtSalida);
 		
 		JTabbedPane tbdPaneDerecha = new JTabbedPane(JTabbedPane.TOP);
 		splitPane_2.setRightComponent(tbdPaneDerecha);
@@ -352,7 +360,7 @@ public class AprendiendoGrafos2 extends JApplet {
 		tbdPaneDerecha.addTab("Información", null, panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
 		
-		JLabel lblTituloInformacion = new JLabel("Algoritmo de Dijkstra");
+		lblTituloInformacion = new JLabel("Algoritmo de Dijkstra");
 		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
 		lblTituloInformacion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelInformacion.add(lblTituloInformacion);
@@ -407,22 +415,34 @@ public class AprendiendoGrafos2 extends JApplet {
 		
 		
         // create a JGraphT graph
-		ListenableGraph<String, DefaultEdge> g = new ListenableDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
+//		this.g = new ListenableDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
 
 		// add some sample data (graph manipulated via JGraphT)
         g.addVertex( "v1" );
         g.addVertex( "v2" );
         g.addVertex( "v3" );
         g.addVertex( "v4" );
-
-        g.addEdge( "v1", "v2" );
-        g.addEdge( "v2", "v3" );
-        g.addEdge( "v3", "v1" );
-        g.addEdge( "v4", "v3" );
-		
+        g.addVertex( "v5" );
+        g.addVertex( "v6" );
+        g.addVertex( "v7" );
+        g.addVertex( "v8" );
+        
+        
+        
 		
         // create a visualization using JGraph, via an adapter
-		JGraphXAdapter<String, DefaultEdge> graph = new JGraphXAdapter<String, DefaultEdge>(g);
+//		JGraphXAdapter<String, DefaultEdge> graph = new JGraphXAdapter<String, DefaultEdge>(g);
+		
+		g.addEdge( "v1", "v2" );
+        g.addEdge( "v1", "v4" );
+        g.addEdge( "v2", "v6" );
+        g.addEdge( "v4", "v5" );
+        g.addEdge( "v5", "v6" );
+        g.addEdge( "v6", "v7" );
+        g.addEdge( "v6", "v8" );
+        g.addEdge( "v7", "v3" );
+        g.addEdge( "v8", "v3" );
+		
         
 		graph.setDisconnectOnMove(false);
         graph.setAllowDanglingEdges(false);
@@ -431,36 +451,44 @@ public class AprendiendoGrafos2 extends JApplet {
         this.setSize(400, 320);
         this.setVisible(true);
 
-        g.addVertex( "v5" );
-        g.addVertex( "v6" );
-        g.addVertex( "v7" );
-        g.addVertex( "v8" );
-        try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//        try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
         graph.getModel().beginUpdate();
-        double x = 20, y = 20;
+        double x = 50, y = 50;
         for (mxCell cell : graph.getVertexToCellMap().values()) {
-            graph.getModel().setGeometry(cell, new mxGeometry(x, y, 20, 20));
-            x += 40;
+            graph.getModel().setGeometry(cell, new mxGeometry(x, y, 50, 50));
+            x += 70;
             if (x > 200) {
-                x = 20;
-                y += 40;
+                x = 50;
+                y += 70;
             }
         }
         graph.getModel().endUpdate();
 
+    
         
         //
         // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
         //
-        textPaneContenidoInformacion.setPage(AprendiendoGrafos2.class.getResource("/algorithms/dijkstra-info.html"));
-        textPaneContenidoAlgoritmo.setPage(AprendiendoGrafos2.class.getResource("/algorithms/dijkstra-pseudocode.html"));
+        Dijkstra dijkstra = new Dijkstra();
+        lblTituloInformacion.setText(dijkstra.getTitulo());
+        lblTituloAlgoritmo.setText(dijkstra.getTitulo());
+        textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
+        textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
         // END TEMP
-	}
+        
+        // TODO Auto-generated method stub
+//		DijkstraShortestPath<String, DefaultEdge> d = new DijkstraShortestPath<String, DefaultEdge>(g, "v1", "v3");
+//        List<DefaultEdge> recorrido = d.getPathEdgeList();
+//        for( int i = 0; i < d.getPathLength(); i++)
+//        	txtSalida.setText(txtSalida.getText() + "\n" + recorrido.get(i));
+        
+        buttonPlay.addActionListener(this);
+	}	
 
 	
     @Override
@@ -469,5 +497,18 @@ public class AprendiendoGrafos2 extends JApplet {
 
         
     }
+    
+    
+    public void actionPerformed(ActionEvent e) {
+    	
+    	if(this.tempPlay) return;
+    	
+    	DijkstraShortestPath<String, DefaultEdge> d = new DijkstraShortestPath<String, DefaultEdge>(g, "v1", "v3");
+        List<DefaultEdge> recorrido = d.getPathEdgeList();
+        for( int i = 0; i < d.getPathLength(); i++)
+//        	txtSalida.setText(txtSalida.getText() + "\n" + recorrido.get(i));
+        	logger.info(recorrido.get(i));
+    }
+    
 
 }

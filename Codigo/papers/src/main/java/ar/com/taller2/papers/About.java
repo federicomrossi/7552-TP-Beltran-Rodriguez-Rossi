@@ -38,7 +38,7 @@ public class About extends JDialog implements ActionListener {
 		getContentPane().add(logoPanel, BorderLayout.NORTH);
 		logoPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		{
-			JLabel labelLogo = new JLabel(new ImageIcon(AprendiendoGrafos2.class.getResource("/images/graferator-logo.png")));
+			JLabel labelLogo = new JLabel(new ImageIcon(Main.class.getResource("/images/graferator-logo.png")));
 			labelLogo.setHorizontalAlignment(SwingConstants.LEFT);
 			labelLogo.setSize(272, 78);
 			logoPanel.add(labelLogo);

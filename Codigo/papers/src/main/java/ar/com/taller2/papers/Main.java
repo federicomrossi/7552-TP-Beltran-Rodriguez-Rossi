@@ -63,7 +63,12 @@ public class Main extends JApplet {
 	private static final Color DEFAULT_BG_COLOR = Color.decode("#FAFBFF");
     private static final Dimension DEFAULT_SIZE = new Dimension(800, 320);
     
-	/**
+    // TEMP
+    private static boolean tempPlay = false;
+    private JLabel lblTituloInformacion;
+    // END TEMP
+	
+    /**
 	 * Create the applet.
 	 * @throws IOException 
 	 */
@@ -232,18 +237,73 @@ public class Main extends JApplet {
 		buttonPrevious.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-reverse-24.png")));
 		toolBar.add(buttonPrevious);
 		
-		final JButton buttonPlay = new JButton("");
-		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
-		toolBar.add(buttonPlay);
-		
 		final JButton buttonNext = new JButton("");
 		buttonNext.setEnabled(false);
 		buttonNext.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-forward-24.png")));
-		toolBar.add(buttonNext);
-		
+	
 		final JButton buttonEnd = new JButton("");
 		buttonEnd.setEnabled(false);
 		buttonEnd.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-end-24.png")));
+		
+		final JButton buttonPlay = new JButton("");
+		buttonPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TEMP
+				if(tempPlay) {
+					tempPlay = false;
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-24.png")));
+					
+					// deshabilitamos botones de ejecución
+					buttonNext.setEnabled(false);
+					buttonEnd.setEnabled(false);
+					buttonInit.setEnabled(false);
+					buttonPrevious.setEnabled(false);
+					
+					// Habilitamos botones del grupo de algoritmos
+					Enumeration<AbstractButton> groupAlgoritmosBotones = groupAlgoritmos.getElements();
+					while (groupAlgoritmosBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupAlgoritmosBotones.nextElement();
+						element.setEnabled(true);
+					}
+					
+					// Habilitamos botones del grupo de modode ejecución
+					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+					while (groupModoBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+						element.setEnabled(true);
+					}
+				}
+				else {
+					tempPlay = true;
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-stop-24.png")));
+					
+					// Habilitamos botones de ejecución
+					buttonNext.setEnabled(true);
+					buttonEnd.setEnabled(true);
+					buttonInit.setEnabled(true);
+					buttonPrevious.setEnabled(true);
+					
+					// Deshabilitamos botones del grupo de algoritmos
+					Enumeration<AbstractButton> enume = groupAlgoritmos.getElements();
+					while (enume.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) enume.nextElement();
+						element.setEnabled(false);
+					}
+					
+					// Deshabilitamos botones del grupo de modode ejecución
+					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+					while (groupModoBotones.hasMoreElements()) {
+						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+						element.setEnabled(false);
+					}			
+				}
+				// END TEMP
+			}
+		});
+		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
+		toolBar.add(buttonPlay);
+		
+		toolBar.add(buttonNext);
 		toolBar.add(buttonEnd);
 		
 		JSplitPane splitPane_3 = new JSplitPane();
@@ -264,6 +324,11 @@ public class Main extends JApplet {
 		JPanel panelInformacion = new JPanel();
 		tbdPaneDerecha.addTab("Información", null, panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
+		
+		lblTituloInformacion = new JLabel("");
+		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
+		lblTituloInformacion.setFont(new Font("Tahoma", Font.BOLD, 14));
+		panelInformacion.add(lblTituloInformacion);
 		
 		JTextPane textPaneContenidoInformacion = new JTextPane();
 		textPaneContenidoInformacion.setContentType("text/html");
@@ -315,6 +380,17 @@ public class Main extends JApplet {
 		GraphModel graphModel = new GraphModel();
 		GraphView graphView = new GraphView(graphModel);
 		this.iniciarNuevoDocumento(graphView.getGraphAdapter());
+		
+		
+		//
+        // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
+        //
+        Dijkstra dijkstra = new Dijkstra();
+        lblTituloInformacion.setText(dijkstra.getTitulo());
+        lblTituloAlgoritmo.setText(dijkstra.getTitulo());
+        textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
+        textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
+        // END TEMP
 	}	
 
 	

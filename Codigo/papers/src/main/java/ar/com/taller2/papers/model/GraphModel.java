@@ -45,5 +45,4 @@ public class GraphModel {
         this.graph.addEdge( "v8", "v3" );
 	}
 	// END TEMP
-	
 }

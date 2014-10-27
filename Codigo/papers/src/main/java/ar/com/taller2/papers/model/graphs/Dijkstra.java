@@ -7,13 +7,15 @@ import ar.com.taller2.papers.model.GraphAlgorithm;
 
 public class Dijkstra extends GraphAlgorithm {
 
-	public void siguiente() {
+	public Boolean siguiente() {
 		// TODO Auto-generated method stub
+		return true;
 		
 	}
 
-	public void anterior() {
+	public Boolean anterior() {
 		// TODO Auto-generated method stub
+		return true;
 		
 	}
 

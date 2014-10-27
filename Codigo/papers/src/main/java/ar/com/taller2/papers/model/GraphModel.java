@@ -17,7 +17,7 @@ public class GraphModel {
 		// TEMP
 		this.agregarVertices();
 		// END TEMP
-		algoritmo = new RecorridoProfundidad(graph);
+		algoritmo = new RecorridoProfundidad(graph, v1);
 	}
 
 	public ListenableGraph<Vertice, DefaultEdge> getGraph() {
@@ -27,6 +27,10 @@ public class GraphModel {
 	
 	public void nextStepAlgorithm(){
 		algoritmo.siguiente();
+	}
+	
+	public void previousStepAlgorithm(){
+		algoritmo.anterior();
 	}
 	
 	// TEMP

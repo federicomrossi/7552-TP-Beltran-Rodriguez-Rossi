@@ -8,5 +8,9 @@ public interface Executable {
 	
 	public void iniciar();
 	
+	public void principio();
+	
+	public void fin();
+	
 	public void getEstadoActual();
 }

@@ -43,5 +43,15 @@ public class Dijkstra extends GraphAlgorithm {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void principio() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void fin() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

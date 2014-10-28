@@ -51,6 +51,21 @@ public class RecorridoProfundidad implements Executable {
 		}
 		return false;
 	}
+	
+	public void principio() {
+		while (it.hasPrevious()) {
+			Vertice v = it.previous();
+			v.select(false);			
+		}
+	}
+	
+	public void fin() {
+		while (it.hasNext()) {
+			Vertice v = it.next();
+			v.select(true);	
+			Logger.getLogger("RecorridoProfundidad").info(v.toString());
+		}		
+	}
 
 	public void getEstadoActual() {
 		// TODO Auto-generated method stub

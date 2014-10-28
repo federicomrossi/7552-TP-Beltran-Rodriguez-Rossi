@@ -43,7 +43,7 @@ public class GraphModel {
 		return null;
 	}
 	
-	public void initAlgorithm() {
+	public void startAlgorithm() {
 		algoritmo.iniciar();
 	}
 	
@@ -53,6 +53,14 @@ public class GraphModel {
 	
 	public void previousStepAlgorithm(){
 		algoritmo.anterior();
+	}
+	
+	public void initAlgorithm() {
+		algoritmo.principio();
+	}
+	
+	public void endAlgorithm() {
+		algoritmo.fin();
 	}
 	
 	// TEMP

@@ -6,5 +6,7 @@ public interface Executable {
 	
 	public Boolean anterior();
 	
+	public void iniciar();
+	
 	public void getEstadoActual();
 }

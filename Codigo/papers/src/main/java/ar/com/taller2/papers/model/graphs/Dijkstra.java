@@ -38,5 +38,10 @@ public class Dijkstra extends GraphAlgorithm {
 		// TODO Auto-generated method stub
 		return Dijkstra.class.getResource("/algorithms/dijkstra-info.html");
 	}
+
+	public void iniciar() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

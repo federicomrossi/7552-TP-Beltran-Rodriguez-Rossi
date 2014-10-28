@@ -1,5 +1,8 @@
 package ar.com.taller2.papers.model;
 
+import java.util.Iterator;
+import java.util.logging.Logger;
+
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
@@ -17,13 +20,32 @@ public class GraphModel {
 		// TEMP
 		this.agregarVertices();
 		// END TEMP
-		algoritmo = new RecorridoProfundidad(graph, v1);
+//		algoritmo = new RecorridoProfundidad(graph, v1);
 	}
 
 	public ListenableGraph<Vertice, DefaultEdge> getGraph() {
 		return graph;
 	}
 	
+	public void setAlgorithm(Executable algoritmo) {
+		Logger.getLogger("GraphModel").info("Cambie de algoritmo");
+		this.algoritmo = algoritmo;
+	}
+	
+	public Vertice getVertex(String name) {
+		Iterator<Vertice> it = this.graph.vertexSet().iterator();
+		while (it.hasNext()) {
+			Vertice v = it.next();
+			if (v.toString() == name) {
+				return v;
+			}
+		}
+		return null;
+	}
+	
+	public void initAlgorithm() {
+		algoritmo.iniciar();
+	}
 	
 	public void nextStepAlgorithm(){
 		algoritmo.siguiente();

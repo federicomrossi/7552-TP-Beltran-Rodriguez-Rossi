@@ -13,6 +13,8 @@ public class AprendiendoGrafos {
 		vista.setGraph(modelo.getGraph());
 		vista.addToolbarNextActionListener(new NextActionListener(this));
 		vista.addToolbarPreviousActionListener(new PreviousActionListener(this));
+		vista.addToolBarPlayActionListener(new PlayActionListener(this));
+		vista.addAlgoritmosRecorridoProfundidadItemListener(new AlgoritmosRecorridoProfundidadItemListener(this));
 	}
 	
 	public Main getVista(){

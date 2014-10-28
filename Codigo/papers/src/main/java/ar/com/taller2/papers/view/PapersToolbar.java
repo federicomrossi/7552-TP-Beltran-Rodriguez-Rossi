@@ -22,6 +22,9 @@ public class PapersToolbar extends JToolBar {
     final JButton buttonNext = new JButton("");
     final JButton buttonEnd = new JButton("");
     final JButton buttonPlay = new JButton("");
+    
+    //Temp
+    private boolean tempPlay = false;
 	
 	public PapersToolbar(){
 		buttonInit.setEnabled(false);
@@ -61,7 +64,7 @@ public class PapersToolbar extends JToolBar {
 		buttonPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TEMP
-				/*if(tempPlay) {
+				if(tempPlay) {
 					tempPlay = false;
 					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-24.png")));
 					
@@ -71,19 +74,19 @@ public class PapersToolbar extends JToolBar {
 					buttonInit.setEnabled(false);
 					buttonPrevious.setEnabled(false);
 					
-					// Habilitamos botones del grupo de algoritmos
-					/*Enumeration<AbstractButton> groupAlgoritmosBotones = groupAlgoritmos.getElements();
-					while (groupAlgoritmosBotones.hasMoreElements()) {
-						JRadioButton element = (JRadioButton) groupAlgoritmosBotones.nextElement();
-						element.setEnabled(true);
-					}
-					
-					// Habilitamos botones del grupo de modode ejecución
-					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
-					while (groupModoBotones.hasMoreElements()) {
-						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
-						element.setEnabled(true);
-					}
+//					// Habilitamos botones del grupo de algoritmos
+//					Enumeration<AbstractButton> groupAlgoritmosBotones = groupAlgoritmos.getElements();
+//					while (groupAlgoritmosBotones.hasMoreElements()) {
+//						JRadioButton element = (JRadioButton) groupAlgoritmosBotones.nextElement();
+//						element.setEnabled(true);
+//					}
+//					
+//					// Habilitamos botones del grupo de modode ejecución
+//					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+//					while (groupModoBotones.hasMoreElements()) {
+//						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+//						element.setEnabled(true);
+//					}
 				}
 				else {
 					tempPlay = true;
@@ -95,21 +98,21 @@ public class PapersToolbar extends JToolBar {
 					buttonInit.setEnabled(true);
 					buttonPrevious.setEnabled(true);
 					
-					// Deshabilitamos botones del grupo de algoritmos
-					/*
-					Enumeration<AbstractButton> enume = groupAlgoritmos.getElements();
-					while (enume.hasMoreElements()) {
-						JRadioButton element = (JRadioButton) enume.nextElement();
-						element.setEnabled(false);
-					}
-					
-					// Deshabilitamos botones del grupo de modode ejecución
-					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
-					while (groupModoBotones.hasMoreElements()) {
-						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
-						element.setEnabled(false);
-					}			
-				}*/
+//					// Deshabilitamos botones del grupo de algoritmos
+//					
+//					Enumeration<AbstractButton> enume = groupAlgoritmos.getElements();
+//					while (enume.hasMoreElements()) {
+//						JRadioButton element = (JRadioButton) enume.nextElement();
+//						element.setEnabled(false);
+//					}
+//					
+//					// Deshabilitamos botones del grupo de modode ejecución
+//					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
+//					while (groupModoBotones.hasMoreElements()) {
+//						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
+//						element.setEnabled(false);
+//					}			
+				}
 				// END TEMP
 			}
 		});

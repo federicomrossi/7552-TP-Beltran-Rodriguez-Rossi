@@ -95,16 +95,7 @@ public class Main extends JApplet {
 	 * @throws IOException 
 	 */
 	public Main() throws IOException {
-		
-		try {
-            // Set System L&F
-        UIManager.setLookAndFeel(
-            UIManager.getSystemLookAndFeelClassName());
-	    } 
-	    catch (Exception e) {
-	       // handle exception
-	    }
-		
+				
 		
 		setJMenuBar(menuBar);
 		
@@ -218,6 +209,15 @@ public class Main extends JApplet {
         textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
         textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
         // END TEMP
+        
+        try {
+            // Set System L&F
+        UIManager.setLookAndFeel(
+            UIManager.getSystemLookAndFeelClassName());
+	    } 
+	    catch (Exception e) {
+	       // handle exception
+	    }
 	}	
 
 	

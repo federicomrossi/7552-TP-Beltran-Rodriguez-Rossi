@@ -1,6 +1,5 @@
 package ar.com.taller2.papers.model.graphs;
 
-import java.util.ListIterator;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -15,8 +14,9 @@ public class RecorridoProfundidad implements Executable {
 
 	private ListenableGraph<Vertice, DefaultEdge> graph;
 	private Vertice inicio;
+	private int indiceSiguientePaso;
 	private Vector<Vertice> recorrido = new Vector<Vertice>();
-	private ListIterator<Vertice> it;
+	
 	
 	public RecorridoProfundidad(ListenableGraph<Vertice, DefaultEdge> graph, Vertice inicio){
 		this.graph = graph;
@@ -26,45 +26,54 @@ public class RecorridoProfundidad implements Executable {
 	public void iniciar() {
 		DepthFirstIterator<Vertice,DefaultEdge> dfit = new DepthFirstIterator<Vertice,DefaultEdge>(this.graph, this.inicio);
 		while (dfit.hasNext()) {
-			this.recorrido.add(dfit.next());			
+			this.recorrido.add(dfit.next());
 		}
-		this.it = this.recorrido.listIterator();		
+		this.indiceSiguientePaso = 0;
 		Logger.getLogger("RecorridoProfundidad").info("Inicie el algoritmo");
 	}
 	
 	public Boolean siguiente() {
 		Logger.getLogger("RecorridoProfundidad").info("Siguiente");
-		if (it.hasNext()){
-			Vertice v = it.next();
+
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
 			v.select(true);
 			return true;
 		}
+		
 		return false;
 	}
 
 	public Boolean anterior() {
-		Logger.getLogger("RecorridoProfundidad").info("anterior");
-		if (it.hasPrevious()) {
-			Vertice v = it.previous();
+		Logger.getLogger("RecorridoProfundidad").info("Anterior");
+
+		if(this.indiceSiguientePaso - 1 >= 0) {
+			Vertice v = this.recorrido.get(--this.indiceSiguientePaso);
 			v.select(false);
 			return true;
 		}
+		
 		return false;
 	}
 	
 	public void principio() {
-		while (it.hasPrevious()) {
-			Vertice v = it.previous();
-			v.select(false);			
+		Logger.getLogger("RecorridoProfundidad").info("Principio");
+				
+		while(--this.indiceSiguientePaso >= 0) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso);
+			v.select(false);
 		}
+		
+		this.indiceSiguientePaso = 0;
 	}
 	
 	public void fin() {
-		while (it.hasNext()) {
-			Vertice v = it.next();
-			v.select(true);	
-			Logger.getLogger("RecorridoProfundidad").info(v.toString());
-		}		
+		Logger.getLogger("RecorridoProfundidad").info("Fin");
+		
+		while(this.indiceSiguientePaso < this.recorrido.size()) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
+			v.select(true);
+		}
 	}
 
 	public void getEstadoActual() {

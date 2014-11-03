@@ -50,7 +50,7 @@ import com.mxgraph.model.mxGeometry;
 import com.mxgraph.swing.mxGraphComponent;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
-import ar.com.taller2.papers.model.graphs.Dijkstra;
+import ar.com.taller2.papers.model.graphs.Dijkstra_old;
 
 public class MainBackup extends JApplet implements ActionListener {
 
@@ -474,7 +474,7 @@ public class MainBackup extends JApplet implements ActionListener {
         //
         // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
         //
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra_old dijkstra = new Dijkstra_old();
         lblTituloInformacion.setText(dijkstra.getTitulo());
         lblTituloAlgoritmo.setText(dijkstra.getTitulo());
         textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());

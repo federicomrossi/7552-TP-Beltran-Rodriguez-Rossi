@@ -29,7 +29,7 @@ import com.mxgraph.model.mxGeometry;
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.model.Vertice;
-import ar.com.taller2.papers.model.graphs.Dijkstra;
+import ar.com.taller2.papers.model.graphs.Dijkstra_old;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
 import ar.com.taller2.papers.view.PanelModo;
@@ -203,7 +203,7 @@ public class Main extends JApplet {
 		//
         // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
         //
-        Dijkstra dijkstra = new Dijkstra();
+        Dijkstra_old dijkstra = new Dijkstra_old();
         lblTituloInformacion.setText(dijkstra.getTitulo());
         lblTituloAlgoritmo.setText(dijkstra.getTitulo());
         textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());

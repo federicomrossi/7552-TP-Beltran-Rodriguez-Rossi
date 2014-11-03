@@ -16,8 +16,10 @@ public class AprendiendoGrafos {
 		vista.addToolBarPlayActionListener(new PlayActionListener(this));
 		vista.addToolbarInitActionListener(new InitActionListener(this));
 		vista.addToolbarEndActionListener(new EndActionListener(this));
+		
 		vista.addAlgoritmosRecorridoProfundidadItemListener(new AlgoritmosRecorridoProfundidadItemListener(this));
 		vista.addAlgoritmosRecorridoAnchuraItemListener(new AlgoritmosRecorridoAnchuraItemListener(this));
+		vista.addAlgoritmosDijkstraItemListener(new AlgoritmosDijkstraItemListener(this));
 	}
 	
 	public Main getVista(){

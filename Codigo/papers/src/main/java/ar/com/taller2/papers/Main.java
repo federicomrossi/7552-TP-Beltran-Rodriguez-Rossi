@@ -247,7 +247,6 @@ public class Main extends JApplet {
 			}
 	    });
 	    
-	    
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);

@@ -31,20 +31,22 @@ public class RecorridoProfundidad implements Executable {
 		this.indiceSiguientePaso = 0;
 		Logger.getLogger("RecorridoProfundidad").info("Inicie el algoritmo");
 	}
+
+	public void terminar() {}
 	
-	public Boolean siguiente() {
+	public Vertice siguiente() {
 		Logger.getLogger("RecorridoProfundidad").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
-			v.select(true);
-			return true;
+//			v.select(true);
+			return v;
 		}
 		
-		return false;
+		return null;
 	}
 
-	public Boolean anterior() {
+	public boolean anterior() {
 		Logger.getLogger("RecorridoProfundidad").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
@@ -79,6 +81,14 @@ public class RecorridoProfundidad implements Executable {
 	public void getEstadoActual() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean cumpleCondicionesIniciales() {
+		return true;
+	}
+
+	public String getCondicionesIniciales() {
+		return "Este algoritmo no posee condiciones iniciales";
 	}
 
 }

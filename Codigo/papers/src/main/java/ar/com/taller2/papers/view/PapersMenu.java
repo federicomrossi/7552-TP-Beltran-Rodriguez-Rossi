@@ -27,6 +27,7 @@ public class PapersMenu extends JMenuBar {
 	JMenuItem mntmGuardar = new JMenuItem("Guardar");
 	JMenuItem mntmGuardarComo = new JMenuItem("Guardar Como...");
 	JMenu mnEditar = new JMenu("Editar");
+	JMenuItem mntmNuevoVertice = new JMenuItem("Nuevo Vértice");
 	JMenu mnHelp = new JMenu("Ayuda");
 	JMenuItem mntmHelpContents = new JMenuItem("Guía de Usuario");
 	JMenuItem mntmAcercaDe = new JMenuItem("Acerca de");
@@ -42,6 +43,7 @@ public class PapersMenu extends JMenuBar {
 		mnArchivo.add(separator);
 		mnArchivo.add(mntmGuardar);
 		mnArchivo.add(mntmGuardarComo);
+		mnEditar.add(mntmNuevoVertice);
 		this.add(mnEditar);
 		this.add(mnHelp);
 		
@@ -80,6 +82,10 @@ public class PapersMenu extends JMenuBar {
 	public void addArchivoGuardarComoActionListener(ActionListener a){
 		mntmGuardarComo.addActionListener(a);
 	}
+
+	public void addEditarNuevoVerticeActionListener(ActionListener a) {
+		mntmNuevoVertice.addActionListener(a);
+	}
 	
 	public void addAyudaAcercaDeActionListener(ActionListener a){
 		mntmAcercaDe.addActionListener(a);
@@ -115,6 +121,10 @@ public class PapersMenu extends JMenuBar {
 	
 	public void removeAyudaGuiaUsuarioActionListener(ActionListener a){
 		mntmHelpContents.removeActionListener(a);
+	}
+
+	public void removeEditarNuevoVerticeActionListener(ActionListener a) {
+		mntmNuevoVertice.removeActionListener(a);
 	}
 	
 }

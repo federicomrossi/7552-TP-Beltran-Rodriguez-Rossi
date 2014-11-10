@@ -32,19 +32,19 @@ public class RecorridoAnchura implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Inicie el algoritmo");
 	}
 	
-	public Boolean siguiente() {
+	public Vertice siguiente() {
 		Logger.getLogger("RecorridoAnchura").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
 			v.select(true);
-			return true;
+			return v;
 		}
 		
-		return false;
+		return null;
 	}
 
-	public Boolean anterior() {
+	public boolean anterior() {
 		Logger.getLogger("RecorridoAnchura").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
@@ -79,6 +79,21 @@ public class RecorridoAnchura implements Executable {
 	public void getEstadoActual() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean cumpleCondicionesIniciales() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public String getCondicionesIniciales() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void terminar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

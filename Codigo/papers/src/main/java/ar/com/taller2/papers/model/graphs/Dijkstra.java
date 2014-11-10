@@ -36,7 +36,7 @@ public class Dijkstra implements Executable {
 		Logger.getLogger("Dijkstra").info("Inicie el algoritmo");
 	}
 	
-	public Boolean siguiente() {
+	public Vertice siguiente() {
 		Logger.getLogger("Dijkstra").info("Siguiente");
 
 //		if(this.indiceSiguientePaso < this.recorrido.size()) {
@@ -45,10 +45,10 @@ public class Dijkstra implements Executable {
 //			return true;
 //		}
 		
-		return false;
+		return inicio;
 	}
 
-	public Boolean anterior() {
+	public boolean anterior() {
 		Logger.getLogger("Dijkstra").info("Anterior");
 
 //		if(this.indiceSiguientePaso - 1 >= 0) {
@@ -83,6 +83,21 @@ public class Dijkstra implements Executable {
 	public void getEstadoActual() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean cumpleCondicionesIniciales() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public String getCondicionesIniciales() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void terminar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

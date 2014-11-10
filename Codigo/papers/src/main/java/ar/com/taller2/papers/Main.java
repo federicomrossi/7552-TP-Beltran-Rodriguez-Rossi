@@ -41,6 +41,8 @@ public class Main extends JApplet {
 	private static final long serialVersionUID = 5320477892293342036L;
 	private static final Logger logger = LogManager.getLogger();
 	
+	private JGraphXAdapter<Vertice, DefaultEdge> adapter;
+	
     
     // TEMP
     private static boolean tempPlay = false;
@@ -228,7 +230,7 @@ public class Main extends JApplet {
     
     
     public void setGraph(ListenableGraph<Vertice, DefaultEdge> graph) {
-    	JGraphXAdapter<Vertice, DefaultEdge> adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
+    	this.adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
     	//ordernarVertices();
@@ -273,6 +275,10 @@ public class Main extends JApplet {
 		menuBar.addArchivoGuardarComoActionListener(a);
 	}
 	
+	public void addMenuEditarNuevoVerticeActionListener(ActionListener a){
+		menuBar.addEditarNuevoVerticeActionListener(a);
+	}
+	
 	public void addMenuAyudaAcercaDeActionListener(ActionListener a){
 		menuBar.addAyudaAcercaDeActionListener(a);
 	}
@@ -299,6 +305,10 @@ public class Main extends JApplet {
 	
 	public void removeMenuArchivoGuardarComoActionListener(ActionListener a){
 		menuBar.removeArchivoGuardarComoActionListener(a);
+	}
+	
+	public void removeMenuEditarNuevoVerticeActionListener(ActionListener a){
+		menuBar.removeEditarNuevoVerticeActionListener(a);
 	}
 	
 	public void removeMenuAyudaAcercaDeActionListener(ActionListener a){

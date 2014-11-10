@@ -6,21 +6,31 @@ import java.util.logging.Logger;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
+import org.jgrapht.graph.ListenableUndirectedGraph;
 
-import ar.com.taller2.papers.model.graphs.RecorridoProfundidad;
+import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 
 public class GraphModel {
 
-	private ListenableGraph<Vertice, DefaultEdge> graph = new ListenableDirectedGraph<Vertice, DefaultEdge>(DefaultEdge.class);
+	private ListenableGraph<Vertice, DefaultEdge> graph;
 	Vertice v1 =new Vertice("v1",false);
 	Executable algoritmo;
 	
 	public GraphModel() {
 		
 		// TEMP
-		this.agregarVertices();
+//		this.agregarVertices();
 		// END TEMP
 //		algoritmo = new RecorridoProfundidad(graph, v1);
+	}
+	
+	public void nuevoGrafoDirigido() {
+		this.graph = new ListenableDirectedGraph<Vertice, DefaultEdge>(DefaultEdge.class);
+		this.agregarVertices();
+	}
+	
+	public void nuevoGrafoNoDirigido() {
+		this.graph = new ListenableUndirectedGraph<Vertice, DefaultEdge>(DefaultEdge.class);		
 	}
 
 	public ListenableGraph<Vertice, DefaultEdge> getGraph() {
@@ -43,12 +53,21 @@ public class GraphModel {
 		return null;
 	}
 	
-	public void startAlgorithm() {
-		algoritmo.iniciar();
+	public void startAlgorithm() throws CondicionInicialExcepcion {
+		if (algoritmo.cumpleCondicionesIniciales()) {
+			algoritmo.iniciar();
+		}
+		else {
+			throw new CondicionInicialExcepcion(algoritmo.getCondicionesIniciales());
+		}
+	}
+
+	public void stopAlgorithm() {
+		algoritmo.terminar();		
 	}
 	
-	public void nextStepAlgorithm(){
-		algoritmo.siguiente();
+	public Vertice nextStepAlgorithm(){
+		return algoritmo.siguiente();
 	}
 	
 	public void previousStepAlgorithm(){
@@ -61,6 +80,11 @@ public class GraphModel {
 	
 	public void endAlgorithm() {
 		algoritmo.fin();
+	}
+	
+	public void agregarVertice(String nombre) {
+		Vertice v = new Vertice(nombre, false);
+		this.graph.addVertex(v);
 	}
 	
 	// TEMP

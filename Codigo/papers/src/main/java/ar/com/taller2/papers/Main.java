@@ -25,6 +25,10 @@ import org.jgrapht.graph.DefaultEdge;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
+import com.mxgraph.util.mxEvent;
+import com.mxgraph.util.mxEventObject;
+import com.mxgraph.util.mxEventSource;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
@@ -233,6 +237,17 @@ public class Main extends JApplet {
     	this.adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
+    	
+    	
+    	
+	    adapter.getSelectionModel().addListener(mxEvent.CHANGE, new mxIEventListener() {
+
+			public void invoke(Object sender, mxEventObject evt) {
+				logger.info("Click");
+			}
+	    });
+	    
+	    
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);

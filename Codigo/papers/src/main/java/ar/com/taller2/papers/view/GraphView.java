@@ -24,6 +24,7 @@ public class GraphView extends mxGraphComponent{
 		// Propiedades
 		this.graph.setDisconnectOnMove(false);
         this.graph.setAllowDanglingEdges(false);
+        this.graph.setCellsSelectable(true);
         
         // Temp?
         this.ordernarVertices();

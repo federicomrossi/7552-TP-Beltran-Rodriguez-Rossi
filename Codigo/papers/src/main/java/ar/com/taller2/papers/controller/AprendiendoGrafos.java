@@ -18,6 +18,9 @@ public class AprendiendoGrafos {
 		vista.addToolbarInitActionListener(new InitActionListener(this));
 		vista.addToolbarEndActionListener(new EndActionListener(this));
 		
+		vista.addModoAprendizajeItemListener(new ModoAprendizajeItemListener(this));
+		vista.addModoEvaluacionItemListener(new ModoEvaluacionItemListener(this));
+		
 		vista.addAlgoritmosRecorridoProfundidadItemListener(new AlgoritmosRecorridoProfundidadItemListener(this));
 		vista.addAlgoritmosRecorridoAnchuraItemListener(new AlgoritmosRecorridoAnchuraItemListener(this));
 		vista.addAlgoritmosDijkstraItemListener(new AlgoritmosDijkstraItemListener(this));

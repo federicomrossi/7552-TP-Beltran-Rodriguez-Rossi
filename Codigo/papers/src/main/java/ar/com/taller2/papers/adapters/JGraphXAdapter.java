@@ -8,8 +8,14 @@ import org.jgrapht.event.GraphEdgeChangeEvent;
 import org.jgrapht.event.GraphListener;
 import org.jgrapht.event.GraphVertexChangeEvent;
 
+import ar.com.taller2.papers.controller.GraphViewListener;
+import ar.com.taller2.papers.model.Vertice;
+
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
+import com.mxgraph.util.mxEvent;
+import com.mxgraph.util.mxEventObject;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.view.mxGraph;
 
 public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> {
@@ -124,6 +130,10 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
         mxCell cell = edgeToCellMap.remove(e.getEdge());
         removeCells(new Object[] { cell } );
     }
+    
+    public void addVertexListener() {
+    	this.getSelectionModel().addListener(mxEvent.CHANGE, new GraphViewListener(this));    
+	}
 
     /*
      * PRIVATE METHODS

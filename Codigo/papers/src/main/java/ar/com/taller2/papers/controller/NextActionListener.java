@@ -3,6 +3,10 @@ package ar.com.taller2.papers.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.mxgraph.util.mxEvent;
+import com.mxgraph.util.mxEventObject;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
+
 import ar.com.taller2.papers.model.Vertice;
 
 public class NextActionListener implements ActionListener {

@@ -10,7 +10,19 @@ public class Tutor {
 		return modoAprendizajeOn;
 	}
 	
+	public boolean esModoEvaluacion() {
+		return !modoAprendizajeOn;
+	}
+	
 	public boolean esIgual(Vertice v) {
 		return true;
+	}
+	
+	public void setModoAprendizaje() {
+		this.modoAprendizajeOn = true;
+	}
+	
+	public void setModoEvaluacion() {
+		this.modoAprendizajeOn = false;
 	}
 }

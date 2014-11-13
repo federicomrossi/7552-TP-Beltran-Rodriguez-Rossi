@@ -237,20 +237,19 @@ public class Main extends JApplet {
     	this.adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
-    	
-    	
-    	
-	    adapter.getSelectionModel().addListener(mxEvent.CHANGE, new mxIEventListener() {
-
-			public void invoke(Object sender, mxEventObject evt) {
-				logger.info("Click");
-			}
-	    });
 	    
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);
     }
+    
+    /**
+     * Listener de los clicks en el grafo
+     */
+    public void addAdapterVertexListener() {
+    	adapter.addVertexListener();
+    }
+    
     
     /**
      * La idea es que solo actualice los cambios y no mueva los vertices de posicion

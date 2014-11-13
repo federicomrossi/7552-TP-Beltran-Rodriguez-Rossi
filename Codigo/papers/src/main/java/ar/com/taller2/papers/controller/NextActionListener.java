@@ -2,6 +2,7 @@ package ar.com.taller2.papers.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 import com.mxgraph.util.mxEvent;
 import com.mxgraph.util.mxEventObject;
@@ -18,17 +19,18 @@ public class NextActionListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		Vertice v;
-		v = app.getModelo().nextStepAlgorithm();
-		if ( !app.getTutor().esModoAprendizaje() ) {
+		Vertice vCorrecto, vRespuesta;
+		vCorrecto = app.getModelo().nextStepAlgorithm();
+		if ( app.getTutor().esModoEvaluacion() ) {
 			// leer respuesta dada por usuario
-			
+			vRespuesta = app.getModelo().getVertex(app.getVista().getVerticeSeleccionado());
 			// comparar respuesta del usuario con la real
-			while (!app.getTutor().esIgual(v)) {
+			if (!app.getTutor().esIgual(vCorrecto, vRespuesta)) {
 				//Mostrar msj de equivocacion
+				Logger.getLogger(this.getClass().getName()).info("Elegi otro man!");
 			}
 		}
-		v.select(true);
+		vCorrecto.select(true);
 		app.getVista().actualizar();
 	}
 

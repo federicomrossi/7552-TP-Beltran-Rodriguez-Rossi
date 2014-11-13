@@ -250,6 +250,12 @@ public class Main extends JApplet {
     	adapter.addVertexListener();
     }
     
+    /**
+     * Obtiene el nombre del vertice seleccionado
+     */
+    public String getVerticeSeleccionado() {
+    	return adapter.getVerticeSeleccionado();
+    }
     
     /**
      * La idea es que solo actualice los cambios y no mueva los vertices de posicion

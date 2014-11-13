@@ -1,5 +1,7 @@
 package ar.com.taller2.papers.controller;
 
+import java.util.logging.Logger;
+
 import ar.com.taller2.papers.model.Vertice;
 
 public class Tutor {
@@ -14,8 +16,9 @@ public class Tutor {
 		return !modoAprendizajeOn;
 	}
 	
-	public boolean esIgual(Vertice v) {
-		return true;
+	public boolean esIgual(Vertice v1, Vertice v2) {
+		Logger.getLogger(this.getClass().getName()).info(v1.toString() + " es igual a " + v2.toString());
+		return (v1.toString() == v2.toString());
 	}
 	
 	public void setModoAprendizaje() {

@@ -28,6 +28,8 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     private HashMap<mxCell, V>  cellToVertexMap     = new HashMap<mxCell, V>();
 
     private HashMap<mxCell, E>  cellToEdgeMap       = new HashMap<mxCell, E>();
+    
+    private GraphViewListener graphListener = null;
 
     /*
      * CONSTRUCTOR
@@ -132,8 +134,22 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     }
     
     public void addVertexListener() {
-    	this.getSelectionModel().addListener(mxEvent.CHANGE, new GraphViewListener(this));    
+    	this.graphListener = new GraphViewListener(this);
+    	this.getSelectionModel().addListener(mxEvent.CHANGE, this.graphListener);    
 	}
+    
+    public void removeVertexListener() {
+    	this.getSelectionModel().removeListener(this.graphListener, mxEvent.CHANGE);
+    	this.graphListener = null;
+	}
+    
+    /*
+     * GETTERS
+     */
+    
+    public String getVerticeSeleccionado() {
+    	return this.graphListener.getSeleccion();
+    }
 
     /*
      * PRIVATE METHODS

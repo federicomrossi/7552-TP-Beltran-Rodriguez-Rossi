@@ -29,4 +29,8 @@ public class GraphViewListener implements mxIEventListener{
 		Logger.getLogger(this.getClass().getName()).info("Seleccione el vertice: " + this.seleccion);
 	}
 	
+	public String getSeleccion() {
+		return this.seleccion;
+	}
+	
 }

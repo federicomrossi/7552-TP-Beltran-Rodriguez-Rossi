@@ -271,6 +271,17 @@ public class Main extends JApplet {
     	this.graphView.ordernarVertices();
 	}
     
+    public void desbloquearPanel() {
+    	this.panelAlgoritmos.desbloquearTodo();
+    	this.toolBar.desbloquearTodo();
+    	this.panelModo.desbloquearTodo();
+    }
+    
+    public void bloquearPanel() {
+    	this.panelAlgoritmos.bloquearTodo();
+    	this.panelModo.bloquearTodo();
+    }
+    
     
     /* Listeners del MENU */
     

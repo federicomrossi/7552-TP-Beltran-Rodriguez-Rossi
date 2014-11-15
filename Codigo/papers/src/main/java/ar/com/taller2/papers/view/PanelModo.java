@@ -36,6 +36,17 @@ public class PanelModo extends JPanel {
 		groupModoEjecucion.add(radioAprendizaje);
 		groupModoEjecucion.add(radioEvaluacion);
 		
+		bloquearTodo();
+	}
+	
+	public void bloquearTodo() {
+		radioAprendizaje.setEnabled(false);
+		radioEvaluacion.setEnabled(false);
+	}
+	
+	public void desbloquearTodo() {
+		radioAprendizaje.setEnabled(true);
+		radioEvaluacion.setEnabled(true);
 	}
 	
 	public void addAprendizajeItemListener(ItemListener l){

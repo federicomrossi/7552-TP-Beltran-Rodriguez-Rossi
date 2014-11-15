@@ -29,10 +29,12 @@ public class PlayActionListener implements ActionListener {
 			if (on) {
 				app.getModelo().stopAlgorithm();
 				on = false;
+				app.getVista().desbloquearPanel();
 			}
 			else {
 				app.getModelo().startAlgorithm();
 				on = true;
+				app.getVista().bloquearPanel();
 			}
 			app.getVista().actualizar();
 		}

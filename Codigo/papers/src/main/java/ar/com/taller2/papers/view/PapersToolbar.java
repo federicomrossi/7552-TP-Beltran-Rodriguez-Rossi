@@ -40,7 +40,25 @@ public class PapersToolbar extends JToolBar {
 		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
 		this.add(buttonPlay);
 		this.add(buttonNext);
-		this.add(buttonEnd);	
+		this.add(buttonEnd);
+		
+		bloquearTodo();
+	}
+	
+	public void bloquearTodo() {
+		buttonInit.setEnabled(false);
+		buttonPrevious.setEnabled(false);
+		buttonNext.setEnabled(false);
+		buttonEnd.setEnabled(false);
+		buttonPlay.setEnabled(false);
+	}
+	
+	public void desbloquearTodo() {
+		buttonInit.setEnabled(true);
+		buttonPrevious.setEnabled(true);
+		buttonNext.setEnabled(true);
+		buttonEnd.setEnabled(true);
+		buttonPlay.setEnabled(true);
 	}
 	
 	public void addInitActionListener(ActionListener l){

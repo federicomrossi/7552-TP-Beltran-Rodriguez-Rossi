@@ -1,5 +1,6 @@
 package ar.com.taller2.papers;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -81,7 +82,7 @@ public class Main extends JApplet {
     JTextPane textPaneContenidoInformacion = new JTextPane();
     JScrollPane scrollPaneInformacion = new JScrollPane(textPaneContenidoInformacion);
     JPanel panelPseudocodigo = new JPanel();
-    JLabel lblTituloAlgoritmo = new JLabel("Algoritmo de Dijkstra");
+    JLabel lblTituloAlgoritmo = new JLabel("");
     JTextPane textPaneContenidoAlgoritmo = new JTextPane();
     
     
@@ -101,7 +102,6 @@ public class Main extends JApplet {
 	 * @throws IOException 
 	 */
 	public Main() throws IOException {
-				
 		
 		setJMenuBar(menuBar);
 		
@@ -117,8 +117,6 @@ public class Main extends JApplet {
 		panelAlgoritmos.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelAlgoritmos);
 		panelAlgoritmos.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		
 		
 		
 		panelModo.setBorder(new EmptyBorder(10, 10, 10, 10) );
@@ -209,21 +207,21 @@ public class Main extends JApplet {
 		//
         // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
         //
-        Dijkstra_old dijkstra = new Dijkstra_old();
-        lblTituloInformacion.setText(dijkstra.getTitulo());
-        lblTituloAlgoritmo.setText(dijkstra.getTitulo());
-        textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
-        textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
+//        Dijkstra_old dijkstra = new Dijkstra_old();
+//        lblTituloInformacion.setText(dijkstra.getTitulo());
+//        lblTituloAlgoritmo.setText(dijkstra.getTitulo());
+//        textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
+//        textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
         // END TEMP
         
-        try {
-            // Set System L&F
-        UIManager.setLookAndFeel(
-            UIManager.getSystemLookAndFeelClassName());
-	    } 
-	    catch (Exception e) {
-	       // handle exception
-	    }
+//        try {
+//            // Set System L&F
+//        UIManager.setLookAndFeel(
+//            UIManager.getSystemLookAndFeelClassName());
+//	    } 
+//	    catch (Exception e) {
+//	       // handle exception
+//	    }
 	}	
 
 	

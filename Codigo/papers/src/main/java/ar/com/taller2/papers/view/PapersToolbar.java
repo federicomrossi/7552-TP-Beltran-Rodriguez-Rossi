@@ -25,24 +25,40 @@ public class PapersToolbar extends JToolBar {
     
     //Temp
     private boolean tempPlay = false;
+    
+    private void setLookAndFeel() {
+		buttonInit.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-ini-24.png")));
+		buttonInit.setBorderPainted(false);
+		buttonInit.setContentAreaFilled(false);
+    	
+		buttonPrevious.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-reverse-24.png")));
+		buttonPrevious.setBorderPainted(false);
+		buttonPrevious.setContentAreaFilled(false);
+		
+		buttonNext.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-forward-24.png")));
+		buttonNext.setBorderPainted(false);
+		buttonNext.setContentAreaFilled(false);
+		
+		buttonEnd.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-end-24.png")));
+		buttonEnd.setBorderPainted(false);
+		buttonEnd.setContentAreaFilled(false);
+		
+		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
+		buttonPlay.setBorderPainted(false);
+		buttonPlay.setContentAreaFilled(false);
+		
+    }
 	
 	public PapersToolbar(){
-		buttonInit.setEnabled(false);
-		buttonInit.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-ini-24.png")));
+		
 		this.add(buttonInit);
-		buttonPrevious.setEnabled(true);
-		buttonPrevious.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-reverse-24.png")));
 		this.add(buttonPrevious);
-		buttonNext.setEnabled(true);
-		buttonNext.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-forward-24.png")));
-		buttonEnd.setEnabled(false);
-		buttonEnd.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-end-24.png")));
-		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
 		this.add(buttonPlay);
 		this.add(buttonNext);
 		this.add(buttonEnd);
 		
 		bloquearTodo();
+		setLookAndFeel();
 	}
 	
 	public void bloquearTodo() {
@@ -54,10 +70,6 @@ public class PapersToolbar extends JToolBar {
 	}
 	
 	public void desbloquearTodo() {
-		buttonInit.setEnabled(true);
-		buttonPrevious.setEnabled(true);
-		buttonNext.setEnabled(true);
-		buttonEnd.setEnabled(true);
 		buttonPlay.setEnabled(true);
 	}
 	

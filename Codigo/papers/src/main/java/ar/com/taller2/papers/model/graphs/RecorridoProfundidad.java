@@ -29,13 +29,21 @@ public class RecorridoProfundidad implements Executable {
 			this.recorrido.add(dfit.next());
 		}
 		this.indiceSiguientePaso = 0;
-		Logger.getLogger("RecorridoProfundidad").info("Inicie el algoritmo");
+		Logger.getLogger(this.getClass().getName()).info("Inicie el algoritmo");
 	}
 
-	public void terminar() {}
+	public void terminar() {
+				
+		while(--this.indiceSiguientePaso >= 0) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso);
+			v.select(false);
+		}
+		this.indiceSiguientePaso = 0;
+		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
+	}
 	
 	public Vertice siguiente() {
-		Logger.getLogger("RecorridoProfundidad").info("Siguiente");
+		Logger.getLogger(this.getClass().getName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
@@ -47,7 +55,7 @@ public class RecorridoProfundidad implements Executable {
 	}
 
 	public boolean anterior() {
-		Logger.getLogger("RecorridoProfundidad").info("Anterior");
+		Logger.getLogger(this.getClass().getName()).info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Vertice v = this.recorrido.get(--this.indiceSiguientePaso);
@@ -59,7 +67,7 @@ public class RecorridoProfundidad implements Executable {
 	}
 	
 	public void principio() {
-		Logger.getLogger("RecorridoProfundidad").info("Principio");
+		Logger.getLogger(this.getClass().getName()).info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso);
@@ -70,7 +78,7 @@ public class RecorridoProfundidad implements Executable {
 	}
 	
 	public void fin() {
-		Logger.getLogger("RecorridoProfundidad").info("Fin");
+		Logger.getLogger(this.getClass().getName()).info("Fin");
 		
 		while(this.indiceSiguientePaso < this.recorrido.size()) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);

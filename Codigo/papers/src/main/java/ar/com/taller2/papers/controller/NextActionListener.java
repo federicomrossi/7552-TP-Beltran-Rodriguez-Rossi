@@ -28,6 +28,8 @@ public class NextActionListener implements ActionListener {
 			if (!app.getTutor().esIgual(vCorrecto, vRespuesta)) {
 				//Mostrar msj de equivocacion
 				Logger.getLogger(this.getClass().getName()).info("Elegi otro man!");
+				app.getModelo().previousStepAlgorithm();
+				return;
 			}
 		}
 		vCorrecto.select(true);

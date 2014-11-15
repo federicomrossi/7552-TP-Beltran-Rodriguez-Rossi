@@ -9,6 +9,7 @@ import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 public class PlayActionListener implements ActionListener {
 
 	AprendiendoGrafos app;
+	private boolean on = false;
 	
 	public PlayActionListener(AprendiendoGrafos app){
 		this.app=app;
@@ -18,13 +19,22 @@ public class PlayActionListener implements ActionListener {
 		if ( app.getTutor().esModoEvaluacion() ) {
 			// Agregar listener al grafo para esperar respuesta del usuario 
 		    app.getVista().addAdapterVertexListener();
-		    Logger.getLogger(this.getClass().getName()).info("Agregué el vertex listener");
+		    Logger.getLogger(this.getClass().getName()).info("Modo Evaluacion: Agregué el vertex listener");
 		}
 		else {
-			Logger.getLogger(this.getClass().getName()).info("Ejecuto el algoritmo normalmente");	
+			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");	
 		}
+		
 		try {
-			app.getModelo().startAlgorithm();
+			if (on) {
+				app.getModelo().stopAlgorithm();
+				on = false;
+			}
+			else {
+				app.getModelo().startAlgorithm();
+				on = true;
+			}
+			app.getVista().actualizar();
 		}
 		catch (CondicionInicialExcepcion ex) {
 			// Se debería mostrar el msj de las condiciones iniciales en un aviso o algo del estilo

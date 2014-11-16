@@ -1,5 +1,6 @@
 package ar.com.taller2.papers.model.graphs;
 
+import java.net.URL;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -8,9 +9,10 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.traverse.DepthFirstIterator;
 
 import ar.com.taller2.papers.model.Executable;
+import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
-public class RecorridoProfundidad implements Executable {
+public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 
 	private ListenableGraph<Vertice, DefaultEdge> graph;
 	private Vertice inicio;
@@ -97,6 +99,18 @@ public class RecorridoProfundidad implements Executable {
 
 	public String getCondicionesIniciales() {
 		return "Este algoritmo no posee condiciones iniciales";
+	}
+
+	public URL getAlgoritmo() {
+		return this.getClass().getResource("/algorithms/recorrido-profundidad-pseudocodigo.html");
+	}
+
+	public String getTitulo() {
+		return "Recorrido en Profundidad";
+	}
+
+	public URL getDescripcion() {
+		return Dijkstra_old.class.getResource("/algorithms/recorrido-profundidad-info.html");
 	}
 
 }

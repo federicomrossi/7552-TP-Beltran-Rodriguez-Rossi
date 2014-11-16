@@ -29,6 +29,7 @@ public class NextActionListener implements ActionListener {
 				//Mostrar msj de equivocacion
 				Logger.getLogger(this.getClass().getName()).info("Elegi otro man!");
 				app.getModelo().previousStepAlgorithm();
+				app.getVista().mostrarMensajeEquivocacion("El vértice seleccionado no es el correcto");
 				return;
 			}
 		}

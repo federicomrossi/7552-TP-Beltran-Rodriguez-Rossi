@@ -3,21 +3,26 @@ package ar.com.taller2.papers;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
@@ -39,6 +44,7 @@ import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.model.graphs.Dijkstra_old;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
+import ar.com.taller2.papers.view.PanelIzquierda;
 import ar.com.taller2.papers.view.PanelModo;
 import ar.com.taller2.papers.view.PapersMenu;
 import ar.com.taller2.papers.view.PapersToolbar;
@@ -68,7 +74,7 @@ public class Main extends JApplet {
     
     PapersMenu menuBar = new PapersMenu();
     JSplitPane splitPane_1 = new JSplitPane();
-    JPanel panelIzquierda = new JPanel();
+    PanelIzquierda panelIzquierda = new PanelIzquierda();
     final PanelAlgoritmos panelAlgoritmos = new PanelAlgoritmos();
     PanelModo panelModo = new PanelModo();
     
@@ -151,7 +157,7 @@ public class Main extends JApplet {
 		splitPane_3.setRightComponent(txtSalida);
 		
 		
-        ImageIcon icon = new ImageIcon(Main.class.getResource("/images/graferator-icon.png"));
+        ImageIcon icon = new ImageIcon(Main.class.getResource("/images/FondoRec2.png"));
         JLabel label = new JLabel(icon);
 		splitPane_3.setLeftComponent(label);
 		
@@ -161,7 +167,7 @@ public class Main extends JApplet {
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
 		
 		lblTituloInformacion = new JLabel("");
-		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
+		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
 		lblTituloInformacion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelInformacion.add(lblTituloInformacion);
 		
@@ -170,7 +176,7 @@ public class Main extends JApplet {
 		textPaneContenidoInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
 		textPaneContenidoInformacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoInformacion.setEditable(false);
-		textPaneContenidoInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
+		textPaneContenidoInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
 		panelInformacion.add(textPaneContenidoInformacion);
 		
 		
@@ -236,15 +242,33 @@ public class Main extends JApplet {
     	// TODO Para utilizar al ensamblar con sitio web.
     }
     
+    public void mostrarMensajeEquivocacion(String mensaje) {
+    	Frame padre = (Frame)SwingUtilities.windowForComponent(this.panelCentro);
+    	Alerta alerta = new Alerta(padre, mensaje);
+    }
+    
     
     public void setGraph(ListenableGraph<Vertice, DefaultEdge> graph) {
     	this.adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
-	    
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);
+    }
+    
+    /**
+     * Muestra la info del algoritmo en cuestion
+     */
+    public void mostrarInfoAlgoritmo(String titulo, URL descripcion, URL algoritmo) {
+		lblTituloInformacion.setText(titulo);
+		lblTituloAlgoritmo.setText(titulo);
+		try {
+			textPaneContenidoInformacion.setPage(descripcion);
+			textPaneContenidoAlgoritmo.setPage(algoritmo);
+		} catch (IOException e) {
+			e.printStackTrace();
+}
     }
     
     /**

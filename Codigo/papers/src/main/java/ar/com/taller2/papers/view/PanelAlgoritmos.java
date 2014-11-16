@@ -1,22 +1,15 @@
 package ar.com.taller2.papers.view;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
 import java.awt.event.ItemListener;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.logging.Logger;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import ar.com.taller2.papers.Main;
@@ -88,7 +81,7 @@ public class PanelAlgoritmos extends JPanel {
     
     private void setLookAndFeel() {
     	
-		this.setBackground(new Color(253, 253, 253));
+    	this.setOpaque(false);
      
 		for (Entry<String,JRadioButton> e : botones.entrySet()) {
 			e.getValue().setContentAreaFilled(false);
@@ -97,20 +90,6 @@ public class PanelAlgoritmos extends JPanel {
 			e.getValue().setDisabledIcon(new ImageIcon(Main.class.getResource("/images/Disabled.png")));
 			e.getValue().setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
 		}
-    }
-    
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        Color color1 = getBackground();
-        Color color2 = color1.darker();
-        int w = getWidth();
-        int h = getHeight();
-        GradientPaint gp = new GradientPaint(
-            0, 0, color1, 0, h, color2);
-        g2d.setPaint(gp);
-        g2d.fillRect(0, 0, w, h);
     }
 	
 	public PanelAlgoritmos(){

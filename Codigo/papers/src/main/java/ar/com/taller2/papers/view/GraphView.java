@@ -1,6 +1,8 @@
 package ar.com.taller2.papers.view;
 
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.jgrapht.graph.DefaultEdge;
@@ -12,6 +14,7 @@ import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
+import com.mxgraph.view.mxStylesheet;
 
 public class GraphView extends mxGraphComponent{
 
@@ -43,6 +46,22 @@ public class GraphView extends mxGraphComponent{
                 y += 150;
             }
         }
+        //https://www.youtube.com/watch?v=CNMCNvoEyRI
+		Map<String, Object> edge = new HashMap<String, Object>();
+//	    edge.put(mxConstants.STYLE_ROUNDED, true);
+//	    edge.put(mxConstants.STYLE_ORTHOGONAL, false);
+	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
+	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
+	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
+//	    edge.put(mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
+//	    edge.put(mxConstants.STYLE_ALIGN, mxConstants.ALIGN_RIGHT);
+	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
+	    edge.put(mxConstants.STYLE_FONTCOLOR, "#446299");
+
+	    mxStylesheet edgeStyle = new mxStylesheet();
+	    edgeStyle.setDefaultEdgeStyle(edge);
+	    graph.setStylesheet(edgeStyle);
+	    
         this.graph.getModel().endUpdate();
 	}
 	

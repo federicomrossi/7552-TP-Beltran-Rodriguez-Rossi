@@ -31,7 +31,7 @@ public class PanelModo extends JPanel {
 	
     private void setLookAndFeel() {
     	
-		this.setBackground(new Color(253, 253, 253));
+    	this.setOpaque(false);
    
 		radioAprendizaje.setContentAreaFilled(false);
 		radioAprendizaje.setIcon(new ImageIcon(Main.class.getResource("/images/Unselected.png")));
@@ -44,20 +44,6 @@ public class PanelModo extends JPanel {
 		radioEvaluacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
 		radioEvaluacion.setDisabledIcon(new ImageIcon(Main.class.getResource("/images/Disabled.png")));
 		radioEvaluacion.setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
-    }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        Color color1 = getBackground();
-        Color color2 = color1.darker();
-        int w = getWidth();
-        int h = getHeight();
-        GradientPaint gp = new GradientPaint(
-            0, 0, color1, 0, h, color2);
-        g2d.setPaint(gp);
-        g2d.fillRect(0, 0, w, h);
     }
 	
 	public PanelModo(){

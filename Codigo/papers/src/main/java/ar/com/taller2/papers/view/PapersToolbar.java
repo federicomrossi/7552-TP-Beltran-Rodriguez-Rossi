@@ -1,5 +1,6 @@
 package ar.com.taller2.papers.view;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,6 +28,9 @@ public class PapersToolbar extends JToolBar {
     private boolean tempPlay = false;
     
     private void setLookAndFeel() {
+    	
+    	this.setOpaque(false);
+    	
 		buttonInit.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-ini-24.png")));
 		buttonInit.setBorderPainted(false);
 		buttonInit.setContentAreaFilled(false);

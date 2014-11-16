@@ -6,9 +6,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -121,9 +123,7 @@ public class Main extends JApplet {
 		
 		panelModo.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelModo);
-		panelModo.setLayout(new BoxLayout(panelModo, BoxLayout.Y_AXIS));
-		
-		
+		panelModo.setLayout(new BoxLayout(panelModo, BoxLayout.Y_AXIS));	
 		
 		
 		JSplitPane splitPane_2 = new JSplitPane();
@@ -133,6 +133,7 @@ public class Main extends JApplet {
 		splitPane_2.setLeftComponent(panelCentro);
 		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 		
+		panelCentro.setBackground(new Color(150,150,150));
 		
 		toolBar.setFloatable(false);
 		panelCentro.add(toolBar);
@@ -148,8 +149,13 @@ public class Main extends JApplet {
 		
 		txtSalida.setText("Salida:");
 		splitPane_3.setRightComponent(txtSalida);
-		splitPane_2.setRightComponent(tbdPaneDerecha);
 		
+		
+        ImageIcon icon = new ImageIcon(Main.class.getResource("/images/graferator-icon.png"));
+        JLabel label = new JLabel(icon);
+		splitPane_3.setLeftComponent(label);
+		
+		splitPane_2.setRightComponent(tbdPaneDerecha);
 		
 		tbdPaneDerecha.addTab("Información", null, panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));

@@ -80,7 +80,8 @@ public class Dijkstra implements Executable {
 //		}
 	}
 
-	public void getEstadoActual() {
+	public boolean tieneSiguiente() {
+		return true;
 		// TODO Auto-generated method stub
 
 	}

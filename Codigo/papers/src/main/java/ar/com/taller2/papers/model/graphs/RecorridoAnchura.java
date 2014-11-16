@@ -76,9 +76,9 @@ public class RecorridoAnchura implements Executable {
 		}
 	}
 
-	public void getEstadoActual() {
+	public boolean tieneSiguiente() {
 		// TODO Auto-generated method stub
-
+		return true;
 	}
 
 	public boolean cumpleCondicionesIniciales() {

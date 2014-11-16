@@ -86,6 +86,10 @@ public class GraphModel {
 		algoritmo.fin();
 	}
 	
+	public boolean hasNextStepAlgorithm() {
+		return algoritmo.tieneSiguiente();
+	}
+	
 	public void agregarVertice(String nombre) {
 		Vertice v = new Vertice(nombre, false);
 		this.graph.addVertex(v);

@@ -20,9 +20,9 @@ public class Dijkstra_old extends GraphAlgorithm {
 		
 	}
 
-	public void getEstadoActual() {
+	public boolean tieneSiguiente() {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	public URL getAlgoritmo() {

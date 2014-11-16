@@ -88,9 +88,8 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 		}
 	}
 
-	public void getEstadoActual() {
-		// TODO Auto-generated method stub
-
+	public boolean tieneSiguiente() {
+		return (this.indiceSiguientePaso < this.recorrido.size());
 	}
 
 	public boolean cumpleCondicionesIniciales() {

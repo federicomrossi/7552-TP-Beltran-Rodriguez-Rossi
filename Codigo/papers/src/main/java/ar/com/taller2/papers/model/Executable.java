@@ -18,6 +18,6 @@ public interface Executable {
 	
 	public String getCondicionesIniciales();
 	
-	public void getEstadoActual();
+	public boolean tieneSiguiente();
 
 }

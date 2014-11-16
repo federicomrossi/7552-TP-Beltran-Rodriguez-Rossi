@@ -33,6 +33,9 @@ public class NextActionListener implements ActionListener {
 				return;
 			}
 		}
+		else {
+			app.getVista().agregarASalida(vCorrecto.toString());
+		}
 		vCorrecto.select(true);
 		app.getVista().actualizar();
 	}

@@ -24,7 +24,7 @@ public class PanelModo extends JPanel {
 	 */
 	private static final long serialVersionUID = 7355328580258119324L;
 
-	JLabel lblModoDeEjecucion = new JLabel("Modo de ejecución:");
+	JLabel lblModoDeEjecucion = new JLabel("MODO DE EJECUCIÓN");
     JRadioButton radioAprendizaje = new JRadioButton("Aprendizaje");
     JRadioButton radioEvaluacion = new JRadioButton("Autoevaluación");
     final ButtonGroup groupModoEjecucion = new ButtonGroup();
@@ -34,21 +34,28 @@ public class PanelModo extends JPanel {
     	this.setOpaque(false);
    
 		radioAprendizaje.setContentAreaFilled(false);
-		radioAprendizaje.setIcon(new ImageIcon(Main.class.getResource("/images/Unselected.png")));
-		radioAprendizaje.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
-		radioAprendizaje.setDisabledIcon(new ImageIcon(Main.class.getResource("/images/Disabled.png")));
-		radioAprendizaje.setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
+		radioAprendizaje.setIcon(new ImageIcon(Main.class.getResource("/images/UnselectedAzul.png")));
+		radioAprendizaje.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+		radioAprendizaje.setPressedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+		radioAprendizaje.setFont(new Font("Tahoma", Font.BOLD, 12));
+		radioAprendizaje.setForeground(new Color(255,255,255));
 
 		radioEvaluacion.setContentAreaFilled(false);
 		radioEvaluacion.setIcon(new ImageIcon(Main.class.getResource("/images/Unselected.png")));
 		radioEvaluacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
-		radioEvaluacion.setDisabledIcon(new ImageIcon(Main.class.getResource("/images/Disabled.png")));
 		radioEvaluacion.setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
+		radioEvaluacion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		radioEvaluacion.setForeground(new Color(255,255,255));
+		
+		lblModoDeEjecucion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblModoDeEjecucion.setBackground(new Color(100,100,100));
+		lblModoDeEjecucion.setForeground(new Color(255,255,255));
+		lblModoDeEjecucion.setBorder(new EmptyBorder(5, 70, 5, 70) );
+		lblModoDeEjecucion.setOpaque(true);
+		lblModoDeEjecucion.setToolTipText("Seleccione un Modo...");
     }
 	
 	public PanelModo(){
-		lblModoDeEjecucion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblModoDeEjecucion.setBorder(new EmptyBorder(0, 0, 10, 0) );
 		this.add(lblModoDeEjecucion);
 				
 		

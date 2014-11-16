@@ -1,6 +1,7 @@
 package ar.com.taller2.papers.adapters;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import org.jgrapht.Graph;
 import org.jgrapht.ListenableGraph;
@@ -117,20 +118,24 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
 
     public void vertexAdded(GraphVertexChangeEvent<V> e) {
         addJGraphTVertex(e.getVertex());
+        Logger.getLogger(this.getClass().getName()).info("Evento de agregado de vertice");
     }
 
     public void vertexRemoved(GraphVertexChangeEvent<V> e) {
         mxCell cell = vertexToCellMap.remove(e.getVertex());
         removeCells(new Object[] { cell } );
+        Logger.getLogger(this.getClass().getName()).info("Evento de quitado de vertice");
     }
 
     public void edgeAdded(GraphEdgeChangeEvent<V, E> e) {
         addJGraphTEdge(e.getEdge());
+        Logger.getLogger(this.getClass().getName()).info("Evento de agregado de flecha");
     }
 
     public void edgeRemoved(GraphEdgeChangeEvent<V, E> e) {
         mxCell cell = edgeToCellMap.remove(e.getEdge());
         removeCells(new Object[] { cell } );
+        Logger.getLogger(this.getClass().getName()).info("Evento de agregado de flecha");
     }
     
     public void addVertexListener() {
@@ -139,8 +144,10 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
 	}
     
     public void removeVertexListener() {
-    	this.getSelectionModel().removeListener(this.graphListener, mxEvent.CHANGE);
-    	this.graphListener = null;
+    	if (this.graphListener != null) {
+	    	this.getSelectionModel().removeListener(this.graphListener, mxEvent.CHANGE);
+	    	this.graphListener = null;
+    	}
 	}
     
     /*

@@ -14,10 +14,10 @@ public class MenuEditarNuevoVerticeActionListener implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		app.getModelo().agregarVertice("v" + i++);
+		app.getModelo().agregarVertice("Nuevo" + i++);
 		Logger.getLogger(this.getClass().getName()).info("Agregué un vértice");
-		app.getVista().rerenderGrafo();
 		app.getVista().actualizar();
+		app.getVista().rerenderGrafo();
 	}
 	
 }

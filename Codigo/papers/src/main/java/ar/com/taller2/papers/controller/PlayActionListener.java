@@ -22,6 +22,7 @@ public class PlayActionListener implements ActionListener {
 		    Logger.getLogger(this.getClass().getName()).info("Modo Evaluacion: Agregué el vertex listener");
 		}
 		else {
+		    app.getVista().removeAdapterVertexListener();
 			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");	
 		}
 		
@@ -30,6 +31,7 @@ public class PlayActionListener implements ActionListener {
 				app.getModelo().stopAlgorithm();
 				on = false;
 				app.getVista().desbloquearPanel();
+				app.getVista().borrarSalida();
 			}
 			else {
 				app.getModelo().startAlgorithm();

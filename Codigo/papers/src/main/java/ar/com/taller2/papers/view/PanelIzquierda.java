@@ -16,7 +16,7 @@ public class PanelIzquierda extends JPanel {
 
 	
 	public PanelIzquierda() {
-		this.setBackground(new Color(150, 150, 150));
+		this.setBackground(new Color(91, 91, 91));
 	}
     
 	@Override

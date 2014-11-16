@@ -34,22 +34,27 @@ public class PapersToolbar extends JToolBar {
 		buttonInit.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-ini-24.png")));
 		buttonInit.setBorderPainted(false);
 		buttonInit.setContentAreaFilled(false);
+		buttonInit.setToolTipText("Inicio");
     	
 		buttonPrevious.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-reverse-24.png")));
 		buttonPrevious.setBorderPainted(false);
 		buttonPrevious.setContentAreaFilled(false);
+		buttonPrevious.setToolTipText("Atrás");
 		
 		buttonNext.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-forward-24.png")));
 		buttonNext.setBorderPainted(false);
 		buttonNext.setContentAreaFilled(false);
+		buttonNext.setToolTipText("Adelante");
 		
 		buttonEnd.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-end-24.png")));
 		buttonEnd.setBorderPainted(false);
 		buttonEnd.setContentAreaFilled(false);
+		buttonEnd.setToolTipText("Fin");
 		
-		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-24.png")));
+		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-25.png")));
 		buttonPlay.setBorderPainted(false);
 		buttonPlay.setContentAreaFilled(false);
+		buttonPlay.setToolTipText("Comenzar/Finalizar");
 		
     }
 	

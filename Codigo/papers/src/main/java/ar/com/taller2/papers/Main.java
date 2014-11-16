@@ -135,16 +135,17 @@ public class Main extends JApplet {
 		JSplitPane splitPane_2 = new JSplitPane();
 		splitPane_1.setRightComponent(splitPane_2);
 		
+		splitPane_1.setDividerSize(2);
 		
 		splitPane_2.setLeftComponent(panelCentro);
 		panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
 		
-		panelCentro.setBackground(new Color(150,150,150));
+		panelCentro.setBackground(new Color(91,91,91));
 		
 		toolBar.setFloatable(false);
 		panelCentro.add(toolBar);
 		
-		
+		splitPane_2.setDividerSize(2);
 		
 		splitPane_3.setName("splitPane_3");
 		splitPane_3.setOrientation(JSplitPane.VERTICAL_SPLIT);
@@ -152,8 +153,9 @@ public class Main extends JApplet {
 		splitPane_3.setAlignmentX(0.5f);
 		panelCentro.add(splitPane_3);
 		
+		splitPane_3.setDividerSize(2);
 		
-		txtSalida.setText("Salida:");
+		txtSalida.setText("Salida: ");
 		splitPane_3.setRightComponent(txtSalida);
 		
 		
@@ -208,7 +210,7 @@ public class Main extends JApplet {
 		
 		this.setSize(1100, 900);
 		splitPane_1.setResizeWeight(0.03d);
-		splitPane_2.setResizeWeight(0.8d);
+		splitPane_2.setResizeWeight(0d);
 		splitPane_3.setResizeWeight(0.90d);
 		
 		panelAlgoritmos.setSize(panelAlgoritmos.getSize().width, 200);
@@ -258,6 +260,27 @@ public class Main extends JApplet {
     }
     
     /**
+     * Agrega el paso realizado a la salida
+     */
+    public void agregarASalida(String paso) {
+    	txtSalida.setText(txtSalida.getText() + "-" + paso);
+    }
+    
+    /**
+     * Borra lo que hay en la pantalla de salida 
+     */
+    public void borrarSalida() {
+    	txtSalida.setText("Salida: ");
+    }
+    
+    /**
+     * Quita el paso realizado a la salida
+     */
+    public void quitarDeSalida() {
+    	
+    }
+    
+    /**
      * Muestra la info del algoritmo en cuestion
      */
     public void mostrarInfoAlgoritmo(String titulo, URL descripcion, URL algoritmo) {
@@ -276,6 +299,10 @@ public class Main extends JApplet {
      */
     public void addAdapterVertexListener() {
     	adapter.addVertexListener();
+    }
+
+    public void removeAdapterVertexListener() {
+    	adapter.removeVertexListener();
     }
     
     /**

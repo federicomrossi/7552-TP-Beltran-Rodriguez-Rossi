@@ -1,10 +1,11 @@
 package ar.com.taller2.papers.view;
 
+import java.awt.Color;
 import java.awt.Font;
-
 import java.awt.event.ItemListener;
 import java.util.HashMap;
 import java.util.Map.Entry;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -21,7 +22,7 @@ public class PanelAlgoritmos extends JPanel {
 	 */
 	private static final long serialVersionUID = 1332494097029056510L;
 
-	JLabel lblAlgoritmos = new JLabel("Algoritmos:");
+	JLabel lblAlgoritmos = new JLabel("ALGORITMOS");
 	
 	HashMap<String,JRadioButton> botones = new HashMap<String,JRadioButton>();
     
@@ -85,16 +86,23 @@ public class PanelAlgoritmos extends JPanel {
      
 		for (Entry<String,JRadioButton> e : botones.entrySet()) {
 			e.getValue().setContentAreaFilled(false);
-			e.getValue().setIcon(new ImageIcon(Main.class.getResource("/images/Unselected.png")));
-			e.getValue().setSelectedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
-			e.getValue().setDisabledIcon(new ImageIcon(Main.class.getResource("/images/Disabled.png")));
-			e.getValue().setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
+			e.getValue().setIcon(new ImageIcon(Main.class.getResource("/images/UnselectedAzul.png")));
+			e.getValue().setSelectedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+			e.getValue().setPressedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+			e.getValue().setForeground(new Color(255,255,255));
+			e.getValue().setFont(new Font("Tahoma", Font.BOLD, 12));
 		}
+		
+		lblAlgoritmos.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblAlgoritmos.setBorder(new EmptyBorder(15, 90, 20, 90));
+		lblAlgoritmos.setAlignmentY(CENTER_ALIGNMENT);
+		lblAlgoritmos.setBackground(new Color(120,120,120));
+		lblAlgoritmos.setForeground(new Color(255,255,255));
+		lblAlgoritmos.setOpaque(true);
+		lblAlgoritmos.setToolTipText("Seleccione un Algoritmo...");
     }
 	
 	public PanelAlgoritmos(){
-		lblAlgoritmos.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblAlgoritmos.setBorder(new EmptyBorder(15, 0, 20, 0));
 		this.add(lblAlgoritmos);
 		
 		crearBotones();

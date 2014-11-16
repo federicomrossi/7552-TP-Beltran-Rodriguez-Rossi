@@ -1,0 +1,30 @@
+
+<html>
+<body>
+
+<pre>
+  <b>DFS</b>(grafo G)
+     <b>PARA CADA</b> vertice <i>u</i> ∈ V[G] <b>HACER</b>
+             estado[<i>u</i>] ← NO_VISITADO
+             padre[<i>u</i>] ← NULO
+     tiempo ← 0
+     <b>PARA CADA</b> vertice <i>u</i> ∈ V[G] <b>HACER</b>
+             <b>SI</b> estado[u] = NO_VISITADO <b>ENTONCES</b>
+                     DFS_Visitar(<i>u</i>,<i>tiempo</i>)
+</pre>
+<pre>
+  <b>DFS_Visitar</b>(nodo <i>u</i>, int <i>tiempo</i>)
+     estado[<i>u</i>] ← VISITADO
+     tiempo ← tiempo + 1
+     d[u] ← tiempo
+     <b>PARA CADA</b> <i>v</i> ∈ Vecinos[<i>u</i>] <b>HACER</b>
+             <b>SI</b> estado[<i>v</i>] = NO_VISITADO <b>ENTONCES</b>
+                     padre[<i>v</i>] ← <i>u</i>
+                     DFS_Visitar(<i>v</i>,<i>tiempo</i>)
+     estado[<i>u</i>] ← TERMINADO
+     tiempo ← tiempo + 1
+     <i>f[u]</i> ← tiempo
+</pre>
+
+</body>
+</html>

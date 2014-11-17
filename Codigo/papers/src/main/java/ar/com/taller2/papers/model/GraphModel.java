@@ -17,15 +17,11 @@ import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 public class GraphModel {
 
 	private ListenableGraph<Vertice, DefaultEdge> graph;
-	Vertice v1 =new Vertice("v1",false);
+	private int vertice_contador = 0;
 	Executable algoritmo;
 	
 	public GraphModel() {
 		
-		// TEMP
-//		this.agregarVertices();
-		// END TEMP
-//		algoritmo = new RecorridoProfundidad(graph, v1);
 	}
 	
 	public void nuevoGrafoDirigido() {
@@ -90,30 +86,29 @@ public class GraphModel {
 		return algoritmo.tieneSiguiente();
 	}
 	
-	public void agregarVertice(String nombre) {
+	public Vertice agregarVertice(String nombre) {
 		Vertice v = new Vertice(nombre, false);
 		this.graph.addVertex(v);
+		return v;
+	}
+	
+	public Vertice agregarVertice() {
+		Vertice v = new Vertice("v" + (++vertice_contador), false);
+		this.graph.addVertex(v);
+		return v;
 	}
 	
 	// TEMP
 	public void agregarVertices() {
 		
-		Vertice v2 =new Vertice("v2",false);
-		Vertice v3 =new Vertice("v3",false);
-		Vertice v4 =new Vertice("v4",false);
-		Vertice v5 =new Vertice("v5",false);
-		Vertice v6 =new Vertice("v6",false);
-		Vertice v7 =new Vertice("v7",false);
-		Vertice v8 =new Vertice("v8",false);
-		
-		this.graph.addVertex(v1);
-		this.graph.addVertex(v2);
-		this.graph.addVertex(v3);
-		this.graph.addVertex(v4);
-		this.graph.addVertex(v5);
-		this.graph.addVertex(v6);
-		this.graph.addVertex(v7);
-		this.graph.addVertex(v8);
+		Vertice v1 = this.agregarVertice();
+		Vertice v2 = this.agregarVertice();
+		Vertice v3 = this.agregarVertice();
+		Vertice v4 = this.agregarVertice();
+		Vertice v5 = this.agregarVertice();
+		Vertice v6 = this.agregarVertice();
+		Vertice v7 = this.agregarVertice();
+		Vertice v8 = this.agregarVertice();
 		
 		this.graph.addEdge( v1, v2 );
 		this.graph.addEdge( v1, v4);

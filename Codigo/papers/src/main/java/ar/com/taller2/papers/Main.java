@@ -164,12 +164,14 @@ public class Main extends JApplet {
 		splitPane_3.setLeftComponent(label);
 		
 		splitPane_2.setRightComponent(tbdPaneDerecha);
+		splitPane_2.setBackground(new Color(91,91,91));
 		
-		tbdPaneDerecha.addTab("Información", null, panelInformacion, null);
+		
+		tbdPaneDerecha.addTab("Información", new ImageIcon(this.getClass().getResource("/images/info.png")), panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
 		
 		lblTituloInformacion = new JLabel("");
-		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
+		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
 		lblTituloInformacion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelInformacion.add(lblTituloInformacion);
 		
@@ -179,6 +181,7 @@ public class Main extends JApplet {
 		textPaneContenidoInformacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoInformacion.setEditable(false);
 		textPaneContenidoInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
+//		textPaneContenidoInformacion.setText("<html><body><img src='/images/info.png' alt='Smiley face'></body></html>");
 		panelInformacion.add(textPaneContenidoInformacion);
 		
 		
@@ -187,7 +190,7 @@ public class Main extends JApplet {
 		
 		
 		
-		tbdPaneDerecha.addTab("Algoritmo", null, panelPseudocodigo, null);
+		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/TerminalIcon2.png")), panelPseudocodigo, null);
 		panelPseudocodigo.setLayout(new BoxLayout(panelPseudocodigo, BoxLayout.Y_AXIS));
 		
 		
@@ -200,7 +203,7 @@ public class Main extends JApplet {
 		textPaneContenidoAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoAlgoritmo.setEditable(false);
-		textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
+		textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 0, 10));
 		panelPseudocodigo.add(textPaneContenidoAlgoritmo);
 		
 		

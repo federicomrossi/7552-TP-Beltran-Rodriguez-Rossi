@@ -31,30 +31,40 @@ public class PapersToolbar extends JToolBar {
     	
     	this.setOpaque(false);
     	
-		buttonInit.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-ini-24.png")));
+		buttonInit.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-ini-24.png")));
 		buttonInit.setBorderPainted(false);
 		buttonInit.setContentAreaFilled(false);
 		buttonInit.setToolTipText("Inicio");
+		buttonInit.setRolloverEnabled(true);
+		buttonInit.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-ini-24-rollover.png")));
     	
-		buttonPrevious.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-reverse-24.png")));
+		buttonPrevious.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-reverse-24.png")));
 		buttonPrevious.setBorderPainted(false);
 		buttonPrevious.setContentAreaFilled(false);
 		buttonPrevious.setToolTipText("Atrás");
+		buttonPrevious.setRolloverEnabled(true);
+		buttonPrevious.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-reverse-24-rollover.png")));
 		
-		buttonNext.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-forward-24.png")));
+		buttonNext.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-forward-24.png")));
 		buttonNext.setBorderPainted(false);
 		buttonNext.setContentAreaFilled(false);
 		buttonNext.setToolTipText("Adelante");
+		buttonNext.setRolloverEnabled(true);
+		buttonNext.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-forward-24-rollover.png")));
 		
-		buttonEnd.setIcon(new ImageIcon(Main.class.getResource("/images/icon-arrow-end-24.png")));
+		buttonEnd.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-end-24.png")));
 		buttonEnd.setBorderPainted(false);
 		buttonEnd.setContentAreaFilled(false);
 		buttonEnd.setToolTipText("Fin");
+		buttonEnd.setRolloverEnabled(true);
+		buttonEnd.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-arrow-end-24-rollover.png")));
 		
-		buttonPlay.setIcon(new ImageIcon(Main.class.getResource("/images/icon-play-25.png")));
+		buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
 		buttonPlay.setBorderPainted(false);
 		buttonPlay.setContentAreaFilled(false);
 		buttonPlay.setToolTipText("Comenzar/Finalizar");
+		buttonPlay.setRolloverEnabled(true);
+		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-24-rollover.png")));
 		
     }
 	
@@ -105,7 +115,8 @@ public class PapersToolbar extends JToolBar {
 				// TEMP
 				if(tempPlay) {
 					tempPlay = false;
-					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-24.png")));
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-stop-24.png")));
+					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
 					
 					// deshabilitamos botones de ejecución
 					buttonNext.setEnabled(false);
@@ -129,7 +140,8 @@ public class PapersToolbar extends JToolBar {
 				}
 				else {
 					tempPlay = true;
-					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-stop-24.png")));
+					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-25.png")));
+					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
 					
 					// Habilitamos botones de ejecución
 					buttonNext.setEnabled(true);

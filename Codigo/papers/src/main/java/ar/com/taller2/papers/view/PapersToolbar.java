@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JToolBar;
 
 import ar.com.taller2.papers.Main;
-import ar.com.taller2.papers.MainBackup;
 
 public class PapersToolbar extends JToolBar {
 
@@ -115,7 +114,7 @@ public class PapersToolbar extends JToolBar {
 				// TEMP
 				if(tempPlay) {
 					tempPlay = false;
-					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-stop-24.png")));
+					buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
 					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
 					
 					// deshabilitamos botones de ejecución
@@ -140,7 +139,7 @@ public class PapersToolbar extends JToolBar {
 				}
 				else {
 					tempPlay = true;
-					buttonPlay.setIcon(new ImageIcon(MainBackup.class.getResource("/images/icon-play-25.png")));
+					buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
 					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
 					
 					// Habilitamos botones de ejecución

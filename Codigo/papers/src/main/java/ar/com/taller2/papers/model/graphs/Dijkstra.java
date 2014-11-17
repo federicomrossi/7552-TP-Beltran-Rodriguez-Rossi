@@ -9,6 +9,7 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultEdge;
 
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.Vertice;
 
@@ -36,7 +37,7 @@ public class Dijkstra implements Executable {
 		Logger.getLogger("Dijkstra").info("Inicie el algoritmo");
 	}
 	
-	public Vertice siguiente() {
+	public Vertice siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("Dijkstra").info("Siguiente");
 
 //		if(this.indiceSiguientePaso < this.recorrido.size()) {

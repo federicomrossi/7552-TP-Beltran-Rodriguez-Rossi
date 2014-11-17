@@ -13,6 +13,7 @@ import com.mxgraph.util.mxEventObject;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
 public class GraphModel {
 
@@ -66,7 +67,7 @@ public class GraphModel {
 		algoritmo.terminar();		
 	}
 	
-	public Vertice nextStepAlgorithm(){
+	public Vertice nextStepAlgorithm() throws NextStepNotExistsException {
 		return algoritmo.siguiente();
 	}
 	

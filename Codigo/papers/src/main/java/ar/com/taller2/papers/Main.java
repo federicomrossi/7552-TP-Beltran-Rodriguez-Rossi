@@ -41,7 +41,6 @@ import com.mxgraph.util.mxEventSource.mxIEventListener;
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.model.Vertice;
-import ar.com.taller2.papers.model.graphs.Dijkstra_old;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
 import ar.com.taller2.papers.view.PanelIzquierda;
@@ -180,8 +179,10 @@ public class Main extends JApplet {
 		textPaneContenidoInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
 		textPaneContenidoInformacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoInformacion.setEditable(false);
-		textPaneContenidoInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
+		textPaneContenidoInformacion.setBorder(new EmptyBorder(0, 0, 0, 0));
 //		textPaneContenidoInformacion.setText("<html><body><img src=" + this.getClass().getResource("/images/FondoAzul.png") + " alt='Smiley face'></body></html>");
+//		textPaneContenidoInformacion.setText("<html><body background=" + this.getClass().getResource("/images/FondoAzul.png") + " alt='Smiley face'></body></html>");
+		textPaneContenidoInformacion.setText("<html><body bgcolor=#5b5b5b style='margin: 0 auto; text-align: center; width: 100%; height:100%;'><img style='vertical-align: middle' src=" + this.getClass().getResource("/images/info-512.png") + " alt='Info'></body></html>");
 		panelInformacion.add(textPaneContenidoInformacion);
 		
 		
@@ -202,7 +203,8 @@ public class Main extends JApplet {
 		textPaneContenidoAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoAlgoritmo.setEditable(false);
-		textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 0, 10));
+		textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(0, 0, 0, 0));
+		textPaneContenidoAlgoritmo.setText("<html><body bgcolor=#5b5b5b style='margin: 0 auto; text-align: center; width: 100%; height:100%;'><img style='vertical-align: middle' src=" + this.getClass().getResource("/images/code-icon.png") + " alt='Pseudo'></body></html>");
 		panelPseudocodigo.add(textPaneContenidoAlgoritmo);
 		
 		

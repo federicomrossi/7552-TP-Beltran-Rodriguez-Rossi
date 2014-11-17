@@ -1,8 +1,10 @@
 package ar.com.taller2.papers.model;
 
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+
 public interface Executable {
 	
-	public Vertice siguiente();
+	public Vertice siguiente() throws NextStepNotExistsException;
 	
 	public boolean anterior();
 	

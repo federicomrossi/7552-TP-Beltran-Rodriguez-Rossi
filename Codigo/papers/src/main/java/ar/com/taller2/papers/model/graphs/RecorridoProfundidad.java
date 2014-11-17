@@ -8,6 +8,7 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.traverse.DepthFirstIterator;
 
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
@@ -44,7 +45,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
 	}
 	
-	public Vertice siguiente() {
+	public Vertice siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
@@ -52,7 +53,6 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 //			v.select(true);
 			return v;
 		}
-		
 		return null;
 	}
 
@@ -109,7 +109,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 	}
 
 	public URL getDescripcion() {
-		return Dijkstra_old.class.getResource("/algorithms/recorrido-profundidad-info.html");
+		return this.getClass().getResource("/algorithms/recorrido-profundidad-info.html");
 	}
 
 }

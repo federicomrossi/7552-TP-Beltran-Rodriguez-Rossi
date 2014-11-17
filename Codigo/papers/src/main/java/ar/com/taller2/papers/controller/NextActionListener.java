@@ -8,6 +8,8 @@ import com.mxgraph.util.mxEvent;
 import com.mxgraph.util.mxEventObject;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 
+import ar.com.taller2.papers.Alerta;
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Vertice;
 
 public class NextActionListener implements ActionListener {
@@ -20,24 +22,28 @@ public class NextActionListener implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Vertice vCorrecto, vRespuesta;
-		vCorrecto = app.getModelo().nextStepAlgorithm();
-		if ( app.getTutor().esModoEvaluacion() ) {
-			// leer respuesta dada por usuario
-			vRespuesta = app.getModelo().getVertex(app.getVista().getVerticeSeleccionado());
-			// comparar respuesta del usuario con la real
-			if (!app.getTutor().esIgual(vCorrecto, vRespuesta)) {
-				//Mostrar msj de equivocacion
-				Logger.getLogger(this.getClass().getName()).info("Elegi otro man!");
-				app.getModelo().previousStepAlgorithm();
-				app.getVista().mostrarMensajeEquivocacion("El vértice seleccionado no es el correcto");
-				return;
+		try {
+			vCorrecto = app.getModelo().nextStepAlgorithm();
+			if ( app.getTutor().esModoEvaluacion() ) {
+				// leer respuesta dada por usuario
+				vRespuesta = app.getModelo().getVertex(app.getVista().getVerticeSeleccionado());
+				// comparar respuesta del usuario con la real
+				if (!app.getTutor().esIgual(vCorrecto, vRespuesta)) {
+					//Mostrar msj de equivocacion
+					Logger.getLogger(this.getClass().getName()).info("Elegi otro man!");
+					app.getModelo().previousStepAlgorithm();
+					app.getVista().mostrarMensajeEquivocacion("El vértice seleccionado no es el correcto");
+					return;
+				}
 			}
+			else {
+				app.getVista().agregarASalida(vCorrecto.toString());
+			}
+			vCorrecto.select(true);
+			app.getVista().actualizar();
+		} catch (NextStepNotExistsException e1) {
+			app.getVista().mostrarMensajeEquivocacion(e1.getMessage());
 		}
-		else {
-			app.getVista().agregarASalida(vCorrecto.toString());
-		}
-		vCorrecto.select(true);
-		app.getVista().actualizar();
 	}
 
 }

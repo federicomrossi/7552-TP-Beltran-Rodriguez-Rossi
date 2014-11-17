@@ -1,5 +1,6 @@
 package ar.com.taller2.papers.model.graphs;
 
+import java.net.URL;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -7,10 +8,12 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.traverse.BreadthFirstIterator;
 
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Executable;
+import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
-public class RecorridoAnchura implements Executable {
+public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 
 	private ListenableGraph<Vertice, DefaultEdge> graph;
 	private Vertice inicio;
@@ -32,7 +35,7 @@ public class RecorridoAnchura implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Inicie el algoritmo");
 	}
 	
-	public Vertice siguiente() {
+	public Vertice siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("RecorridoAnchura").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
@@ -40,7 +43,6 @@ public class RecorridoAnchura implements Executable {
 			v.select(true);
 			return v;
 		}
-		
 		return null;
 	}
 
@@ -66,6 +68,17 @@ public class RecorridoAnchura implements Executable {
 		
 		this.indiceSiguientePaso = 0;
 	}
+
+	public void terminar() {
+		
+		while(--this.indiceSiguientePaso >= 0) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso);
+			v.select(false);
+		}
+		this.indiceSiguientePaso = 0;
+		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
+		
+	}
 	
 	public void fin() {
 		Logger.getLogger("RecorridoAnchura").info("Fin");
@@ -77,23 +90,28 @@ public class RecorridoAnchura implements Executable {
 	}
 
 	public boolean tieneSiguiente() {
-		// TODO Auto-generated method stub
-		return true;
+		return (this.indiceSiguientePaso < this.recorrido.size());
 	}
 
 	public boolean cumpleCondicionesIniciales() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	public String getCondicionesIniciales() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Este algoritmo no posee condiciones iniciales";
 	}
 
-	public void terminar() {
-		// TODO Auto-generated method stub
-		
+	public URL getAlgoritmo() {
+		return this.getClass().getResource("/algorithms/recorrido-anchura-pseudocode.html");
 	}
+
+	public String getTitulo() {
+		return "Recorrido en Anchura";
+	}
+
+	public URL getDescripcion() {
+		return this.getClass().getResource("/algorithms/recorrido-anchura-info.html");
+	}
+
 
 }

@@ -53,11 +53,11 @@ public class GraphView extends mxGraphComponent{
         }
         //https://www.youtube.com/watch?v=CNMCNvoEyRI
 		Map<String, Object> edge = new HashMap<String, Object>();
-//	    edge.put(mxConstants.STYLE_ROUNDED, true);
+	    edge.put(mxConstants.STYLE_ROUNDED, true);
 //	    edge.put(mxConstants.STYLE_ORTHOGONAL, false);
 	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
 	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
-	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
+	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_BLOCK);
 //	    edge.put(mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
 //	    edge.put(mxConstants.STYLE_ALIGN, mxConstants.ALIGN_RIGHT);
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
@@ -81,7 +81,7 @@ public class GraphView extends mxGraphComponent{
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxCell> cell : this.graph.getVertexToCellMap().entrySet()) {
-        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true" );
+        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true" );
         }
         this.graph.getModel().endUpdate();
         this.graph.refresh();

@@ -3,8 +3,7 @@ package ar.com.taller2.papers.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.jgrapht.alg.VertexCovers;
-
+import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Vertice;
 
 public class EndActionListener implements ActionListener {
@@ -17,10 +16,16 @@ public class EndActionListener implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		Vertice vCorrecto;
+
 		while (app.getModelo().hasNextStepAlgorithm()) {
-			vCorrecto = app.getModelo().nextStepAlgorithm();
-			vCorrecto.select(true);
-			app.getVista().agregarASalida(vCorrecto.toString());
+			try {
+				vCorrecto = app.getModelo().nextStepAlgorithm();
+				vCorrecto.select(true);
+				app.getVista().agregarASalida(vCorrecto.toString());
+			} catch (NextStepNotExistsException e1) {
+				app.getVista().mostrarMensajeEquivocacion(e1.getMessage());
+			}
+			
 		}
 		app.getVista().actualizar();
 	}

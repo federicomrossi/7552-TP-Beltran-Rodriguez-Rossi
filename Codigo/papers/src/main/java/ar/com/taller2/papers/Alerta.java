@@ -25,7 +25,7 @@ public class Alerta extends JDialog{
     	this.setSize(350, 250);
     	JLabel msj = new JLabel("<html><br/><p align='center'>" + mensaje + "</p><br/></html>");
 
-    	JButton aceptar = new JButton("Intentar de nuevo");
+    	JButton aceptar = new JButton("Aceptar");
     	aceptar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				dispose();

@@ -14,6 +14,7 @@ import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
+import com.mxgraph.util.mxUtils;
 import com.mxgraph.view.mxStylesheet;
 
 public class GraphView extends mxGraphComponent{
@@ -43,7 +44,7 @@ public class GraphView extends mxGraphComponent{
         double x = 50, y = 50;
         for (mxCell cell : this.graph.getVertexToCellMap().values()) {
         	this.graph.getModel().setGeometry(cell, new mxGeometry(x, y, 50, 50));
-        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=blue");
+//        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=#3cdbfe");
             x += 150;
             if (x > 400) {
                 x = 50;
@@ -62,8 +63,16 @@ public class GraphView extends mxGraphComponent{
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
 	    edge.put(mxConstants.STYLE_FONTCOLOR, "#446299");
 
+		Map<String, Object> vertex = new HashMap<String, Object>();
+		vertex.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
+		vertex.put(mxConstants.STYLE_FILLCOLOR, mxUtils.parseColor("#3CDBFE"));
+//		vertex.put(mxConstants.STYLE_GLASS, 1);
+		vertex.put(mxConstants.STYLE_GRADIENTCOLOR, mxUtils.parseColor("#FFFFFF"));
+		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
+
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);
+	    edgeStyle.setDefaultVertexStyle(vertex);
 	    graph.setStylesheet(edgeStyle);
 	    
         this.graph.getModel().endUpdate();
@@ -72,7 +81,7 @@ public class GraphView extends mxGraphComponent{
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxCell> cell : this.graph.getVertexToCellMap().entrySet()) {
-        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=green": "shape=ellipse;fillColor=blue" );
+        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true" );
         }
         this.graph.getModel().endUpdate();
         this.graph.refresh();

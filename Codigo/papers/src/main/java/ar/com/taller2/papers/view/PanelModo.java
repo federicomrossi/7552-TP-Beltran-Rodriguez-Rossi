@@ -41,9 +41,9 @@ public class PanelModo extends JPanel {
 		radioAprendizaje.setForeground(new Color(255,255,255));
 
 		radioEvaluacion.setContentAreaFilled(false);
-		radioEvaluacion.setIcon(new ImageIcon(Main.class.getResource("/images/Unselected.png")));
-		radioEvaluacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
-		radioEvaluacion.setPressedIcon(new ImageIcon(Main.class.getResource("/images/Selected.png")));
+		radioEvaluacion.setIcon(new ImageIcon(Main.class.getResource("/images/UnselectedAzul.png")));
+		radioEvaluacion.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+		radioEvaluacion.setPressedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
 		radioEvaluacion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		radioEvaluacion.setForeground(new Color(255,255,255));
 		

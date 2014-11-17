@@ -64,7 +64,7 @@ public class PapersToolbar extends JToolBar {
 		buttonPlay.setContentAreaFilled(false);
 		buttonPlay.setToolTipText("Comenzar/Finalizar");
 		buttonPlay.setRolloverEnabled(true);
-		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-24-rollover.png")));
+		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
 		
     }
 	

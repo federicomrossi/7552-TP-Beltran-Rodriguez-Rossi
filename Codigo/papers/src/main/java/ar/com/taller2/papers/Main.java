@@ -181,13 +181,12 @@ public class Main extends JApplet {
 		textPaneContenidoInformacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textPaneContenidoInformacion.setEditable(false);
 		textPaneContenidoInformacion.setBorder(new EmptyBorder(10, 10, 0, 10));
-//		textPaneContenidoInformacion.setText("<html><body><img src='/images/info.png' alt='Smiley face'></body></html>");
+//		textPaneContenidoInformacion.setText("<html><body><img src=" + this.getClass().getResource("/images/info.png") + " alt='Smiley face'></body></html>");
 		panelInformacion.add(textPaneContenidoInformacion);
 		
 		
 		scrollPaneInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panelInformacion.add(scrollPaneInformacion);
-		
 		
 		
 		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/TerminalIcon2.png")), panelPseudocodigo, null);

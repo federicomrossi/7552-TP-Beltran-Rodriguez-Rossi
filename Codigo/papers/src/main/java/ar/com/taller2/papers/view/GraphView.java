@@ -18,6 +18,10 @@ import com.mxgraph.view.mxStylesheet;
 
 public class GraphView extends mxGraphComponent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7060444737587754276L;
 	private JGraphXAdapter<Vertice, DefaultEdge> graph ;
 	
 	public GraphView(JGraphXAdapter<Vertice, DefaultEdge> graph ) {
@@ -39,7 +43,7 @@ public class GraphView extends mxGraphComponent{
         double x = 50, y = 50;
         for (mxCell cell : this.graph.getVertexToCellMap().values()) {
         	this.graph.getModel().setGeometry(cell, new mxGeometry(x, y, 50, 50));
-        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=green");
+        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=blue");
             x += 150;
             if (x > 400) {
                 x = 50;
@@ -68,7 +72,7 @@ public class GraphView extends mxGraphComponent{
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxCell> cell : this.graph.getVertexToCellMap().entrySet()) {
-        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=blue": "shape=ellipse;fillColor=green" );
+        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=green": "shape=ellipse;fillColor=blue" );
         }
         this.graph.getModel().endUpdate();
         this.graph.refresh();

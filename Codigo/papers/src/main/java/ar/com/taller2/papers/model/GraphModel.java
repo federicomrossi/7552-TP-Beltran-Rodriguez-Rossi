@@ -105,21 +105,23 @@ public class GraphModel {
 		Vertice v1 = this.agregarVertice();
 		Vertice v2 = this.agregarVertice();
 		Vertice v3 = this.agregarVertice();
-		Vertice v4 = this.agregarVertice();
-		Vertice v5 = this.agregarVertice();
-		Vertice v6 = this.agregarVertice();
-		Vertice v7 = this.agregarVertice();
-		Vertice v8 = this.agregarVertice();
+//		Vertice v4 = this.agregarVertice();
+//		Vertice v5 = this.agregarVertice();
+//		Vertice v6 = this.agregarVertice();
+//		Vertice v7 = this.agregarVertice();
+//		Vertice v8 = this.agregarVertice();
 		
 		this.graph.addEdge( v1, v2 );
-		this.graph.addEdge( v1, v4);
-		this.graph.addEdge( v2, v6 );
-		this.graph.addEdge( v4, v5 );
-		this.graph.addEdge( v5, v6);
-        this.graph.addEdge( v6, v7 );
-        this.graph.addEdge( v6, v8 );
-        this.graph.addEdge( v7, v3 );
-        this.graph.addEdge( v8, v3 );
+		this.graph.addEdge( v2, v3);
+		this.graph.addEdge(v3, v1);
+//		this.graph.addEdge( v1, v4);
+//		this.graph.addEdge( v2, v6 );
+//		this.graph.addEdge( v4, v5 );
+//		this.graph.addEdge( v5, v6);
+//        this.graph.addEdge( v6, v7 );
+//        this.graph.addEdge( v6, v8 );
+//        this.graph.addEdge( v7, v3 );
+//        this.graph.addEdge( v8, v3 );
 	}
 	// END TEMP
 }

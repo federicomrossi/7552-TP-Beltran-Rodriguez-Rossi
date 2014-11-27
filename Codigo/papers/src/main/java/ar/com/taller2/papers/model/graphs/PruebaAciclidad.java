@@ -3,6 +3,7 @@ package ar.com.taller2.papers.model.graphs;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
@@ -39,7 +40,9 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	public void iniciar() {
 		
 		CycleDetector<Vertice,DefaultEdge> detector = new CycleDetector<Vertice, DefaultEdge>((DirectedGraph<Vertice, DefaultEdge>) this.graph);
+		Logger.getLogger(this.getClass().getName()).info("Cree el detector de ciclos");
 		if (detector.detectCycles()) {
+			Logger.getLogger(this.getClass().getName()).info("Tiene ciclos");
 			this.ciclo = detector.findCycles();
 			it = this.ciclo.iterator();
 		}

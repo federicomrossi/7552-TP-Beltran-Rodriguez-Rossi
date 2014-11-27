@@ -190,7 +190,7 @@ public class Main extends JApplet {
 		panelInformacion.add(scrollPaneInformacion);
 		
 		
-		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/TerminalIcon2.png")), panelPseudocodigo, null);
+		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/Terminalicon2.png")), panelPseudocodigo, null);
 		panelPseudocodigo.setLayout(new BoxLayout(panelPseudocodigo, BoxLayout.Y_AXIS));
 		
 		

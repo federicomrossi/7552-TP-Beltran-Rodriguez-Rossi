@@ -128,14 +128,14 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     }
 
     public void edgeAdded(GraphEdgeChangeEvent<V, E> e) {
-        addJGraphTEdge(e.getEdge());
         Logger.getLogger(this.getClass().getName()).info("Evento de agregado de flecha");
+        addJGraphTEdge(e.getEdge());
     }
 
     public void edgeRemoved(GraphEdgeChangeEvent<V, E> e) {
         mxCell cell = edgeToCellMap.remove(e.getEdge());
+        Logger.getLogger(this.getClass().getName()).info("Evento de quitado de flecha");
         removeCells(new Object[] { cell } );
-        Logger.getLogger(this.getClass().getName()).info("Evento de agregado de flecha");
     }
     
     public void addVertexListener() {

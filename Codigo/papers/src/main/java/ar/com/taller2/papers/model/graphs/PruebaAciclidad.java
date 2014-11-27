@@ -1,9 +1,12 @@
 package ar.com.taller2.papers.model.graphs;
 
+import java.awt.List;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
+
+import javax.swing.event.ListDataEvent;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
@@ -26,8 +29,13 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public Vertice siguiente() throws NextStepNotExistsException {
-		if (it != null && it.hasNext()) {
-			return it.next();
+		if (it != null) {
+			if (it.hasNext()) {
+				return it.next();
+			}
+			else {
+				throw new NextStepNotExistsException("No hay más ciclos");
+			}
 		}
 		throw new NextStepNotExistsException("No tiene ciclos");
 	}
@@ -64,13 +72,11 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public boolean cumpleCondicionesIniciales() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	public String getCondicionesIniciales() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Este algoritmo no posee condiciones iniciales";
 	}
 
 	public boolean tieneSiguiente() {
@@ -81,18 +87,15 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().getResource("/algorithms/prueba-aciclidad-pseudocode.html");
 	}
 
 	public String getTitulo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Prueba Aciclidad";
 	}
 
 	public URL getDescripcion() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().getResource("/algorithms/prueba-aciclidad-info.html");
 	}
 
 }

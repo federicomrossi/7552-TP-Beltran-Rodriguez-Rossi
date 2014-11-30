@@ -9,7 +9,7 @@ import org.jgrapht.event.GraphEdgeChangeEvent;
 import org.jgrapht.event.GraphListener;
 import org.jgrapht.event.GraphVertexChangeEvent;
 
-import ar.com.taller2.papers.controller.EdgeListener;
+import ar.com.taller2.papers.controller.NewEdgeListener;
 import ar.com.taller2.papers.controller.GraphViewListener;
 
 import com.mxgraph.model.mxCell;

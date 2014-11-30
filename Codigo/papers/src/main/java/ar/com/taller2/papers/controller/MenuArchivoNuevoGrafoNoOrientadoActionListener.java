@@ -14,7 +14,7 @@ public class MenuArchivoNuevoGrafoNoOrientadoActionListener implements ActionLis
 	public void actionPerformed(ActionEvent e) {
 		this.app.getModelo().nuevoGrafoNoDirigido();
 		this.app.getVista().setGraph(app.getModelo().getGraph());
-		this.app.getVista().addNewEdgeListener(new EdgeListener(app));
+		this.app.getVista().addNewEdgeListener(new NewEdgeListener(app));
 		this.app.getVista().actualizar();
 	}
 

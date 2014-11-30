@@ -7,30 +7,30 @@ import java.util.logging.Logger;
 
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.alg.DijkstraShortestPath;
-import org.jgrapht.graph.DefaultEdge;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.Vertice;
 
 public class Dijkstra implements Executable {
 
-	private ListenableGraph<Vertice, DefaultEdge> graph;
+	private ListenableGraph<Vertice, Arista> graph;
 	private Vertice inicio;
 	private Vertice fin;
 	private int indiceSiguientePaso;
 	private Vector<Vertice> recorrido = new Vector<Vertice>();
-	private List<DefaultEdge> camino = new ArrayList<DefaultEdge>();
+	private List<Arista> camino = new ArrayList<Arista>();
 	
 	
-	public Dijkstra(ListenableGraph<Vertice, DefaultEdge> graph, Vertice inicio, Vertice fin){
+	public Dijkstra(ListenableGraph<Vertice, Arista> graph, Vertice inicio, Vertice fin){
 		this.graph = graph;
 		this.inicio = inicio;
 		this.fin = fin;
 	}
 	
 	public void iniciar() {
-		DijkstraShortestPath<Vertice,DefaultEdge> dfit = new DijkstraShortestPath<Vertice,DefaultEdge>(this.graph, this.inicio, this.fin);
+		DijkstraShortestPath<Vertice,Arista> dfit = new DijkstraShortestPath<Vertice,Arista>(this.graph, this.inicio, this.fin);
 		this.camino = dfit.getPathEdgeList();
 		
 		this.indiceSiguientePaso = 0;

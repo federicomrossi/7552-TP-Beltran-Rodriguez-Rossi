@@ -1,30 +1,26 @@
 package ar.com.taller2.papers.model.graphs;
 
-import java.awt.List;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import javax.swing.event.ListDataEvent;
-
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.alg.CycleDetector;
-import org.jgrapht.graph.DefaultDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
 public class PruebaAciclidad extends GraphAlgorithm {
 	
-	ListenableGraph<Vertice, DefaultEdge> graph;
+	ListenableGraph<Vertice, Arista> graph;
 	Set<Vertice> ciclo = null;
 	Iterator<Vertice> it = null;
 	
-	public PruebaAciclidad(ListenableGraph<Vertice, DefaultEdge> graph){
+	public PruebaAciclidad(ListenableGraph<Vertice, Arista> graph){
 		this.graph = graph;
 	}
 
@@ -47,7 +43,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 
 	public void iniciar() {
 		
-		CycleDetector<Vertice,DefaultEdge> detector = new CycleDetector<Vertice, DefaultEdge>((DirectedGraph<Vertice, DefaultEdge>) this.graph);
+		CycleDetector<Vertice,Arista> detector = new CycleDetector<Vertice, Arista>((DirectedGraph<Vertice, Arista>) this.graph);
 		Logger.getLogger(this.getClass().getName()).info("Cree el detector de ciclos");
 		if (detector.detectCycles()) {
 			Logger.getLogger(this.getClass().getName()).info("Tiene ciclos");

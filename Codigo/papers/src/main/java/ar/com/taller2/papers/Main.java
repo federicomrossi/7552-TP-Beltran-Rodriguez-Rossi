@@ -7,39 +7,28 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.graph.DefaultEdge;
-
-import com.mxgraph.model.mxCell;
-import com.mxgraph.model.mxGeometry;
-import com.mxgraph.util.mxEvent;
-import com.mxgraph.util.mxEventObject;
-import com.mxgraph.util.mxEventSource;
-import com.mxgraph.util.mxEventSource.mxIEventListener;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
@@ -48,12 +37,14 @@ import ar.com.taller2.papers.view.PanelModo;
 import ar.com.taller2.papers.view.PapersMenu;
 import ar.com.taller2.papers.view.PapersToolbar;
 
+import com.mxgraph.util.mxEventSource.mxIEventListener;
+
 public class Main extends JApplet {
 
 	private static final long serialVersionUID = 5320477892293342036L;
 	private static final Logger logger = LogManager.getLogger();
 	
-	private JGraphXAdapter<Vertice, DefaultEdge> adapter;
+	private JGraphXAdapter<Vertice, Arista> adapter;
 	
     
     // TEMP
@@ -254,8 +245,8 @@ public class Main extends JApplet {
     }
     
     
-    public void setGraph(ListenableGraph<Vertice, DefaultEdge> graph) {
-    	this.adapter = new JGraphXAdapter<Vertice, DefaultEdge>(graph);
+    public void setGraph(ListenableGraph<Vertice, Arista> graph) {
+    	this.adapter = new JGraphXAdapter<Vertice, Arista>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
     	//ordernarVertices();
@@ -263,7 +254,7 @@ public class Main extends JApplet {
 //        this.setVisible(true);
     }
     
-    public JGraphXAdapter<Vertice, DefaultEdge> getGraph(){
+    public JGraphXAdapter<Vertice, Arista> getGraph(){
     	return this.adapter;
     }
     

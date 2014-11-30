@@ -7,25 +7,25 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import org.jgrapht.alg.StrongConnectivityInspector;
-import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
 public class ComponentesFuertementeConexas extends GraphAlgorithm {
 
-	private ListenableDirectedGraph<Vertice, DefaultEdge> graph;
+	private ListenableDirectedGraph<Vertice, Arista> graph;
 	private int indiceSiguientePaso = 0;
 	private List<Set<Vertice>> componentesConexas;
 	
-	public ComponentesFuertementeConexas(ListenableDirectedGraph<Vertice, DefaultEdge> graph){
+	public ComponentesFuertementeConexas(ListenableDirectedGraph<Vertice, Arista> graph){
 		this.graph = graph;
 	}
 	
 	public void iniciar() {
-		StrongConnectivityInspector<Vertice, DefaultEdge> sCI = new StrongConnectivityInspector<Vertice, DefaultEdge>(graph);
+		StrongConnectivityInspector<Vertice, Arista> sCI = new StrongConnectivityInspector<Vertice, Arista>(graph);
 		componentesConexas = sCI.stronglyConnectedSets();
 		Logger.getLogger("ComponentesFuertementeConexas").info("Inicié el algoritmo");
 	}

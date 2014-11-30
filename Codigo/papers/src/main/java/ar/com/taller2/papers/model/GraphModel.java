@@ -8,16 +8,12 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedGraph;
 import org.jgrapht.graph.ListenableUndirectedGraph;
 
-import com.mxgraph.util.mxEvent;
-import com.mxgraph.util.mxEventObject;
-import com.mxgraph.util.mxEventSource.mxIEventListener;
-
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
 public class GraphModel {
 
-	private ListenableGraph<Vertice, DefaultEdge> graph;
+	private ListenableGraph<Vertice, Arista> graph;
 	private int vertice_contador = 0;
 	Executable algoritmo;
 	
@@ -26,15 +22,15 @@ public class GraphModel {
 	}
 	
 	public void nuevoGrafoDirigido() {
-		this.graph = new ListenableDirectedGraph<Vertice, DefaultEdge>(DefaultEdge.class);
+		this.graph = new ListenableDirectedGraph<Vertice, Arista>(Arista.class);
 		this.agregarVertices();
 	}
 	
 	public void nuevoGrafoNoDirigido() {
-		this.graph = new ListenableUndirectedGraph<Vertice, DefaultEdge>(DefaultEdge.class);		
+		this.graph = new ListenableUndirectedGraph<Vertice, Arista>(Arista.class);		
 	}
 
-	public ListenableGraph<Vertice, DefaultEdge> getGraph() {
+	public ListenableGraph<Vertice, Arista> getGraph() {
 		return graph;
 	}
 	
@@ -99,13 +95,13 @@ public class GraphModel {
 		return v;
 	}
 	
-	public DefaultEdge agregarEdge(String source, String dest){
+	public Arista agregarEdge(String source, String dest){
 		Vertice v1 = new Vertice(source, false);
 		Vertice v2 = new Vertice(dest, false);
 		return this.graph.addEdge(v1, v2);
 	}
 	
-	public DefaultEdge agregarEdge(Vertice source, Vertice dest){
+	public Arista agregarEdge(Vertice source, Vertice dest){
 		return this.graph.addEdge(source, dest);
 	}
 	

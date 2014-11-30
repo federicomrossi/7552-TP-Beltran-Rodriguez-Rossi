@@ -3,9 +3,6 @@ package ar.com.taller2.papers.controller;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.jgrapht.graph.DefaultEdge;
-
-import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.model.Vertice;
 
 import com.mxgraph.model.mxCell;

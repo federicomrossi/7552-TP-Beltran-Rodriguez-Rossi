@@ -5,29 +5,29 @@ import java.util.Vector;
 import java.util.logging.Logger;
 
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.traverse.BreadthFirstIterator;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
 public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 
-	private ListenableGraph<Vertice, DefaultEdge> graph;
+	private ListenableGraph<Vertice, Arista> graph;
 	private Vertice inicio;
 	private int indiceSiguientePaso;
 	private Vector<Vertice> recorrido = new Vector<Vertice>();
 	
 	
-	public RecorridoAnchura(ListenableGraph<Vertice, DefaultEdge> graph, Vertice inicio){
+	public RecorridoAnchura(ListenableGraph<Vertice, Arista> graph, Vertice inicio){
 		this.graph = graph;
 		this.inicio = inicio;
 	}
 	
 	public void iniciar() {
-		BreadthFirstIterator<Vertice,DefaultEdge> dfit = new BreadthFirstIterator<Vertice,DefaultEdge>(this.graph, this.inicio);
+		BreadthFirstIterator<Vertice,Arista> dfit = new BreadthFirstIterator<Vertice,Arista>(this.graph, this.inicio);
 		while (dfit.hasNext()) {
 			this.recorrido.add(dfit.next());
 		}

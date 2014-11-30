@@ -4,9 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.jgrapht.graph.DefaultEdge;
-
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 
 import com.mxgraph.model.mxGeometry;
@@ -24,9 +23,9 @@ public class GraphView extends mxGraphComponent{
 	 * 
 	 */
 	private static final long serialVersionUID = -7060444737587754276L;
-	private JGraphXAdapter<Vertice, DefaultEdge> graph ;
+	private JGraphXAdapter<Vertice, Arista> graph ;
 	
-	public GraphView(JGraphXAdapter<Vertice, DefaultEdge> graph ) {
+	public GraphView(JGraphXAdapter<Vertice, Arista> graph ) {
 		super(graph);
 		this.graph = graph;
 		
@@ -88,7 +87,7 @@ public class GraphView extends mxGraphComponent{
         this.graph.refresh();
 	}
 
-	public JGraphXAdapter<Vertice, DefaultEdge> getGraphAdapter() {
+	public JGraphXAdapter<Vertice, Arista> getGraphAdapter() {
 		return graph;
 	}
 	

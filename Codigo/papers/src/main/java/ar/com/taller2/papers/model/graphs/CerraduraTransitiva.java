@@ -3,23 +3,22 @@ package ar.com.taller2.papers.model.graphs;
 import java.net.URL;
 import java.util.Vector;
 
-import org.jgrapht.ListenableGraph;
 import org.jgrapht.alg.TransitiveClosure;
-import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Vertice;
 
 public class CerraduraTransitiva extends GraphAlgorithm {
 
-	private SimpleDirectedGraph<Vertice, DefaultEdge> graph;
+	private SimpleDirectedGraph<Vertice, Arista> graph;
 	private Vertice inicio;
 	private int indiceSiguientePaso;
 	private Vector<Vertice> recorrido = new Vector<Vertice>();
 	
-	public CerraduraTransitiva(SimpleDirectedGraph<Vertice, DefaultEdge> graph, Vertice inicio){
+	public CerraduraTransitiva(SimpleDirectedGraph<Vertice, Arista> graph, Vertice inicio){
 		this.graph = graph;
 		this.inicio = inicio;
 	}

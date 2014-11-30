@@ -17,6 +17,7 @@ public class MenuArchivoNuevoGrafoOrientadoActionListener implements ActionListe
 	public void actionPerformed(ActionEvent e) {
 		this.app.getModelo().nuevoGrafoDirigido();
 		this.app.getVista().setGraph(app.getModelo().getGraph());
+		this.app.getVista().addNewEdgeListener(new EdgeListener(app));
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();
 	}

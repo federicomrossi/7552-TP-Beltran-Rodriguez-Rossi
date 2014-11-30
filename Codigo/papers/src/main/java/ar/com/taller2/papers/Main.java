@@ -263,6 +263,10 @@ public class Main extends JApplet {
 //        this.setVisible(true);
     }
     
+    public JGraphXAdapter<Vertice, DefaultEdge> getGraph(){
+    	return this.adapter;
+    }
+    
     /**
      * Agrega el paso realizado a la salida
      */
@@ -366,6 +370,10 @@ public class Main extends JApplet {
 	
 	public void addMenuEditarNuevoVerticeActionListener(ActionListener a){
 		menuBar.addEditarNuevoVerticeActionListener(a);
+	}
+	
+	public void addNewEdgeListener(mxIEventListener a){
+		graphView.addNewEdgeListener(a);
 	}
 	
 	public void addMenuAyudaAcercaDeActionListener(ActionListener a){

@@ -1,7 +1,6 @@
 package ar.com.taller2.papers.view;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -10,10 +9,12 @@ import org.jgrapht.graph.DefaultEdge;
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.model.Vertice;
 
-import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
+import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
+import com.mxgraph.util.mxEvent;
+import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.util.mxUtils;
 import com.mxgraph.view.mxStylesheet;
 
@@ -42,7 +43,7 @@ public class GraphView extends mxGraphComponent{
 
         this.graph.getModel().beginUpdate();
         double x = 50, y = 50;
-        for (mxCell cell : this.graph.getVertexToCellMap().values()) {
+        for (mxICell cell : this.graph.getVertexToCellMap().values()) {
         	this.graph.getModel().setGeometry(cell, new mxGeometry(x, y, 50, 50));
 //        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=#3cdbfe");
             x += 150;
@@ -80,7 +81,7 @@ public class GraphView extends mxGraphComponent{
 	
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
-        for (Entry<Vertice,mxCell> cell : this.graph.getVertexToCellMap().entrySet()) {
+        for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
         	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true" );
         }
         this.graph.getModel().endUpdate();
@@ -89,5 +90,9 @@ public class GraphView extends mxGraphComponent{
 
 	public JGraphXAdapter<Vertice, DefaultEdge> getGraphAdapter() {
 		return graph;
+	}
+	
+	public void addNewEdgeListener(mxIEventListener a){
+		this.getConnectionHandler().addListener(mxEvent.CONNECT, a);
 	}
 }

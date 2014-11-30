@@ -99,6 +99,16 @@ public class GraphModel {
 		return v;
 	}
 	
+	public DefaultEdge agregarEdge(String source, String dest){
+		Vertice v1 = new Vertice(source, false);
+		Vertice v2 = new Vertice(dest, false);
+		return this.graph.addEdge(v1, v2);
+	}
+	
+	public DefaultEdge agregarEdge(Vertice source, Vertice dest){
+		return this.graph.addEdge(source, dest);
+	}
+	
 	// TEMP
 	public void agregarVertices() {
 		

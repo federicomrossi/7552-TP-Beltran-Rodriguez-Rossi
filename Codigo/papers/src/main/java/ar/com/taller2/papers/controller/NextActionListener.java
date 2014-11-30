@@ -37,9 +37,11 @@ public class NextActionListener implements ActionListener {
 				}
 			}
 			else {
-				app.getVista().agregarASalida(vCorrecto.toString());
+				if(vCorrecto !=null)
+					app.getVista().agregarASalida(vCorrecto.toString());
 			}
-			vCorrecto.select(true);
+			if(vCorrecto != null)
+				vCorrecto.select(true);
 			app.getVista().actualizar();
 		} catch (NextStepNotExistsException e1) {
 			app.getVista().mostrarMensajeEquivocacion(e1.getMessage());

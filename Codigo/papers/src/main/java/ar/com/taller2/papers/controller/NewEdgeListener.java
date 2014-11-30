@@ -19,7 +19,7 @@ public class NewEdgeListener implements mxIEventListener{
 	}
 	
 	public void invoke(Object sender, mxEventObject evt) {
-		Logger.getLogger("ASAS").info("akkaka");
+		Logger.getLogger(getClass().getSimpleName()).info("Nueva Arista");
 		Map<String, Object> map = evt.getProperties();
 		mxCell cell = (mxCell) map.get("cell");
 		mxICell source = cell.getSource();

@@ -3,8 +3,10 @@ package ar.com.taller2.papers.view;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
+import ar.com.taller2.papers.controller.ChangeWeightListener;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 
@@ -70,7 +72,7 @@ public class GraphView extends mxGraphComponent{
 //		vertex.put(mxConstants.STYLE_GLASS, 1);
 		vertex.put(mxConstants.STYLE_GRADIENTCOLOR, mxUtils.parseColor("#FFFFFF"));
 		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
-
+		
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);
 	    edgeStyle.setDefaultVertexStyle(vertex);
@@ -107,5 +109,9 @@ public class GraphView extends mxGraphComponent{
 	
 	public void addNewEdgeListener(mxIEventListener a){
 		this.getConnectionHandler().addListener(mxEvent.CONNECT, a);
+	}
+	
+	public void addChangeWeightListener(mxIEventListener a){
+		this.addListener(mxEvent.LABEL_CHANGED, a);
 	}
 }

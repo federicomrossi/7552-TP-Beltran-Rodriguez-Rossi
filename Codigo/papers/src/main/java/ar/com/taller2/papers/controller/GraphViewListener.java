@@ -19,8 +19,14 @@ public class GraphViewListener implements mxIEventListener{
 	}
 
 	public void invoke(Object sender, mxEventObject evt) {
-		this.seleccion = ((Vertice)((mxCell)adapter.getSelectionCell()).getValue()).toString();
-		Logger.getLogger(this.getClass().getName()).info("Seleccione el vertice: " + this.seleccion);
+		mxCell cell = (mxCell) adapter.getSelectionCell();
+		if(cell != null && cell.isVertex()){
+			this.seleccion = ((Vertice)cell.getValue()).toString();
+			Logger.getLogger(this.getClass().getName()).info("Seleccione el vertice: " + this.seleccion);
+		}else{
+			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");
+		}
+		
 	}
 	
 	public String getSeleccion() {

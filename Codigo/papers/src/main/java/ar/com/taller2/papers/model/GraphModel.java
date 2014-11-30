@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.ListenableDirectedGraph;
-import org.jgrapht.graph.ListenableUndirectedGraph;
+import org.jgrapht.WeightedGraph;
+import org.jgrapht.graph.ListenableDirectedWeightedGraph;
+import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
@@ -22,12 +22,12 @@ public class GraphModel {
 	}
 	
 	public void nuevoGrafoDirigido() {
-		this.graph = new ListenableDirectedGraph<Vertice, Arista>(Arista.class);
+		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
 		this.agregarVertices();
 	}
 	
 	public void nuevoGrafoNoDirigido() {
-		this.graph = new ListenableUndirectedGraph<Vertice, Arista>(Arista.class);
+		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
 	}
 
 	public ListenableGraph<Vertice, Arista> getGraph() {
@@ -103,6 +103,11 @@ public class GraphModel {
 	
 	public Arista agregarEdge(Vertice source, Vertice dest){
 		return this.graph.addEdge(source, dest);
+	}
+	
+	public void setWeight(Arista a,Double d){
+		WeightedGraph<Vertice,Arista> g = (WeightedGraph<Vertice,Arista>) graph;
+		g.setEdgeWeight(a, d);
 	}
 	
 	// TEMP

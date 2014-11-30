@@ -1,8 +1,9 @@
 package ar.com.taller2.papers.model;
 
-import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
-public class Arista extends DefaultEdge {
+
+public class Arista extends DefaultWeightedEdge {
 
 	/**
 	 * 
@@ -27,7 +28,7 @@ public class Arista extends DefaultEdge {
 	}
 	
 	public Integer getPeso(){
-		return peso;
+		return ((Double)getWeight()).intValue();
 	}
 	
 	public Boolean isSelected(){
@@ -36,6 +37,10 @@ public class Arista extends DefaultEdge {
 	
 	public void select(Boolean selected){
 		this.selected=selected;
+	}
+	
+	public String toString(){
+		return ((Double)getWeight()).toString();
 	}
 	
 }

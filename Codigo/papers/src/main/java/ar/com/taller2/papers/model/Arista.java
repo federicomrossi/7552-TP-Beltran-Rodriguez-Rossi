@@ -34,4 +34,8 @@ public class Arista extends DefaultEdge {
 		return selected;
 	}
 	
+	public void select(Boolean selected){
+		this.selected=selected;
+	}
+	
 }

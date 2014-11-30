@@ -62,6 +62,7 @@ public class GraphView extends mxGraphComponent{
 //	    edge.put(mxConstants.STYLE_ALIGN, mxConstants.ALIGN_RIGHT);
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
 	    edge.put(mxConstants.STYLE_FONTCOLOR, "#446299");
+	    edge.put(mxConstants.STYLE_DELETABLE, true);
 
 		Map<String, Object> vertex = new HashMap<String, Object>();
 		vertex.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
@@ -82,6 +83,19 @@ public class GraphView extends mxGraphComponent{
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
         	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true" );
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");
+        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ENTITY_RELATION).append(";");
+        sb.append(mxConstants.STYLE_SHAPE).append("=").append(mxConstants.SHAPE_CURVE).append(";");
+        sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.ARROW_BLOCK).append(";");
+        sb.append(mxConstants.STYLE_FONTCOLOR).append("=").append("#446299").append(";");
+        sb.append(mxConstants.STYLE_DELETABLE).append("=").append(true).append(";");
+        
+        for (Entry<Arista,mxICell> cell : this.graph.getEdgeToCellMap().entrySet()) {
+        	StringBuilder sb2 = new StringBuilder(sb);
+        	sb.append(mxConstants.STYLE_STROKECOLOR).append("=").append(cell.getKey().isSelected() ? "#FF00FF": "#000000").append(";");
+        	this.graph.getModel().setStyle(cell.getValue(),sb.toString());
         }
         this.graph.getModel().endUpdate();
         this.graph.refresh();

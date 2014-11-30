@@ -27,7 +27,7 @@ public class GraphModel {
 	}
 	
 	public void nuevoGrafoNoDirigido() {
-		this.graph = new ListenableUndirectedGraph<Vertice, Arista>(Arista.class);		
+		this.graph = new ListenableUndirectedGraph<Vertice, Arista>(Arista.class);
 	}
 
 	public ListenableGraph<Vertice, Arista> getGraph() {

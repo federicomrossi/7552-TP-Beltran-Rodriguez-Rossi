@@ -37,6 +37,7 @@ import ar.com.taller2.papers.view.PanelModo;
 import ar.com.taller2.papers.view.PapersMenu;
 import ar.com.taller2.papers.view.PapersToolbar;
 
+import com.mxgraph.layout.mxParallelEdgeLayout;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 
 public class Main extends JApplet {
@@ -45,6 +46,7 @@ public class Main extends JApplet {
 	private static final Logger logger = LogManager.getLogger();
 	
 	private JGraphXAdapter<Vertice, Arista> adapter;
+	private mxParallelEdgeLayout layout;
 	
     
     // TEMP
@@ -249,6 +251,8 @@ public class Main extends JApplet {
     	this.adapter = new JGraphXAdapter<Vertice, Arista>(graph);
     	graphView = new GraphView(adapter);
     	splitPane_3.setLeftComponent(graphView);
+    	layout = new mxParallelEdgeLayout(adapter);
+        layout.execute(adapter.getDefaultParent());
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);

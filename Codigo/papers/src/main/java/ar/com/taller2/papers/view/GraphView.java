@@ -10,6 +10,8 @@ import ar.com.taller2.papers.controller.ChangeWeightListener;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 
+import com.mxgraph.layout.mxParallelEdgeLayout;
+import com.mxgraph.layout.hierarchical.mxHierarchicalLayout;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.mxGraphComponent;
@@ -17,6 +19,7 @@ import com.mxgraph.util.mxConstants;
 import com.mxgraph.util.mxEvent;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.util.mxUtils;
+import com.mxgraph.view.mxEdgeStyle;
 import com.mxgraph.view.mxStylesheet;
 
 public class GraphView extends mxGraphComponent{
@@ -35,7 +38,10 @@ public class GraphView extends mxGraphComponent{
 		this.graph.setDisconnectOnMove(false);
         this.graph.setAllowDanglingEdges(false);
         this.graph.setCellsSelectable(true);
+        this.graph.setAutoOrigin(true);
+        this.graph.setCellsBendable(true);
         
+        //new mxHierarchicalLayout(graph).execute(graph.getDefaultParent());
         // Temp?
         this.ordernarVertices();
 	}
@@ -57,7 +63,8 @@ public class GraphView extends mxGraphComponent{
 		Map<String, Object> edge = new HashMap<String, Object>();
 	    edge.put(mxConstants.STYLE_ROUNDED, true);
 //	    edge.put(mxConstants.STYLE_ORTHOGONAL, false);
-	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
+	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ELBOW);
+	    //edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
 	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
 	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_BLOCK);
 //	    edge.put(mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
@@ -88,7 +95,7 @@ public class GraphView extends mxGraphComponent{
         }
         StringBuilder sb = new StringBuilder();
         sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");
-        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ENTITY_RELATION).append(";");
+        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ELBOW).append(";");
         sb.append(mxConstants.STYLE_SHAPE).append("=").append(mxConstants.SHAPE_CURVE).append(";");
         sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.ARROW_BLOCK).append(";");
         sb.append(mxConstants.STYLE_FONTCOLOR).append("=").append("#446299").append(";");

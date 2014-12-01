@@ -21,5 +21,15 @@ public interface Executable {
 	public String getCondicionesIniciales();
 	
 	public boolean tieneSiguiente();
+	
+	
+	/**
+	 * Indica si el algoritmo requiere la selección de un vertice origen y uno destino para ser ejecutado(ej Dijsktra)
+	 * @return
+	 */
+	public Boolean isSourceDest();
+	
+	public void setSource(Vertice v);
+	public void setDest(Vertice v);
 
 }

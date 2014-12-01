@@ -23,18 +23,24 @@ public class PlayActionListener implements ActionListener {
 		}
 		else {
 		    app.getVista().removeAdapterVertexListener();
-			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");	
+			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");
 		}
 		
 		try {
 			if (on) {
 				app.getModelo().stopAlgorithm();
+				app.getVista().removeSourceDestSelectionListener();
 				on = false;
 				app.getVista().desbloquearPanel();
 				app.getVista().borrarSalida();
 			}
 			else {
-				app.getModelo().startAlgorithm();
+				if(app.getModelo().isSourceDestAlgorithm()){
+					app.getVista().addSourceDestSelectionListener();
+				}else{
+					app.getVista().removeSourceDestSelectionListener();
+					app.getModelo().startAlgorithm();
+				}
 				on = true;
 				app.getVista().bloquearPanel();
 			}

@@ -94,4 +94,18 @@ public class PruebaAciclidad extends GraphAlgorithm {
 		return this.getClass().getResource("/algorithms/prueba-aciclidad-info.html");
 	}
 
+	public Boolean isSourceDest() {
+		return Boolean.FALSE;
+	}
+
+	public void setSource(Vertice v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDest(Vertice v) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

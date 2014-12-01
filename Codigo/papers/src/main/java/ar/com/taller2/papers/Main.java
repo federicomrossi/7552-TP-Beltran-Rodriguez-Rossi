@@ -371,6 +371,14 @@ public class Main extends JApplet {
 		graphView.addChangeWeightListener(a);
 	}
 	
+	public void addSourceDestSelectionListener(){
+		adapter.addSourceDestSelectionListener(aprendiendoGrafos);
+	}
+	
+	public void removeSourceDestSelectionListener(){
+		adapter.removeSourceDestSelectionListener();
+	}
+	
 	public void addMenuAyudaAcercaDeActionListener(ActionListener a){
 		menuBar.addAyudaAcercaDeActionListener(a);
 	}

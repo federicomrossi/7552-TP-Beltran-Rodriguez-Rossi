@@ -86,4 +86,18 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 		return null;
 	}
 
+	public Boolean isSourceDest() {
+		return Boolean.FALSE;
+	}
+
+	public void setSource(Vertice v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDest(Vertice v) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -14,8 +14,7 @@ public class AlgoritmosDijkstraItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		// TODO Poder elegir vértices de inicio y fin.
-		app.getModelo().setAlgorithm(new Dijkstra(app.getModelo().getGraph(), app.getModelo().getVertex("v1"), app.getModelo().getVertex("v8")));
+		app.getModelo().setAlgorithm(new Dijkstra(app.getModelo().getGraph()));
 	}
 
 }

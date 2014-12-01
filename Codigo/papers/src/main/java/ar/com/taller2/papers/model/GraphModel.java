@@ -105,10 +105,24 @@ public class GraphModel {
 		return this.graph.addEdge(source, dest);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void setWeight(Arista a,Double d){
 		WeightedGraph<Vertice,Arista> g = (WeightedGraph<Vertice,Arista>) graph;
 		g.setEdgeWeight(a, d);
 	}
+	
+	public Boolean isSourceDestAlgorithm(){
+		return (algoritmo != null && algoritmo.isSourceDest());
+	}
+	
+	public void setSourceVertex(Vertice v){
+		algoritmo.setSource(v);
+	}
+	
+	public void setDestVertex(Vertice v){
+		algoritmo.setDest(v);
+	}
+	
 	
 	// TEMP
 	public void agregarVertices() {

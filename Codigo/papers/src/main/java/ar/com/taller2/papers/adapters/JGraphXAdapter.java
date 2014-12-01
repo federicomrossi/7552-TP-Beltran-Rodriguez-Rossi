@@ -9,8 +9,9 @@ import org.jgrapht.event.GraphEdgeChangeEvent;
 import org.jgrapht.event.GraphListener;
 import org.jgrapht.event.GraphVertexChangeEvent;
 
-import ar.com.taller2.papers.controller.NewEdgeListener;
+import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.controller.GraphViewListener;
+import ar.com.taller2.papers.controller.SourceDestSelectionListener;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
@@ -30,6 +31,7 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     private HashMap<mxICell, E>  cellToEdgeMap       = new HashMap<mxICell, E>();
     
     private GraphViewListener graphListener = null;
+    private SourceDestSelectionListener sourceDestSelListener = null;
 
     /*
      * CONSTRUCTOR
@@ -146,6 +148,18 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     	if (this.graphListener != null) {
 	    	this.getSelectionModel().removeListener(this.graphListener, mxEvent.CHANGE);
 	    	this.graphListener = null;
+    	}
+	}
+    
+    public void addSourceDestSelectionListener(AprendiendoGrafos app) {
+    	this.sourceDestSelListener = new SourceDestSelectionListener(app);
+    	this.getSelectionModel().addListener(mxEvent.CHANGE, this.sourceDestSelListener);
+	}
+    
+    public void removeSourceDestSelectionListener() {
+    	if (this.sourceDestSelListener != null) {
+	    	this.getSelectionModel().removeListener(this.sourceDestSelListener, mxEvent.CHANGE);
+	    	this.sourceDestSelListener = null;
     	}
 	}
     

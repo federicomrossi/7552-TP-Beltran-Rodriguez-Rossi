@@ -4,11 +4,11 @@ import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
 public interface Executable {
 	
+	public void iniciar();
+	
 	public Vertice siguiente() throws NextStepNotExistsException;
 	
 	public boolean anterior();
-	
-	public void iniciar();
 	
 	public void terminar();
 	

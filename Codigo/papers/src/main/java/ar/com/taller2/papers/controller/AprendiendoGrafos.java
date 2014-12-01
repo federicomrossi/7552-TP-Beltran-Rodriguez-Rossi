@@ -27,6 +27,7 @@ public class AprendiendoGrafos {
 		vista.addAlgoritmosPruebaAciclidadItemListener(new AlgoritmosPruebaAciclidadItemListener(this));
 		vista.addAlgoritmosComponentesFuertementeConexasItemListener(new AlgoritmosComponentesConexasItemListener(this));
 		vista.addAlgoritmosArbolExpansionCosteMinimoItemListener(new AlgoritmosSpanningTreeItemListener(this));
+		vista.addAlgoritmosFloydItemListener(new AlgoritmosFloydItemListener(this));
 		
 		vista.addMenuArchivoNuevoGrafoOrientadoActionListener(new MenuArchivoNuevoGrafoOrientadoActionListener(this));
 		vista.addMenuArchivoNuevoGrafoNoOrientadoActionListener(new MenuArchivoNuevoGrafoNoOrientadoActionListener(this));

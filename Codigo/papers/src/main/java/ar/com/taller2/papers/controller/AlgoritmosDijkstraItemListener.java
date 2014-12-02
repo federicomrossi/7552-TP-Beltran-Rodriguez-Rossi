@@ -14,7 +14,14 @@ public class AlgoritmosDijkstraItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		app.getModelo().setAlgorithm(new Dijkstra(app.getModelo().getGraph()));
+		if(e.getStateChange() == ItemEvent.SELECTED){
+			Dijkstra algoritmo = new Dijkstra(app.getModelo().getGraph());
+			app.getVista().addSourceDestSelectionListener();
+			app.getModelo().setAlgorithm(algoritmo);
+			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}else{
+			app.getVista().removeSourceDestSelectionListener();
+		}
 	}
 
 }

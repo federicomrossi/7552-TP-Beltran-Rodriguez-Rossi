@@ -20,7 +20,6 @@ public class SourceDestSelectionListener implements mxIEventListener {
 	}
 	
 	public void invoke(Object sender, mxEventObject evt) {
-		try{
 		mxCell cell = (mxCell) app.getVista().getGraph().getSelectionCell();
 		if(cell != null && cell.isVertex()){
 			if(source == null){
@@ -31,14 +30,9 @@ public class SourceDestSelectionListener implements mxIEventListener {
 				dest = app.getVista().getGraph().getCellToVertexMap().get(cell);
 				Logger.getLogger(this.getClass().getName()).info("Seleccione el Destino: " + dest.toString());
 				app.getModelo().setDestVertex(dest);
-				app.getModelo().startAlgorithm();
-				Logger.getLogger(this.getClass().getName()).info("Arranco el algoritmo");
 			}
 		}else{
 			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");
-		}
-		}catch(CondicionInicialExcepcion ex){
-			Logger.getLogger(this.getClass().getName()).info("Falta seleccionar algun vertice o algo");
 		}
 	}
 

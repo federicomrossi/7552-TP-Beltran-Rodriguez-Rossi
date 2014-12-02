@@ -14,9 +14,11 @@ public class AlgoritmosPruebaAciclidadItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		PruebaAciclidad algoritmo = new PruebaAciclidad(app.getModelo().getGraph());
-		app.getModelo().setAlgorithm(algoritmo);
-//		app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		if(e.getStateChange() == ItemEvent.SELECTED){
+			PruebaAciclidad algoritmo = new PruebaAciclidad(app.getModelo().getGraph());
+			app.getModelo().setAlgorithm(algoritmo);
+			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}
 	}
 
 }

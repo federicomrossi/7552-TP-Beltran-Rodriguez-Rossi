@@ -109,63 +109,28 @@ public class PapersToolbar extends JToolBar {
 	
 	public void addPlayActionListener(ActionListener l){
 		buttonPlay.addActionListener(l);
-		buttonPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TEMP
-				if(tempPlay) {
-					tempPlay = false;
-					buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
-					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
-					
-					// deshabilitamos botones de ejecución
-					buttonNext.setEnabled(false);
-					buttonEnd.setEnabled(false);
-					buttonInit.setEnabled(false);
-					buttonPrevious.setEnabled(false);
-					
-//					// Habilitamos botones del grupo de algoritmos
-//					Enumeration<AbstractButton> groupAlgoritmosBotones = groupAlgoritmos.getElements();
-//					while (groupAlgoritmosBotones.hasMoreElements()) {
-//						JRadioButton element = (JRadioButton) groupAlgoritmosBotones.nextElement();
-//						element.setEnabled(true);
-//					}
-//					
-//					// Habilitamos botones del grupo de modode ejecución
-//					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
-//					while (groupModoBotones.hasMoreElements()) {
-//						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
-//						element.setEnabled(true);
-//					}
-				}
-				else {
-					tempPlay = true;
-					buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
-					buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
-					
-					// Habilitamos botones de ejecución
-					buttonNext.setEnabled(true);
-					buttonEnd.setEnabled(true);
-					buttonInit.setEnabled(true);
-					buttonPrevious.setEnabled(true);
-					
-//					// Deshabilitamos botones del grupo de algoritmos
-//					
-//					Enumeration<AbstractButton> enume = groupAlgoritmos.getElements();
-//					while (enume.hasMoreElements()) {
-//						JRadioButton element = (JRadioButton) enume.nextElement();
-//						element.setEnabled(false);
-//					}
-//					
-//					// Deshabilitamos botones del grupo de modode ejecución
-//					Enumeration<AbstractButton> groupModoBotones = groupModoEjecucion.getElements();
-//					while (groupModoBotones.hasMoreElements()) {
-//						JRadioButton element = (JRadioButton) groupModoBotones.nextElement();
-//						element.setEnabled(false);
-//					}			
-				}
-				// END TEMP
-			}
-		});
+	}
+	
+	public void desbloquearToolbar(){
+		buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
+		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
+		
+		// Habilitamos botones de ejecución
+		buttonNext.setEnabled(true);
+		buttonEnd.setEnabled(true);
+		buttonInit.setEnabled(true);
+		buttonPrevious.setEnabled(true);
+	}
+	
+	public void bloquearToolbar(){
+		buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
+		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
+		
+		// deshabilitamos botones de ejecución
+		buttonNext.setEnabled(false);
+		buttonEnd.setEnabled(false);
+		buttonInit.setEnabled(false);
+		buttonPrevious.setEnabled(false);
 	}
 	
 	public void removeInitActionListener(ActionListener l){

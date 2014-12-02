@@ -18,9 +18,11 @@ public class AlgoritmosSpanningTreeItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		SpanningTree algoritmo = new SpanningTree((ListenableUndirectedGraph<Vertice,Arista>)app.getModelo().getGraph(),app.getModelo().getVertex("v1"));
-		app.getModelo().setAlgorithm(algoritmo);
-		app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		if(e.getStateChange() == ItemEvent.SELECTED){
+			SpanningTree algoritmo = new SpanningTree((ListenableUndirectedGraph<Vertice,Arista>)app.getModelo().getGraph(),app.getModelo().getVertex("v1"));
+			app.getModelo().setAlgorithm(algoritmo);
+			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}
 	}
 
 }

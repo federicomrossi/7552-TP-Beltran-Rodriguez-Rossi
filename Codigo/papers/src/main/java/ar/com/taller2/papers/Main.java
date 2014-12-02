@@ -340,6 +340,14 @@ public class Main extends JApplet {
     	this.panelModo.bloquearTodo();
     }
     
+    public void desbloquearToolbar(){
+    	this.toolBar.desbloquearToolbar();
+    }
+    
+    public void bloquearToolbar(){
+    	this.toolBar.bloquearToolbar();
+    }
+    
     
     /* Listeners del MENU */
     

@@ -29,25 +29,21 @@ public class PlayActionListener implements ActionListener {
 		try {
 			if (on) {
 				app.getModelo().stopAlgorithm();
-				app.getVista().removeSourceDestSelectionListener();
 				on = false;
+				app.getVista().bloquearToolbar();
 				app.getVista().desbloquearPanel();
 				app.getVista().borrarSalida();
 			}
 			else {
-				if(app.getModelo().isSourceDestAlgorithm()){
-					app.getVista().addSourceDestSelectionListener();
-				}else{
-					app.getVista().removeSourceDestSelectionListener();
-					app.getModelo().startAlgorithm();
-				}
+				app.getModelo().startAlgorithm();
 				on = true;
+				app.getVista().desbloquearToolbar();
 				app.getVista().bloquearPanel();
 			}
 			app.getVista().actualizar();
 		}
 		catch (CondicionInicialExcepcion ex) {
-			// Se debería mostrar el msj de las condiciones iniciales en un aviso o algo del estilo
+			Logger.getLogger(this.getClass().getName()).warning("No cumple las condiciones iniciales");
 		}
 		finally {
 			

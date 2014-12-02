@@ -77,7 +77,7 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
         try
         {
             V source = graphT.getEdgeSource(edge);
-            V target = graphT.getEdgeTarget(edge);              
+            V target = graphT.getEdgeTarget(edge);    
             mxCell cell = new mxCell(edge);
             cell.setEdge(true);
             cell.setId(null);
@@ -152,8 +152,10 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
 	}
     
     public void addSourceDestSelectionListener(AprendiendoGrafos app) {
-    	this.sourceDestSelListener = new SourceDestSelectionListener(app);
-    	this.getSelectionModel().addListener(mxEvent.CHANGE, this.sourceDestSelListener);
+    	if(sourceDestSelListener == null){
+    		this.sourceDestSelListener = new SourceDestSelectionListener(app);
+    		this.getSelectionModel().addListener(mxEvent.CHANGE, this.sourceDestSelListener);
+    	}
 	}
     
     public void removeSourceDestSelectionListener() {

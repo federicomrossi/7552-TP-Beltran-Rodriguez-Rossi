@@ -14,9 +14,11 @@ public class AlgoritmosRecorridoAnchuraItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		RecorridoAnchura algoritmo = new RecorridoAnchura(app.getModelo().getGraph(), app.getModelo().getVertex("v1"));
-		app.getModelo().setAlgorithm(algoritmo);
-		app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		if(e.getStateChange() == ItemEvent.SELECTED){
+			RecorridoAnchura algoritmo = new RecorridoAnchura(app.getModelo().getGraph(), app.getModelo().getVertex("v1"));
+			app.getModelo().setAlgorithm(algoritmo);
+			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}
 	}
 
 }

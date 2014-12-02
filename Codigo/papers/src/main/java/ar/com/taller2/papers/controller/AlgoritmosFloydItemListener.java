@@ -15,7 +15,14 @@ public class AlgoritmosFloydItemListener implements ItemListener {
 	}
 	
 	public void itemStateChanged(ItemEvent e) {
-		app.getModelo().setAlgorithm(new FloydWarshall(app.getModelo().getGraph()));
+		if(e.getStateChange() == ItemEvent.SELECTED){
+			FloydWarshall algoritmo = new FloydWarshall(app.getModelo().getGraph());
+			app.getVista().addSourceDestSelectionListener();
+			app.getModelo().setAlgorithm(algoritmo);
+			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}else{
+			app.getVista().removeSourceDestSelectionListener();
+		}
 	}
 
 }

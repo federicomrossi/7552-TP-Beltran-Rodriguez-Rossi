@@ -24,11 +24,13 @@ public class SourceDestSelectionListener implements mxIEventListener {
 			if(source == null){
 				source = app.getVista().getGraph().getCellToVertexMap().get(cell);
 				app.getModelo().setSourceVertex(source);
+				app.getVista().mostrarMensajeEquivocacion("Seleccionado el Origen");
 				Logger.getLogger(this.getClass().getName()).info("Seleccione el Source: " + source.toString());
 			}else {
 				dest = app.getVista().getGraph().getCellToVertexMap().get(cell);
 				Logger.getLogger(this.getClass().getName()).info("Seleccione el Destino: " + dest.toString());
 				app.getModelo().setDestVertex(dest);
+				app.getVista().mostrarMensajeEquivocacion("Seleccionado el Destino. Puede iniciar el algoritmo.");
 			}
 		}else{
 			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");

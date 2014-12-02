@@ -17,6 +17,7 @@ public class AlgoritmosFloydItemListener implements ItemListener {
 		if(e.getStateChange() == ItemEvent.SELECTED){
 			FloydWarshall algoritmo = new FloydWarshall(app.getModelo().getGraph());
 			app.getVista().addSourceDestSelectionListener();
+			app.getVista().mostrarMensajeEquivocacion("Seleccione los vértices de Origen y Destino");
 			app.getModelo().setAlgorithm(algoritmo);
 			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
 		}else{

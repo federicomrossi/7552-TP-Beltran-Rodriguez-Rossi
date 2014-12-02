@@ -19,9 +19,8 @@ public class EndActionListener implements ActionListener {
 
 		while (app.getModelo().hasNextStepAlgorithm()) {
 			try {
-				vCorrecto = app.getModelo().nextStepAlgorithm();
-				vCorrecto.select(true);
-				app.getVista().agregarASalida(vCorrecto.toString());
+				app.getModelo().nextStepAlgorithm();
+				//app.getVista().agregarASalida(vCorrecto.toString());
 			} catch (NextStepNotExistsException e1) {
 				app.getVista().mostrarMensajeEquivocacion(e1.getMessage());
 			}

@@ -2,7 +2,9 @@ package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.jgrapht.alg.KruskalMinimumSpanningTree;
@@ -11,6 +13,7 @@ import org.jgrapht.graph.ListenableUndirectedGraph;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
 public class SpanningTree extends GraphAlgorithm {
@@ -19,7 +22,7 @@ public class SpanningTree extends GraphAlgorithm {
 	private int indiceSiguientePaso = 0;
 	private Vertice inicio;
 	private List<Arista> spanningTree= null;
-	
+	private Set<Arista> sp;
 	
 	public SpanningTree(ListenableUndirectedGraph<Vertice, Arista> graph, Vertice inicio){
 		this.graph=graph;
@@ -28,18 +31,18 @@ public class SpanningTree extends GraphAlgorithm {
 	
 	public void iniciar() {
 		KruskalMinimumSpanningTree<Vertice,Arista> sP = new KruskalMinimumSpanningTree<Vertice,Arista>(graph);
-		spanningTree = new ArrayList<Arista>(sP.getMinimumSpanningTreeEdgeSet());
+		sp=sP.getMinimumSpanningTreeEdgeSet();
+		spanningTree = new ArrayList<Arista>(sp);
 		Logger.getLogger(this.getClass().getSimpleName()).info("Inicié el algoritmo");
 	}
 	
-	public Vertice siguiente() throws NextStepNotExistsException {
+	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.spanningTree.size()) {
 			Arista v = this.spanningTree.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
-		return null;
 	}
 
 	public boolean anterior() {
@@ -57,8 +60,7 @@ public class SpanningTree extends GraphAlgorithm {
 	
 
 	public void terminar() {
-		while(--this.indiceSiguientePaso >= 0) {
-			Arista v = this.spanningTree.get(this.indiceSiguientePaso);
+		for(Arista v : spanningTree){
 			v.select(false);
 		}
 		this.indiceSiguientePaso = 0;
@@ -121,6 +123,19 @@ public class SpanningTree extends GraphAlgorithm {
 	public void setDest(Vertice v) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Boolean isCorrect(Resultado r) {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		List<Arista> res = r.getAristas();
+		if(res.size() > 0){
+			Arista ver = res.get(res.size()-1);
+			if(sp.contains(ver)){
+				ver.select(true);
+				return Boolean.TRUE;
+			}
+		}
+		return Boolean.FALSE;
 	}
 
 }

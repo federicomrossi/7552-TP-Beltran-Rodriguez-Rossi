@@ -16,9 +16,10 @@ public class GraphModel {
 	private ListenableGraph<Vertice, Arista> graph;
 	private int vertice_contador = 0;
 	Executable algoritmo;
+	Resultado resEvaluacion;
 	
 	public GraphModel() {
-		
+		resEvaluacion = new Resultado();
 	}
 	
 	public void nuevoGrafoDirigido() {
@@ -52,6 +53,7 @@ public class GraphModel {
 	
 	public void startAlgorithm() throws CondicionInicialExcepcion {
 		if (algoritmo.cumpleCondicionesIniciales()) {
+			resEvaluacion = new Resultado();
 			algoritmo.iniciar();
 		}
 		else {
@@ -60,11 +62,26 @@ public class GraphModel {
 	}
 
 	public void stopAlgorithm() {
+		resEvaluacion = new Resultado();
 		algoritmo.terminar();		
 	}
 	
-	public Vertice nextStepAlgorithm() throws NextStepNotExistsException {
-		return algoritmo.siguiente();
+	public void nextStepAlgorithm() throws NextStepNotExistsException {
+		algoritmo.siguiente();
+	}
+	
+	public Boolean nextStepEvaluacion() throws NextStepNotExistsException{
+		Boolean r = algoritmo.isCorrect(resEvaluacion);
+		resEvaluacion = new Resultado();
+		return r;
+	}
+	
+	public void addVerticeToResultado(Vertice v){
+		resEvaluacion.addVertice(v);
+	}
+	
+	public void addAristaToResultado(Arista a){
+		resEvaluacion.addArista(a);
 	}
 	
 	public void previousStepAlgorithm(){

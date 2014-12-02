@@ -6,7 +6,7 @@ public interface Executable {
 	
 	public void iniciar();
 	
-	public Vertice siguiente() throws NextStepNotExistsException;
+	public void siguiente() throws NextStepNotExistsException;
 	
 	public boolean anterior();
 	
@@ -21,6 +21,8 @@ public interface Executable {
 	public String getCondicionesIniciales();
 	
 	public boolean tieneSiguiente();
+	
+	public Boolean isCorrect(Resultado r);
 	
 	
 	/**

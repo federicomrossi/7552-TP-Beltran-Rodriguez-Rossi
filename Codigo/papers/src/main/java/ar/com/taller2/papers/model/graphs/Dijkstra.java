@@ -11,6 +11,7 @@ import org.jgrapht.alg.DijkstraShortestPath;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
 public class Dijkstra extends GraphAlgorithm {
@@ -41,13 +42,12 @@ public class Dijkstra extends GraphAlgorithm {
 		Logger.getLogger("Dijkstra").info("Inicie el algoritmo");
 	}
 	
-	public Vertice siguiente() throws NextStepNotExistsException {
+	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("Dijkstra").info("Siguiente");
 		if(this.indiceSiguientePaso < this.camino.size()) {
 			Arista v = this.camino.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
-		return null;
 	}
 
 	public boolean anterior() {
@@ -115,6 +115,22 @@ public class Dijkstra extends GraphAlgorithm {
 
 	public URL getDescripcion() {
 		return this.getClass().getResource("/algorithms/dijkstra-info.html");
+	}
+
+	public Boolean isCorrect(Resultado r) {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		List<Arista> res = r.getAristas();
+		if(this.indiceSiguientePaso < this.camino.size()) {
+			Arista v = this.camino.get(this.indiceSiguientePaso++);
+			if(res.size() > 0){
+				Arista ver = res.get(res.size()-1);
+				if(v.equals(ver)){
+					v.select(true);
+					return Boolean.TRUE;
+				}
+			}
+		}
+		return Boolean.FALSE;
 	}
 
 }

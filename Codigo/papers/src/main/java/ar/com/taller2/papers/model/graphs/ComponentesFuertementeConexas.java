@@ -1,6 +1,7 @@
 package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ import org.jgrapht.graph.ListenableDirectedGraph;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
 public class ComponentesFuertementeConexas extends GraphAlgorithm {
@@ -30,7 +32,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Inicié el algoritmo");
 	}
 	
-	public Vertice siguiente() throws NextStepNotExistsException {
+	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.componentesConexas.size()) {
@@ -41,7 +43,6 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 				v.select(true); //TODO No hay que seleccionar, hay que poner un color especifico
 			}
 		}
-		return null;
 	}
 
 	public boolean anterior() {
@@ -60,8 +61,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	}
 
 	public void terminar() {
-		while(--this.indiceSiguientePaso >= 0) {
-			Set<Vertice> vS = this.componentesConexas.get(this.indiceSiguientePaso);
+		for(Set<Vertice> vS : componentesConexas){
 			Iterator<Vertice> it = vS.iterator();
 			while(it.hasNext()){
 				Vertice v = it.next();
@@ -138,6 +138,19 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	public void setDest(Vertice v) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Boolean isCorrect(Resultado r) {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		List<Vertice> res = r.getVertices();
+		Set<Vertice> ver = new HashSet<Vertice>(res);
+		if(componentesConexas.contains(ver)){
+			for(Vertice v2 : ver){	
+				v2.select(true);
+			}
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
 	}
 
 }

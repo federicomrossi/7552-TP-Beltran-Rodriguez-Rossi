@@ -2,7 +2,6 @@ package ar.com.taller2.papers.controller;
 
 import java.util.logging.Logger;
 
-import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.model.Vertice;
 
 import com.mxgraph.model.mxCell;

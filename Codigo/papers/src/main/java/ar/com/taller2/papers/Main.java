@@ -301,7 +301,7 @@ public class Main extends JApplet {
      * Listener de los clicks en el grafo
      */
     public void addAdapterVertexListener() {
-    	adapter.addVertexListener();
+    	adapter.addVertexListener(aprendiendoGrafos);
     }
 
     public void removeAdapterVertexListener() {

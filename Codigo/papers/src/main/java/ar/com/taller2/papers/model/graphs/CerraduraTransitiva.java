@@ -9,6 +9,7 @@ import org.jgrapht.graph.SimpleDirectedGraph;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
 public class CerraduraTransitiva extends GraphAlgorithm {
@@ -29,9 +30,8 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 	}
 	
 	
-	public Vertice siguiente() throws NextStepNotExistsException {
+	public void siguiente() throws NextStepNotExistsException {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public boolean anterior() {
@@ -98,6 +98,11 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 	public void setDest(Vertice v) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Boolean isCorrect(Resultado r) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

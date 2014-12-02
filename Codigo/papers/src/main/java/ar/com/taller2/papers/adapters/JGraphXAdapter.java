@@ -139,8 +139,8 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
         removeCells(new Object[] { cell } );
     }
     
-    public void addVertexListener() {
-    	this.graphListener = new GraphViewListener(this);
+    public void addVertexListener(AprendiendoGrafos app) {
+    	this.graphListener = new GraphViewListener(app);
     	this.getSelectionModel().addListener(mxEvent.CHANGE, this.graphListener);
 	}
     

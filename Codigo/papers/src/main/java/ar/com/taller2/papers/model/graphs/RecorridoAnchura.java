@@ -1,6 +1,7 @@
 package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -11,6 +12,7 @@ import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
 public class RecorridoAnchura extends GraphAlgorithm implements Executable {
@@ -35,15 +37,13 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Inicie el algoritmo");
 	}
 	
-	public Vertice siguiente() throws NextStepNotExistsException {
+	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("RecorridoAnchura").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
 			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
 			v.select(true);
-			return v;
 		}
-		return null;
 	}
 
 	public boolean anterior() {
@@ -125,6 +125,22 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 	public void setDest(Vertice v) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Boolean isCorrect(Resultado r) {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		List<Vertice> res = r.getVertices();
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			Vertice v = this.recorrido.get(this.indiceSiguientePaso++);
+			if(res.size() > 0){
+				Vertice ver = res.get(res.size()-1);
+				if(v.equals(ver)){
+					v.select(true);
+					return Boolean.TRUE;
+				}
+			}
+		}
+		return Boolean.FALSE;
 	}
 
 

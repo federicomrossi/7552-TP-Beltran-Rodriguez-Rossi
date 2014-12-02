@@ -10,8 +10,8 @@ import org.jgrapht.event.GraphListener;
 import org.jgrapht.event.GraphVertexChangeEvent;
 
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
-import ar.com.taller2.papers.controller.GraphViewListener;
-import ar.com.taller2.papers.controller.SourceDestSelectionListener;
+import ar.com.taller2.papers.controller.jgraphx.GraphViewListener;
+import ar.com.taller2.papers.controller.jgraphx.SourceDestSelectionListener;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;

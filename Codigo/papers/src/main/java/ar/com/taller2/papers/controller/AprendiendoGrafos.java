@@ -1,6 +1,14 @@
 package ar.com.taller2.papers.controller;
 
 import ar.com.taller2.papers.Main;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosComponentesConexasItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosDijkstraItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosFloydItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosFordFulkersonItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosPruebaAciclidadItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoAnchuraItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoProfundidadItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosSpanningTreeItemListener;
 import ar.com.taller2.papers.model.GraphModel;
 
 public class AprendiendoGrafos {

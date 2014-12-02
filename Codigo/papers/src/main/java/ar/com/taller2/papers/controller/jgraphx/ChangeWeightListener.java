@@ -1,8 +1,9 @@
-package ar.com.taller2.papers.controller;
+package ar.com.taller2.papers.controller.jgraphx;
 
 import java.util.Map;
 import java.util.logging.Logger;
 
+import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.model.Arista;
 
 import com.mxgraph.model.mxCell;

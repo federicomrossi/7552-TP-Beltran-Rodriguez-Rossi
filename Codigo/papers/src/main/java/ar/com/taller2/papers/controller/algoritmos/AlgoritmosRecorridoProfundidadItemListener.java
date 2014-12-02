@@ -1,8 +1,9 @@
-package ar.com.taller2.papers.controller;
+package ar.com.taller2.papers.controller.algoritmos;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.model.graphs.RecorridoProfundidad;
 
 public class AlgoritmosRecorridoProfundidadItemListener implements ItemListener {

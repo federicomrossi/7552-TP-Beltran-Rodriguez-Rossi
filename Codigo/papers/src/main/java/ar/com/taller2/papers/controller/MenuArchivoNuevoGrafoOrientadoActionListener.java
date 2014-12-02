@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+import ar.com.taller2.papers.controller.jgraphx.ChangeWeightListener;
+import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
+import ar.com.taller2.papers.controller.jgraphx.NewEdgeListener;
 import ar.com.taller2.papers.model.graphs.PruebaAciclidad;
 
 public class MenuArchivoNuevoGrafoOrientadoActionListener implements ActionListener {
@@ -19,6 +22,7 @@ public class MenuArchivoNuevoGrafoOrientadoActionListener implements ActionListe
 		this.app.getVista().setGraph(app.getModelo().getGraph());
 		this.app.getVista().addNewEdgeListener(new NewEdgeListener(app));
 		this.app.getVista().addChangeWeightListener(new ChangeWeightListener(app));
+		this.app.getVista().addMoveCellListener(new MoveCellListener(app));
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();
 	}

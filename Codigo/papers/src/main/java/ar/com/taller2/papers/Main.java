@@ -379,6 +379,10 @@ public class Main extends JApplet {
 		graphView.addNewEdgeListener(a);
 	}
 	
+	public void addMoveCellListener(mxIEventListener a){
+		graphView.addMoveCellListener(a);
+	}
+	
 	public void addChangeWeightListener(mxIEventListener a){
 		graphView.addChangeWeightListener(a);
 	}

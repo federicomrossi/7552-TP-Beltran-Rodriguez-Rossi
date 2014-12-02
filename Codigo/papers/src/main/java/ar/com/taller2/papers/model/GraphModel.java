@@ -24,11 +24,13 @@ public class GraphModel {
 	
 	public void nuevoGrafoDirigido() {
 		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		this.vertice_contador=0;
 		this.agregarVertices();
 	}
 	
 	public void nuevoGrafoNoDirigido() {
 		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		this.vertice_contador=0;
 	}
 
 	public ListenableGraph<Vertice, Arista> getGraph() {

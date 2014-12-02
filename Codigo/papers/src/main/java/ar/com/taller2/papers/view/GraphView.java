@@ -3,15 +3,16 @@ package ar.com.taller2.papers.view;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.Logger;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
-import ar.com.taller2.papers.controller.ChangeWeightListener;
+import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 
+import com.mxgraph.layout.mxEdgeLabelLayout;
+import com.mxgraph.layout.mxFastOrganicLayout;
+import com.mxgraph.layout.mxOrganicLayout;
 import com.mxgraph.layout.mxParallelEdgeLayout;
-import com.mxgraph.layout.hierarchical.mxHierarchicalLayout;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.mxGraphComponent;
@@ -19,7 +20,6 @@ import com.mxgraph.util.mxConstants;
 import com.mxgraph.util.mxEvent;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 import com.mxgraph.util.mxUtils;
-import com.mxgraph.view.mxEdgeStyle;
 import com.mxgraph.view.mxStylesheet;
 
 public class GraphView extends mxGraphComponent{
@@ -66,7 +66,7 @@ public class GraphView extends mxGraphComponent{
 	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ELBOW);
 	    //edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
 	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
-	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_BLOCK);
+	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
 //	    edge.put(mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
 //	    edge.put(mxConstants.STYLE_ALIGN, mxConstants.ALIGN_RIGHT);
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
@@ -79,6 +79,7 @@ public class GraphView extends mxGraphComponent{
 //		vertex.put(mxConstants.STYLE_GLASS, 1);
 		vertex.put(mxConstants.STYLE_GRADIENTCOLOR, mxUtils.parseColor("#FFFFFF"));
 		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
+		vertex.put(mxConstants.STYLE_PERIMETER, mxConstants.PERIMETER_ELLIPSE);
 		
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);
@@ -86,6 +87,11 @@ public class GraphView extends mxGraphComponent{
 	    graph.setStylesheet(edgeStyle);
 	    
         this.graph.getModel().endUpdate();
+       // mxFastOrganicLayout first = new mxFastOrganicLayout(graph);
+      
+        mxParallelEdgeLayout second = new mxParallelEdgeLayout(graph);
+       // first.execute(graph.getDefaultParent());
+        second.execute(graph.getDefaultParent());
 	}
 	
 	public void actualizar(){
@@ -107,6 +113,8 @@ public class GraphView extends mxGraphComponent{
         	this.graph.getModel().setStyle(cell.getValue(),sb.toString());
         }
         this.graph.getModel().endUpdate();
+       // mxParallelEdgeLayout second = new mxParallelEdgeLayout(graph);
+       // second.execute(graph.getDefaultParent());
         this.graph.refresh();
 	}
 
@@ -121,4 +129,9 @@ public class GraphView extends mxGraphComponent{
 	public void addChangeWeightListener(mxIEventListener a){
 		this.addListener(mxEvent.LABEL_CHANGED, a);
 	}
+	
+	public void addMoveCellListener(mxIEventListener a){
+		this.graph.addListener(mxEvent.CELLS_MOVED, a);
+	}
+	
 }

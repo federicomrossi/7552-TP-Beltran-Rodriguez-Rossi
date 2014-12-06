@@ -1,7 +1,5 @@
 package ar.com.taller2.papers.controller.jgraphx;
 
-import java.util.logging.Logger;
-
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
 
 import com.mxgraph.layout.mxParallelEdgeLayout;

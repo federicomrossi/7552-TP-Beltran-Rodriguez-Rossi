@@ -106,7 +106,7 @@ public class Dijkstra extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/dijkstra-pseudocode.html");
+		return this.getClass().getResource("/algorithms/dijkstra-pseudocode.txt");
 	}
 
 	public String getTitulo() {

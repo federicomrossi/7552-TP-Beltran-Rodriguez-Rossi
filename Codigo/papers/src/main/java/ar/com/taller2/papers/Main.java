@@ -1,5 +1,6 @@
 package ar.com.taller2.papers;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -28,6 +29,8 @@ import org.jgrapht.ListenableGraph;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
+import ar.com.taller2.papers.libraries.LinePainter;
+import ar.com.taller2.papers.libraries.TextLineNumber;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.view.GraphView;
@@ -81,11 +84,10 @@ public class Main extends JApplet {
     JPanel panelInformacion = new JPanel();
     JTextPane textPaneContenidoInformacion = new JTextPane();
     JScrollPane scrollPaneInformacion = new JScrollPane(textPaneContenidoInformacion);
+    
     JPanel panelPseudocodigo = new JPanel();
     JLabel lblTituloAlgoritmo = new JLabel("");
     JTextPane textPaneContenidoAlgoritmo = new JTextPane();
-    
-    
     JScrollPane scrollPaneAlgoritmo = new JScrollPane(textPaneContenidoAlgoritmo, 
 			  JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
 			  JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -104,26 +106,20 @@ public class Main extends JApplet {
 	public Main() throws IOException {
 		
 		setJMenuBar(menuBar);
-		
-		
+
 		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
-		
-		
 		getContentPane().add(splitPane_1);
-		
 		
 		splitPane_1.setLeftComponent(panelIzquierda);
 		panelIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
 		panelAlgoritmos.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelAlgoritmos);
-		panelAlgoritmos.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		
+		panelAlgoritmos.setLayout(new GridLayout(0, 1, 0, 0));    
+	    
 		panelModo.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		panelIzquierda.add(panelModo);
 		panelModo.setLayout(new BoxLayout(panelModo, BoxLayout.Y_AXIS));	
-		
-		
+
 		JSplitPane splitPane_2 = new JSplitPane();
 		splitPane_1.setRightComponent(splitPane_2);
 		
@@ -159,6 +155,10 @@ public class Main extends JApplet {
 		splitPane_2.setBackground(new Color(91,91,91));
 		
 		
+		//
+		// Panel de Informacion
+		//
+		
 		tbdPaneDerecha.addTab("Información", new ImageIcon(this.getClass().getResource("/images/info.png")), panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
 		
@@ -182,6 +182,12 @@ public class Main extends JApplet {
 		scrollPaneInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panelInformacion.add(scrollPaneInformacion);
 		
+		//
+		// Fin panel de informacion
+		
+		//
+		// Panel de Pseudocodigo
+		//
 		
 		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/Terminalicon2.png")), panelPseudocodigo, null);
 		panelPseudocodigo.setLayout(new BoxLayout(panelPseudocodigo, BoxLayout.Y_AXIS));
@@ -191,20 +197,33 @@ public class Main extends JApplet {
 		lblTituloAlgoritmo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelPseudocodigo.add(lblTituloAlgoritmo);
 		
+		try {
+			this.textPaneContenidoAlgoritmo.setPage(this.getClass().getResource("dijkstra-pseudocode.txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		textPaneContenidoAlgoritmo.setContentType("text/html");
-		textPaneContenidoAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
-		textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textPaneContenidoAlgoritmo.setEditable(false);
-		textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(0, 0, 0, 0));
-		textPaneContenidoAlgoritmo.setText("<html><body bgcolor=#5b5b5b style='margin: 0 auto; text-align: center; width: 100%; height:100%;'><img style='vertical-align: middle' src=" + this.getClass().getResource("/images/code-icon.png") + " alt='Pseudo'></body></html>");
-		panelPseudocodigo.add(textPaneContenidoAlgoritmo);
-		
-		
+		LinePainter painter = new LinePainter(this.textPaneContenidoAlgoritmo);
+		painter.setColor(Color.yellow);
+		this.scrollPaneAlgoritmo = new JScrollPane(this.textPaneContenidoAlgoritmo);
+		TextLineNumber tln = new TextLineNumber(this.textPaneContenidoAlgoritmo);
+		this.scrollPaneAlgoritmo.setRowHeaderView(tln);
+		this.textPaneContenidoAlgoritmo.setEditable(false);
+		this.textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
+		this.textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+
 		scrollPaneAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
 		panelPseudocodigo.add(scrollPaneAlgoritmo);
+
+		// Cambiar de linea pseudocodigo
+		int linenumber = 1;
+		this.textPaneContenidoAlgoritmo.setCaretPosition(this.textPaneContenidoAlgoritmo.getDocument().getDefaultRootElement().getElement(linenumber - 1).getStartOffset());  
+				
+		//
+		// Fin panel de pseudocodigo
 		
-		
+
 		this.setSize(1100, 900);
 		splitPane_1.setResizeWeight(0.03d);
 		splitPane_2.setResizeWeight(0d);
@@ -213,7 +232,7 @@ public class Main extends JApplet {
 		panelAlgoritmos.setSize(panelAlgoritmos.getSize().width, 200);
 		
 		aprendiendoGrafos = new AprendiendoGrafos(this);
-		
+
 		
 		//
         // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido

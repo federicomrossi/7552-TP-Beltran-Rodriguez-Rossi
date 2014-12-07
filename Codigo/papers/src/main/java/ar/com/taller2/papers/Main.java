@@ -196,14 +196,7 @@ public class Main extends JApplet {
 		lblTituloAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
 		lblTituloAlgoritmo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		panelPseudocodigo.add(lblTituloAlgoritmo);
-		
-		try {
-			this.textPaneContenidoAlgoritmo.setPage(this.getClass().getResource("dijkstra-pseudocode.txt"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 		LinePainter painter = new LinePainter(this.textPaneContenidoAlgoritmo);
 		painter.setColor(Color.yellow);
 		this.scrollPaneAlgoritmo = new JScrollPane(this.textPaneContenidoAlgoritmo);

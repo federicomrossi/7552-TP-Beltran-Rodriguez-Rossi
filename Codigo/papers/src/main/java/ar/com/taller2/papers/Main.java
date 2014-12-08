@@ -193,22 +193,26 @@ public class Main extends JApplet {
 		panelPseudocodigo.setLayout(new BoxLayout(panelPseudocodigo, BoxLayout.Y_AXIS));
 		
 		
-		lblTituloAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
-		lblTituloAlgoritmo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelPseudocodigo.add(lblTituloAlgoritmo);
+		this.lblTituloAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
+		this.lblTituloAlgoritmo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		this.lblTituloAlgoritmo.setOpaque(true);
+		this.panelPseudocodigo.add(lblTituloAlgoritmo);
 
 		LinePainter painter = new LinePainter(this.textPaneContenidoAlgoritmo);
 		painter.setColor(Color.yellow);
-		this.scrollPaneAlgoritmo = new JScrollPane(this.textPaneContenidoAlgoritmo);
 		TextLineNumber tln = new TextLineNumber(this.textPaneContenidoAlgoritmo);
+		
 		this.scrollPaneAlgoritmo.setRowHeaderView(tln);
+		this.scrollPaneAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
+		this.scrollPaneAlgoritmo.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		
 		this.textPaneContenidoAlgoritmo.setEditable(false);
 		this.textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
 		this.textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-
-		scrollPaneAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
-		panelPseudocodigo.add(scrollPaneAlgoritmo);
-
+		this.textPaneContenidoAlgoritmo.setAutoscrolls(true);
+		
+		this.panelPseudocodigo.add(scrollPaneAlgoritmo);
+		
 		// Cambiar de linea pseudocodigo
 		int linenumber = 1;
 		this.textPaneContenidoAlgoritmo.setCaretPosition(this.textPaneContenidoAlgoritmo.getDocument().getDefaultRootElement().getElement(linenumber - 1).getStartOffset());  

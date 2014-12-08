@@ -3,7 +3,7 @@ package ar.com.taller2.papers.model;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
 
-public class Arista extends DefaultWeightedEdge {
+public class Arista extends DefaultWeightedEdge implements Selectable {
 
 	/**
 	 * 

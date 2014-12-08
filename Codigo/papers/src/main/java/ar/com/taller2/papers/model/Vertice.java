@@ -2,7 +2,7 @@ package ar.com.taller2.papers.model;
 
 import java.io.Serializable;
 
-public class Vertice implements Serializable {
+public class Vertice implements Serializable, Selectable {
 
 	/**
 	 * 

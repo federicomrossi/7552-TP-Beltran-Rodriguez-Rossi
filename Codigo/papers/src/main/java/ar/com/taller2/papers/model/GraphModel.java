@@ -42,6 +42,10 @@ public class GraphModel {
 		this.algoritmo = algoritmo;
 	}
 	
+	public Executable getAlgorithm() {
+		return this.algoritmo;
+	}
+	
 	public Vertice getVertex(String name) {
 		Iterator<Vertice> it = this.graph.vertexSet().iterator();
 		while (it.hasNext()) {

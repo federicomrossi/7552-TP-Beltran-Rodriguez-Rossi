@@ -1,5 +1,7 @@
 package ar.com.taller2.papers.model;
 
+import java.util.List;
+
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
 public interface Executable {
@@ -33,5 +35,7 @@ public interface Executable {
 	
 	public void setSource(Vertice v);
 	public void setDest(Vertice v);
+
+	public Selectable getCurrentItem();
 
 }

@@ -10,7 +10,9 @@ import org.jgrapht.alg.DijkstraShortestPath;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
+import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.LineCode;
 import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Vertice;
 
@@ -21,7 +23,20 @@ public class Dijkstra extends GraphAlgorithm {
 	private Vertice fin;
 	private int indiceSiguientePaso;
 	private List<Arista> camino = new ArrayList<Arista>();
+	private List<Selectable> items = new ArrayList<Selectable>();
 	
+	
+	private void createItemList() {
+		LineCode l = new LineCode(2);
+		this.items.add(l);
+		this.items.add(new LineCode(3));
+		for (int i = 0; i < camino.size(); i++) {
+			this.items.add(new LineCode(4));
+			this.items.add(new LineCode(5));
+			this.items.add(camino.get(i));
+			this.items.add(new LineCode(6));
+		}
+	}
 	
 	public Dijkstra(ListenableGraph<Vertice, Arista> graph){
 		this.graph = graph;
@@ -40,24 +55,44 @@ public class Dijkstra extends GraphAlgorithm {
 		this.camino = dfit.getPathEdgeList();
 		this.indiceSiguientePaso = 0;
 		Logger.getLogger("Dijkstra").info("Inicie el algoritmo");
+		createItemList();
 	}
 	
 	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("Dijkstra").info("Siguiente");
-		if(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
+		if (this.indiceSiguientePaso < this.items.size()) {
+			Selectable v = this.items.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+		else {
+			throw new NextStepNotExistsException("Algoritmo finalizado");
+		}
+//		if(this.indiceSiguientePaso < this.camino.size()) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso++);
+//			v.select(true);
+//		}
+	}
+	
+	public Selectable getCurrentItem() {
+		if (this.indiceSiguientePaso - 1 >= 0) 
+			return this.items.get(this.indiceSiguientePaso - 1);
+		return this.items.get(this.indiceSiguientePaso);
 	}
 
 	public boolean anterior() {
 		Logger.getLogger("Dijkstra").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Arista v = this.camino.get(--this.indiceSiguientePaso);
+			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
 			return true;
 		}
+		
+//		if(this.indiceSiguientePaso - 1 >= 0) {
+//			Arista v = this.camino.get(--this.indiceSiguientePaso);
+//			v.select(false);
+//			return true;
+//		}
 		
 		return false;
 	}
@@ -65,23 +100,33 @@ public class Dijkstra extends GraphAlgorithm {
 	public void principio() {
 		Logger.getLogger("Dijkstra").info("Principio");
 		while(--this.indiceSiguientePaso >= 0) {
-			Arista v = this.camino.get(this.indiceSiguientePaso);
+			Selectable v = this.items.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
-		
+
+//		while(--this.indiceSiguientePaso >= 0) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso);
+//			v.select(false);
+//		}
 		this.indiceSiguientePaso = 0;
 	}
 	
 	public void fin() {
 		Logger.getLogger("Dijkstra").info("Fin");
-		while(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
+		while(this.indiceSiguientePaso < this.items.size()) {
+			Selectable v = this.items.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+
+//		while(this.indiceSiguientePaso < this.camino.size()) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso++);
+//			v.select(true);
+//		}
 	}
 
 	public boolean tieneSiguiente() {
-		return (this.indiceSiguientePaso < this.camino.size());
+		return (this.indiceSiguientePaso < this.items.size());
+//		return (this.indiceSiguientePaso < this.camino.size());
 	}
 
 	public boolean cumpleCondicionesIniciales() {
@@ -95,9 +140,13 @@ public class Dijkstra extends GraphAlgorithm {
 
 	public void terminar() {
 		while(--this.indiceSiguientePaso >= 0) {
-			Arista v = this.camino.get(this.indiceSiguientePaso);
+			Selectable v = this.items.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
+//		while(--this.indiceSiguientePaso >= 0) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso);
+//			v.select(false);
+//		}
 		this.indiceSiguientePaso = 0;
 	}
 

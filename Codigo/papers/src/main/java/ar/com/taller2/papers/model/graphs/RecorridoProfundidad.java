@@ -13,6 +13,7 @@ import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Executable;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Resultado;
+import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
 
 public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
@@ -140,6 +141,11 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 			}
 		}
 		return Boolean.FALSE;
+	}
+
+	public Selectable getCurrentItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

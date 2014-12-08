@@ -30,6 +30,7 @@ public class NextActionListener implements ActionListener {
 			}
 			else {
 				app.getModelo().nextStepAlgorithm();
+				app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
 				//app.getVista().agregarASalida(vCorrecto.toString());
 			}
 			app.getVista().actualizar();

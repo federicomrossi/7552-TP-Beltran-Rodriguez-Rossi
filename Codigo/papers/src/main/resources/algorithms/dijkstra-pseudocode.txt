@@ -1,13 +1,19 @@
 DIJKSTRA (Grafo G, nodo_fuente s)
+    inicializar(G, s)
+    adicionar (cola, (s, distancia[s]))
+    mientras que cola no es vacia hacer
+        u = extraer_minimo(cola)
+        actualizarAdyacencia(u)
+
+INICIALIZAR(Grafo G, nodo_fuente s)
     para u en V[G] hacer
         distancia[u] = INFINITO
         padre[u] = NULL
     distancia[s] = 0
-    adicionar (cola, (s, distancia[s]))
-    mientras que cola no es vacia hacer
-        u = extraer_minimo(cola)
-        para todos v en adyacencia[u] hacer
-            si distancia[v] > distancia[u] + peso (u, v) hacer
-                distancia[v] = distancia[u] + peso (u, v)
-                padre[v] = u
-                adicionar(cola,(v, distancia[v]))
+
+ACTUALIZARADYACENCIA(nodo u)
+    para todos v en adyacencia[u] hacer
+        si distancia[v] > distancia[u] + peso (u, v) hacer
+            distancia[v] = distancia[u] + peso (u, v)
+            padre[v] = u
+            adicionar(cola,(v, distancia[v]))

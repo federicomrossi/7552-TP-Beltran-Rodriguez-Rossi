@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -32,11 +33,14 @@ import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.libraries.LinePainter;
 import ar.com.taller2.papers.libraries.TextLineNumber;
 import ar.com.taller2.papers.model.Arista;
+import ar.com.taller2.papers.model.LineCode;
+import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
 import ar.com.taller2.papers.view.PanelIzquierda;
 import ar.com.taller2.papers.view.PanelModo;
+import ar.com.taller2.papers.view.PanelPseudocodigo;
 import ar.com.taller2.papers.view.PapersMenu;
 import ar.com.taller2.papers.view.PapersToolbar;
 
@@ -85,12 +89,7 @@ public class Main extends JApplet {
     JTextPane textPaneContenidoInformacion = new JTextPane();
     JScrollPane scrollPaneInformacion = new JScrollPane(textPaneContenidoInformacion);
     
-    JPanel panelPseudocodigo = new JPanel();
-    JLabel lblTituloAlgoritmo = new JLabel("");
-    JTextPane textPaneContenidoAlgoritmo = new JTextPane();
-    JScrollPane scrollPaneAlgoritmo = new JScrollPane(textPaneContenidoAlgoritmo, 
-			  JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
-			  JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    PanelPseudocodigo panelPseudocodigo = new PanelPseudocodigo();
     
     JPanel panel_grafo = new JPanel();
     
@@ -189,34 +188,10 @@ public class Main extends JApplet {
 		// Panel de Pseudocodigo
 		//
 		
+
 		tbdPaneDerecha.addTab("Algoritmo", new ImageIcon(this.getClass().getResource("/images/Terminalicon2.png")), panelPseudocodigo, null);
 		panelPseudocodigo.setLayout(new BoxLayout(panelPseudocodigo, BoxLayout.Y_AXIS));
 		
-		
-		this.lblTituloAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
-		this.lblTituloAlgoritmo.setFont(new Font("Tahoma", Font.BOLD, 14));
-		this.lblTituloAlgoritmo.setOpaque(true);
-		this.panelPseudocodigo.add(lblTituloAlgoritmo);
-
-		LinePainter painter = new LinePainter(this.textPaneContenidoAlgoritmo);
-		painter.setColor(Color.yellow);
-		TextLineNumber tln = new TextLineNumber(this.textPaneContenidoAlgoritmo);
-		
-		this.scrollPaneAlgoritmo.setRowHeaderView(tln);
-		this.scrollPaneAlgoritmo.setAlignmentX(Component.LEFT_ALIGNMENT);
-		this.scrollPaneAlgoritmo.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		
-		this.textPaneContenidoAlgoritmo.setEditable(false);
-		this.textPaneContenidoAlgoritmo.setBorder(new EmptyBorder(10, 10, 10, 10));
-		this.textPaneContenidoAlgoritmo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		this.textPaneContenidoAlgoritmo.setAutoscrolls(true);
-		
-		this.panelPseudocodigo.add(scrollPaneAlgoritmo);
-		
-		// Cambiar de linea pseudocodigo
-		int linenumber = 1;
-		this.textPaneContenidoAlgoritmo.setCaretPosition(this.textPaneContenidoAlgoritmo.getDocument().getDefaultRootElement().getElement(linenumber - 1).getStartOffset());  
-				
 		//
 		// Fin panel de pseudocodigo
 		
@@ -304,13 +279,13 @@ public class Main extends JApplet {
      */
     public void mostrarInfoAlgoritmo(String titulo, URL descripcion, URL algoritmo) {
 		lblTituloInformacion.setText(titulo);
-		lblTituloAlgoritmo.setText(titulo);
+		panelPseudocodigo.setTitulo(titulo);
 		try {
 			textPaneContenidoInformacion.setPage(descripcion);
-			textPaneContenidoAlgoritmo.setPage(algoritmo);
+			panelPseudocodigo.setAlgoritmo(algoritmo);
 		} catch (IOException e) {
 			e.printStackTrace();
-}
+		}
     }
     
     /**
@@ -344,6 +319,10 @@ public class Main extends JApplet {
     public void rerenderGrafo() {
     	this.graphView.ordernarVertices();
 	}
+    
+    public void setPseudocodeCurrent(Selectable linea) {
+    	this.panelPseudocodigo.setPseudocodeCurrent(linea);
+    }
     
     public void desbloquearPanel() {
     	this.panelAlgoritmos.desbloquearTodo();

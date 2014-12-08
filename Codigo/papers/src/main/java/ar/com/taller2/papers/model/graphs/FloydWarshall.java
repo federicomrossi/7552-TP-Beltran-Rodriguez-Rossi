@@ -12,6 +12,7 @@ import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
 import ar.com.taller2.papers.model.Resultado;
+import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
 
 public class FloydWarshall extends GraphAlgorithm {
@@ -133,6 +134,12 @@ public class FloydWarshall extends GraphAlgorithm {
 			}
 		}
 		return Boolean.FALSE;
+	}
+
+
+	public Selectable getCurrentItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

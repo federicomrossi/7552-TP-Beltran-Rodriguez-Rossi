@@ -71,12 +71,6 @@ public class Dijkstra extends GraphAlgorithm {
 //			v.select(true);
 //		}
 	}
-	
-	public Selectable getCurrentItem() {
-		if (this.indiceSiguientePaso - 1 >= 0) 
-			return this.items.get(this.indiceSiguientePaso - 1);
-		return this.items.get(this.indiceSiguientePaso);
-	}
 
 	public boolean anterior() {
 		Logger.getLogger("Dijkstra").info("Anterior");
@@ -181,4 +175,10 @@ public class Dijkstra extends GraphAlgorithm {
 		return Boolean.FALSE;
 	}
 
+	
+	public Selectable getCurrentItem() {
+		if (this.indiceSiguientePaso - 1 >= 0) 
+			return this.items.get(this.indiceSiguientePaso - 1);
+		return this.items.get(this.indiceSiguientePaso);
+	}
 }

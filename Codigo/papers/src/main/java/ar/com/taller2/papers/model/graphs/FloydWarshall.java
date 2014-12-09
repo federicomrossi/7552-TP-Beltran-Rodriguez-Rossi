@@ -11,6 +11,7 @@ import org.jgrapht.alg.FloydWarshallShortestPaths;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.LineCode;
 import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
@@ -22,6 +23,16 @@ public class FloydWarshall extends GraphAlgorithm {
 	private Vertice fin;
 	private int indiceSiguientePaso;
 	private List<Arista> camino = new ArrayList<Arista>();
+	private List<Selectable> items = new ArrayList<Selectable>();
+
+	private void createItemList() {
+		for (int i = 0; i < camino.size(); i++) {
+			this.items.add(new LineCode(2));
+			this.items.add(new LineCode(3));
+			this.items.add(camino.get(i));
+		}
+		this.items.add(new LineCode(4));
+	}
 	
 	public FloydWarshall(ListenableGraph<Vertice, Arista> graph){
 		this.graph=graph;
@@ -33,23 +44,37 @@ public class FloydWarshall extends GraphAlgorithm {
 		camino = fW.getShortestPath(inicio, fin).getEdgeList();
 		this.indiceSiguientePaso = 0;
 		Logger.getLogger(getClass().getSimpleName()).info("Inicie el algoritmo");
+		createItemList();
 	}
 	
 	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(getClass().getSimpleName()).info("Siguiente");
-		if(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
+		if(this.indiceSiguientePaso < this.items.size()) {
+			Selectable v = this.items.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+		else {
+			throw new NextStepNotExistsException("No hay más pasos");
+		}
+		
+//		if(this.indiceSiguientePaso < this.camino.size()) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso++);
+//			v.select(true);
+//		}
 	}
 
 	public boolean anterior() {
 		Logger.getLogger(getClass().getSimpleName()).info("Anterior");
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Arista v = this.camino.get(--this.indiceSiguientePaso);
+			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
 			return true;
 		}
+//		if(this.indiceSiguientePaso - 1 >= 0) {
+//			Arista v = this.camino.get(--this.indiceSiguientePaso);
+//			v.select(false);
+//			return true;
+//		}
 		
 		return false;
 	}
@@ -58,28 +83,40 @@ public class FloydWarshall extends GraphAlgorithm {
 
 	public void terminar() {
 		while(--this.indiceSiguientePaso >= 0) {
-			Arista v = this.camino.get(this.indiceSiguientePaso);
+			Selectable v = this.items.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
+//		while(--this.indiceSiguientePaso >= 0) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso);
+//			v.select(false);
+//		}
 		this.indiceSiguientePaso = 0;
 	}
 
 	public void principio() {
 		Logger.getLogger(getClass().getSimpleName()).info("Principio");
 		while(--this.indiceSiguientePaso >= 0) {
-			Arista v = this.camino.get(this.indiceSiguientePaso);
+			Selectable v = this.items.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
+//		while(--this.indiceSiguientePaso >= 0) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso);
+//			v.select(false);
+//		}
 		
 		this.indiceSiguientePaso = 0;
 	}
 
 	public void fin() {
 		Logger.getLogger(getClass().getSimpleName()).info("Fin");
-		while(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
+		while(this.indiceSiguientePaso < this.items.size()) {
+			Selectable v = this.items.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+//		while(this.indiceSiguientePaso < this.camino.size()) {
+//			Arista v = this.camino.get(this.indiceSiguientePaso++);
+//			v.select(true);
+//		}
 	}
 
 	public boolean cumpleCondicionesIniciales() {
@@ -87,7 +124,6 @@ public class FloydWarshall extends GraphAlgorithm {
 	}
 
 	public String getCondicionesIniciales() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -108,7 +144,7 @@ public class FloydWarshall extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/floyd-pseudocode.html");
+		return this.getClass().getResource("/algorithms/floyd-pseudocode.txt");
 	}
 
 	public String getTitulo() {
@@ -138,8 +174,9 @@ public class FloydWarshall extends GraphAlgorithm {
 
 
 	public Selectable getCurrentItem() {
-		// TODO Auto-generated method stub
-		return null;
+		if (this.indiceSiguientePaso - 1 >= 0) 
+			return this.items.get(this.indiceSiguientePaso - 1);
+		return this.items.get(this.indiceSiguientePaso);
 	}
 
 }

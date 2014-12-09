@@ -29,13 +29,15 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	public void siguiente() throws NextStepNotExistsException {
 		if (it != null) {
 			if (it.hasNext()) {
-				it.next();
+				it.next().select(true);
 			}
 			else {
 				throw new NextStepNotExistsException("No hay más ciclos");
 			}
 		}
-		throw new NextStepNotExistsException("No tiene ciclos");
+		else {
+			throw new NextStepNotExistsException("No tiene ciclos");
+		}
 	}
 
 	public boolean anterior() {

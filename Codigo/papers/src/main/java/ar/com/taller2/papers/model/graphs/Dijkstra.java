@@ -27,8 +27,7 @@ public class Dijkstra extends GraphAlgorithm {
 	
 	
 	private void createItemList() {
-		LineCode l = new LineCode(2);
-		this.items.add(l);
+		this.items.add(new LineCode(2));
 		this.items.add(new LineCode(3));
 		for (int i = 0; i < camino.size(); i++) {
 			this.items.add(new LineCode(4));

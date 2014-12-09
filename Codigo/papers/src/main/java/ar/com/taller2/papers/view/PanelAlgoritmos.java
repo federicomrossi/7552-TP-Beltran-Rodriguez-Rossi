@@ -119,8 +119,6 @@ public class PanelAlgoritmos extends JPanel {
 		this.add(radioButtonAlgoritmoRecorridoAnchura);
 		this.add(radioButtonAlgoritmoRecorridoTopologicoProfundidad);
 		this.add(radioButtonAlgoritmoArbolExpansionCosteMinimo);
-	
-		radioButtonAlgoritmoPruebaAciclidad.setSelected(true);
 		
 		bloquearTodo();
 		
@@ -153,6 +151,10 @@ public class PanelAlgoritmos extends JPanel {
 			e.getValue().setEnabled(true);
 		}
 		
+	}
+	
+	public void seleccionarPrimero() {
+		radioButtonAlgoritmoPruebaAciclidad.setSelected(true);
 	}
 	
 	public void bloquearTodoExcepto(JRadioButton seleccion) {

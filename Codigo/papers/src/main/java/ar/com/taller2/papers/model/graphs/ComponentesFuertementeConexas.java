@@ -33,16 +33,37 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Inicié el algoritmo");
 	}
 	
+	private void deseleccionar(int indiceComponente) {
+		if (indiceComponente >= 0 && indiceComponente < componentesConexas.size()) {
+			Set<Vertice> vS = componentesConexas.get(indiceComponente);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(false);
+			}			
+		}
+	}
+
+	private void seleccionar(int indiceComponente) {
+		if (indiceComponente >= 0 && indiceComponente < componentesConexas.size()) {
+			Set<Vertice> vS = componentesConexas.get(indiceComponente);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(true);
+			}			
+		}
+	}
+	
 	public void siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.componentesConexas.size()) {
-			Set<Vertice> vS = componentesConexas.get(this.indiceSiguientePaso++);
-			Iterator<Vertice> it = vS.iterator();
-			while(it.hasNext()){
-				Vertice v = it.next();
-				v.select(true); //TODO No hay que seleccionar, hay que poner un color especifico
-			}
+			deseleccionar(this.indiceSiguientePaso - 1);
+			seleccionar(this.indiceSiguientePaso++);
+		}
+		else {
+			throw new NextStepNotExistsException("No hay más pasos");
 		}
 	}
 
@@ -50,12 +71,8 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Set<Vertice> vS = this.componentesConexas.get(--this.indiceSiguientePaso);
-			Iterator<Vertice> it = vS.iterator();
-			while(it.hasNext()){
-				Vertice v = it.next();
-				v.select(false); //TODO No hay que seleccionar, hay que poner un color especifico
-			}
+			deseleccionar(--this.indiceSiguientePaso);
+			seleccionar(this.indiceSiguientePaso - 1);
 		}
 		
 		return false;
@@ -66,7 +83,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 			Iterator<Vertice> it = vS.iterator();
 			while(it.hasNext()){
 				Vertice v = it.next();
-				v.select(false); //TODO No hay que seleccionar, hay que poner un color especifico
+				v.select(false); 
 			}
 		}
 		this.indiceSiguientePaso = 0;
@@ -81,7 +98,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 			Iterator<Vertice> it = vS.iterator();
 			while(it.hasNext()){
 				Vertice v = it.next();
-				v.select(false); //TODO No hay que seleccionar, hay que poner un color especifico
+				v.select(false); 
 			}
 		}
 		
@@ -111,8 +128,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	}
 
 	public boolean tieneSiguiente() {
-		// TODO Auto-generated method stub
-		return false;
+		return (this.indiceSiguientePaso < this.componentesConexas.size());
 	}
 
 	public URL getAlgoritmo() {
@@ -155,7 +171,6 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	}
 
 	public Selectable getCurrentItem() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

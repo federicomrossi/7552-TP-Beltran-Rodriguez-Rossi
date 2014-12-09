@@ -5,8 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
-import ar.com.taller2.papers.model.Resultado;
-import ar.com.taller2.papers.model.Vertice;
 
 public class NextActionListener implements ActionListener {
 
@@ -17,7 +15,6 @@ public class NextActionListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		Vertice vCorrecto, vRespuesta;
 		try {
 			if ( app.getTutor().esModoEvaluacion() ) {
 				if (!app.getModelo().nextStepEvaluacion()) {

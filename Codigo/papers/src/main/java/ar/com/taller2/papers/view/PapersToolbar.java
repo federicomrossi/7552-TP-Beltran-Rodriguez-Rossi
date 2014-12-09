@@ -91,6 +91,10 @@ public class PapersToolbar extends JToolBar {
 		buttonPlay.setEnabled(true);
 	}
 	
+	public void bloquearFin() {
+		buttonEnd.setEnabled(false);
+	}
+	
 	public void addInitActionListener(ActionListener l){
 		buttonInit.addActionListener(l);
 	}

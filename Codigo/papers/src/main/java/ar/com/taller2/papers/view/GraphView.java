@@ -63,7 +63,7 @@ public class GraphView extends mxGraphComponent{
 		Map<String, Object> edge = new HashMap<String, Object>();
 	    edge.put(mxConstants.STYLE_ROUNDED, true);
 //	    edge.put(mxConstants.STYLE_ORTHOGONAL, false);
-	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ELBOW);
+//	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ELBOW);
 	    //edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
 	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
 	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
@@ -101,7 +101,7 @@ public class GraphView extends mxGraphComponent{
         }
         StringBuilder sb = new StringBuilder();
         sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");
-        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ELBOW).append(";");
+//        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ELBOW).append(";");
         sb.append(mxConstants.STYLE_SHAPE).append("=").append(mxConstants.SHAPE_CURVE).append(";");
         sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.ARROW_BLOCK).append(";");
         sb.append(mxConstants.STYLE_FONTCOLOR).append("=").append("#446299").append(";");

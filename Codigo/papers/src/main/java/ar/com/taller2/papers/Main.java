@@ -244,6 +244,10 @@ public class Main extends JApplet {
     	splitPane_3.setLeftComponent(graphView);
     	layout = new mxParallelEdgeLayout(adapter);
         layout.execute(adapter.getDefaultParent());
+        
+        // Selecciona el primer algoritmo de la lista de posibles
+        this.panelAlgoritmos.seleccionarPrimero();
+        
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);
@@ -341,6 +345,10 @@ public class Main extends JApplet {
     
     public void bloquearToolbar(){
     	this.toolBar.bloquearToolbar();
+    }
+    
+    public void bloquearToolbarFin() {
+    	this.toolBar.bloquearFin();
     }
     
     

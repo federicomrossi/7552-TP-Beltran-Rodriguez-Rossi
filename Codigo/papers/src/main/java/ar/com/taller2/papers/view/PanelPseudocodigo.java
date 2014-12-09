@@ -5,7 +5,6 @@ import java.awt.Component;
 import java.awt.Font;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.logging.Logger;
 
 import javax.swing.JLabel;
@@ -48,7 +47,7 @@ public class PanelPseudocodigo extends JPanel {
 		this.add(lblTituloAlgoritmo);
 
 		LinePainter painter = new LinePainter(this.textPaneContenidoAlgoritmo);
-		painter.setColor(Color.yellow);
+		painter.setColor(Color.lightGray);
 		TextLineNumber tln = new TextLineNumber(this.textPaneContenidoAlgoritmo);
 		
 		this.scrollPaneAlgoritmo.setRowHeaderView(tln);

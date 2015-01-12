@@ -1,0 +1,39 @@
+\contentsline {chapter}{\numberline {1}Primeros pasos}{1}
+\contentsline {section}{Acceso al sistema}{1}
+\contentsline {section}{Espacio de trabajo}{1}
+\contentsline {section}{Cerrar sesi\IeC {\'o}n}{2}
+\contentsline {section}{Salir del sistema}{2}
+\contentsline {chapter}{\numberline {2}ABMs}{5}
+\contentsline {section}{Introducci\IeC {\'o}n}{5}
+\contentsline {section}{Agregar}{6}
+\contentsline {section}{Borrar}{6}
+\contentsline {section}{Modificar}{7}
+\contentsline {section}{Listar}{7}
+\contentsline {section}{Filtrar lista de datos}{7}
+\contentsline {section}{Ampliar lista de datos}{8}
+\contentsline {chapter}{\numberline {3}Clientes}{9}
+\contentsline {section}{Administrar}{9}
+\contentsline {section}{Cuenta Corriente}{9}
+\contentsline {chapter}{\numberline {4}Proveedores}{11}
+\contentsline {section}{Administrar}{11}
+\contentsline {section}{Cuenta Corriente}{11}
+\contentsline {section}{Compras}{12}
+\contentsline {chapter}{\numberline {5}Cheques}{13}
+\contentsline {section}{Administrar}{13}
+\contentsline {chapter}{\numberline {6}Facturaci\IeC {\'o}n}{15}
+\contentsline {section}{Emisiones}{15}
+\contentsline {section}{Gestionar}{17}
+\contentsline {section}{Reportes}{18}
+\contentsline {chapter}{\numberline {7}Reportes}{19}
+\contentsline {section}{Cierre de Caja}{19}
+\contentsline {section}{Cuenta Corriente}{19}
+\contentsline {section}{Libro IVA Compras}{20}
+\contentsline {section}{Libro IVA Ventas}{20}
+\contentsline {section}{Productos}{21}
+\contentsline {section}{Ventas}{22}
+\contentsline {section}{Cheques}{22}
+\contentsline {chapter}{\numberline {8}Seguridad}{23}
+\contentsline {section}{Ajustes}{23}
+\contentsline {section}{Usuarios}{24}
+\contentsline {section}{Vendedores}{24}
+\contentsline {section}{Comisiones}{25}

@@ -41,6 +41,8 @@ public class AprendiendoGrafos {
 		vista.addMenuArchivoNuevoGrafoOrientadoActionListener(new MenuArchivoNuevoGrafoOrientadoActionListener(this));
 		vista.addMenuArchivoNuevoGrafoNoOrientadoActionListener(new MenuArchivoNuevoGrafoNoOrientadoActionListener(this));
 		vista.addMenuEditarNuevoVerticeActionListener(new MenuEditarNuevoVerticeActionListener(this));
+		vista.addMenuArchivoGuardarActionListener(new MenuArchivoGuardarActionListener(this));
+		vista.addMenuArchivoGuardarComoActionListener(new MenuArchivoGuardarComoActionListener(this));
 	}
 	
 	public Main getVista(){

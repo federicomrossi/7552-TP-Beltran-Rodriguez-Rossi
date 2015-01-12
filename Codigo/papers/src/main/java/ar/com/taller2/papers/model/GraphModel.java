@@ -1,12 +1,39 @@
 package ar.com.taller2.papers.model;
 
+import java.awt.FileDialog;
+import java.awt.Frame;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Logger;
+
+
+
+
+
+
+
+
+import org.jgrapht.ListenableGraph;
+import org.jgrapht.ext.*;
+import org.jgrapht.graph.ListenableDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.graph.ListenableDirectedWeightedGraph;
+
+
 
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
+
+
+
+
+
+
+
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
@@ -31,6 +58,19 @@ public class GraphModel {
 	public void nuevoGrafoNoDirigido() {
 		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
 		this.vertice_contador=0;
+	}
+	
+	public void guardarGrafo(String path, String filename) {
+		
+		DOTExporter<Vertice, Arista> export= new DOTExporter<Vertice, Arista>();
+
+		try {
+			BufferedWriter out = new BufferedWriter(new FileWriter(path + filename));
+			export.export(out, this.graph);
+		}
+		catch(IOException e) {
+			System.err.println("Class GraphModel - Error: no se pudo escribir el archivo. " + e.getMessage());
+		}
 	}
 
 	public ListenableGraph<Vertice, Arista> getGraph() {
@@ -170,6 +210,25 @@ public class GraphModel {
 //        this.graph.addEdge( v6, v8 );
 //        this.graph.addEdge( v7, v3 );
 //        this.graph.addEdge( v8, v3 );
+		
+		//this.guardarGrafo("F:/", "grafo.dot");
+		
+		// Guardar grafo
+//		Frame yourJFrame = new Frame();
+//		FileDialog fd = new FileDialog(yourJFrame , "Guardar archivo", FileDialog.SAVE);
+//		fd.setDirectory("C:\\");
+//		fd.setFile("Nuevo grafo.gpht");
+//		fd.setVisible(true);
+//		String directory = fd.getDirectory();
+//		String filename = fd.getFile();
+//		
+//		if (filename == null || directory == null)
+//			System.out.println("You cancelled the choice");
+//		else {
+//			this.guardarGrafo(directory, filename);
+//		}
+		// Fin guardar grafo
+		
 	}
 	// END TEMP
 }

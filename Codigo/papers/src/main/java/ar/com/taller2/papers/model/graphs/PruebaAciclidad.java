@@ -2,12 +2,14 @@ package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.alg.CycleDetector;
+import org.jgrapht.alg.cycle.JohnsonSimpleCycles;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
@@ -19,54 +21,109 @@ import ar.com.taller2.papers.model.Vertice;
 public class PruebaAciclidad extends GraphAlgorithm {
 	
 	ListenableGraph<Vertice, Arista> graph;
-	Set<Vertice> ciclo = null;
-	Iterator<Vertice> it = null;
+	List<List<Vertice>> ciclos = null;
+	private int indiceSiguientePaso;
+
+	
+	private void deseleccionar(int indiceComponente) {
+		if (indiceComponente >= 0 && indiceComponente < ciclos.size()) {
+			List<Vertice> vS = ciclos.get(indiceComponente);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(false);
+			}			
+		}
+	}
+
+	private void seleccionar(int indiceComponente) {
+		if (indiceComponente >= 0 && indiceComponente < ciclos.size()) {
+			List<Vertice> vS = ciclos.get(indiceComponente);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(true);
+			}			
+		}
+	}
 	
 	public PruebaAciclidad(ListenableGraph<Vertice, Arista> graph){
 		this.graph = graph;
 	}
 
 	public void siguiente() throws NextStepNotExistsException {
-		if (it != null) {
-			if (it.hasNext()) {
-				it.next();
+		if (indiceSiguientePaso >= 0) {
+			if(this.indiceSiguientePaso < this.ciclos.size()) {
+				deseleccionar(this.indiceSiguientePaso - 1);
+				seleccionar(this.indiceSiguientePaso++);
 			}
 			else {
 				throw new NextStepNotExistsException("No hay más ciclos");
 			}
 		}
-		throw new NextStepNotExistsException("No tiene ciclos");
+		else {
+			throw new NextStepNotExistsException("No tiene ciclos");
+		}
 	}
 
 	public boolean anterior() {
-		// TODO Auto-generated method stub
+		if(this.indiceSiguientePaso - 1 >= 0) {
+			deseleccionar(--this.indiceSiguientePaso);
+			seleccionar(this.indiceSiguientePaso - 1);
+			return true;
+		}
+		
 		return false;
 	}
 
 	public void iniciar() {
 		
-		CycleDetector<Vertice,Arista> detector = new CycleDetector<Vertice, Arista>((DirectedGraph<Vertice, Arista>) this.graph);
+		JohnsonSimpleCycles<Vertice,Arista> detector = new JohnsonSimpleCycles<Vertice, Arista>((DirectedGraph<Vertice, Arista>) this.graph);
 		Logger.getLogger(this.getClass().getName()).info("Cree el detector de ciclos");
-		if (detector.detectCycles()) {
+		this.ciclos = detector.findSimpleCycles();
+		if (this.ciclos != null) {
+			this.indiceSiguientePaso = 0;
 			Logger.getLogger(this.getClass().getName()).info("Tiene ciclos");
-			this.ciclo = detector.findCycles();
-			it = this.ciclo.iterator();
+		}
+		else {
+			this.indiceSiguientePaso = -1;
 		}
 	}
 
 	public void terminar() {
-		// TODO Auto-generated method stub
-		
+		for(List<Vertice> vS : ciclos){
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(false); 
+			}
+		}
+		this.indiceSiguientePaso = 0;
+		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
 	}
 
-	public void principio() {
-		// TODO Auto-generated method stub
+	public void principio() {		
+		while(--this.indiceSiguientePaso >= 0) {
+			List<Vertice> vS = this.ciclos.get(this.indiceSiguientePaso);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(false); 
+			}
+		}
 		
+		this.indiceSiguientePaso = 0;
 	}
 
 	public void fin() {
-		// TODO Auto-generated method stub
-		
+		while(this.indiceSiguientePaso < this.ciclos.size()) {
+			List<Vertice> vS = this.ciclos.get(this.indiceSiguientePaso++);
+			Iterator<Vertice> it = vS.iterator();
+			while(it.hasNext()){
+				Vertice v = it.next();
+				v.select(true); //TODO No hay que seleccionar, hay que poner un color especifico
+			}
+		}
 	}
 
 	public boolean cumpleCondicionesIniciales() {
@@ -78,10 +135,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public boolean tieneSiguiente() {
-		if (it != null) {
-			return it.hasNext();
-		}
-		return false;
+		return (this.indiceSiguientePaso < this.ciclos.size());
 	}
 
 	public URL getAlgoritmo() {
@@ -116,7 +170,6 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public Selectable getCurrentItem() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

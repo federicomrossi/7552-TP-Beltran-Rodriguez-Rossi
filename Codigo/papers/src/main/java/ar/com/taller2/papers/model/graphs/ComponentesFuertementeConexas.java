@@ -73,6 +73,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			deseleccionar(--this.indiceSiguientePaso);
 			seleccionar(this.indiceSiguientePaso - 1);
+			return true;
 		}
 		
 		return false;

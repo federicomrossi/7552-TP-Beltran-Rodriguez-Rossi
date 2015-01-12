@@ -27,8 +27,7 @@ public class Dijkstra extends GraphAlgorithm {
 	
 	
 	private void createItemList() {
-		LineCode l = new LineCode(2);
-		this.items.add(l);
+		this.items.add(new LineCode(2));
 		this.items.add(new LineCode(3));
 		for (int i = 0; i < camino.size(); i++) {
 			this.items.add(new LineCode(4));
@@ -71,12 +70,6 @@ public class Dijkstra extends GraphAlgorithm {
 //			Arista v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
-	}
-	
-	public Selectable getCurrentItem() {
-		if (this.indiceSiguientePaso - 1 >= 0) 
-			return this.items.get(this.indiceSiguientePaso - 1);
-		return this.items.get(this.indiceSiguientePaso);
 	}
 
 	public boolean anterior() {
@@ -182,4 +175,10 @@ public class Dijkstra extends GraphAlgorithm {
 		return Boolean.FALSE;
 	}
 
+	
+	public Selectable getCurrentItem() {
+		if (this.indiceSiguientePaso - 1 >= 0) 
+			return this.items.get(this.indiceSiguientePaso - 1);
+		return this.items.get(this.indiceSiguientePaso);
+	}
 }

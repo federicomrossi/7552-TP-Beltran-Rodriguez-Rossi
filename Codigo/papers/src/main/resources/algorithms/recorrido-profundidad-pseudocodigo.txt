@@ -1,0 +1,22 @@
+DFS(grafo G)
+     tiempo ← 0
+     PARA CADA vertice u perteneciente a V[G] HACER
+             SI estado[u] = NO_VISITADO ENTONCES
+                     DFS_Visitar(u,tiempo)
+
+DFS_Visitar(nodo u, int tiempo)
+     estado[u] ← VISITADO
+     tiempo ← tiempo + 1
+     d[u] ← tiempo
+     PARA CADA v ∈ Vecinos[u] HACER
+             SI estado[v] = NO_VISITADO ENTONCES
+                     padre[v] ← u
+                     DFS_Visitar(v,tiempo)
+     estado[u] ← TERMINADO
+     tiempo ← tiempo + 1
+     f[u] ← tiempo
+
+INICIALIZAR(Grafo G)
+     PARA CADA vertice u ∈ V[G] HACER
+             estado[u] ← NO_VISITADO
+             padre[u] ← NULO

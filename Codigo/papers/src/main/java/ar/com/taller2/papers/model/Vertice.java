@@ -2,7 +2,7 @@ package ar.com.taller2.papers.model;
 
 import java.io.Serializable;
 
-public class Vertice implements Serializable, Selectable {
+public class Vertice implements Serializable, Selectable, Comparable<Vertice>{
 
 	/**
 	 * 
@@ -10,6 +10,7 @@ public class Vertice implements Serializable, Selectable {
 	private static final long serialVersionUID = 802425425901492413L;
 	private String name;
 	private Boolean selected;
+	private Double priority;
 	
 	public Vertice(String name, Boolean selected){
 		this.name=name;
@@ -22,6 +23,10 @@ public class Vertice implements Serializable, Selectable {
 	
 	public Boolean isSelected(){
 		return selected;
+	}
+
+	public void setPriority(Double p){
+		this.priority=p;
 	}
 	
 	@Override
@@ -52,6 +57,10 @@ public class Vertice implements Serializable, Selectable {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	public int compareTo(Vertice o) {
+		return Double.compare(priority, o.priority);
 	}
 	
 }

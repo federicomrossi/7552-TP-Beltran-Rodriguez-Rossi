@@ -12,6 +12,7 @@ import org.jgrapht.event.GraphVertexChangeEvent;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.controller.jgraphx.GraphViewListener;
 import ar.com.taller2.papers.controller.jgraphx.SourceDestSelectionListener;
+import ar.com.taller2.papers.controller.jgraphx.SourceSelectionListener;
 
 import com.mxgraph.model.mxCell;
 import com.mxgraph.model.mxGeometry;
@@ -32,6 +33,7 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     
     private GraphViewListener graphListener = null;
     private SourceDestSelectionListener sourceDestSelListener = null;
+    private SourceSelectionListener sourceSelListener = null;
 
     /*
      * CONSTRUCTOR
@@ -158,10 +160,24 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     	}
 	}
     
+    public void addSourceSelectionListener(AprendiendoGrafos app) {
+    	if(sourceSelListener == null){
+    		this.sourceSelListener = new SourceSelectionListener(app);
+    		this.getSelectionModel().addListener(mxEvent.CHANGE, this.sourceSelListener);
+    	}
+	}
+    
     public void removeSourceDestSelectionListener() {
     	if (this.sourceDestSelListener != null) {
 	    	this.getSelectionModel().removeListener(this.sourceDestSelListener, mxEvent.CHANGE);
 	    	this.sourceDestSelListener = null;
+    	}
+	}
+    
+    public void removeSourceSelectionListener() {
+    	if (this.sourceSelListener != null) {
+	    	this.getSelectionModel().removeListener(this.sourceSelListener, mxEvent.CHANGE);
+	    	this.sourceSelListener = null;
     	}
 	}
     

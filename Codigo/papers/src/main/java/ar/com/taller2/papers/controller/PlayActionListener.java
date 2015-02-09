@@ -43,6 +43,7 @@ public class PlayActionListener implements ActionListener {
 			app.getVista().actualizar();
 		}
 		catch (CondicionInicialExcepcion ex) {
+			app.getVista().mostrarMensajeEquivocacion(ex.getMessage());
 			Logger.getLogger(this.getClass().getName()).warning("No cumple las condiciones iniciales");
 		}
 		finally {

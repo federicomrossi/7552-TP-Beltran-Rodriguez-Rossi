@@ -395,8 +395,16 @@ public class Main extends JApplet {
 		adapter.addSourceDestSelectionListener(aprendiendoGrafos);
 	}
 	
+	public void addSourceSelectionListener(){
+		adapter.addSourceSelectionListener(aprendiendoGrafos);
+	}
+	
 	public void removeSourceDestSelectionListener(){
 		adapter.removeSourceDestSelectionListener();
+	}
+	
+	public void removeSourceSelectionListener(){
+		adapter.removeSourceSelectionListener();
 	}
 	
 	public void addMenuAyudaAcercaDeActionListener(ActionListener a){

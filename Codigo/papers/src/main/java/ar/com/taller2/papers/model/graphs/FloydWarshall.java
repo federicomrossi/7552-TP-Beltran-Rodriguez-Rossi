@@ -2,11 +2,14 @@ package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.Vector;
 import java.util.logging.Logger;
 
+import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.alg.FloydWarshallShortestPaths;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
@@ -22,8 +25,12 @@ public class FloydWarshall extends GraphAlgorithm {
 	private Vertice inicio;
 	private Vertice fin;
 	private int indiceSiguientePaso;
-	private List<Arista> camino = new ArrayList<Arista>();
 	private List<Selectable> items = new ArrayList<Selectable>();
+	private Vector<Vertice> camino = new Vector<Vertice>();
+	
+	private List<String> recorrido;
+	private List<Vertice> vertices;
+	private double [][] d;
 
 	private void createItemList() {
 		for (int i = 0; i < camino.size(); i++) {
@@ -40,18 +47,17 @@ public class FloydWarshall extends GraphAlgorithm {
 	
 	
 	public void iniciar() {
-		FloydWarshallShortestPaths<Vertice, Arista> fW = new FloydWarshallShortestPaths<Vertice, Arista>(graph);
-		camino = fW.getShortestPath(inicio, fin).getEdgeList();
 		this.indiceSiguientePaso = 0;
+		recorrido = new ArrayList<String>();
 		Logger.getLogger(getClass().getSimpleName()).info("Inicie el algoritmo");
 		createItemList();
+		floydWarshall();
 	}
 	
 	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(getClass().getSimpleName()).info("Siguiente");
-		if(this.indiceSiguientePaso < this.items.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
-			v.select(true);
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			return recorrido.get(indiceSiguientePaso++);
 		}
 		else {
 			throw new NextStepNotExistsException("No hay más pasos");
@@ -61,15 +67,12 @@ public class FloydWarshall extends GraphAlgorithm {
 //			Arista v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
-		return "";
 	}
 
 	public String anterior() {
 		Logger.getLogger(getClass().getSimpleName()).info("Anterior");
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Selectable v = this.items.get(--this.indiceSiguientePaso);
-			v.select(false);
-			return "";
+			return recorrido.get(--indiceSiguientePaso);
 		}
 //		if(this.indiceSiguientePaso - 1 >= 0) {
 //			Arista v = this.camino.get(--this.indiceSiguientePaso);
@@ -83,10 +86,6 @@ public class FloydWarshall extends GraphAlgorithm {
 	
 
 	public void terminar() {
-		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
-			v.select(false);
-		}
 //		while(--this.indiceSiguientePaso >= 0) {
 //			Arista v = this.camino.get(this.indiceSiguientePaso);
 //			v.select(false);
@@ -96,34 +95,27 @@ public class FloydWarshall extends GraphAlgorithm {
 
 	public String principio() {
 		Logger.getLogger(getClass().getSimpleName()).info("Principio");
-		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
-			v.select(false);
-		}
 //		while(--this.indiceSiguientePaso >= 0) {
 //			Arista v = this.camino.get(this.indiceSiguientePaso);
 //			v.select(false);
 //		}
 		
 		this.indiceSiguientePaso = 0;
-		return "";
+		return recorrido.get(indiceSiguientePaso);
 	}
 
 	public String fin() {
 		Logger.getLogger(getClass().getSimpleName()).info("Fin");
-		while(this.indiceSiguientePaso < this.items.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
-			v.select(true);
-		}
 //		while(this.indiceSiguientePaso < this.camino.size()) {
 //			Arista v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
-		return "";
+		this.indiceSiguientePaso = recorrido.size()-1;
+		return recorrido.get(indiceSiguientePaso);
 	}
 
 	public boolean cumpleCondicionesIniciales() {
-		return (inicio != null && fin != null);
+		return true;
 	}
 
 	public String getCondicionesIniciales() {
@@ -131,7 +123,7 @@ public class FloydWarshall extends GraphAlgorithm {
 	}
 
 	public boolean tieneSiguiente() {
-		return (this.indiceSiguientePaso < this.camino.size());
+		return (this.indiceSiguientePaso < this.recorrido.size());
 	}
 
 	public Boolean isSourceDest() {
@@ -161,7 +153,7 @@ public class FloydWarshall extends GraphAlgorithm {
 
 	public Boolean isCorrect(Resultado r) {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
-		List<Arista> res = r.getAristas();
+		/*List<Arista> res = r.getAristas();
 		if(this.indiceSiguientePaso < this.camino.size()) {
 			Arista v = this.camino.get(this.indiceSiguientePaso++);
 			if(res.size() > 0){
@@ -171,7 +163,7 @@ public class FloydWarshall extends GraphAlgorithm {
 					return Boolean.TRUE;
 				}
 			}
-		}
+		}*/
 		return Boolean.FALSE;
 	}
 
@@ -182,4 +174,62 @@ public class FloydWarshall extends GraphAlgorithm {
 		return this.items.get(this.indiceSiguientePaso);
 	}
 
+	public void floydWarshall(){
+		vertices = new ArrayList<Vertice>(graph.vertexSet());
+		int n = vertices.size();
+		d = new double[n][n];
+	    for (int i = 0; i < n; i++) {
+	    	Arrays.fill(d[i], Double.POSITIVE_INFINITY);
+	    }
+	    
+	    for (int i = 0; i < n; i++) {
+            d[i][i] = 0.0;
+        }
+	    
+	    Set<Arista> edges = graph.edgeSet();
+        for (Arista edge : edges) {
+            Vertice v1 = graph.getEdgeSource(edge);
+            Vertice v2 = graph.getEdgeTarget(edge);
+
+            int v_1 = vertices.indexOf(v1);
+            int v_2 = vertices.indexOf(v2);
+
+            d[v_1][v_2] = graph.getEdgeWeight(edge);
+            if (!(graph instanceof DirectedGraph<?, ?>)) {
+                d[v_2][v_1] = graph.getEdgeWeight(edge);
+            }
+        }
+        
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    double ik_kj = d[i][k] + d[k][j];
+                    if (ik_kj < d[i][j]) {
+                        d[i][j] = ik_kj;
+                    }
+                }
+            }
+            recorrido.add(getDistanceMatrix());
+        }
+	    
+	}
+	
+	public String getDistanceMatrix(){
+		int cant = vertices.size();
+		StringBuilder sB = new StringBuilder();
+		sB.append("\t");
+    	for(int i=0;i<cant;i++){
+    		sB.append("v"+(i+1)).append("\t");
+    	}
+    	sB.append("\n");
+    	for(int i=0; i<cant;i++){
+    		sB.append("v"+(i+1)).append("\t");
+    		for(int j=0; j<cant;j++){
+    			sB.append(d[i][j]).append("\t");
+    		}
+    		sB.append("\n");
+    	}
+		return sB.toString();
+	}
+	
 }

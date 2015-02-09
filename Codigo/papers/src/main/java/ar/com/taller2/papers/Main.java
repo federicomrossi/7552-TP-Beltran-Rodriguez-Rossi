@@ -30,6 +30,7 @@ import org.jgrapht.ListenableGraph;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosCerraduraTransitivaItemListener;
 import ar.com.taller2.papers.libraries.LinePainter;
 import ar.com.taller2.papers.libraries.TextLineNumber;
 import ar.com.taller2.papers.model.Arista;
@@ -585,5 +586,6 @@ public class Main extends JApplet {
 	public void removeToolBarPlayActionListener(ActionListener l){
 		toolBar.removePlayActionListener(l);
 	}
+
 	
 }

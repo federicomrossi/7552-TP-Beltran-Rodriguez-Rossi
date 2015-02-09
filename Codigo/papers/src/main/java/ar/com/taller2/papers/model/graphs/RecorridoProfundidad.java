@@ -66,7 +66,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
 	}
 	
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.items.size()) {
@@ -81,15 +81,16 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 //			Vertice v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		Logger.getLogger(this.getClass().getName()).info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
-			return true;
+			return "";
 		}
 
 
@@ -98,10 +99,10 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 //			v.select(false);
 //			return true;
 //		}
-		return false;
+		return "";
 	}
 	
-	public void principio() {
+	public String principio() {
 		Logger.getLogger(this.getClass().getName()).info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
@@ -114,9 +115,10 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 //			v.select(false);
 //		}		
 		this.indiceSiguientePaso = 0;
+		return "";
 	}
 	
-	public void fin() {
+	public String fin() {
 		Logger.getLogger(this.getClass().getName()).info("Fin");
 		
 		while(this.indiceSiguientePaso < this.camino.size()) {
@@ -128,6 +130,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 //			Vertice v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
 	public boolean tieneSiguiente() {

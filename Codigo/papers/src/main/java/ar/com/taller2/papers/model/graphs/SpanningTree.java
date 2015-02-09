@@ -37,25 +37,26 @@ public class SpanningTree extends GraphAlgorithm {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Inicié el algoritmo");
 	}
 	
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.spanningTree.size()) {
 			Arista v = this.spanningTree.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Arista v = this.spanningTree.get(--this.indiceSiguientePaso);
 			v.select(false);
-			return true;
+			return "";
 		}
 		
-		return false;
+		return "";
 	}
 
 	
@@ -68,7 +69,7 @@ public class SpanningTree extends GraphAlgorithm {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Algoritmo finalizado");
 	}
 
-	public void principio() {
+	public String principio() {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Principio");
 		
 		while(--this.indiceSiguientePaso >= 0) {
@@ -77,15 +78,17 @@ public class SpanningTree extends GraphAlgorithm {
 		}
 		
 		this.indiceSiguientePaso = 0;
+		return "";
 	}
 
-	public void fin() {
+	public String fin() {
 		Logger.getLogger(this.getClass().getSimpleName()).info("Fin");
 		
 		while(this.indiceSiguientePaso < this.spanningTree.size()) {
 			Arista v = this.spanningTree.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
+		return "";
 	}
 
 	public boolean cumpleCondicionesIniciales() {

@@ -1,6 +1,7 @@
 package ar.com.taller2.papers.controller;
 
 import ar.com.taller2.papers.Main;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosCerraduraTransitivaItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosComponentesConexasItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosDijkstraItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosFloydItemListener;
@@ -37,6 +38,7 @@ public class AprendiendoGrafos {
 		vista.addAlgoritmosArbolExpansionCosteMinimoItemListener(new AlgoritmosSpanningTreeItemListener(this));
 		vista.addAlgoritmosFloydItemListener(new AlgoritmosFloydItemListener(this));
 		vista.addAlgoritmosFordFulkersonItemListener(new AlgoritmosFordFulkersonItemListener(this));
+		vista.addAlgoritmosCerraduraTransitivaItemListener(new AlgoritmosCerraduraTransitivaItemListener(this));
 		
 		vista.addMenuArchivoNuevoGrafoOrientadoActionListener(new MenuArchivoNuevoGrafoOrientadoActionListener(this));
 		vista.addMenuArchivoNuevoGrafoNoOrientadoActionListener(new MenuArchivoNuevoGrafoNoOrientadoActionListener(this));

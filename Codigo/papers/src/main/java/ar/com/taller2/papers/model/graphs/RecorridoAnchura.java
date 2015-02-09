@@ -54,7 +54,7 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 		createItemList();
 	}
 	
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("RecorridoAnchura").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.items.size()) {
@@ -66,15 +66,16 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 //			Vertice v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		Logger.getLogger("RecorridoAnchura").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
-			return true;
+			return "";
 		}
 
 //		if(this.indiceSiguientePaso - 1 >= 0) {
@@ -82,10 +83,10 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 //			v.select(false);
 //			return true;
 //		}
-		return false;
+		return "";
 	}
 	
-	public void principio() {
+	public String principio() {
 		Logger.getLogger("RecorridoAnchura").info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
@@ -98,6 +99,7 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 //			v.select(false);
 //		}
 		this.indiceSiguientePaso = 0;
+		return "";
 	}
 
 	public void terminar() {
@@ -115,7 +117,7 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 		
 	}
 	
-	public void fin() {
+	public String fin() {
 		Logger.getLogger("RecorridoAnchura").info("Fin");
 		
 		while(this.indiceSiguientePaso < this.camino.size()) {
@@ -126,6 +128,7 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 //			Vertice v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
 	public boolean tieneSiguiente() {

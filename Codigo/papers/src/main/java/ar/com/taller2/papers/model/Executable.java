@@ -8,15 +8,15 @@ public interface Executable {
 	
 	public void iniciar();
 	
-	public void siguiente() throws NextStepNotExistsException;
+	public String siguiente() throws NextStepNotExistsException;
 	
-	public boolean anterior();
+	public String anterior();
 	
 	public void terminar();
 	
-	public void principio();
+	public String principio();
 	
-	public void fin();
+	public String fin();
 	
 	public boolean cumpleCondicionesIniciales();
 	

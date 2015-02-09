@@ -46,7 +46,7 @@ public class FordFulkerson extends GraphAlgorithm {
 		createItemList();
 	}
 
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(getClass().getSimpleName()).info("Siguiente");
 		if(this.indiceSiguientePaso < this.items.size()) {
 			Selectable v = this.items.get(this.indiceSiguientePaso++);
@@ -56,14 +56,15 @@ public class FordFulkerson extends GraphAlgorithm {
 //			Arista v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		Logger.getLogger(getClass().getSimpleName()).info("Anterior");
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
-			return true;
+			return "";
 		}
 
 //		if(this.indiceSiguientePaso - 1 >= 0) {
@@ -71,7 +72,7 @@ public class FordFulkerson extends GraphAlgorithm {
 //			v.select(false);
 //			return true;
 //		}
-		return false;
+		return "";
 	}
 
 	public void terminar() {
@@ -86,7 +87,7 @@ public class FordFulkerson extends GraphAlgorithm {
 		this.indiceSiguientePaso = 0;
 	}
 
-	public void principio() {
+	public String principio() {
 		Logger.getLogger(getClass().getSimpleName()).info("Principio");
 		while(--this.indiceSiguientePaso >= 0) {
 			Selectable v = this.items.get(this.indiceSiguientePaso);
@@ -98,9 +99,10 @@ public class FordFulkerson extends GraphAlgorithm {
 //			v.select(false);
 //		}
 		this.indiceSiguientePaso = 0;
+		return "";
 	}
 
-	public void fin() {
+	public String fin() {
 		Logger.getLogger(getClass().getSimpleName()).info("Fin");
 		while(this.indiceSiguientePaso < this.items.size()) {
 			Selectable v = this.items.get(this.indiceSiguientePaso++);
@@ -110,6 +112,7 @@ public class FordFulkerson extends GraphAlgorithm {
 //			Arista v = this.camino.get(this.indiceSiguientePaso++);
 //			v.select(true);
 //		}
+		return "";
 	}
 
 	public boolean cumpleCondicionesIniciales() {

@@ -55,7 +55,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		}
 	}
 	
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.componentesConexas.size()) {
@@ -65,18 +65,19 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		else {
 			throw new NextStepNotExistsException("No hay más pasos");
 		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			deseleccionar(--this.indiceSiguientePaso);
 			seleccionar(this.indiceSiguientePaso - 1);
-			return true;
+			return "";
 		}
 		
-		return false;
+		return "";
 	}
 
 	public void terminar() {
@@ -91,7 +92,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
 	}
 
-	public void principio() {
+	public String principio() {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Principio");
 		
 		while(--this.indiceSiguientePaso >= 0) {
@@ -104,10 +105,11 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 		}
 		
 		this.indiceSiguientePaso = 0;
+		return "";
 
 	}
 
-	public void fin() {
+	public String fin() {
 		Logger.getLogger("ComponentesFuertementeConexas").info("Fin");
 		
 		while(this.indiceSiguientePaso < this.componentesConexas.size()) {
@@ -118,6 +120,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 				v.select(true); //TODO No hay que seleccionar, hay que poner un color especifico
 			}
 		}
+		return "";
 	}
 
 	public boolean cumpleCondicionesIniciales() {

@@ -1,6 +1,8 @@
 package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -8,7 +10,6 @@ import java.util.logging.Logger;
 
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
-import org.jgrapht.alg.CycleDetector;
 import org.jgrapht.alg.cycle.JohnsonSimpleCycles;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
@@ -51,7 +52,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 		this.graph = graph;
 	}
 
-	public void siguiente() throws NextStepNotExistsException {
+	public String siguiente() throws NextStepNotExistsException {
 		if (indiceSiguientePaso >= 0) {
 			if(this.indiceSiguientePaso < this.ciclos.size()) {
 				deseleccionar(this.indiceSiguientePaso - 1);
@@ -64,16 +65,17 @@ public class PruebaAciclidad extends GraphAlgorithm {
 		else {
 			throw new NextStepNotExistsException("No tiene ciclos");
 		}
+		return "";
 	}
 
-	public boolean anterior() {
+	public String anterior() {
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			deseleccionar(--this.indiceSiguientePaso);
 			seleccionar(this.indiceSiguientePaso - 1);
-			return true;
+			return "";
 		}
 		
-		return false;
+		return "";
 	}
 
 	public void iniciar() {
@@ -102,7 +104,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
 	}
 
-	public void principio() {		
+	public String principio() {		
 		while(--this.indiceSiguientePaso >= 0) {
 			List<Vertice> vS = this.ciclos.get(this.indiceSiguientePaso);
 			Iterator<Vertice> it = vS.iterator();
@@ -113,9 +115,10 @@ public class PruebaAciclidad extends GraphAlgorithm {
 		}
 		
 		this.indiceSiguientePaso = 0;
+		return "";
 	}
 
-	public void fin() {
+	public String fin() {
 		while(this.indiceSiguientePaso < this.ciclos.size()) {
 			List<Vertice> vS = this.ciclos.get(this.indiceSiguientePaso++);
 			Iterator<Vertice> it = vS.iterator();
@@ -124,6 +127,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 				v.select(true); //TODO No hay que seleccionar, hay que poner un color especifico
 			}
 		}
+		return "";
 	}
 
 	public boolean cumpleCondicionesIniciales() {
@@ -165,8 +169,20 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public Boolean isCorrect(Resultado r) {
-		// TODO Auto-generated method stub
-		return null;
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		List<Vertice> res = r.getVertices();
+		Set<Vertice> ver = new HashSet<Vertice>(res);
+		List<HashSet<Vertice>> results = new ArrayList<HashSet<Vertice>>();
+		for( List<Vertice> cic : ciclos){
+			results.add(new HashSet<Vertice>(cic));
+		}
+		if(results.contains(ver)){
+			for(Vertice v2 : res){	
+				v2.select(true);
+			}
+			return Boolean.TRUE;
+		}
+		return Boolean.FALSE;
 	}
 
 	public Selectable getCurrentItem() {

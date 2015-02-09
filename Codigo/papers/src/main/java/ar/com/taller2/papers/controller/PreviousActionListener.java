@@ -12,8 +12,10 @@ public class PreviousActionListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		app.getModelo().previousStepAlgorithm();
+		String result = app.getModelo().previousStepAlgorithm();
 		app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
+		app.getVista().borrarSalida();
+		app.getVista().agregarASalida(result);
 		app.getVista().actualizar();
 	}
 

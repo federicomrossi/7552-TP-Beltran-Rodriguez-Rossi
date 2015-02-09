@@ -112,8 +112,8 @@ public class GraphModel {
 		algoritmo.terminar();		
 	}
 	
-	public void nextStepAlgorithm() throws NextStepNotExistsException {
-		algoritmo.siguiente();
+	public String nextStepAlgorithm() throws NextStepNotExistsException {
+		return algoritmo.siguiente();
 	}
 	
 	public Boolean nextStepEvaluacion() throws NextStepNotExistsException{
@@ -130,8 +130,8 @@ public class GraphModel {
 		resEvaluacion.addArista(a);
 	}
 	
-	public void previousStepAlgorithm(){
-		algoritmo.anterior();
+	public String previousStepAlgorithm(){
+		return algoritmo.anterior();
 	}
 	
 	public void initAlgorithm() {
@@ -201,7 +201,7 @@ public class GraphModel {
 		
 		this.graph.addEdge( v1, v2 );
 		this.graph.addEdge( v2, v3);
-		this.graph.addEdge(v3, v1);
+		//this.graph.addEdge(v3, v1);
 //		this.graph.addEdge( v1, v4);
 //		this.graph.addEdge( v2, v6 );
 //		this.graph.addEdge( v4, v5 );

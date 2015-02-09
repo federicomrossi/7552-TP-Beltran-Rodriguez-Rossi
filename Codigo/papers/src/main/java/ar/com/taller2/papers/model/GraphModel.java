@@ -134,12 +134,12 @@ public class GraphModel {
 		return algoritmo.anterior();
 	}
 	
-	public void initAlgorithm() {
-		algoritmo.principio();
+	public String initAlgorithm() {
+		return algoritmo.principio();
 	}
 	
-	public void endAlgorithm() {
-		algoritmo.fin();
+	public String endAlgorithm() {
+		return algoritmo.fin();
 	}
 	
 	public boolean hasNextStepAlgorithm() {

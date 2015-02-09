@@ -87,7 +87,8 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 			 Logger.getLogger("MATRIX").info(getAdjacencyMatrix(recorrido.get(indiceSiguientePaso)));
 	         
 		}
-		return getAdjacencyMatrix(recorrido.get(indiceSiguientePaso+1));
+		this.indiceSiguientePaso = 0;
+		return getAdjacencyMatrix(recorrido.get(indiceSiguientePaso));
 	}
 
 	public String fin() {
@@ -109,8 +110,7 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 	}
 
 	public boolean tieneSiguiente() {
-		// TODO Auto-generated method stub
-		return false;
+		return (this.indiceSiguientePaso < this.recorrido.size());
 	}
 
 	public URL getAlgoritmo() {

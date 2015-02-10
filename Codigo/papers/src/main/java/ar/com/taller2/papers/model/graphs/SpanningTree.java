@@ -2,10 +2,11 @@ package ar.com.taller2.papers.model.graphs;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
+
+import javax.swing.table.TableModel;
 
 import org.jgrapht.alg.KruskalMinimumSpanningTree;
 import org.jgrapht.graph.ListenableUndirectedGraph;
@@ -143,6 +144,21 @@ public class SpanningTree extends GraphAlgorithm {
 	}
 
 	public Selectable getCurrentItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean needMatrix() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getMatrixColumns() {
 		// TODO Auto-generated method stub
 		return null;
 	}

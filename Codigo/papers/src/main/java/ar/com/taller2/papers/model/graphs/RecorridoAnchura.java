@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import javax.swing.table.TableModel;
+
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.traverse.BreadthFirstIterator;
 
@@ -190,6 +192,24 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 		if (this.indiceSiguientePaso - 1 >= 0) 
 			return this.items.get(this.indiceSiguientePaso - 1);
 		return this.items.get(this.indiceSiguientePaso);
+	}
+
+
+	public boolean needMatrix() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

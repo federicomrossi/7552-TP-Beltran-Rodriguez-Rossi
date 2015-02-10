@@ -9,6 +9,8 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.swing.table.TableModel;
+
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
@@ -219,5 +221,19 @@ public class Dijkstra extends GraphAlgorithm {
     	}
     	sB.append("\n");
     	return sB.toString();
+	}
+
+	public boolean needMatrix() {
+		return true;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

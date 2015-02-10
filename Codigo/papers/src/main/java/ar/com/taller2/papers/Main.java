@@ -1,6 +1,5 @@
 package ar.com.taller2.papers;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -10,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -23,6 +21,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableModel;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,11 +29,7 @@ import org.jgrapht.ListenableGraph;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
-import ar.com.taller2.papers.controller.algoritmos.AlgoritmosCerraduraTransitivaItemListener;
-import ar.com.taller2.papers.libraries.LinePainter;
-import ar.com.taller2.papers.libraries.TextLineNumber;
 import ar.com.taller2.papers.model.Arista;
-import ar.com.taller2.papers.model.LineCode;
 import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.view.GraphView;
@@ -593,6 +588,12 @@ public class Main extends JApplet {
 	
 	public void removeToolBarPlayActionListener(ActionListener l){
 		toolBar.removePlayActionListener(l);
+	}
+
+
+	public void showMatrixInput(TableModel data) {
+		Frame padre = (Frame)SwingUtilities.windowForComponent(this.panelCentro);
+		InputMatrixDialog dialog = new InputMatrixDialog(padre, data, "Ingrese el resultado", aprendiendoGrafos);
 	}
 
 	

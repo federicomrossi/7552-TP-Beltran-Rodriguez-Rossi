@@ -8,6 +8,9 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.ListenableGraph;
 
@@ -32,6 +35,12 @@ public class FloydWarshall extends GraphAlgorithm {
 	private List<Vertice> vertices;
 	private double [][] d;
 
+	// Data para modo evaluacion	
+	String[][] data;
+	String[] cols;
+	
+	TableModel model;
+	
 	private void createItemList() {
 		for (int i = 0; i < camino.size(); i++) {
 			this.items.add(new LineCode(2));
@@ -52,8 +61,31 @@ public class FloydWarshall extends GraphAlgorithm {
 		Logger.getLogger(getClass().getSimpleName()).info("Inicie el algoritmo");
 		createItemList();
 		floydWarshall();
+		fillColsAndRows(cols,data);
+		
+		model = new DefaultTableModel(data,cols);
+		
 	}
 	
+	private void fillColsAndRows(String[] cols2, String[][] data2) {
+		int cant = vertices.size()+1;
+		data = new String[vertices.size()][vertices.size()+1];
+		cols = new String[vertices.size()+1];
+		cols[0] = "";
+		data[0][0]="";
+		for(int i=0;i<cant-1;i++){
+			for(int j=1;j<cant;j++){
+				data[i][j]=String.valueOf(0);
+			}
+		}
+		for(Integer i=1;i<cant;i++){
+    		cols[i] = "v"+i;
+    		data[i-1][0] = "v"+i;
+    	}
+		
+		
+	}
+
 	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger(getClass().getSimpleName()).info("Siguiente");
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
@@ -151,23 +183,6 @@ public class FloydWarshall extends GraphAlgorithm {
 	}
 
 
-	public Boolean isCorrect(Resultado r) {
-		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
-		/*List<Arista> res = r.getAristas();
-		if(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
-			if(res.size() > 0){
-				Arista ver = res.get(res.size()-1);
-				if(v.equals(ver)){
-					v.select(true);
-					return Boolean.TRUE;
-				}
-			}
-		}*/
-		return Boolean.FALSE;
-	}
-
-
 	public Selectable getCurrentItem() {
 		if (this.indiceSiguientePaso - 1 >= 0) 
 			return this.items.get(this.indiceSiguientePaso - 1);
@@ -231,5 +246,51 @@ public class FloydWarshall extends GraphAlgorithm {
     	}
 		return sB.toString();
 	}
+
+	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			String v = this.recorrido.get(this.indiceSiguientePaso++);
+			int cant = vertices.size();
+			StringBuilder sB = new StringBuilder();
+			sB.append("\t");
+	    	for(int i=0;i<cant;i++){
+	    		sB.append("v"+(i+1)).append("\t");
+	    	}
+	    	sB.append("\n");
+	    	for(int i=0; i<cant;i++){
+	    		sB.append("v"+(i+1)).append("\t");
+	    		for(int j=0; j<cant;j++){
+	    			sB.append(Double.valueOf((String)model.getValueAt(i,j+1))).append("\t");
+	    		}
+	    		sB.append("\n");
+	    	}
+	    	Logger.getLogger(this.getClass().getName()).info("Input: "+sB.toString());
+	    	Logger.getLogger(this.getClass().getName()).info("Result: "+v);
+	    	if(v.equals(sB.toString())){
+	    		return true;
+	    	}
+		}else{
+			throw new NextStepNotExistsException("No hay más pasos");
+		}
+		return Boolean.FALSE;
+	}
+	
+	
+	public boolean needMatrix() {
+		return true;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return model;
+	}
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
+		return cols;
+	}
+	
+	
 	
 }

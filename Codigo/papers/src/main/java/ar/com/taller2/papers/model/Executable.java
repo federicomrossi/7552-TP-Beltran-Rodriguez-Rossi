@@ -1,6 +1,6 @@
 package ar.com.taller2.papers.model;
 
-import java.util.List;
+import javax.swing.table.TableModel;
 
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
@@ -24,7 +24,7 @@ public interface Executable {
 	
 	public boolean tieneSiguiente();
 	
-	public Boolean isCorrect(Resultado r);
+	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException;;
 	
 	
 	/**
@@ -37,5 +37,12 @@ public interface Executable {
 	public void setDest(Vertice v);
 
 	public Selectable getCurrentItem();
+
+	public boolean needMatrix();
+
+	public TableModel getMatrixData();
+
+	@Deprecated
+	public Object[] getMatrixColumns();
 
 }

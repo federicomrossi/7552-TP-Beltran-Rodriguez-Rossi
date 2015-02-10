@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.swing.table.TableModel;
+
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.Graphs;
 import org.jgrapht.alg.cycle.JohnsonSimpleCycles;
@@ -236,5 +238,20 @@ public class CerraduraTransitiva extends GraphAlgorithm {
     	}
     	return sB.toString();
     }
+
+	public boolean needMatrix() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

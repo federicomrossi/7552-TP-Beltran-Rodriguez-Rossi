@@ -13,6 +13,8 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import javax.swing.table.TableModel;
+
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
@@ -25,7 +27,7 @@ import ar.com.taller2.papers.model.Vertice;
 
 public class FordFulkerson extends GraphAlgorithm {
 
-	private ListenableDirectedGraph<Vertice, Arista> graph;
+
 	private Vertice inicio;
 	private Vertice fin;
 	private int indiceSiguientePaso;
@@ -401,6 +403,21 @@ public class FordFulkerson extends GraphAlgorithm {
     	
     	
     }
+
+
+	public boolean needMatrix() {
+		return true;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 	
 }

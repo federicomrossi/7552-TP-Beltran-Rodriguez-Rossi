@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.swing.table.TableModel;
+
 import org.jgrapht.alg.StrongConnectivityInspector;
 import org.jgrapht.graph.ListenableDirectedGraph;
 
@@ -175,6 +177,21 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	}
 
 	public Selectable getCurrentItem() {
+		return null;
+	}
+
+	public boolean needMatrix() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public TableModel getMatrixData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object[] getMatrixColumns() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -15,8 +15,12 @@ import java.util.logging.Logger;
 
 
 
+
+
+
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.*;
+import org.jgrapht.generate.RandomGraphGenerator;
 import org.jgrapht.graph.ListenableDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
@@ -24,9 +28,13 @@ import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 
 
 import org.jgrapht.ListenableGraph;
+import org.jgrapht.VertexFactory;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
+
+
+
 
 
 
@@ -50,14 +58,44 @@ public class GraphModel {
 	}
 	
 	public void nuevoGrafoDirigido() {
-		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
 		this.vertice_contador=0;
-		this.agregarVertices();
+		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		
+		//this.agregarVertices();
+	}
+	
+	public void nuevoGrafoDirigidoAleatorio(int vertices, int aristas){
+		this.vertice_contador=0;
+		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		RandomGraphGenerator<Vertice, Arista> gen = new RandomGraphGenerator<Vertice, Arista>(vertices, aristas);
+		gen.generateGraph(this.graph, new VertexFactory<Vertice>() {
+			
+			public Vertice createVertex() {
+				Vertice v = new Vertice("v" + (++vertice_contador), false);
+				return v;
+			}
+		}, null);
+			
 	}
 	
 	public void nuevoGrafoNoDirigido() {
-		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
 		this.vertice_contador=0;
+		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		
+	}
+	
+	public void nuevoGrafoNoDirigidoAleatorio(int vertices, int aristas){
+		this.vertice_contador=0;
+		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		RandomGraphGenerator<Vertice, Arista> gen = new RandomGraphGenerator<Vertice, Arista>(vertices, aristas);
+		gen.generateGraph(this.graph, new VertexFactory<Vertice>() {
+			
+			public Vertice createVertex() {
+				Vertice v = new Vertice("v" + (++vertice_contador), false);
+				return v;
+			}
+		}, null);
+			
 	}
 	
 	public void guardarGrafo(String path, String filename) {

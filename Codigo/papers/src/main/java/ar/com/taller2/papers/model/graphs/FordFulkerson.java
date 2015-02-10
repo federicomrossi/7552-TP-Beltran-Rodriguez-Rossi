@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.jgrapht.DirectedGraph;
@@ -51,7 +52,11 @@ public class FordFulkerson extends GraphAlgorithm {
 	  
     public static final double DEFAULT_EPSILON = 0.000000001;
 	 
-	
+ // Data para modo evaluacion	
+    String[][] data;
+	String[] cols;
+	TableModel model;
+    
 	
 	
 	
@@ -81,6 +86,11 @@ public class FordFulkerson extends GraphAlgorithm {
         
         buildInternalNetwork();
         calculateMaximumFlow(inicio, fin);
+        
+        fillColsAndRows(cols,data);
+		
+		model = new DefaultTableModel(data,cols);
+        
         Logger.getLogger(getClass().getSimpleName()).info("Flow: " + maximumFlowValue);
 	}
 
@@ -193,9 +203,25 @@ public class FordFulkerson extends GraphAlgorithm {
 		return this.getClass().getResource("/algorithms/ford-fulkerson-info.html");
 	}
 
-	public Boolean isCorrect(Resultado r) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException {
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			String v = this.recorrido.get(this.indiceSiguientePaso++).result;
+			int cant = network.vertexSet().size();
+			StringBuilder sB = new StringBuilder();
+	    	sB.append("\n").append("Camino del flujo parcial: ");
+	    	Set<Arista> aristas = this.recorrido.get(this.indiceSiguientePaso).aristas;
+	    	sB.append("Flujo Total: ").append(maximumFlowValue);
+	    	
+	    	Logger.getLogger(this.getClass().getName()).info("Input: "+sB.toString());
+	    	Logger.getLogger(this.getClass().getName()).info("Result: "+v);
+	    	if(v.equals(sB.toString())){
+	    		return true;
+	    	}
+		}else{
+			throw new NextStepNotExistsException("No hay más pasos");
+		}
+		return Boolean.FALSE;
 	}
 
 	public Selectable getCurrentItem() {
@@ -410,8 +436,7 @@ public class FordFulkerson extends GraphAlgorithm {
 	}
 
 	public TableModel getMatrixData() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 	public Object[] getMatrixColumns() {
@@ -419,5 +444,16 @@ public class FordFulkerson extends GraphAlgorithm {
 		return null;
 	}
     
+	private void fillColsAndRows(String[] cols2, String[][] data2) {
+		data = new String[1][3];
+		cols = new String[3];
+		cols[0] = "Camino";
+		cols[1] = "Flujo Parcial";
+		cols[2] = "Flujo Total";
+		data[0][0] = "";
+		data[0][1] = String.valueOf(0);
+		data[0][2] = String.valueOf(0);
+	}
+	
 	
 }

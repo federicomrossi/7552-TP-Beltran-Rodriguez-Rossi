@@ -350,12 +350,20 @@ public class Main extends JApplet {
     
     /* Listeners del MENU */
     
-    public void addMenuArchivoNuevoGrafoOrientadoActionListener(ActionListener a){
-		menuBar.addArchivoNuevoGrafoOrientadoActionListener(a);
+    public void addMenuArchivoNuevoGrafoOrientadoAleatorioActionListener(ActionListener a){
+		menuBar.addArchivoNuevoGrafoOrientadoAleatorioActionListener(a);
+	}
+    
+    public void addMenuArchivoNuevoGrafoOrientadoVacioActionListener(ActionListener a){
+		menuBar.addArchivoNuevoGrafoOrientadoVacioActionListener(a);
 	}
 	
-	public void addMenuArchivoNuevoGrafoNoOrientadoActionListener(ActionListener a){
-		menuBar.addArchivoNuevoGrafoNoOrientadoActionListener(a);
+	public void addMenuArchivoNuevoGrafoNoOrientadoAleatorioActionListener(ActionListener a){
+		menuBar.addArchivoNuevoGrafoNoOrientadoAleatorioActionListener(a);
+	}
+	
+	public void addMenuArchivoNuevoGrafoNoOrientadoVacioActionListener(ActionListener a){
+		menuBar.addArchivoNuevoGrafoNoOrientadoVacioActionListener(a);
 	}
 	
 	public void addMenuArchivoAbrirActionListener(ActionListener a){

@@ -7,11 +7,11 @@ import ar.com.taller2.papers.controller.jgraphx.ChangeWeightListener;
 import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
 import ar.com.taller2.papers.controller.jgraphx.NewEdgeListener;
 
-public class MenuArchivoNuevoGrafoNoOrientadoActionListener implements ActionListener {
+public class MenuArchivoNuevoGrafoNoOrientadoVacioActionListener implements ActionListener {
 	
 	AprendiendoGrafos app;
 	
-	public MenuArchivoNuevoGrafoNoOrientadoActionListener(AprendiendoGrafos app){
+	public MenuArchivoNuevoGrafoNoOrientadoVacioActionListener(AprendiendoGrafos app){
 		this.app=app;
 	}
 

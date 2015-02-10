@@ -24,7 +24,7 @@ public class AlgoritmosDijkstraItemListener implements ItemListener {
 			app.getModelo().setAlgorithm(algoritmo);
 			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
 		}else{
-			app.getVista().removeSourceDestSelectionListener();
+			app.getVista().removeSourceSelectionListener();
 		}
 	}
 

@@ -40,8 +40,12 @@ public class AprendiendoGrafos {
 		vista.addAlgoritmosFordFulkersonItemListener(new AlgoritmosFordFulkersonItemListener(this));
 		vista.addAlgoritmosCerraduraTransitivaItemListener(new AlgoritmosCerraduraTransitivaItemListener(this));
 		
-		vista.addMenuArchivoNuevoGrafoOrientadoActionListener(new MenuArchivoNuevoGrafoOrientadoActionListener(this));
-		vista.addMenuArchivoNuevoGrafoNoOrientadoActionListener(new MenuArchivoNuevoGrafoNoOrientadoActionListener(this));
+		vista.addMenuArchivoNuevoGrafoOrientadoVacioActionListener(new MenuArchivoNuevoGrafoOrientadoVacioActionListener(this));
+		vista.addMenuArchivoNuevoGrafoOrientadoAleatorioActionListener(new MenuArchivoNuevoOrientadoAleatorioActionListener(this));
+		
+		vista.addMenuArchivoNuevoGrafoNoOrientadoAleatorioActionListener(new MenuArchivoNuevoNoOrientadoAleatorioActionListener(this));
+		vista.addMenuArchivoNuevoGrafoNoOrientadoVacioActionListener(new MenuArchivoNuevoGrafoNoOrientadoVacioActionListener(this));
+		
 		vista.addMenuEditarNuevoVerticeActionListener(new MenuEditarNuevoVerticeActionListener(this));
 		vista.addMenuArchivoGuardarActionListener(new MenuArchivoGuardarActionListener(this));
 		vista.addMenuArchivoGuardarComoActionListener(new MenuArchivoGuardarComoActionListener(this));

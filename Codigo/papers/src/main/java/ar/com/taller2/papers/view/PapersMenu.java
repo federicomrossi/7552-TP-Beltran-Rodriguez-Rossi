@@ -19,8 +19,14 @@ public class PapersMenu extends JMenuBar {
 
 	JMenu mnArchivo = new JMenu("Archivo");
 	JMenu mnNuevo = new JMenu("Nuevo");
-	JMenuItem mntmGrafoOrientado = new JMenuItem("Grafo Orientado");
-	JMenuItem mntmGrafoNoOrientado = new JMenuItem("Grafo No Orientado");
+	JMenu mntmGrafoOrientado = new JMenu("Grafo Orientado");
+	JMenu mntmGrafoNoOrientado = new JMenu("Grafo No Orientado");
+	JMenuItem mntmGrafoOrientadoAleatorio = new JMenuItem("Grafo Aleatorio");
+	JMenuItem mntmGrafoOrientadoVacio = new JMenuItem("Grafo Vacío");
+	
+	JMenuItem mntmGrafoNoOrientadoAleatorio = new JMenuItem("Grafo Aleatorio");
+	JMenuItem mntmGrafoNoOrientadoVacio = new JMenuItem("Grafo Vacío");
+	
 	JSeparator separator_1 = new JSeparator();
 	JMenuItem mntmAbrir = new JMenuItem("Abrir...");
 	JSeparator separator = new JSeparator();
@@ -38,6 +44,10 @@ public class PapersMenu extends JMenuBar {
 		mnArchivo.add(mnNuevo);
 		mnNuevo.add(mntmGrafoOrientado);
 		mnNuevo.add(mntmGrafoNoOrientado);
+		mntmGrafoOrientado.add(mntmGrafoOrientadoAleatorio);
+		mntmGrafoOrientado.add(mntmGrafoOrientadoVacio);
+		mntmGrafoNoOrientado.add(mntmGrafoNoOrientadoAleatorio);
+		mntmGrafoNoOrientado.add(mntmGrafoNoOrientadoVacio);
 		mnArchivo.add(separator_1);
 		mnArchivo.add(mntmAbrir);
 		mnArchivo.add(separator);
@@ -63,12 +73,20 @@ public class PapersMenu extends JMenuBar {
 		
 	}
 	
-	public void addArchivoNuevoGrafoOrientadoActionListener(ActionListener a){
-		mntmGrafoOrientado.addActionListener(a);
+	public void addArchivoNuevoGrafoOrientadoAleatorioActionListener(ActionListener a){
+		mntmGrafoOrientadoAleatorio.addActionListener(a);
 	}
 	
-	public void addArchivoNuevoGrafoNoOrientadoActionListener(ActionListener a){
-		mntmGrafoNoOrientado.addActionListener(a);
+	public void addArchivoNuevoGrafoOrientadoVacioActionListener(ActionListener a){
+		mntmGrafoOrientadoVacio.addActionListener(a);
+	}
+	
+	public void addArchivoNuevoGrafoNoOrientadoAleatorioActionListener(ActionListener a){
+		mntmGrafoNoOrientadoAleatorio.addActionListener(a);
+	}
+	
+	public void addArchivoNuevoGrafoNoOrientadoVacioActionListener(ActionListener a){
+		mntmGrafoNoOrientadoVacio.addActionListener(a);
 	}
 	
 	public void addArchivoAbrirActionListener(ActionListener a){

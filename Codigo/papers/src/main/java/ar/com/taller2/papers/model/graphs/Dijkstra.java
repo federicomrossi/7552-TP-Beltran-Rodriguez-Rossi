@@ -9,6 +9,7 @@ import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
@@ -34,6 +35,12 @@ public class Dijkstra extends GraphAlgorithm {
 	private Map<Vertice,Double> dist;
 	private Map<Vertice,Vertice> pred;
 
+	// Data para modo evaluacion	
+	 String[][] data;
+	 String[] cols;
+	 TableModel model;
+	
+	
 	
 	private void createItemList() {
 		this.items.add(new LineCode(2));
@@ -63,6 +70,9 @@ public class Dijkstra extends GraphAlgorithm {
 		recorrido = new ArrayList<String>();
 		createItemList();
 		dijsktra(inicio);
+		fillColsAndRows(cols,data,inicio);
+		
+		model = new DefaultTableModel(data,cols);
 	}
 	
 	public String siguiente() throws NextStepNotExistsException {
@@ -141,19 +151,38 @@ public class Dijkstra extends GraphAlgorithm {
 		return this.getClass().getResource("/algorithms/dijkstra-info.html");
 	}
 
-	public Boolean isCorrect(Resultado r) {
+	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
-		/*List<Arista> res = r.getAristas();
-		if(this.indiceSiguientePaso < this.camino.size()) {
-			Arista v = this.camino.get(this.indiceSiguientePaso++);
-			if(res.size() > 0){
-				Arista ver = res.get(res.size()-1);
-				if(v.equals(ver)){
-					v.select(true);
-					return Boolean.TRUE;
-				}
-			}
-		}*/
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			String v = this.recorrido.get(this.indiceSiguientePaso++);
+			int cant = graph.vertexSet().size();
+			StringBuilder sB = new StringBuilder();
+			sB.append("\n").append("Source: ").append(inicio.toString());
+			sB.append("\t");
+	    	for(int i=0;i<cant;i++){
+	    		sB.append("v"+(i+1)).append("\t");
+	    	}
+	    	sB.append("\n");
+	    	sB.append("Distancia").append("\t");
+	    	for(int j=0; j<cant;j++){
+	    		String s = (String)model.getValueAt(0,j+1);
+	    		sB.append(s.equals("null") ? "null" : Double.valueOf(s)).append("\t");
+	    	}
+	    	sB.append("\n");
+	    	sB.append("Predecesor").append("\t");
+	    	for(int j=0; j<cant;j++){
+	    		sB.append((String)model.getValueAt(1,j+1)).append("\t");
+	    	}
+	    	sB.append("\n");
+	    	
+	    	Logger.getLogger(this.getClass().getName()).info("Input: "+sB.toString());
+	    	Logger.getLogger(this.getClass().getName()).info("Result: "+v);
+	    	if(v.equals(sB.toString())){
+	    		return true;
+	    	}
+		}else{
+			throw new NextStepNotExistsException("No hay más pasos");
+		}
 		return Boolean.FALSE;
 	}
 
@@ -200,7 +229,7 @@ public class Dijkstra extends GraphAlgorithm {
 	
 	private String printMatrixPath(Vertice source){
     	StringBuilder sB =  new StringBuilder();
-    	sB.append("Source: ").append(source.toString()).append("\n");
+    	sB.append("\n").append("Source: ").append(source.toString());
     	sB.append("\t");
     	for(Vertice v : graph.vertexSet()){
     		sB.append(v.toString()).append("\t");
@@ -228,12 +257,28 @@ public class Dijkstra extends GraphAlgorithm {
 	}
 
 	public TableModel getMatrixData() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 	public Object[] getMatrixColumns() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private void fillColsAndRows(String[] cols2, String[][] data2,Vertice source) {
+		int cant = graph.vertexSet().size();
+		data = new String[2][cant+1];
+		cols = new String[cant+1];
+		cols[0] = "Source: " + source.toString();
+		data[0][0] = "Distancia";
+		data[1][0] = "Predecesor";
+		for(int i=0;i<2;i++){
+			for(int j=1;j<cant+1;j++){
+				data[i][j]=String.valueOf(0);
+			}
+		}
+		for(Integer i=1;i<cant+1;i++){
+    		cols[i] = "v"+i;
+    	}
 	}
 }

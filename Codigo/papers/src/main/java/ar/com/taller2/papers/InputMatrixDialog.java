@@ -55,9 +55,10 @@ public class InputMatrixDialog extends JDialog {
 						//app.getVista().mostrarMensajeEquivocacion(
 							//	"Resultado correcto!");
 					}
-					dispose();
 				} catch (NextStepNotExistsException e1) {
 					JOptionPane.showMessageDialog(InputMatrixDialog.this, e1.getMessage());
+				}finally{
+					dispose();
 				}
 			}
 		});

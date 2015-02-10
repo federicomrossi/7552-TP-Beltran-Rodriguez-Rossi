@@ -282,7 +282,6 @@ public class FloydWarshall extends GraphAlgorithm {
 	}
 
 	public TableModel getMatrixData() {
-		// TODO Auto-generated method stub
 		return model;
 	}
 

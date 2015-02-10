@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.jgrapht.DirectedGraph;
@@ -33,7 +34,12 @@ public class CerraduraTransitiva extends GraphAlgorithm {
     int bound;
     boolean done = false;
 	
-	
+ // Data para modo evaluacion	
+ 	String[][] data;
+ 	String[] cols;
+ 	TableModel model;
+    
+    
 	public CerraduraTransitiva(ListenableDirectedWeightedGraph<Vertice, Arista> graph){
 		Graphs.addGraph(this.graph, graph);
 		Logger.getLogger("MATRIX").info(getAdjacencyMatrix(graph));
@@ -48,6 +54,9 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 			Logger.getLogger(this.getClass().getName()).warning("TIENE CICLOS");
 		}
 		closeSimpleDirectedGraph();
+		fillColsAndRows(cols,data);
+		
+		model = new DefaultTableModel(data,cols);
 	}
 	
 	
@@ -80,6 +89,7 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 	public void terminar() {
         this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
         Graphs.addGraph(this.graph, recorrido.get(0));
+        recorrido = new ArrayList<ListenableDirectedWeightedGraph<Vertice, Arista>>();
 	}
 
 	public String principio() {
@@ -141,9 +151,33 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 		
 	}
 
-	public Boolean isCorrect(Resultado r) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException{
+		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
+		if(this.indiceSiguientePaso < this.recorrido.size()) {
+			String v = getAdjacencyMatrix(this.recorrido.get(this.indiceSiguientePaso++));
+			int cant =  graph.vertexSet().size();
+			StringBuilder sB = new StringBuilder();
+			sB.append("\t");
+	    	for(int i=0;i<cant;i++){
+	    		sB.append("v"+(i+1)).append("\t");
+	    	}
+	    	sB.append("\n");
+	    	for(int i=0; i<cant;i++){
+	    		sB.append("v"+(i+1)).append("\t");
+	    		for(int j=0; j<cant;j++){
+	    			sB.append(Integer.valueOf((String)model.getValueAt(i,j+1))).append("\t");
+	    		}
+	    		sB.append("\n");
+	    	}
+	    	Logger.getLogger(this.getClass().getName()).info("Input: "+sB.toString());
+	    	Logger.getLogger(this.getClass().getName()).info("Result: "+v);
+	    	if(v.equals(sB.toString())){
+	    		return true;
+	    	}
+		}else{
+			throw new NextStepNotExistsException("No hay más pasos");
+		}
+		return Boolean.FALSE;
 	}
 
 	public Selectable getCurrentItem() {
@@ -240,18 +274,35 @@ public class CerraduraTransitiva extends GraphAlgorithm {
     }
 
 	public boolean needMatrix() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	public TableModel getMatrixData() {
-		// TODO Auto-generated method stub
-		return null;
+		return model;
 	}
 
 	public Object[] getMatrixColumns() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	private void fillColsAndRows(String[] cols2, String[][] data2) {
+		int cant = graph.vertexSet().size();
+		data = new String[cant][cant+1];
+		cols = new String[cant+1];
+		cols[0] = "";
+		data[0][0]="";
+		for(int i=0;i<cant;i++){
+			for(int j=1;j<cant+1;j++){
+				data[i][j]=String.valueOf(0);
+			}
+		}
+		for(Integer i=1;i<cant+1;i++){
+    		cols[i] = "v"+i;
+    		data[i-1][0] = "v"+i;
+    	}
+		
+		
 	}
 	
 }

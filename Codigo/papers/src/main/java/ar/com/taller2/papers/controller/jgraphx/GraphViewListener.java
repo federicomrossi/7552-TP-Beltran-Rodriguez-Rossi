@@ -25,13 +25,29 @@ public class GraphViewListener implements mxIEventListener{
 		if(cell != null){
 			if(cell.isVertex()){
 				vertice = app.getVista().getGraph().getCellToVertexMap().get(cell);
-				app.getModelo().addVerticeToResultado(vertice);
+				if(!vertice.isSelected()){
+					app.getModelo().addVerticeToResultado(vertice);
+					vertice.select(true);
+				}else{
+					app.getModelo().removeVerticeFromResultado(vertice);
+					vertice.select(false);
+				}
 				Logger.getLogger(this.getClass().getName()).info("Seleccione el vertice: " + this.vertice);
 			}else if(cell.isEdge()){
 				arista = app.getVista().getGraph().getCellToEdgeMap().get(cell);
-				app.getModelo().addAristaToResultado(arista);
+				if(!arista.isSelected()){
+					app.getModelo().addAristaToResultado(arista);
+					arista.select(true);
+				}else{
+					app.getModelo().removeAristaFromResultado(arista);
+					arista.select(false);
+				}
+				
+				
+				//arista.select(!arista.isSelected());
 				Logger.getLogger(this.getClass().getName()).info("Seleccione la arista: " + this.arista);
 			}
+			app.getVista().actualizar();
 		}
 			
 		

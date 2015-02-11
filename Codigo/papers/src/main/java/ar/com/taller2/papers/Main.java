@@ -392,6 +392,10 @@ public class Main extends JApplet {
 		menuBar.addEditarNuevoVerticeActionListener(a);
 	}
 	
+	public void addMenuEditarNuevaAristaActionListener(ActionListener a){
+		menuBar.addEditarNuevaAristaActionListener(a);
+	}
+	
 	public void addNewEdgeListener(mxIEventListener a){
 		graphView.addNewEdgeListener(a);
 	}

@@ -22,7 +22,7 @@ public class SourceDestSelectionListener implements mxIEventListener {
 	public void invoke(Object sender, mxEventObject evt) {
 		mxCell cell = (mxCell) app.getVista().getGraph().getSelectionCell();
 		if(cell != null && cell.isVertex()){
-			if(source == null){
+			if(app.getModelo().getSourceVertex() == null){
 				source = app.getVista().getGraph().getCellToVertexMap().get(cell);
 				app.getModelo().setSourceVertex(source);
 				app.getVista().mostrarMensajeEquivocacion("Seleccionado el Origen");

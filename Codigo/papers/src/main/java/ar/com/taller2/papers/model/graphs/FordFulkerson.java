@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
 
@@ -208,6 +209,7 @@ public class FordFulkerson extends GraphAlgorithm {
 	    	List<Arista> aristas = this.recorrido.get(this.indiceSiguientePaso).aristas;
 	    	List<Arista> res = r.getAristas();
 	    	if(!res.containsAll(aristas) || !aristas.containsAll(res)){
+	    		deseleccionarTodo();
 	    		return Boolean.FALSE;
 	    	}
 	    	String v = this.recorrido.get(this.indiceSiguientePaso++).result;
@@ -217,8 +219,10 @@ public class FordFulkerson extends GraphAlgorithm {
 	    			s[3].equals("Flujo Total: "+Double.parseDouble(model.getValueAt(0,1).toString()))){
 	    		return true;
 	    	}
+	    	deseleccionarTodo();
 	    	return false;
 		}else{
+			deseleccionarTodo();
 			throw new NextStepNotExistsException("No hay más pasos");
 		}
 	}
@@ -450,6 +454,16 @@ public class FordFulkerson extends GraphAlgorithm {
 		cols[1] = "Flujo Total";
 		data[0][1] = String.valueOf(0);
 		data[0][0] = String.valueOf(0);
+	}
+	
+	private void deseleccionarTodo() {
+		Set<Arista> vS = network.edgeSet();
+		Iterator<Arista> it = vS.iterator();
+		while(it.hasNext()){
+			Arista v = it.next();
+			v.select(false);
+		}			
+		
 	}
 	
 	

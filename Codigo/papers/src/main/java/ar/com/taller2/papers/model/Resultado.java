@@ -17,12 +17,20 @@ public class Resultado {
 		aristas.add(a);
 	}
 	
+	public void removeArista(Arista a){
+		aristas.remove(a);
+	}
+	
 	public List<Arista> getAristas(){
 		return aristas;
 	}
 	
 	public void addVertice(Vertice v){
 		vertices.add(v);
+	}
+	
+	public void removeVertice(Vertice v){
+		vertices.remove(v);
 	}
 	
 	public List<Vertice> getVertices(){

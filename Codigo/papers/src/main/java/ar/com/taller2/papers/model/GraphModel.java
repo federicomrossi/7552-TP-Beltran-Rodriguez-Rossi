@@ -24,6 +24,9 @@ public class GraphModel {
 	Executable algoritmo;
 	Resultado resEvaluacion;
 	
+	Vertice source;
+	Vertice dest;
+	
 	TIPO_GRAFO tipo;
 	
 	public GraphModel() {
@@ -122,6 +125,14 @@ public class GraphModel {
 
 	public void stopAlgorithm() {
 		resEvaluacion = new Resultado();
+		for(Vertice v : graph.vertexSet()){
+			v.select(false);
+		}
+		for(Arista v : graph.edgeSet()){
+			v.select(false);
+		}
+		source=null;
+		dest=null;
 		algoritmo.terminar();		
 	}
 	
@@ -139,8 +150,16 @@ public class GraphModel {
 		resEvaluacion.addVertice(v);
 	}
 	
+	public void removeVerticeFromResultado(Vertice v){
+		resEvaluacion.removeVertice(v);
+	}
+	
 	public void addAristaToResultado(Arista a){
 		resEvaluacion.addArista(a);
+	}
+	
+	public void removeAristaFromResultado(Arista a){
+		resEvaluacion.removeArista(a);
 	}
 	
 	public String previousStepAlgorithm(){
@@ -171,6 +190,14 @@ public class GraphModel {
 		return v;
 	}
 	
+	public Arista agregarArista(String source, String dest, Double peso){
+		Vertice v1 = new Vertice(source, false);
+		Vertice v2 = new Vertice(dest, false);
+		Arista a = this.graph.addEdge(v1, v2);
+		setWeight(a, peso);
+		return a;
+	}
+	
 	public Arista agregarEdge(String source, String dest){
 		Vertice v1 = new Vertice(source, false);
 		Vertice v2 = new Vertice(dest, false);
@@ -192,11 +219,21 @@ public class GraphModel {
 	}
 	
 	public void setSourceVertex(Vertice v){
+		source =v;
 		algoritmo.setSource(v);
 	}
 	
+	public Vertice getSourceVertex(){
+		return source;
+	}
+	
 	public void setDestVertex(Vertice v){
+		dest =v;
 		algoritmo.setDest(v);
+	}
+	
+	public Vertice getDestVertex(){
+		return dest;
 	}
 	
 	

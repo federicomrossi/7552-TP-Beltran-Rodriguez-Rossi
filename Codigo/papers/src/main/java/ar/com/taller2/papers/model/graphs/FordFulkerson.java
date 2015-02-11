@@ -3,13 +3,11 @@ package ar.com.taller2.papers.model.graphs;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Logger;
 
@@ -97,7 +95,7 @@ public class FordFulkerson extends GraphAlgorithm {
 	
 	private void deseleccionar(int indiceComponente) {
 		if (indiceComponente >= 0 && indiceComponente < recorrido.size()) {
-			Set<Arista> vS = recorrido.get(indiceComponente).aristas;
+			List<Arista> vS = recorrido.get(indiceComponente).aristas;
 			Iterator<Arista> it = vS.iterator();
 			while(it.hasNext()){
 				Arista v = it.next();
@@ -108,7 +106,7 @@ public class FordFulkerson extends GraphAlgorithm {
 
 	private void seleccionar(int indiceComponente) {
 		if (indiceComponente >= 0 && indiceComponente < recorrido.size()) {
-			Set<Arista> vS = recorrido.get(indiceComponente).aristas;
+			List<Arista> vS = recorrido.get(indiceComponente).aristas;
 			Iterator<Arista> it = vS.iterator();
 			while(it.hasNext()){
 				Arista v = it.next();
@@ -139,7 +137,7 @@ public class FordFulkerson extends GraphAlgorithm {
 			//v.select(false);
 			deseleccionar(--this.indiceSiguientePaso);
 			seleccionar(this.indiceSiguientePaso - 1);
-			return recorrido.get(indiceSiguientePaso-1).result;
+			return recorrido.get(indiceSiguientePaso).result;
 		}
 
 		return "";
@@ -206,22 +204,23 @@ public class FordFulkerson extends GraphAlgorithm {
 	public Boolean isCorrect(Resultado r) throws NextStepNotExistsException {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente Evaluación");
 		if(this.indiceSiguientePaso < this.recorrido.size()) {
-			String v = this.recorrido.get(this.indiceSiguientePaso++).result;
-			int cant = network.vertexSet().size();
-			StringBuilder sB = new StringBuilder();
-	    	sB.append("\n").append("Camino del flujo parcial: ");
-	    	Set<Arista> aristas = this.recorrido.get(this.indiceSiguientePaso).aristas;
-	    	sB.append("Flujo Total: ").append(maximumFlowValue);
+			
+	    	List<Arista> aristas = this.recorrido.get(this.indiceSiguientePaso).aristas;
+	    	List<Arista> res = r.getAristas();
+	    	if(!res.containsAll(aristas) || !aristas.containsAll(res)){
+	    		return Boolean.FALSE;
+	    	}
+	    	String v = this.recorrido.get(this.indiceSiguientePaso++).result;
 	    	
-	    	Logger.getLogger(this.getClass().getName()).info("Input: "+sB.toString());
-	    	Logger.getLogger(this.getClass().getName()).info("Result: "+v);
-	    	if(v.equals(sB.toString())){
+	    	String[] s = v.split("\\n");
+	    	if(s[2].equals("Flujo parcial: "+Double.parseDouble(model.getValueAt(0,0).toString())) &&
+	    			s[3].equals("Flujo Total: "+Double.parseDouble(model.getValueAt(0,1).toString()))){
 	    		return true;
 	    	}
+	    	return false;
 		}else{
 			throw new NextStepNotExistsException("No hay más pasos");
 		}
-		return Boolean.FALSE;
 	}
 
 	public Selectable getCurrentItem() {
@@ -341,9 +340,9 @@ public class FordFulkerson extends GraphAlgorithm {
         }
     }
 
-    private Set<Arista> augmentFlow(StringBuilder sB)
+    private List<Arista> augmentFlow(StringBuilder sB)
     {
-    	Set<Arista> aristas = new HashSet<Arista>(); 
+    	List<Arista> aristas = new ArrayList<Arista>(); 
         double deltaFlow = nodes.get(currentSink).flowAmount;
         maximumFlowValue += deltaFlow;
         int currentNode = currentSink;
@@ -412,16 +411,16 @@ public class FordFulkerson extends GraphAlgorithm {
     private Pair printResult(){
     	StringBuilder sB = new StringBuilder();
     	sB.append("\n").append("Camino del flujo parcial: ");
-    	Set<Arista> aristas =  augmentFlow(sB);
+    	List<Arista> aristas =  augmentFlow(sB);
     	sB.append("Flujo Total: ").append(maximumFlowValue);
     	return new Pair(sB.toString(),aristas);
     }
     
     class Pair{
     	String result;
-    	Set<Arista> aristas;
+    	List<Arista> aristas;
     	
-    	Pair(String result, Set<Arista> aristas){
+    	Pair(String result, List<Arista> aristas){
     		this.result=result;
     		this.aristas=aristas;
     	}
@@ -445,14 +444,12 @@ public class FordFulkerson extends GraphAlgorithm {
 	}
     
 	private void fillColsAndRows(String[] cols2, String[][] data2) {
-		data = new String[1][3];
-		cols = new String[3];
-		cols[0] = "Camino";
-		cols[1] = "Flujo Parcial";
-		cols[2] = "Flujo Total";
-		data[0][0] = "";
+		data = new String[1][2];
+		cols = new String[2];
+		cols[0] = "Flujo Parcial";
+		cols[1] = "Flujo Total";
 		data[0][1] = String.valueOf(0);
-		data[0][2] = String.valueOf(0);
+		data[0][0] = String.valueOf(0);
 	}
 	
 	

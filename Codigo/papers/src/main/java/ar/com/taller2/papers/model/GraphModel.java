@@ -1,57 +1,30 @@
 package ar.com.taller2.papers.model;
 
-import java.awt.FileDialog;
-import java.awt.Frame;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
-
-
-
-
-
-
-
-
-
-
-import org.jgrapht.ListenableGraph;
-import org.jgrapht.ext.*;
-import org.jgrapht.generate.RandomGraphGenerator;
-import org.jgrapht.graph.ListenableDirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.ListenableDirectedWeightedGraph;
-
-
-
 import org.jgrapht.ListenableGraph;
 import org.jgrapht.VertexFactory;
 import org.jgrapht.WeightedGraph;
+import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.generate.RandomGraphGenerator;
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
-
-
-
-
-
-
-
-
-
-
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 
 public class GraphModel {
-
+	
 	private ListenableGraph<Vertice, Arista> graph;
 	private int vertice_contador = 0;
 	Executable algoritmo;
 	Resultado resEvaluacion;
+	
+	TIPO_GRAFO tipo;
 	
 	public GraphModel() {
 		resEvaluacion = new Resultado();
@@ -60,12 +33,13 @@ public class GraphModel {
 	public void nuevoGrafoDirigido() {
 		this.vertice_contador=0;
 		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
-		
+		tipo = TIPO_GRAFO.ORIENTADO;
 		//this.agregarVertices();
 	}
 	
 	public void nuevoGrafoDirigidoAleatorio(int vertices, int aristas){
 		this.vertice_contador=0;
+		tipo = TIPO_GRAFO.ORIENTADO;
 		this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
 		RandomGraphGenerator<Vertice, Arista> gen = new RandomGraphGenerator<Vertice, Arista>(vertices, aristas);
 		gen.generateGraph(this.graph, new VertexFactory<Vertice>() {
@@ -81,6 +55,7 @@ public class GraphModel {
 	public void nuevoGrafoNoDirigido() {
 		this.vertice_contador=0;
 		this.graph = new ListenableUndirectedWeightedGraph<Vertice, Arista>(Arista.class);
+		tipo = TIPO_GRAFO.NO_ORIENTADO;
 		
 	}
 	
@@ -95,7 +70,7 @@ public class GraphModel {
 				return v;
 			}
 		}, null);
-			
+		tipo = TIPO_GRAFO.NO_ORIENTADO;
 	}
 	
 	public void guardarGrafo(String path, String filename) {
@@ -269,4 +244,8 @@ public class GraphModel {
 		
 	}
 	// END TEMP
+
+	public TIPO_GRAFO getTipo() {
+		return tipo;
+	}
 }

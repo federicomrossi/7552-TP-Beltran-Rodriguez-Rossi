@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
+import ar.com.taller2.papers.model.TIPO_GRAFO;
 
 public class PlayActionListener implements ActionListener {
 
@@ -32,6 +33,11 @@ public class PlayActionListener implements ActionListener {
 				on = false;
 				app.getVista().bloquearToolbar();
 				app.getVista().desbloquearPanel();
+				if(app.getModelo().getTipo().equals(TIPO_GRAFO.ORIENTADO)){
+					app.getVista().bloquearOrientado();
+				}else{
+					app.getVista().bloquearNoOrientado();
+				}
 				app.getVista().borrarSalida();
 			}
 			else {

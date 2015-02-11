@@ -347,6 +347,13 @@ public class Main extends JApplet {
     	this.toolBar.bloquearFin();
     }
     
+    public void bloquearOrientado(){
+    	this.panelAlgoritmos.bloquearDirigido();
+    }
+    public void bloquearNoOrientado(){
+    	this.panelAlgoritmos.bloquearNoDirigido();
+    }
+    
     
     /* Listeners del MENU */
     

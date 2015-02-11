@@ -26,6 +26,7 @@ AprendiendoGrafos app;
 		this.app.getVista().addMoveCellListener(new MoveCellListener(app));
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();
+		app.getVista().bloquearNoOrientado();
 	}
 
 }

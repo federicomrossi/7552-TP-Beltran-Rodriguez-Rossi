@@ -40,7 +40,7 @@ public class PanelAlgoritmos extends JPanel {
     final ButtonGroup groupAlgoritmos = new ButtonGroup();
 	
     private void crearBotones() {
-
+    	radioButtonAlgoritmoRecorridoProfundidad = new JRadioButton("Recorrido en Profundidad");
         radioButtonAlgoritmoPruebaAciclidad = new JRadioButton("Prueba de Aciclidad");
         radioButtonAlgoritmoRecorridoTopologicoAnchura = new JRadioButton("Recorrido topológico en Anchura");
         radioButtonAlgoritmoCerraduraTransitiva = new JRadioButton("Cerradura Transitiva");
@@ -48,7 +48,7 @@ public class PanelAlgoritmos extends JPanel {
         radioButtonAlgoritmoDijkstra = new JRadioButton("Algoritmo de Dijkstra");
         radioButtonAlgoritmoFloyd = new JRadioButton("Algoritmo de Floyd");
         radioButtonAlgoritmoFordFulkerson = new JRadioButton("Algoritmo de Ford-Fulkerson");
-        radioButtonAlgoritmoRecorridoProfundidad = new JRadioButton("Recorrido en Profundidad");
+        
         radioButtonAlgoritmoRecorridoAnchura = new JRadioButton("Recorrido en Anchura");
         radioButtonAlgoritmoRecorridoTopologicoProfundidad = new JRadioButton("Recorrido topológico en Profundidad");
         radioButtonAlgoritmoArbolExpansionCosteMinimo = new JRadioButton("Árbol de Expansión de Coste Mínimo");
@@ -65,17 +65,16 @@ public class PanelAlgoritmos extends JPanel {
         radioButtonAlgoritmoRecorridoTopologicoProfundidad.setName("Recorrido topológico en Profundidad");
         radioButtonAlgoritmoArbolExpansionCosteMinimo.setName("Árbol de Expansión de Coste Mínimo");
     	
-    	
-		botones.put(radioButtonAlgoritmoPruebaAciclidad.getName(), radioButtonAlgoritmoPruebaAciclidad);    	
+        botones.put(radioButtonAlgoritmoRecorridoProfundidad.getName(), radioButtonAlgoritmoRecorridoProfundidad);
+	    botones.put(radioButtonAlgoritmoRecorridoAnchura.getName(), radioButtonAlgoritmoRecorridoAnchura);
+	    botones.put(radioButtonAlgoritmoRecorridoTopologicoProfundidad.getName(), radioButtonAlgoritmoRecorridoTopologicoProfundidad);
 	    botones.put(radioButtonAlgoritmoRecorridoTopologicoAnchura.getName(), radioButtonAlgoritmoRecorridoTopologicoAnchura);
-	    botones.put(radioButtonAlgoritmoCerraduraTransitiva.getName(), radioButtonAlgoritmoCerraduraTransitiva);
+	    botones.put(radioButtonAlgoritmoPruebaAciclidad.getName(), radioButtonAlgoritmoPruebaAciclidad);
 	    botones.put(radioButtonAlgoritmoComponentesFuertementeConexas.getName(), radioButtonAlgoritmoComponentesFuertementeConexas);
+	    botones.put(radioButtonAlgoritmoCerraduraTransitiva.getName(), radioButtonAlgoritmoCerraduraTransitiva);
 	    botones.put(radioButtonAlgoritmoDijkstra.getName(), radioButtonAlgoritmoDijkstra);
 	    botones.put(radioButtonAlgoritmoFloyd.getName(), radioButtonAlgoritmoFloyd);
 	    botones.put(radioButtonAlgoritmoFordFulkerson.getName(), radioButtonAlgoritmoFordFulkerson);
-	    botones.put(radioButtonAlgoritmoRecorridoProfundidad.getName(), radioButtonAlgoritmoRecorridoProfundidad);
-	    botones.put(radioButtonAlgoritmoRecorridoAnchura.getName(), radioButtonAlgoritmoRecorridoAnchura);
-	    botones.put(radioButtonAlgoritmoRecorridoTopologicoProfundidad.getName(), radioButtonAlgoritmoRecorridoTopologicoProfundidad);
 	    botones.put(radioButtonAlgoritmoArbolExpansionCosteMinimo.getName(), radioButtonAlgoritmoArbolExpansionCosteMinimo);
 	    
     }
@@ -108,16 +107,20 @@ public class PanelAlgoritmos extends JPanel {
 		crearBotones();
 
 		// Selección de algoritmos
-		this.add(radioButtonAlgoritmoPruebaAciclidad);
-		this.add(radioButtonAlgoritmoRecorridoTopologicoAnchura);
-		this.add(radioButtonAlgoritmoCerraduraTransitiva);
-		this.add(radioButtonAlgoritmoComponentesFuertementeConexas);
-		this.add(radioButtonAlgoritmoDijkstra);
-		this.add(radioButtonAlgoritmoFloyd);
-		this.add(radioButtonAlgoritmoFordFulkerson);
+		
 		this.add(radioButtonAlgoritmoRecorridoProfundidad);
 		this.add(radioButtonAlgoritmoRecorridoAnchura);
 		this.add(radioButtonAlgoritmoRecorridoTopologicoProfundidad);
+		this.add(radioButtonAlgoritmoRecorridoTopologicoAnchura);
+		this.add(radioButtonAlgoritmoPruebaAciclidad);
+		this.add(radioButtonAlgoritmoComponentesFuertementeConexas);
+		this.add(radioButtonAlgoritmoCerraduraTransitiva);
+		
+		this.add(radioButtonAlgoritmoDijkstra);
+		this.add(radioButtonAlgoritmoFloyd);
+		this.add(radioButtonAlgoritmoFordFulkerson);
+		
+		
 		this.add(radioButtonAlgoritmoArbolExpansionCosteMinimo);
 		
 		bloquearTodo();
@@ -151,6 +154,20 @@ public class PanelAlgoritmos extends JPanel {
 			e.getValue().setEnabled(true);
 		}
 		
+	}
+	
+	public void bloquearDirigido(){
+		radioButtonAlgoritmoArbolExpansionCosteMinimo.setEnabled(false);
+	}
+	
+	public void bloquearNoDirigido(){
+		radioButtonAlgoritmoRecorridoTopologicoAnchura.setEnabled(false);
+		radioButtonAlgoritmoRecorridoTopologicoProfundidad.setEnabled(false);
+		radioButtonAlgoritmoCerraduraTransitiva.setEnabled(false);
+		radioButtonAlgoritmoComponentesFuertementeConexas.setEnabled(false);
+		radioButtonAlgoritmoDijkstra.setEnabled(false);
+		radioButtonAlgoritmoFloyd.setEnabled(false);
+		radioButtonAlgoritmoFordFulkerson.setEnabled(false);
 	}
 	
 	public void seleccionarPrimero() {

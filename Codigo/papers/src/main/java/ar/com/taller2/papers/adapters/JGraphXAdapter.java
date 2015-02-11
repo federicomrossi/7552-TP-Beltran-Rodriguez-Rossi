@@ -11,6 +11,7 @@ import org.jgrapht.event.GraphVertexChangeEvent;
 
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
 import ar.com.taller2.papers.controller.jgraphx.GraphViewListener;
+import ar.com.taller2.papers.controller.jgraphx.RemovedCellListener;
 import ar.com.taller2.papers.controller.jgraphx.SourceDestSelectionListener;
 import ar.com.taller2.papers.controller.jgraphx.SourceSelectionListener;
 
@@ -180,6 +181,10 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
 	    	this.sourceSelListener = null;
     	}
 	}
+    
+    public void addCellRemovedListener(AprendiendoGrafos app){
+    	this.addListener(mxEvent.CELLS_REMOVED, new RemovedCellListener(app));
+    }
     
     /*
      * GETTERS

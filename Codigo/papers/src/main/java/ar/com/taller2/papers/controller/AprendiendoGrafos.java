@@ -10,6 +10,7 @@ import ar.com.taller2.papers.controller.algoritmos.AlgoritmosPruebaAciclidadItem
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoAnchuraItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoProfundidadItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosSpanningTreeItemListener;
+import ar.com.taller2.papers.controller.jgraphx.NewVertexListener;
 import ar.com.taller2.papers.model.GraphModel;
 
 public class AprendiendoGrafos {
@@ -50,6 +51,8 @@ public class AprendiendoGrafos {
 		vista.addMenuEditarNuevaAristaActionListener(new MenuEditarNuevaAristaActionListener(this));
 		vista.addMenuArchivoGuardarActionListener(new MenuArchivoGuardarActionListener(this));
 		vista.addMenuArchivoGuardarComoActionListener(new MenuArchivoGuardarComoActionListener(this));
+		
+		
 	}
 	
 	public Main getVista(){

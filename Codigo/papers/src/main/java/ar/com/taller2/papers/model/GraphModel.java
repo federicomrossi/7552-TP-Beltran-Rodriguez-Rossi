@@ -208,6 +208,14 @@ public class GraphModel {
 		return this.graph.addEdge(source, dest);
 	}
 	
+	public void removerVertice(Vertice v){
+		this.graph.removeVertex(v);
+	}
+	
+	public void removerArista(Arista v){
+		this.graph.removeEdge(v);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void setWeight(Arista a,Double d){
 		WeightedGraph<Vertice,Arista> g = (WeightedGraph<Vertice,Arista>) graph;

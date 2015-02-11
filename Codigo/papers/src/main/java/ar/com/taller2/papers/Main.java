@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URL;
 
@@ -42,6 +43,7 @@ import ar.com.taller2.papers.view.PapersMenu;
 import ar.com.taller2.papers.view.PapersToolbar;
 
 import com.mxgraph.layout.mxParallelEdgeLayout;
+import com.mxgraph.swing.handler.mxKeyboardHandler;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 
 public class Main extends JApplet {
@@ -144,7 +146,6 @@ public class Main extends JApplet {
 		txtSalida.setText("Salida: ");
 		splitPane_3.setRightComponent(jsp);
 		
-		
         ImageIcon icon = new ImageIcon(Main.class.getResource("/images/FondoRec2.png"));
         JLabel label = new JLabel(icon);
 		splitPane_3.setLeftComponent(label);
@@ -240,6 +241,7 @@ public class Main extends JApplet {
     public void setGraph(ListenableGraph<Vertice, Arista> graph) {
     	this.adapter = new JGraphXAdapter<Vertice, Arista>(graph);
     	graphView = new GraphView(adapter);
+    	//panel_grafo.add(graphView);
     	splitPane_3.setLeftComponent(graphView);
     	layout = new mxParallelEdgeLayout(adapter);
         layout.execute(adapter.getDefaultParent());
@@ -406,6 +408,10 @@ public class Main extends JApplet {
 	
 	public void addChangeWeightListener(mxIEventListener a){
 		graphView.addChangeWeightListener(a);
+	}
+	
+	public void addNewVertexListener(MouseListener m){
+		graphView.getGraphControl().addMouseListener(m);
 	}
 	
 	public void addSourceDestSelectionListener(){
@@ -616,6 +622,13 @@ public class Main extends JApplet {
 	public void showMatrixInput(TableModel data) {
 		Frame padre = (Frame)SwingUtilities.windowForComponent(this.panelCentro);
 		InputMatrixDialog dialog = new InputMatrixDialog(padre, data, "Ingrese el resultado", aprendiendoGrafos);
+	}
+
+
+	public void installKeyboardListener() {
+		adapter.addCellRemovedListener(aprendiendoGrafos);
+		new mxKeyboardHandler( graphView);
+		
 	}
 
 	

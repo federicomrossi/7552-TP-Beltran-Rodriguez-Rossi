@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
@@ -78,7 +79,9 @@ public class Main extends JApplet {
     PapersToolbar toolBar = new PapersToolbar();
     
     
-    JTextPane txtSalida = new JTextPane();
+    JTextArea txtSalida = new JTextArea();
+    JScrollPane jsp = new JScrollPane(txtSalida);
+    
     
     JTabbedPane tbdPaneDerecha = new JTabbedPane(JTabbedPane.TOP);
     JPanel panelInformacion = new JPanel();
@@ -139,7 +142,7 @@ public class Main extends JApplet {
 		splitPane_3.setDividerSize(2);
 		
 		txtSalida.setText("Salida: ");
-		splitPane_3.setRightComponent(txtSalida);
+		splitPane_3.setRightComponent(jsp);
 		
 		
         ImageIcon icon = new ImageIcon(Main.class.getResource("/images/FondoRec2.png"));

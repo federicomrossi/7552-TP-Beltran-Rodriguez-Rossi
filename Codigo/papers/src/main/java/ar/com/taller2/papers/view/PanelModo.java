@@ -109,5 +109,10 @@ public class PanelModo extends JPanel {
 	public void removeEvaluacionItemListener(ItemListener l){
 		radioEvaluacion.removeItemListener(l);
 	}
+
+	public void seleccionarPrimero() {
+		radioAprendizaje.setSelected(true);
+		
+	}
 	
 }

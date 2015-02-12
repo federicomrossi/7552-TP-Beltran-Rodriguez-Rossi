@@ -48,6 +48,7 @@ public class GraphView extends mxGraphComponent{
         //new mxHierarchicalLayout(graph).execute(graph.getDefaultParent());
         // Temp?
         this.ordernarVertices();
+        this.setModoEdicion(false);
         
 	}
 	

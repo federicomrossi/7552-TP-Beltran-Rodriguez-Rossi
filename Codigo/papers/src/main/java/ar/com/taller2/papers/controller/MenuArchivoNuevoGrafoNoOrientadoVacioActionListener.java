@@ -23,7 +23,6 @@ public class MenuArchivoNuevoGrafoNoOrientadoVacioActionListener implements Acti
 		this.app.getVista().addChangeWeightListener(new ChangeWeightListener(app));
 		this.app.getVista().addMoveCellListener(new MoveCellListener(app));
 		this.app.getVista().addNewVertexListener(new NewVertexListener(app));
-		this.app.getVista().setModoEdicion(false);
 		this.app.getVista().installKeyboardListener();
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();

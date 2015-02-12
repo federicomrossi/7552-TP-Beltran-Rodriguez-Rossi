@@ -238,9 +238,9 @@ public class Main extends JApplet {
     }
     
     
-    public void setGraph(ListenableGraph<Vertice, Arista> graph) {
+    public void setGraph(ListenableGraph<Vertice, Arista> graph,boolean dirigido) {
     	this.adapter = new JGraphXAdapter<Vertice, Arista>(graph);
-    	graphView = new GraphView(adapter);
+    	graphView = new GraphView(adapter,dirigido);
     	//panel_grafo.add(graphView);
     	splitPane_3.setLeftComponent(graphView);
     	layout = new mxParallelEdgeLayout(adapter);
@@ -630,6 +630,8 @@ public class Main extends JApplet {
 		new mxKeyboardHandler( graphView);
 		
 	}
+
+
 
 	
 }

@@ -28,7 +28,7 @@ AprendiendoGrafos app;
 		int vertices = Integer.parseInt(dialog.getCantVertices());
 		int aristas = Integer.parseInt(dialog.getCantAristas());
 		this.app.getModelo().nuevoGrafoDirigidoAleatorio(vertices, aristas);
-		this.app.getVista().setGraph(app.getModelo().getGraph());
+		this.app.getVista().setGraph(app.getModelo().getGraph(),true);
 		this.app.getVista().addNewEdgeListener(new NewEdgeListener(app));
 		this.app.getVista().addChangeWeightListener(new ChangeWeightListener(app));
 		this.app.getVista().addMoveCellListener(new MoveCellListener(app));

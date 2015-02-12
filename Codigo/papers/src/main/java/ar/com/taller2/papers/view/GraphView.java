@@ -30,10 +30,12 @@ public class GraphView extends mxGraphComponent{
 	private static final long serialVersionUID = -7060444737587754276L;
 	private JGraphXAdapter<Vertice, Arista> graph ;
 	
-	public GraphView(JGraphXAdapter<Vertice, Arista> graph ) {
+	private boolean dirigido;
+	
+	public GraphView(JGraphXAdapter<Vertice, Arista> graph, boolean dirigido ) {
 		super(graph);
 		this.graph = graph;
-		
+		this.dirigido=dirigido;
 		// Propiedades
 		this.graph.setDisconnectOnMove(false);
         this.graph.setAllowDanglingEdges(false);
@@ -44,6 +46,10 @@ public class GraphView extends mxGraphComponent{
         //new mxHierarchicalLayout(graph).execute(graph.getDefaultParent());
         // Temp?
         this.ordernarVertices();
+	}
+	
+	public void setDirigido(boolean dir){
+		 dirigido =dir;
 	}
 	
 	public void ordernarVertices() {
@@ -66,7 +72,13 @@ public class GraphView extends mxGraphComponent{
 //	    edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ELBOW);
 	    //edge.put(mxConstants.STYLE_EDGE, mxConstants.EDGESTYLE_ENTITY_RELATION);
 	    edge.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_CURVE);
-	    edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
+	    if(dirigido){
+	    	edge.put(mxConstants.STYLE_ENDARROW, mxConstants.ARROW_CLASSIC);
+	    }else{
+	    	edge.put(mxConstants.STYLE_ENDARROW, mxConstants.NONE);
+	    }
+	    //
+	    
 //	    edge.put(mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
 //	    edge.put(mxConstants.STYLE_ALIGN, mxConstants.ALIGN_RIGHT);
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
@@ -103,7 +115,13 @@ public class GraphView extends mxGraphComponent{
         sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");
 //        sb.append(mxConstants.STYLE_EDGE).append("=").append(mxConstants.EDGESTYLE_ELBOW).append(";");
         sb.append(mxConstants.STYLE_SHAPE).append("=").append(mxConstants.SHAPE_CURVE).append(";");
-        sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.ARROW_BLOCK).append(";");
+        if(dirigido){
+        	sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.ARROW_BLOCK).append(";");
+        }else{
+        	 sb.append(mxConstants.STYLE_ENDARROW).append("=").append(mxConstants.NONE).append(";");
+        }
+        //
+       
         sb.append(mxConstants.STYLE_FONTCOLOR).append("=").append("#446299").append(";");
         sb.append(mxConstants.STYLE_DELETABLE).append("=").append(true).append(";");
         

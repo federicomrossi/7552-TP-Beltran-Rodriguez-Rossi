@@ -20,7 +20,7 @@ public class MenuArchivoNuevoGrafoOrientadoVacioActionListener implements Action
 
 	public void actionPerformed(ActionEvent e) {
 		this.app.getModelo().nuevoGrafoDirigido();
-		this.app.getVista().setGraph(app.getModelo().getGraph());
+		this.app.getVista().setGraph(app.getModelo().getGraph(),true);
 		this.app.getVista().addNewEdgeListener(new NewEdgeListener(app));
 		this.app.getVista().addChangeWeightListener(new ChangeWeightListener(app));
 		this.app.getVista().addMoveCellListener(new MoveCellListener(app));

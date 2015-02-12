@@ -98,6 +98,8 @@ public class Main extends JApplet {
 	
 	JSplitPane splitPane_3 = new JSplitPane();
 	
+	boolean modoEdicion =false;
+	
     
     /**
 	 * Create the applet.
@@ -569,6 +571,10 @@ public class Main extends JApplet {
 		panelModo.addEvaluacionItemListener(l);
 	}
 	
+	public void addModoEdicionItemListener(ItemListener l){
+		panelModo.addEdicionItemListener(l);
+	}
+	
 	public void removeModoAprendizajeItemListener(ItemListener l){
 		panelModo.removeAprendizajeItemListener(l);
 	}
@@ -631,6 +637,19 @@ public class Main extends JApplet {
 		
 	}
 
+
+	public void setModoEdicion(boolean b) {
+		modoEdicion = b;
+		//graphView.setEnabled(b);
+		graphView.setModoEdicion(b);
+		menuBar.setModoEdicion(b);
+		toolBar.setModoEvaluacion(b);
+	}
+
+	
+	public boolean isModoEdicion(){
+		return modoEdicion;
+	}
 
 
 	

@@ -20,6 +20,7 @@ public class SourceDestSelectionListener implements mxIEventListener {
 	}
 	
 	public void invoke(Object sender, mxEventObject evt) {
+		if(!app.getVista().isModoEdicion()){
 		mxCell cell = (mxCell) app.getVista().getGraph().getSelectionCell();
 		if(cell != null && cell.isVertex()){
 			if(app.getModelo().getSourceVertex() == null){
@@ -35,6 +36,7 @@ public class SourceDestSelectionListener implements mxIEventListener {
 			}
 		}else{
 			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");
+		}
 		}
 	}
 

@@ -31,6 +31,7 @@ public class AprendiendoGrafos {
 		
 		vista.addModoAprendizajeItemListener(new ModoAprendizajeItemListener(this));
 		vista.addModoEvaluacionItemListener(new ModoEvaluacionItemListener(this));
+		vista.addModoEdicionItemListener(new ModoEdicionItemListener(this));
 		
 		vista.addAlgoritmosRecorridoProfundidadItemListener(new AlgoritmosRecorridoProfundidadItemListener(this));
 		vista.addAlgoritmosRecorridoAnchuraItemListener(new AlgoritmosRecorridoAnchuraItemListener(this));
@@ -71,4 +72,5 @@ public class AprendiendoGrafos {
 	public Tutor getTutor() {
 		return tutor;
 	}
+
 }

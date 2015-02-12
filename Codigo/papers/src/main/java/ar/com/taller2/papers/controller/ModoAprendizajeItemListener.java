@@ -9,15 +9,17 @@ import java.util.logging.Logger;
 public class ModoAprendizajeItemListener implements ItemListener {
 
 	AprendiendoGrafos app;
-	
-	public ModoAprendizajeItemListener(AprendiendoGrafos app){
-		this.app=app;
+
+	public ModoAprendizajeItemListener(AprendiendoGrafos app) {
+		this.app = app;
 	}
 
 	public void itemStateChanged(ItemEvent e) {
-		if (!app.getTutor().esModoAprendizaje()) {
-			app.getTutor().setModoAprendizaje();
-			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje");
+		if (e.getStateChange() == ItemEvent.SELECTED) {
+			if (!app.getTutor().esModoAprendizaje()) {
+				app.getTutor().setModoAprendizaje();
+				Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje");
+			}
 		}
 	}
 

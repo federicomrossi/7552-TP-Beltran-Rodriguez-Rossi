@@ -150,5 +150,9 @@ public class PapersMenu extends JMenuBar {
 	public void removeEditarNuevoVerticeActionListener(ActionListener a) {
 		mntmNuevoVertice.removeActionListener(a);
 	}
+
+	public void setModoEdicion(boolean b) {
+		mnEditar.setEnabled(b);
+	}
 	
 }

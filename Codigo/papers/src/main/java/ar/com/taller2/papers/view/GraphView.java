@@ -42,10 +42,13 @@ public class GraphView extends mxGraphComponent{
         this.graph.setCellsSelectable(true);
         this.graph.setAutoOrigin(true);
         this.graph.setCellsBendable(true);
+        this.graph.setEdgeLabelsMovable(false);
+		this.graph.setVertexLabelsMovable(false);
         
         //new mxHierarchicalLayout(graph).execute(graph.getDefaultParent());
         // Temp?
         this.ordernarVertices();
+        
 	}
 	
 	public void setDirigido(boolean dir){
@@ -150,6 +153,14 @@ public class GraphView extends mxGraphComponent{
 	
 	public void addMoveCellListener(mxIEventListener a){
 		this.graph.addListener(mxEvent.CELLS_MOVED, a);
+	}
+	
+	public void setModoEdicion(boolean edicion){
+		this.graph.setCellsDeletable(edicion);
+		this.graph.setCellsEditable(edicion);
+		this.graph.setCellsMovable(edicion);
+		this.graph.setCellsResizable(edicion);
+		this.setConnectable(edicion);
 	}
 	
 }

@@ -20,6 +20,7 @@ public class RemovedCellListener implements mxIEventListener {
 	}
 	
 	public void invoke(Object sender, mxEventObject evt) {
+		if(app.getVista().isModoEdicion()){
 		mxCell cell = (mxCell) app.getVista().getGraph().getSelectionCell();
 		if(cell != null){
 			if(cell.isVertex()){
@@ -33,6 +34,7 @@ public class RemovedCellListener implements mxIEventListener {
 					Logger.getLogger(this.getClass().getName()).info("Arista Removida");
 				}
 			}
+		}
 		}
 	}
 

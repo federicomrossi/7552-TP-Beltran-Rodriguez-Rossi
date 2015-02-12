@@ -21,9 +21,9 @@ public class NewVertexListener implements MouseListener {
 	
 	
 	public void mouseClicked(MouseEvent e) {
-		Logger.getLogger(getClass().getSimpleName()).info("PASEE");
+		if(app.getVista().isModoEdicion()){
 		if (isAlreadyOneClick) {
-			Logger.getLogger(getClass().getSimpleName()).info("Nueva Vertice");
+			Logger.getLogger(getClass().getSimpleName()).info("Nuevo Vertice");
 	        isAlreadyOneClick = false;
 	        Vertice v = app.getModelo().agregarVertice();
 	        app.getVista().actualizar();
@@ -39,6 +39,7 @@ public class NewVertexListener implements MouseListener {
 	            }
 	        },  (Integer)Toolkit.getDefaultToolkit().getDesktopProperty("awt.multiClickInterval"));
 	    }
+		}
 	}
 
 	public void mousePressed(MouseEvent e) {

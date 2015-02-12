@@ -156,5 +156,13 @@ public class PapersToolbar extends JToolBar {
 	public void removePlayActionListener(ActionListener l){
 		buttonPlay.removeActionListener(l);
 	}
+
+	public void setModoEvaluacion(boolean b) {
+		buttonPlay.setEnabled(!b);
+		buttonEnd.setEnabled(!b);
+		buttonNext.setEnabled(!b);
+		buttonPrevious.setEnabled(!b);
+		buttonInit.setEnabled(!b);
+	}
 	
 }

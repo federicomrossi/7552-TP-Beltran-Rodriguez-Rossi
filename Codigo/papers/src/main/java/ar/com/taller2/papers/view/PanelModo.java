@@ -2,11 +2,7 @@ package ar.com.taller2.papers.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ItemListener;
-import java.util.Map.Entry;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -27,6 +23,7 @@ public class PanelModo extends JPanel {
 	JLabel lblModoDeEjecucion = new JLabel("MODO DE EJECUCIÓN");
     JRadioButton radioAprendizaje = new JRadioButton("Aprendizaje");
     JRadioButton radioEvaluacion = new JRadioButton("Autoevaluación");
+    JRadioButton radioEdicion = new JRadioButton("Edición");
     final ButtonGroup groupModoEjecucion = new ButtonGroup();
 	
     private void setLookAndFeel() {
@@ -47,6 +44,13 @@ public class PanelModo extends JPanel {
 		radioEvaluacion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		radioEvaluacion.setForeground(new Color(255,255,255));
 		
+		radioEdicion.setContentAreaFilled(false);
+		radioEdicion.setIcon(new ImageIcon(Main.class.getResource("/images/UnselectedAzul.png")));
+		radioEdicion.setSelectedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+		radioEdicion.setPressedIcon(new ImageIcon(Main.class.getResource("/images/SelectedAzul.png")));
+		radioEdicion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		radioEdicion.setForeground(new Color(255,255,255));
+		
 		lblModoDeEjecucion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblModoDeEjecucion.setBackground(new Color(100,100,100));
 		lblModoDeEjecucion.setForeground(new Color(255,255,255));
@@ -62,10 +66,12 @@ public class PanelModo extends JPanel {
 		radioAprendizaje.setSelected(true);
 		this.add(radioAprendizaje);
 		this.add(radioEvaluacion);
+		this.add(radioEdicion);
 		
 		
 		groupModoEjecucion.add(radioAprendizaje);
 		groupModoEjecucion.add(radioEvaluacion);
+		groupModoEjecucion.add(radioEdicion);
 		
 		bloquearTodo();
 		
@@ -75,11 +81,13 @@ public class PanelModo extends JPanel {
 	public void bloquearTodo() {
 		radioAprendizaje.setEnabled(false);
 		radioEvaluacion.setEnabled(false);
+		radioEdicion.setEnabled(false);
 	}
 	
 	public void desbloquearTodo() {
 		radioAprendizaje.setEnabled(true);
 		radioEvaluacion.setEnabled(true);
+		radioEdicion.setEnabled(true);
 	}
 	
 	public void addAprendizajeItemListener(ItemListener l){
@@ -88,6 +96,10 @@ public class PanelModo extends JPanel {
 	
 	public void addEvaluacionItemListener(ItemListener l){
 		radioEvaluacion.addItemListener(l);
+	}
+	
+	public void addEdicionItemListener(ItemListener l){
+		radioEdicion.addItemListener(l);
 	}
 	
 	public void removeAprendizajeItemListener(ItemListener l){

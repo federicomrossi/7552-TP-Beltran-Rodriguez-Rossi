@@ -10,6 +10,7 @@ import ar.com.taller2.papers.AleatoryDialog;
 import ar.com.taller2.papers.controller.jgraphx.ChangeWeightListener;
 import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
 import ar.com.taller2.papers.controller.jgraphx.NewEdgeListener;
+import ar.com.taller2.papers.controller.jgraphx.NewVertexListener;
 
 public class MenuArchivoNuevoNoOrientadoAleatorioActionListener implements
 		ActionListener {
@@ -29,6 +30,8 @@ AprendiendoGrafos app;
 		this.app.getVista().addNewEdgeListener(new NewEdgeListener(app));
 		this.app.getVista().addChangeWeightListener(new ChangeWeightListener(app));
 		this.app.getVista().addMoveCellListener(new MoveCellListener(app));
+		this.app.getVista().addNewVertexListener(new NewVertexListener(app));
+		this.app.getVista().installKeyboardListener();
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();
 		app.getVista().bloquearNoOrientado();

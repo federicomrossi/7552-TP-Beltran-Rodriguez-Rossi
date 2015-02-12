@@ -10,7 +10,8 @@ import ar.com.taller2.papers.controller.algoritmos.AlgoritmosPruebaAciclidadItem
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoAnchuraItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoProfundidadItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosSpanningTreeItemListener;
-import ar.com.taller2.papers.controller.jgraphx.NewVertexListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosTopologicoAnchuraItemListener;
+import ar.com.taller2.papers.controller.algoritmos.AlgoritmosTopologicoProfundidadItemListener;
 import ar.com.taller2.papers.model.GraphModel;
 
 public class AprendiendoGrafos {
@@ -33,6 +34,10 @@ public class AprendiendoGrafos {
 		
 		vista.addAlgoritmosRecorridoProfundidadItemListener(new AlgoritmosRecorridoProfundidadItemListener(this));
 		vista.addAlgoritmosRecorridoAnchuraItemListener(new AlgoritmosRecorridoAnchuraItemListener(this));
+		
+		vista.addAlgoritmosRecorridoTopologicoAnchuraItemListener(new AlgoritmosTopologicoAnchuraItemListener(this));
+		vista.addAlgoritmosRecorridoTopologicoProfundidadItemListener(new AlgoritmosTopologicoProfundidadItemListener(this));
+		
 		vista.addAlgoritmosDijkstraItemListener(new AlgoritmosDijkstraItemListener(this));
 		vista.addAlgoritmosPruebaAciclidadItemListener(new AlgoritmosPruebaAciclidadItemListener(this));
 		vista.addAlgoritmosComponentesFuertementeConexasItemListener(new AlgoritmosComponentesConexasItemListener(this));

@@ -54,7 +54,7 @@ public class GraphView extends mxGraphComponent{
         	this.graph.getModel().setGeometry(cell, new mxGeometry(x, y, 50, 50));
 //        	this.graph.getModel().setStyle(cell, "shape=ellipse;fillColor=#3cdbfe");
             x += 150;
-            if (x > 400) {
+            if (x > 500) {
                 x = 50;
                 y += 150;
             }

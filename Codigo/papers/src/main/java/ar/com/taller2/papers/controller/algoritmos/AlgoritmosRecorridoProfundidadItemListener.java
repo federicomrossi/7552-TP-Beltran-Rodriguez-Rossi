@@ -16,9 +16,12 @@ public class AlgoritmosRecorridoProfundidadItemListener implements ItemListener 
 	
 	public void itemStateChanged(ItemEvent e) {
 		if(e.getStateChange() == ItemEvent.SELECTED){
-			RecorridoProfundidad algoritmo = new RecorridoProfundidad(app.getModelo().getGraph(), app.getModelo().getVertex("v1"));
+			RecorridoProfundidad algoritmo = new RecorridoProfundidad(app.getModelo().getGraph(),null);
+			app.getVista().addSourceSelectionListener();
 			app.getModelo().setAlgorithm(algoritmo);
 			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
+		}else{
+			app.getVista().removeSourceSelectionListener();
 		}
 	}
 

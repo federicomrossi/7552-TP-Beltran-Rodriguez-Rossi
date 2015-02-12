@@ -139,11 +139,11 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 	}
 
 	public boolean cumpleCondicionesIniciales() {
-		return true;
+		return (inicio != null);
 	}
 
 	public String getCondicionesIniciales() {
-		return "Este algoritmo no posee condiciones iniciales";
+		return "Debe seleccionar el vértice de origen";
 	}
 
 	public URL getAlgoritmo() {
@@ -163,8 +163,7 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 	}
 
 	public void setSource(Vertice v) {
-		// TODO Auto-generated method stub
-		
+		this.inicio = v;
 	}
 
 	public void setDest(Vertice v) {

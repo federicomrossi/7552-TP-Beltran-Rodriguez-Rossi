@@ -28,8 +28,10 @@ public class RemovedCellListener implements mxIEventListener {
 				Logger.getLogger(this.getClass().getName()).info("Vertice Removido");
 			}else{
 				Arista a = app.getVista().getGraph().getCellToEdgeMap().get(cell);
-				app.getModelo().removerArista(a);
-				Logger.getLogger(this.getClass().getName()).info("Arista Removida");
+				if(a !=null){
+					app.getModelo().removerArista(a);
+					Logger.getLogger(this.getClass().getName()).info("Arista Removida");
+				}
 			}
 		}
 	}

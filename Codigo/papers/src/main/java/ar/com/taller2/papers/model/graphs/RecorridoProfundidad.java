@@ -44,6 +44,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 	}
 	
 	public void iniciar() {
+		camino = new Vector<Vertice>();
 		DepthFirstIterator<Vertice,Arista> dfit = new DepthFirstIterator<Vertice,Arista>(this.graph, this.inicio);
 		while (dfit.hasNext()) {
 			this.camino.add(dfit.next());
@@ -72,18 +73,14 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 		Logger.getLogger(this.getClass().getName()).info("Siguiente");
 
 		if(this.indiceSiguientePaso < this.items.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
+			Selectable v = this.items.get(this.indiceSiguientePaso);
 			v.select(true);
+			return getSalida(indiceSiguientePaso++ - 1);
 		}
 		else {
 			throw new NextStepNotExistsException("No hay paso siguiente");
 		}
 
-//		if(this.indiceSiguientePaso < this.camino.size()) {
-//			Vertice v = this.camino.get(this.indiceSiguientePaso++);
-//			v.select(true);
-//		}
-		return "";
 	}
 
 	public String anterior() {
@@ -92,7 +89,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Selectable v = this.items.get(--this.indiceSiguientePaso);
 			v.select(false);
-			return "";
+			return getSalida(indiceSiguientePaso-1);
 		}
 
 
@@ -208,6 +205,14 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 	public Object[] getMatrixColumns() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public String getSalida(int indice){
+		StringBuilder sB = new StringBuilder();
+		for(int i=0;i<(indice+1) / 4;i++){
+			sB.append(camino.get(i)).append("-");
+		}
+		return sB.toString();
 	}
 
 }

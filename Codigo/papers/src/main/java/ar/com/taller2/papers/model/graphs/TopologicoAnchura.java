@@ -48,6 +48,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	}
 	
 	public void iniciar() {
+		camino = new Vector<Vertice>();
 		TopologicalOrderIterator<Vertice,Arista> dfit = new TopologicalOrderIterator<Vertice,Arista>(this.graph);
 		while (dfit.hasNext()) {
 			this.camino.add(dfit.next());

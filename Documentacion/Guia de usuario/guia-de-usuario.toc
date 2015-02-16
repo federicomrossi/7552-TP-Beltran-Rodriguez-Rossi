@@ -10,6 +10,6 @@
 \contentsline {section}{Guardar grafo}{5}
 \contentsline {chapter}{\numberline {3}Armado de grafos}{7}
 \contentsline {section}{Agregar v\IeC {\'e}rtice}{7}
-\contentsline {section}{Eliminar v\IeC {\'e}rtice}{7}
-\contentsline {section}{Agregar arista}{7}
+\contentsline {section}{Eliminar v\IeC {\'e}rtice}{8}
+\contentsline {section}{Agregar arista}{8}
 \contentsline {section}{Eliminar arista}{8}

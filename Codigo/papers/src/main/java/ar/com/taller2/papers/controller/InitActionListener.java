@@ -13,7 +13,7 @@ public class InitActionListener implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		String result = app.getModelo().initAlgorithm();
-		//app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
+		app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
 		app.getVista().borrarSalida();
 		app.getVista().agregarASalida(result);
 		app.getVista().actualizar();

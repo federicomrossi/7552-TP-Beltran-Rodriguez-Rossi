@@ -1,44 +1,15 @@
 \contentsline {chapter}{\numberline {1}Instalaci\IeC {\'o}n}{1}
 \contentsline {section}{Requerimientos de hardware}{1}
 \contentsline {section}{Requerimientos de software}{1}
-\contentsline {section}{Instalaci\IeC {\'o}n del software en Microsoft Windows}{1}
-\contentsline {section}{Instalaci\IeC {\'o}n del software en SO basados en GNU/Linux}{2}
+\contentsline {section}{Instalaci\IeC {\'o}n en Microsoft Windows}{1}
+\contentsline {section}{Instalaci\IeC {\'o}n en SO basados en GNU/Linux}{2}
 \contentsline {chapter}{\numberline {2}Primeros pasos}{3}
-\contentsline {section}{Acceso al sistema}{3}
 \contentsline {section}{Espacio de trabajo}{3}
-\contentsline {section}{Cerrar sesi\IeC {\'o}n}{4}
-\contentsline {section}{Salir del sistema}{4}
-\contentsline {chapter}{\numberline {3}ABMs}{7}
-\contentsline {section}{Introducci\IeC {\'o}n}{7}
-\contentsline {section}{Agregar}{8}
-\contentsline {section}{Borrar}{8}
-\contentsline {section}{Modificar}{9}
-\contentsline {section}{Listar}{9}
-\contentsline {section}{Filtrar lista de datos}{9}
-\contentsline {section}{Ampliar lista de datos}{10}
-\contentsline {chapter}{\numberline {4}Clientes}{11}
-\contentsline {section}{Administrar}{11}
-\contentsline {section}{Cuenta Corriente}{11}
-\contentsline {chapter}{\numberline {5}Proveedores}{13}
-\contentsline {section}{Administrar}{13}
-\contentsline {section}{Cuenta Corriente}{13}
-\contentsline {section}{Compras}{14}
-\contentsline {chapter}{\numberline {6}Cheques}{15}
-\contentsline {section}{Administrar}{15}
-\contentsline {chapter}{\numberline {7}Facturaci\IeC {\'o}n}{17}
-\contentsline {section}{Emisiones}{17}
-\contentsline {section}{Gestionar}{19}
-\contentsline {section}{Reportes}{20}
-\contentsline {chapter}{\numberline {8}Reportes}{21}
-\contentsline {section}{Cierre de Caja}{21}
-\contentsline {section}{Cuenta Corriente}{21}
-\contentsline {section}{Libro IVA Compras}{22}
-\contentsline {section}{Libro IVA Ventas}{22}
-\contentsline {section}{Productos}{23}
-\contentsline {section}{Ventas}{24}
-\contentsline {section}{Cheques}{24}
-\contentsline {chapter}{\numberline {9}Seguridad}{25}
-\contentsline {section}{Ajustes}{25}
-\contentsline {section}{Usuarios}{26}
-\contentsline {section}{Vendedores}{26}
-\contentsline {section}{Comisiones}{27}
+\contentsline {section}{Crear nuevo grafo}{4}
+\contentsline {section}{Abrir grafo existente}{4}
+\contentsline {section}{Guardar grafo}{5}
+\contentsline {chapter}{\numberline {3}Armado de grafos}{7}
+\contentsline {section}{Agregar v\IeC {\'e}rtice}{7}
+\contentsline {section}{Eliminar v\IeC {\'e}rtice}{7}
+\contentsline {section}{Agregar arista}{7}
+\contentsline {section}{Eliminar arista}{8}

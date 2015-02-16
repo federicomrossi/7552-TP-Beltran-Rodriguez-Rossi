@@ -236,7 +236,7 @@
 %
 \section*{\bfseries\color{black}Antes de empezar}
 
-Esta guía asume que el lector se encuentra familiarizado con el sistema operativo \textit{Microsoft Windows} (versión XP y posteriores) y aquellos basados en GNU/Linux. Es decir, se considera que el usuario se encuentra mínimamente en condiciones de desenvolverse en el entorno en el cual se ejecuta la aplicación, razón por la cual no se explican temas como la utilización de cuadros de diálogo, asistentes o el exploradores de carpetas.
+Esta guía asume que el lector se encuentra familiarizado con el sistema operativo \textit{Microsoft Windows} (versión XP y posteriores) y aquellos basados en GNU/Linux. Es decir, se considera que el usuario se encuentra mínimamente en condiciones de desenvolverse en el entorno en el cual se ejecuta la aplicación, razón por la cual no se explican temas como la utilización de cuadros de diálogo, asistentes, el exploradores de carpetas o el uso de la consola de comandos.
 \bigskip
 
 
@@ -268,13 +268,104 @@ La guía está compuesta de capítulos que agrupan las distintas funcionalidades
 
 
 
+
 %
 % CAPITULO 1
+%
+\chapter{Instalación}
+
+
+% CAPITULO 1
+% Requerimientos de hardware
+\section{Requerimientos de hardware}
+
+	Asegúrese de que su equipo cumple con los requerimientos mínimos de hardware:
+	\medskip
+
+	\begin{itemize}
+		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
+		\itemsep=5pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=0pt
+
+		\item \textit{Memoria RAM}: 128MB mínimo, 512MB recomendado;
+		\item \textit{Espacio en disco}: 30MB para Graferator; 124 MB para JRE; 2 MB para Java Update; 
+		\item \textit{Procesador}: Mínimo Pentium 2 a 266 MHz;
+
+	\end{itemize}
+\bigskip
+
+
+% CAPITULO 1
+% Requerimientos de software
+\section{Requerimientos de software}
+
+Asegúrese de que su sistema cumple los requisitos de software mínimos recomendados, los cuales se encuentran especificados a continuación:
+	\medskip
+
+	\begin{itemize}
+		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
+		\itemsep=5pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=0pt
+
+		\item \textit{Sistemas operativos}: GNU/Linux (x86 y x86-64) con interfaz gráfica; Windows 8 (escritorio), Windows 7, Windows Vista SP2;
+
+		\item \textit{Java Runtime Enviroment} (JRE o JVM) (\url{http://java.com});
+
+		\item Descompresor de archivos con formato \textit{ZIP}. (e.g.: WinZIP en Microsoft Windows).
+
+	\end{itemize}
+\bigskip
+
+
+
+% CAPITULO 1
+% Instalación del software en Microsoft Windows
+\section{Instalación del software en Microsoft Windows}
+
+\begin{enumerate}
+	\itemsep=8pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=0pt
+	
+	\item \textbf{Cree una nueva carpeta} con el nombre \textit{Graferator} en alguna ubicación de su preferencia (por lo general las instalaciones se realizan sobre el directorio C:\\Archivos de programas);
+
+	\item \textbf{Sitúe el archivo} \textit{Graferator-version-X.zip} en la carpeta que ha creado. \textit{Nota: reemplace X por el número de versión que se encuentra instalando; por ejemplo, para la versión 1.0 el archivo se llamará Graferator-version-1.0.zip};
+
+	\item \textbf{Descomprima} el archivo Zip asegurándose de que el archivo con extensión .jar \textit{Graferator.jar} se mantenga en la raíz del directorio creado en el primer paso;
+
+	\item \textbf{Haga doble click} sobre el archivo \textit{Graferator.jar} para ejecutar Graferator.
+
+	\item Si lo desea, puede \textbf{ejecutar} Graferator desde la \textbf{línea de comandos (consola)} posicionándose con esta última sobre la carpeta donde se encuentra el archivo \textit{Graferator.jar} y ejecutando la línea ``{\ttfamily\footnotesize java -jar graferator.jar}''
+
+\end{enumerate}
+\bigskip
+
+
+
+% CAPITULO 1
+% Instalación del software en SO basados en GNU/Linux
+\section{Instalación del software en SO basados en GNU/Linux}
+
+\begin{enumerate}
+	\itemsep=8pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=0pt
+	
+	\item \textbf{Cree una nueva carpeta} con el nombre \textit{Graferator} en alguna ubicación de su preferencia (por lo general las instalaciones se realizan sobre el directorio /usr/bin );
+
+	\item \textbf{Sitúe el archivo} \textit{Graferator-version-X.zip} en la carpeta que ha creado. \textit{Nota: reemplace X por el número de versión que se encuentra instalando; por ejemplo, para la versión 1.0 el archivo se llamará Graferator-version-1.0.zip};
+
+	\item \textbf{Descomprima} el archivo Zip asegurándose de que el archivo con extensión .jar \textit{Graferator.jar} se mantenga en la raíz del directorio creado en el primer paso. Por lo general se suele descomprimir utilizando el comando ``{\ttfamily\footnotesize \$ unzip Graferator-version-X.zip}''
+
+	\item \textbf{Ejecute} Graferator desde la \textbf{línea de comandos (consola)} posicionándose con esta última sobre la carpeta donde se encuentra el archivo \textit{Graferator.jar} y ejecute la línea ``{\ttfamily\footnotesize \$ java -jar graferator.jar}''.
+
+\end{enumerate}
+\bigskip
+
+
+
+
+%
+% CAPITULO 2
 %
 \chapter{Primeros pasos}
 
 
-% CAPITULO 1
+% CAPITULO 2
 % Acceso al sistema
 \section{Acceso al sistema}
 
@@ -291,7 +382,7 @@ Al hacer doble click sobre el acceso directo de SIGC se abrirá una ventana inic
 \bigskip
 
 
-% CAPITULO 1
+% CAPITULO 2
 % Espacio de trabajo
 \section{Espacio de trabajo}
 
@@ -315,7 +406,7 @@ El espacio restante, vacío al principio, es en donde se desplegarán las ventan
 
 
 
-% CAPITULO 1
+% CAPITULO 2
 % Cerrar sesión
 \section{Cerrar sesión}
 
@@ -339,7 +430,7 @@ Habiéndose cerrado la sesión aparecerá sobre la ventana principal el formular
 
 
 
-% CAPITULO 1
+% CAPITULO 2
 % Cerrar sesión
 \section{Salir del sistema}
 
@@ -361,8 +452,20 @@ Si lo que desea es salir completamente del sistema y finalizar la ejecución de 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 %
-% CAPITULO 2
+% CAPITULO 3
 %
 \chapter{ABMs}
 

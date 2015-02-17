@@ -2,14 +2,17 @@ package ar.com.taller2.papers;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Alerta extends JDialog{
 	
@@ -31,9 +34,19 @@ public class Alerta extends JDialog{
 				dispose();
 			}
         });
+    	
+    	JPanel top = new JPanel(new FlowLayout());
+    	JPanel center = new JPanel(new FlowLayout());
+    	
+    	top.add(msj);
+    	center.add(aceptar);
+    	
+    	JPanel panel = new JPanel();
+    	panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
-    	getContentPane().add(msj, BorderLayout.NORTH);  
-        getContentPane().add(aceptar, BorderLayout.CENTER);
+    	panel.add(top);
+    	panel.add(center);
+        this.add(panel);
     	this.pack();
     	this.setVisible(true);
 	}

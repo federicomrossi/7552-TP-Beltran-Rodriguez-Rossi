@@ -29,6 +29,7 @@ public class MenuArchivoNuevoGrafoOrientadoVacioActionListener implements Action
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanel();
 		app.getVista().bloquearOrientado();
+		app.getVista().desbloquearMenuGuardar();
 	}
 
 }

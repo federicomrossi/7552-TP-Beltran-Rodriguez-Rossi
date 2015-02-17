@@ -34,6 +34,7 @@ public class MenuArchivoAbrirActionListener implements ActionListener {
 			else {
 				FileManager f = new FileManager(app);
 				f.open(directory + filename);
+				app.getVista().desbloquearMenuGuardar();
 			}
 		}
 		

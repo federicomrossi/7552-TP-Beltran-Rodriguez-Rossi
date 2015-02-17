@@ -73,6 +73,18 @@ public class PapersMenu extends JMenuBar {
 		});
 		mnHelp.add(mntmAcercaDe);
 		
+		bloquearMenuGuardar();
+		
+	}
+	
+	public void bloquearMenuGuardar() {	
+		mntmGuardar.setEnabled(false);
+		mntmGuardarComo.setEnabled(false);
+	}
+	
+	public void desbloquearMenuGuardar() {	
+		mntmGuardar.setEnabled(true);
+		mntmGuardarComo.setEnabled(true);
 	}
 	
 	public void archivoNuevoGrafoOrientadoVacioTriggerAction(){

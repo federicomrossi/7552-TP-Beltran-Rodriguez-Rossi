@@ -360,6 +360,14 @@ public class Main extends JApplet {
     public void bloquearNoOrientado(){
     	this.panelAlgoritmos.bloquearNoDirigido();
     }
+
+    public void bloquearMenuGuardar() {
+    	this.menuBar.bloquearMenuGuardar();
+    }
+    
+    public void desbloquearMenuGuardar() {
+    	this.menuBar.desbloquearMenuGuardar();
+    }
     
     /* Eventos trigger de MENU */
     

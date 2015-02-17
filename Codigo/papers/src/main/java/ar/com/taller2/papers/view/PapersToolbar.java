@@ -117,7 +117,8 @@ public class PapersToolbar extends JToolBar {
 	
 	public void desbloquearToolbar(){
 		buttonPlay.setIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
-		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
+		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-play-25.png")));
+//		buttonPlay.setRolloverIcon(new ImageIcon(this.getClass().getResource("/images/icon-stop-24.png")));
 		
 		// Habilitamos botones de ejecución
 		buttonNext.setEnabled(true);

@@ -362,11 +362,11 @@ public class Main extends JApplet {
     }
 
     public void bloquearMenuGuardar() {
-    	this.menuBar.bloquearMenuGuardar();
+    	this.menuBar.bloquearMenu();
     }
     
     public void desbloquearMenuGuardar() {
-    	this.menuBar.desbloquearMenuGuardar();
+    	this.menuBar.desbloquearMenu();
     }
     
     /* Eventos trigger de MENU */

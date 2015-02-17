@@ -63,7 +63,7 @@ public class PanelModo extends JPanel {
 		this.add(lblModoDeEjecucion);
 				
 		
-		radioEdicion.setSelected(true);
+		radioAprendizaje.setSelected(true);
 		this.add(radioAprendizaje);
 		this.add(radioEvaluacion);
 		this.add(radioEdicion);
@@ -88,7 +88,6 @@ public class PanelModo extends JPanel {
 		radioAprendizaje.setEnabled(true);
 		radioEvaluacion.setEnabled(true);
 		radioEdicion.setEnabled(true);
-		radioEdicion.setSelected(true);
 	}
 	
 	public void addAprendizajeItemListener(ItemListener l){

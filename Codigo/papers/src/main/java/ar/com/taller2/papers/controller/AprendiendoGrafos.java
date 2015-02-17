@@ -57,8 +57,7 @@ public class AprendiendoGrafos {
 		vista.addMenuEditarNuevaAristaActionListener(new MenuEditarNuevaAristaActionListener(this));
 		vista.addMenuArchivoGuardarActionListener(new MenuArchivoGuardarActionListener(this));
 		vista.addMenuArchivoGuardarComoActionListener(new MenuArchivoGuardarComoActionListener(this));
-		
-		
+		vista.addMenuArchivoAbrirActionListener(new MenuArchivoAbrirActionListener(this));
 	}
 	
 	public Main getVista(){

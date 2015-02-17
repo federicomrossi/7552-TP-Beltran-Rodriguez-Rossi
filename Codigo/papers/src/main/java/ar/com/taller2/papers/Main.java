@@ -361,6 +361,15 @@ public class Main extends JApplet {
     	this.panelAlgoritmos.bloquearNoDirigido();
     }
     
+    /* Eventos trigger de MENU */
+    
+    public void MenuArchivoNuevoGrafoOrientadoVacioTriggerAction() {
+    	menuBar.archivoNuevoGrafoOrientadoVacioTriggerAction();
+    }
+    
+    public void MenuArchivoNuevoGrafoNoOrientadoVacioTriggerAction() {
+    	menuBar.archivoNuevoGrafoNoOrientadoVacioTriggerAction();
+    }
     
     /* Listeners del MENU */
     

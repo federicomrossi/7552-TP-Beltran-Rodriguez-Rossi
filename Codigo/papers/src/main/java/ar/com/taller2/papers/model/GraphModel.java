@@ -10,12 +10,14 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.VertexFactory;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.ext.StringNameProvider;
 import org.jgrapht.generate.RandomGraphGenerator;
 import org.jgrapht.graph.ListenableDirectedWeightedGraph;
 import org.jgrapht.graph.ListenableUndirectedWeightedGraph;
 
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
+import ar.com.taller2.papers.libraries.VertexAttributeProvider;
 
 public class GraphModel {
 	
@@ -78,7 +80,7 @@ public class GraphModel {
 	
 	public void guardarGrafo(String path, String filename) {
 		
-		DOTExporter<Vertice, Arista> export= new DOTExporter<Vertice, Arista>();
+		DOTExporter<Vertice, Arista> export= new DOTExporter<Vertice, Arista>(new StringNameProvider<Vertice>(), null, null, null, new VertexAttributeProvider());
 
 		try {
 			BufferedWriter out = new BufferedWriter(new FileWriter(path + filename));

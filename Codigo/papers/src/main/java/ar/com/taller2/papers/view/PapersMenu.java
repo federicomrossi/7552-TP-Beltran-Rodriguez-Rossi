@@ -75,6 +75,14 @@ public class PapersMenu extends JMenuBar {
 		
 	}
 	
+	public void archivoNuevoGrafoOrientadoVacioTriggerAction(){
+		mntmGrafoOrientadoVacio.doClick();
+	}
+	
+	public void archivoNuevoGrafoNoOrientadoVacioTriggerAction(){
+		mntmGrafoNoOrientadoVacio.doClick();
+	}
+	
 	public void addArchivoNuevoGrafoOrientadoAleatorioActionListener(ActionListener a){
 		mntmGrafoOrientadoAleatorio.addActionListener(a);
 	}

@@ -1,7 +1,10 @@
 package ar.com.taller2.papers.view;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -59,6 +62,20 @@ public class PapersMenu extends JMenuBar {
 		this.add(mnEditar);
 		this.add(mnHelp);
 		
+		
+		mntmHelpContents.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Desktop.isDesktopSupported()) {
+				    try {
+				        File myFile = new File(getClass().getResource("/manuals/guia-de-usuario.pdf").getFile());
+				        Desktop.getDesktop().open(myFile);
+				    } catch (IOException ex) {
+				        // No hay aplicaciones capaces de abrir un pdf
+				    	System.out.println("Error: No hay aplicaciones capaces de abrir un pdf. " + ex.getMessage());
+				    }
+				}
+			}
+		});
 		mnHelp.add(mntmHelpContents);
 		
 		JSeparator separator_2 = new JSeparator();

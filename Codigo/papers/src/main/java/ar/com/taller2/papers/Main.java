@@ -37,6 +37,7 @@ import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
 import ar.com.taller2.papers.view.GraphView;
 import ar.com.taller2.papers.view.PanelAlgoritmos;
+import ar.com.taller2.papers.view.PanelInformacion;
 import ar.com.taller2.papers.view.PanelIzquierda;
 import ar.com.taller2.papers.view.PanelModo;
 import ar.com.taller2.papers.view.PanelPseudocodigo;
@@ -87,9 +88,7 @@ public class Main extends JApplet {
     
     
     JTabbedPane tbdPaneDerecha = new JTabbedPane(JTabbedPane.TOP);
-    JPanel panelInformacion = new JPanel();
-    JTextPane textPaneContenidoInformacion = new JTextPane();
-    JScrollPane scrollPaneInformacion = new JScrollPane(textPaneContenidoInformacion);
+    PanelInformacion panelInformacion = new PanelInformacion();
     
     PanelPseudocodigo panelPseudocodigo = new PanelPseudocodigo();
     
@@ -165,26 +164,6 @@ public class Main extends JApplet {
 		
 		tbdPaneDerecha.addTab("Información", new ImageIcon(this.getClass().getResource("/images/info.png")), panelInformacion, null);
 		panelInformacion.setLayout(new BoxLayout(panelInformacion, BoxLayout.Y_AXIS));
-		
-		lblTituloInformacion = new JLabel("");
-		lblTituloInformacion.setBorder(new EmptyBorder(10, 10, 10, 10));
-		lblTituloInformacion.setFont(new Font("Tahoma", Font.BOLD, 14));
-		panelInformacion.add(lblTituloInformacion);
-		
-		
-		textPaneContenidoInformacion.setContentType("text/html");
-		textPaneContenidoInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
-		textPaneContenidoInformacion.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textPaneContenidoInformacion.setEditable(false);
-		textPaneContenidoInformacion.setBorder(new EmptyBorder(0, 0, 0, 0));
-//		textPaneContenidoInformacion.setText("<html><body><img src=" + this.getClass().getResource("/images/FondoAzul.png") + " alt='Smiley face'></body></html>");
-//		textPaneContenidoInformacion.setText("<html><body background=" + this.getClass().getResource("/images/FondoAzul.png") + " alt='Smiley face'></body></html>");
-		textPaneContenidoInformacion.setText("<html><body bgcolor=#5b5b5b style='margin: 0 auto; text-align: center; width: 100%; height:100%;'><img style='vertical-align: middle' src=" + this.getClass().getResource("/images/info-512.png") + " alt='Info'></body></html>");
-		panelInformacion.add(textPaneContenidoInformacion);
-		
-		
-		scrollPaneInformacion.setAlignmentX(Component.LEFT_ALIGNMENT);
-		panelInformacion.add(scrollPaneInformacion);
 		
 		//
 		// Fin panel de informacion
@@ -288,10 +267,10 @@ public class Main extends JApplet {
      * Muestra la info del algoritmo en cuestion
      */
     public void mostrarInfoAlgoritmo(String titulo, URL descripcion, URL algoritmo) {
-		lblTituloInformacion.setText(titulo);
+    	panelInformacion.setTitulo(titulo);
 		panelPseudocodigo.setTitulo(titulo);
 		try {
-			textPaneContenidoInformacion.setPage(descripcion);
+			panelInformacion.setInformacion(descripcion);
 			panelPseudocodigo.setAlgoritmo(algoritmo);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -63,15 +63,17 @@ public class PanelModo extends JPanel {
 		this.add(lblModoDeEjecucion);
 				
 		
-		radioAprendizaje.setSelected(true);
+		radioEdicion.setSelected(true);
+		this.add(radioEdicion);
 		this.add(radioAprendizaje);
 		this.add(radioEvaluacion);
-		this.add(radioEdicion);
 		
 		
+		
+		groupModoEjecucion.add(radioEdicion);
 		groupModoEjecucion.add(radioAprendizaje);
 		groupModoEjecucion.add(radioEvaluacion);
-		groupModoEjecucion.add(radioEdicion);
+		
 		
 		bloquearTodo();
 		
@@ -111,7 +113,7 @@ public class PanelModo extends JPanel {
 	}
 
 	public void seleccionarPrimero() {
-		radioAprendizaje.setSelected(true);
+		radioEdicion.setSelected(true);
 		
 	}
 	

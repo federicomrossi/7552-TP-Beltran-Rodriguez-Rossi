@@ -233,6 +233,7 @@ public class Main extends JApplet {
         // Selecciona el primer algoritmo de la lista de posibles
         this.panelAlgoritmos.seleccionarPrimero();
         this.panelModo.seleccionarPrimero();
+        this.setModoEdicion(true);
     	//ordernarVertices();
 //        this.setSize(400, 320);
 //        this.setVisible(true);

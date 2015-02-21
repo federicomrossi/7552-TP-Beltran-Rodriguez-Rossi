@@ -146,7 +146,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public String getTitulo() {
-		return "Recorrido en Anchura";
+		return "Recorrido Topológico en Anchura";
 	}
 
 	public URL getDescripcion() {

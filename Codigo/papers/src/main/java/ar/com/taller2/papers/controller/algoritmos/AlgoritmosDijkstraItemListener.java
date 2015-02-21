@@ -20,7 +20,7 @@ public class AlgoritmosDijkstraItemListener implements ItemListener {
 		if(e.getStateChange() == ItemEvent.SELECTED){
 			Dijkstra algoritmo = new Dijkstra((ListenableDirectedWeightedGraph)app.getModelo().getGraph());
 			app.getVista().addSourceSelectionListener();
-			app.getVista().mostrarMensajeEquivocacion("Seleccione el vértice de Origen");
+			//app.getVista().mostrarMensajeEquivocacion("Seleccione el vértice de Origen");
 			app.getModelo().setAlgorithm(algoritmo);
 			app.getVista().mostrarInfoAlgoritmo(algoritmo.getTitulo(), algoritmo.getDescripcion(), algoritmo.getAlgoritmo());
 		}else{

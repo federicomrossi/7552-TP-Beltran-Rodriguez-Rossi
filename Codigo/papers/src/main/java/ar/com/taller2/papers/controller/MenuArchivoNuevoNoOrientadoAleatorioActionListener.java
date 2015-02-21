@@ -33,7 +33,7 @@ AprendiendoGrafos app;
 		this.app.getVista().addNewVertexListener(new NewVertexListener(app));
 		this.app.getVista().installKeyboardListener();
 		this.app.getVista().actualizar();
-		this.app.getVista().desbloquearPanel();
+		this.app.getVista().desbloquearPanelEdicion();
 		app.getVista().bloquearNoOrientado();
 		app.getVista().desbloquearMenuGuardar();
 	}

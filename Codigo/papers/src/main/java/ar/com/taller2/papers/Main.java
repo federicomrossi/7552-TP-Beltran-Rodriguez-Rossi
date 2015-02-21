@@ -229,7 +229,7 @@ public class Main extends JApplet {
     	splitPane_3.setLeftComponent(graphView);
     	layout = new mxParallelEdgeLayout(adapter);
         layout.execute(adapter.getDefaultParent());
-        
+        this.actualizar();
         // Selecciona el primer algoritmo de la lista de posibles
         this.panelAlgoritmos.seleccionarPrimero();
         this.panelModo.seleccionarPrimero();
@@ -324,7 +324,13 @@ public class Main extends JApplet {
     
     public void desbloquearPanel() {
     	this.panelAlgoritmos.desbloquearTodo();
-    	this.toolBar.desbloquearTodo();
+    	//this.toolBar.desbloquearTodo();
+    	this.panelModo.desbloquearTodo();
+    }
+    
+    public void desbloquearPanelEdicion() {
+    	this.panelAlgoritmos.desbloquearTodo();
+    	//this.toolBar.desbloquearTodo();
     	this.panelModo.desbloquearTodo();
     }
     
@@ -426,10 +432,12 @@ public class Main extends JApplet {
 	
 	public void addSourceDestSelectionListener(){
 		adapter.addSourceDestSelectionListener(aprendiendoGrafos);
+		this.mostrarMensajeEquivocacion("Seleccione los vértices de Origen y Destino para iniciar el algoritmo.");
 	}
 	
 	public void addSourceSelectionListener(){
 		adapter.addSourceSelectionListener(aprendiendoGrafos);
+		this.mostrarMensajeEquivocacion("Seleccione el vértice de Origen para iniciar el algoritmo.");
 	}
 	
 	public void removeSourceDestSelectionListener(){

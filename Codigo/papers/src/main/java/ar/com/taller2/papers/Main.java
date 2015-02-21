@@ -31,6 +31,7 @@ import org.jgrapht.ListenableGraph;
 
 import ar.com.taller2.papers.adapters.JGraphXAdapter;
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
+import ar.com.taller2.papers.libraries.FileManager;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
@@ -99,6 +100,8 @@ public class Main extends JApplet {
 	JSplitPane splitPane_3 = new JSplitPane();
 	
 	boolean modoEdicion =false;
+	
+	FileManager fileManager;
 	
     
     /**
@@ -326,6 +329,14 @@ public class Main extends JApplet {
     public void rerenderGrafo() {
     	this.graphView.ordernarVertices();
 	}
+    
+    public FileManager getFileManager() {
+    	return this.fileManager;
+    }
+    
+    public void setFileManager(FileManager fileManager) {
+    	this.fileManager = fileManager;
+    }
     
     public void setPseudocodeCurrent(Selectable linea) {
     	this.panelPseudocodigo.setPseudocodeCurrent(linea);

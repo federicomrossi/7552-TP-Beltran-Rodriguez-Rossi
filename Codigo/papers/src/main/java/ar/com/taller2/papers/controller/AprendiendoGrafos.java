@@ -12,6 +12,7 @@ import ar.com.taller2.papers.controller.algoritmos.AlgoritmosRecorridoProfundida
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosSpanningTreeItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosTopologicoAnchuraItemListener;
 import ar.com.taller2.papers.controller.algoritmos.AlgoritmosTopologicoProfundidadItemListener;
+import ar.com.taller2.papers.libraries.FileManager;
 import ar.com.taller2.papers.model.GraphModel;
 
 public class AprendiendoGrafos {
@@ -22,6 +23,8 @@ public class AprendiendoGrafos {
 	
 	public AprendiendoGrafos(Main main){
 		this.vista=main;
+		vista.setFileManager(new FileManager(this));
+		
 //		vista.setGraph(modelo.getGraph());
 		vista.addToolbarNextActionListener(new NextActionListener(this));
 		vista.addToolbarPreviousActionListener(new PreviousActionListener(this));

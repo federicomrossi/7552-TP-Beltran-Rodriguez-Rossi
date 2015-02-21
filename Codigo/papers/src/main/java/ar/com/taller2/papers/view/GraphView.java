@@ -113,7 +113,7 @@ public class GraphView extends mxGraphComponent{
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
-        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#2ca0ba;gradientDirection=south;gradientColor=#237f93;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true" );
+        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#FF8000;gradientDirection=south;gradientColor=#B25900;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true; font-size: 30px;" );
         }
         StringBuilder sb = new StringBuilder();
         sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");

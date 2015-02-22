@@ -1,0 +1,5 @@
+Sea G=(V,E)\, un grafo dirigido:
+	1) Aplicar búsqueda en profundidad sobre G
+	2) Calcular el grafo traspuesto.
+	3) Aplicar búsqueda en profundidad sobre G^ t  (el grafo traspuesto) iniciando la búsqueda en los nodos de mayor a menor tiempo de finalización obtenidos en la primera ejecución de búsqueda en profundidad (paso 1)
+	4) El resultado será un bosque de árboles. Cada árbol es un componente fuertemente conexo.

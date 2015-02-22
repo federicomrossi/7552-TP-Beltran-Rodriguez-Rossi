@@ -138,7 +138,7 @@ public class ComponentesFuertementeConexas extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/componentes-fuertemente-conexas-pseudocode.html");
+		return this.getClass().getResource("/algorithms/componentes-fuertemente-conexas-pseudocode.txt");
 	}
 
 	public String getTitulo() {

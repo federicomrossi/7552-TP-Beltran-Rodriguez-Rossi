@@ -88,6 +88,7 @@ public class GraphView extends mxGraphComponent{
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
 	    edge.put(mxConstants.STYLE_FONTCOLOR, "#446299");
 	    edge.put(mxConstants.STYLE_DELETABLE, true);
+	    edge.put(mxConstants.STYLE_FONTSIZE, "15");
 
 		Map<String, Object> vertex = new HashMap<String, Object>();
 		vertex.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
@@ -96,6 +97,7 @@ public class GraphView extends mxGraphComponent{
 		vertex.put(mxConstants.STYLE_GRADIENTCOLOR, mxUtils.parseColor("#FFFFFF"));
 		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
 		vertex.put(mxConstants.STYLE_PERIMETER, mxConstants.PERIMETER_ELLIPSE);
+		vertex.put(mxConstants.STYLE_FONTSIZE, "15");
 		
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);

@@ -669,5 +669,18 @@ public class Main extends JApplet {
 	}
 
 
+
+	public void rerenderGrafo(Vertice v, int i, int j) {
+		graphView.ordernarVertices(v, i, j);
+		
+	}
+
+
+	public void rerenderGrafo(Vertice v) {
+		graphView.ordernarVertices(v);
+		
+	}
+
+
 	
 }

@@ -27,7 +27,7 @@ public class NewVertexListener implements MouseListener {
 	        isAlreadyOneClick = false;
 	        Vertice v = app.getModelo().agregarVertice();
 	        app.getVista().actualizar();
-			app.getVista().rerenderGrafo();
+			app.getVista().rerenderGrafo(v, e.getX(), e.getY());
 	    } else {
 	        isAlreadyOneClick = true;
 	        Timer t = new Timer("doubleclickTimer", false);

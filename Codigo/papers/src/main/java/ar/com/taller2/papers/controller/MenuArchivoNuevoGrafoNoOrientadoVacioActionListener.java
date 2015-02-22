@@ -26,7 +26,7 @@ public class MenuArchivoNuevoGrafoNoOrientadoVacioActionListener implements Acti
 		this.app.getVista().installKeyboardListener();
 		this.app.getVista().actualizar();
 		this.app.getVista().desbloquearPanelEdicion();
-		app.getVista().bloquearNoOrientado();
+		//app.getVista().bloquearNoOrientado();
 		app.getVista().desbloquearMenuGuardar();
 	}
 

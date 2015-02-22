@@ -231,7 +231,7 @@ public class Main extends JApplet {
         layout.execute(adapter.getDefaultParent());
         this.actualizar();
         // Selecciona el primer algoritmo de la lista de posibles
-        this.panelAlgoritmos.seleccionarPrimero();
+       //this.panelAlgoritmos.seleccionarPrimero();
         this.panelModo.seleccionarPrimero();
         this.setModoEdicion(true);
     	//ordernarVertices();
@@ -329,7 +329,7 @@ public class Main extends JApplet {
     }
     
     public void desbloquearPanelEdicion() {
-    	this.panelAlgoritmos.desbloquearTodo();
+    	this.panelAlgoritmos.bloquearTodo();
     	//this.toolBar.desbloquearTodo();
     	this.panelModo.desbloquearTodo();
     }
@@ -660,6 +660,7 @@ public class Main extends JApplet {
 		graphView.setModoEdicion(b);
 		menuBar.setModoEdicion(b);
 		toolBar.setModoEvaluacion(b);
+		panelAlgoritmos.setModoEdicion(b,aprendiendoGrafos.getModelo().getTipo());
 	}
 
 	

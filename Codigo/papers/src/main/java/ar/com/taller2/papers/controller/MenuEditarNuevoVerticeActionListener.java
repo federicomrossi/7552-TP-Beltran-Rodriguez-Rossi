@@ -17,8 +17,9 @@ public class MenuEditarNuevoVerticeActionListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Vertice v = app.getModelo().agregarVertice();
 		Logger.getLogger(this.getClass().getName()).info("Agregué un vértice: " + v.toString());
+		//app.getVista().actualizar(v);
 		app.getVista().actualizar();
-		app.getVista().rerenderGrafo();
+		app.getVista().rerenderGrafo(v);
 	}
 	
 }

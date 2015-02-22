@@ -163,5 +163,51 @@ public class GraphView extends mxGraphComponent{
 		this.graph.setCellsResizable(edicion);
 		this.setConnectable(edicion);
 	}
+
+
+	public void ordernarVertices(Vertice v, int x, int y) {
+		this.graph.getModel().beginUpdate();
+		this.graph.getModel().setGeometry(this.graph.getVertexToCellMap().get(v), new mxGeometry(x-25, y-25, 50, 50));
+		this.graph.getModel().endUpdate();
+	}
+	
+	public void ordernarVertices(Vertice v) {
+		this.graph.getModel().beginUpdate();
+		double y = getMaxY();
+		double x = getMaxX(y);
+		
+		x += 150;
+        if (x > 500) {
+            x = 50;
+            y += 150;
+        }
+		
+		this.graph.getModel().setGeometry(this.graph.getVertexToCellMap().get(v), new mxGeometry(x, y, 50, 50));
+		this.graph.getModel().endUpdate();
+	}
+	
+	private double getMaxX(double y){
+		double max = 0;
+		for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
+			//graph.getView().getState(cell).getX()
+			if(cell.getValue().getGeometry() != null && cell.getValue().getGeometry().getY() == y){
+				if(cell.getValue().getGeometry() != null && cell.getValue().getGeometry().getX()> max){
+					max = cell.getValue().getGeometry().getX();
+				}
+        	}
+        }
+		return max;
+	}
+	
+	private double getMaxY(){
+		double max = 0;
+		for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
+        	if(cell.getValue().getGeometry() != null && cell.getValue().getGeometry().getY()> max){
+        		max = cell.getValue().getGeometry().getY();
+        	}
+        }
+		return max;
+	}
+
 	
 }

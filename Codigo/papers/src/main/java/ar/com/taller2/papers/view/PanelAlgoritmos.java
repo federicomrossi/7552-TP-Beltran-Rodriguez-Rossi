@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 
 import ar.com.taller2.papers.Main;
+import ar.com.taller2.papers.model.TIPO_GRAFO;
 
 public class PanelAlgoritmos extends JPanel {
 
@@ -264,6 +265,20 @@ public class PanelAlgoritmos extends JPanel {
 	
 	public void removeArbolExpansionCosteMinimoItemListener(ItemListener l){
 		radioButtonAlgoritmoArbolExpansionCosteMinimo.removeItemListener(l);
+	}
+
+	public void setModoEdicion(boolean b, TIPO_GRAFO tipo) {
+		if(b){
+			this.bloquearTodo();
+		}else {
+			this.desbloquearTodo();
+			if(tipo.equals(TIPO_GRAFO.ORIENTADO)){
+				this.bloquearDirigido();
+			}else{
+				this.bloquearNoDirigido();
+			}
+			this.seleccionarPrimero();
+		}
 	}
 	
 }

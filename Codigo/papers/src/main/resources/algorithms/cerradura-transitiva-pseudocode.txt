@@ -1,0 +1,8 @@
+para cada(1<=i,j<=n)
+    D[i,j]=adyacente(i,j); // 1 si existe, 0 si no
+para cada(1<=i<=n)
+    D[i,i]=1;
+
+para cada(k=1,...,n)
+    para cada(1<=i,j<=n)
+        D[i,j]=D[i,j] or (D[i,k] and D[k,j]);

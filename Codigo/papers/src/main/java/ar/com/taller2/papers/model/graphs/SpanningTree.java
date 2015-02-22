@@ -105,7 +105,7 @@ public class SpanningTree extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/arbol-expansion-coste-minimo-pseudocode.html");
+		return this.getClass().getResource("/algorithms/arbol-expansion-coste-minimo-pseudocode.txt");
 	}
 
 	public String getTitulo() {

@@ -172,7 +172,7 @@ public class PanelAlgoritmos extends JPanel {
 	}
 	
 	public void seleccionarPrimero() {
-		radioButtonAlgoritmoRecorridoProfundidad.setSelected(true);
+		radioButtonAlgoritmoRecorridoProfundidad.setSelected(false);
 	}
 	
 	public void bloquearTodoExcepto(JRadioButton seleccion) {

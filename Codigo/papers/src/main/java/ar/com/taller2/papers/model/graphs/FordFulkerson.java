@@ -191,7 +191,7 @@ public class FordFulkerson extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/ford-fulkerson-pseudocode.html");
+		return this.getClass().getResource("/algorithms/ford-fulkerson-pseudocode.txt");
 	}
 
 	public String getTitulo() {

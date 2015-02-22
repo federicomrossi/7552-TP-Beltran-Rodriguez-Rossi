@@ -126,7 +126,7 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/cerradura-transitiva-pseudocode.html");
+		return this.getClass().getResource("/algorithms/cerradura-transitiva-pseudocode.txt");
 	}
 
 	public String getTitulo() {

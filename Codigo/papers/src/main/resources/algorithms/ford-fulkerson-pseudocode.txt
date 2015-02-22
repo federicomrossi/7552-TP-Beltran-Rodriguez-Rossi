@@ -1,6 +1,6 @@
 Ford-Fulkerson(G,s,t)
     mientras(exista un camino p desde s a t en la red residual Gf) 
-        cf(p) = min{cf(u,v): (u,v) está sobre p};
+        cf(p) = min{cf(u,v): (u,v) se encuentra sobre p};
         para (cada arco (u,v) en p)
             f[u,v]= f[u,v] + cf(p); 
             f[v,u]= - f[u,v]; 

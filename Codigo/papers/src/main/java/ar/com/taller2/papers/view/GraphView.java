@@ -131,7 +131,8 @@ public class GraphView extends mxGraphComponent{
         
         for (Entry<Arista,mxICell> cell : this.graph.getEdgeToCellMap().entrySet()) {
         	StringBuilder sb2 = new StringBuilder(sb);
-        	sb.append(mxConstants.STYLE_STROKECOLOR).append("=").append(cell.getKey().isSelected() ? "#FF00FF": "#000000").append(";");
+        	sb.append(mxConstants.STYLE_STROKECOLOR).append("=").append(cell.getKey().isSelected() ? "#FF8000": "#000000").append(";");
+        	sb.append(mxConstants.STYLE_STROKEWIDTH).append("=").append(cell.getKey().isSelected() ? "5": "1").append(";");
         	this.graph.getModel().setStyle(cell.getValue(),sb.toString());
         }
         this.graph.getModel().endUpdate();

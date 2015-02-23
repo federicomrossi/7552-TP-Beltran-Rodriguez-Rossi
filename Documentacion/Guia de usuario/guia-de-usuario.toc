@@ -13,3 +13,36 @@
 \contentsline {section}{Eliminar v\IeC {\'e}rtice}{8}
 \contentsline {section}{Agregar arista}{8}
 \contentsline {section}{Eliminar arista}{8}
+\contentsline {chapter}{\numberline {4}Algoritmo de Recorrido en Profundidad}{9}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{9}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{9}
+\contentsline {chapter}{\numberline {5}Algoritmo de Recorrido en Anchura}{11}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{11}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{11}
+\contentsline {chapter}{\numberline {6}Algoritmo de Recorrido topol\IeC {\'o}gico en Profundidad}{13}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{13}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{13}
+\contentsline {chapter}{\numberline {7}Algoritmo de Recorrido topol\IeC {\'o}gico en Anchura}{15}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{15}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{15}
+\contentsline {chapter}{\numberline {8}Algoritmo de Prueba de Aciclidad}{17}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{17}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{17}
+\contentsline {chapter}{\numberline {9}Algoritmo de Componentes fuertemente conexas}{19}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{19}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{19}
+\contentsline {chapter}{\numberline {10}Algoritmo de Cerradura Transitiva}{21}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{21}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{21}
+\contentsline {chapter}{\numberline {11}Algoritmo de Dijkstra}{23}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{23}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{23}
+\contentsline {chapter}{\numberline {12}Algoritmo de Floyd}{25}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{25}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{25}
+\contentsline {chapter}{\numberline {13}Algoritmo de Ford-Fulkerson}{27}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{27}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{27}
+\contentsline {chapter}{\numberline {14}Algoritmo de Kruskal (\IeC {\'A}rbol de expansi\IeC {\'o}n de coste m\IeC {\'\i }nimo)}{29}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Aprendizaje}{29}
+\contentsline {section}{Ejecuci\IeC {\'o}n en Modo Autoevaluaci\IeC {\'o}n}{29}

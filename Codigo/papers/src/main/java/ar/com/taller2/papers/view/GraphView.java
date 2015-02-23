@@ -98,6 +98,7 @@ public class GraphView extends mxGraphComponent{
 		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
 		vertex.put(mxConstants.STYLE_PERIMETER, mxConstants.PERIMETER_ELLIPSE);
 		vertex.put(mxConstants.STYLE_FONTSIZE, "15");
+		vertex.put(mxConstants.STYLE_FONTCOLOR, "#333");
 		
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);

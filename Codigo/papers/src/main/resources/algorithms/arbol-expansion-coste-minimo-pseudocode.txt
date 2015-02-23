@@ -9,7 +9,7 @@
         (u,v) ← Q.sacarMin()
        
         // previene ciclos en T. agrega (u,v) si u y v
-        // están diferentes componentes en el conjunto. 
+        // están en diferentes componentes en el conjunto. 
         // Nótese que C(u) devuelve la componente a la que pertenece u.
         if C(v) ≠ C(u) then
             Agregar arista (v,u) a  T.

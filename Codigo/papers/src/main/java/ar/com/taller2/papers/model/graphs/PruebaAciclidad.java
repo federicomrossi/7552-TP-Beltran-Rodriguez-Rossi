@@ -184,6 +184,9 @@ public class PruebaAciclidad extends GraphAlgorithm {
 			}
 			return Boolean.TRUE;
 		}
+		for(Vertice v2 : ver){	
+			v2.select(false);
+		}
 		return Boolean.FALSE;
 	}
 

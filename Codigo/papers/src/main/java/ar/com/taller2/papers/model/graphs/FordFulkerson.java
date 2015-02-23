@@ -220,6 +220,7 @@ public class FordFulkerson extends GraphAlgorithm {
 	    		return true;
 	    	}
 	    	deseleccionarTodo();
+	    	this.indiceSiguientePaso--;
 	    	return false;
 		}else{
 			deseleccionarTodo();

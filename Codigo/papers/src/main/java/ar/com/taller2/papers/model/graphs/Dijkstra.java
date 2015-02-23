@@ -180,6 +180,7 @@ public class Dijkstra extends GraphAlgorithm {
 	    	if(v.equals(sB.toString())){
 	    		return true;
 	    	}
+	    	this.indiceSiguientePaso--;
 		}else{
 			throw new NextStepNotExistsException("No hay más pasos");
 		}

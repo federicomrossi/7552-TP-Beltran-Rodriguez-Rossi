@@ -34,7 +34,6 @@ public class NextActionListener implements ActionListener {
 						//app.getModelo().previousStepAlgorithm();
 						app.getVista().mostrarMensajeEquivocacion(
 								"Resultado incorrecto!");
-						return;
 					} else {
 						app.getVista().mostrarMensajeEquivocacion(
 								"Resultado correcto!");

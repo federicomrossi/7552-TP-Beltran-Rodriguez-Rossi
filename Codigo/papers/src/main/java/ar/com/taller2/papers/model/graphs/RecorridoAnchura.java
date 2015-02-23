@@ -171,10 +171,17 @@ public class RecorridoAnchura extends GraphAlgorithm implements Executable {
 			if(res.size() > 0){
 				Vertice ver = res.get(res.size()-1);
 				if(v.equals(ver)){
+					for(Vertice v2: res){
+						v2.select(false);
+					}
 					v.select(true);
 					return Boolean.TRUE;
 				}
 			}
+			this.indiceSiguientePaso--;
+		}
+		for(Vertice v: res){
+			v.select(false);
 		}
 		return Boolean.FALSE;
 	}

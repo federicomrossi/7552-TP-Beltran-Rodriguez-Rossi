@@ -178,6 +178,9 @@ public class SpanningTree extends GraphAlgorithm {
 				return Boolean.TRUE;
 			}
 		}
+		for(Arista v2 : res){	
+			v2.select(false);
+		}
 		return Boolean.FALSE;
 	}
 

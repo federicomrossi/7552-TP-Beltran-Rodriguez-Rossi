@@ -180,6 +180,10 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 					return Boolean.TRUE;
 				}
 			}
+			this.indiceSiguientePaso--;
+		}
+		for(Vertice v2 : res){	
+			v2.select(false);
 		}
 		return Boolean.FALSE;
 	}

@@ -65,8 +65,10 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 			Selectable v = this.items.get(this.indiceSiguientePaso++);
 			v.select(true);
 			return v.toString();
+		}else {
+			throw new NextStepNotExistsException("No hay paso siguiente");
 		}
-		return "";
+
 	}
 
 	public String anterior() {

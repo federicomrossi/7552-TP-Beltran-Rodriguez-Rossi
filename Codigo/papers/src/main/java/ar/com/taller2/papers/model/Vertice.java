@@ -63,4 +63,8 @@ public class Vertice implements Serializable, Selectable, Comparable<Vertice>{
 		return Double.compare(priority, o.priority);
 	}
 	
+	public void setName(String name){
+		this.name=name;
+	}
+	
 }

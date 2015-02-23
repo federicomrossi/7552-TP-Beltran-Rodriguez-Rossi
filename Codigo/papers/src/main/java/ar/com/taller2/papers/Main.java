@@ -310,6 +310,10 @@ public class Main extends JApplet {
     	this.graphView.ordernarVertices();
 	}
     
+    public void runLayout(){
+    	this.graphView.runLayout();
+    }
+    
     public FileManager getFileManager() {
     	return this.fileManager;
     }

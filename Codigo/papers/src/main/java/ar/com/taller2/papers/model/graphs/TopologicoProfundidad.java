@@ -70,8 +70,9 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 			Vertice v = camino.get(indiceSiguientePaso++);
 			v.select(true);
 			return v.toString();
+		}else {
+			throw new NextStepNotExistsException("No hay paso siguiente");
 		}
-		return "";
 	}
 
 	public String anterior() {

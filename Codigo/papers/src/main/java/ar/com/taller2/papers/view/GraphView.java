@@ -9,10 +9,16 @@ import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.Vertice;
 
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.layout.mxCompactTreeLayout;
 import com.mxgraph.layout.mxEdgeLabelLayout;
 import com.mxgraph.layout.mxFastOrganicLayout;
 import com.mxgraph.layout.mxOrganicLayout;
 import com.mxgraph.layout.mxParallelEdgeLayout;
+import com.mxgraph.layout.mxPartitionLayout;
+import com.mxgraph.layout.mxStackLayout;
+import com.mxgraph.layout.hierarchical.mxHierarchicalLayout;
+import com.mxgraph.layout.orthogonal.mxOrthogonalLayout;
 import com.mxgraph.model.mxGeometry;
 import com.mxgraph.model.mxICell;
 import com.mxgraph.swing.mxGraphComponent;
@@ -140,6 +146,21 @@ public class GraphView extends mxGraphComponent{
         this.graph.refresh();
 	}
 
+	public void runLayout(){
+		//mxCompactTreeLayout second = new mxCompactTreeLayout(graph);//BASTANTE FEO
+		//mxOrganicLayout second = new mxOrganicLayout(graph);//HORRIBLE
+		//mxStackLayout second = new mxStackLayout(graph);//PARA EL CULO
+		//mxPartitionLayout second = new mxPartitionLayout(graph); //NO HACE NADA
+		//mxFastOrganicLayout second = new mxFastOrganicLayout(graph); //LOS TIRA POR CUALQUIER LADO, MUY FEO
+		mxCircleLayout first = new mxCircleLayout(graph); // FORMA UN CIRCULO CON LOS VERTICES, PODRIA ANDAR
+		//mxOrthogonalLayout second = new mxOrthogonalLayout(graph); //NO HACE NADA, ES LO MISMO QUE TENIAMOS ANTES
+		//mxHierarchicalLayout second = new mxHierarchicalLayout(graph); // HACE UNA JERARQUIA HACIA ABAJO, PODRIA ANDAR
+	       // first.execute(graph.getDefaultParent());
+		first.execute(graph.getDefaultParent());
+	    mxParallelEdgeLayout second = new mxParallelEdgeLayout(graph); //AJUSTA LAS ARISTAS
+	    second.execute(graph.getDefaultParent());
+	}
+	
 	public JGraphXAdapter<Vertice, Arista> getGraphAdapter() {
 		return graph;
 	}

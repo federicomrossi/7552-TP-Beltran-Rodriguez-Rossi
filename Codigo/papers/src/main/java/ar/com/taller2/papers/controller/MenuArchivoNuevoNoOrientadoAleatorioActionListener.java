@@ -36,6 +36,7 @@ AprendiendoGrafos app;
 		this.app.getVista().desbloquearPanelEdicion();
 		//app.getVista().bloquearNoOrientado();
 		app.getVista().desbloquearMenuGuardar();
+		app.getVista().runLayout();
 	}
 
 }

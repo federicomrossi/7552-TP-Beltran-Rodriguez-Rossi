@@ -23,6 +23,6 @@ public class MenuEditarNuevaAristaActionListener implements ActionListener {
 		app.getModelo().agregarArista(dialog.getOrigen(),dialog.getDestino(),dialog.getPeso());
 		Logger.getLogger(this.getClass().getName()).info("Agregué ua arista");
 		app.getVista().actualizar();
-		app.getVista().rerenderGrafo();
+		app.getVista().runLayout();
 	}
 }

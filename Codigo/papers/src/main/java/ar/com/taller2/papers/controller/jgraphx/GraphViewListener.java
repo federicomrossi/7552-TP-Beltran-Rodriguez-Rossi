@@ -44,14 +44,14 @@ public class GraphViewListener implements mxIEventListener{
 					arista.select(false);
 				}
 				
-				
 				//arista.select(!arista.isSelected());
 				Logger.getLogger(this.getClass().getName()).info("Seleccione la arista: " + this.arista);
 			}
 			app.getVista().actualizar();
 		}
-			
+		app.getVista().getGraph().getSelectionModel().clear();
 		}
+		
 	}
 	
 	public String getSeleccion() {

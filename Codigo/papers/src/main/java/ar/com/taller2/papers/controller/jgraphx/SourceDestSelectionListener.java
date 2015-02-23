@@ -39,6 +39,7 @@ public class SourceDestSelectionListener implements mxIEventListener {
 		}else{
 			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");
 		}
+		app.getVista().getGraph().getSelectionModel().clear();
 		}
 	}
 

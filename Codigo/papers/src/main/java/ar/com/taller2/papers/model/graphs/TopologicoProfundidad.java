@@ -143,7 +143,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/recorrido-anchura-pseudocode.txt");
+		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-pseudocode.txt");
 	}
 
 	public String getTitulo() {
@@ -151,7 +151,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public URL getDescripcion() {
-		return this.getClass().getResource("/algorithms/recorrido-anchura-info.html");
+		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-info.html");
 	}
 
 	public Boolean isSourceDest() {

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 import javax.swing.table.TableModel;
@@ -14,6 +15,7 @@ import org.jgrapht.graph.ListenableUndirectedGraph;
 import ar.com.taller2.papers.exceptions.NextStepNotExistsException;
 import ar.com.taller2.papers.model.Arista;
 import ar.com.taller2.papers.model.GraphAlgorithm;
+import ar.com.taller2.papers.model.LineCode;
 import ar.com.taller2.papers.model.Resultado;
 import ar.com.taller2.papers.model.Selectable;
 import ar.com.taller2.papers.model.Vertice;
@@ -25,6 +27,23 @@ public class SpanningTree extends GraphAlgorithm {
 	private Vertice inicio;
 	private List<Arista> spanningTree= null;
 	private Set<Arista> sp;
+	private Vector<Arista> camino = new Vector<Arista>();
+	private List<Selectable> items = new ArrayList<Selectable>();
+	
+	private void createItemList() {
+		this.items.add(new LineCode(2));
+		this.items.add(new LineCode(4));
+		this.items.add(new LineCode(5));
+		this.items.add(new LineCode(8));
+		
+		for (int i = 0; i < camino.size(); i++) {
+			this.items.add(new LineCode(9));
+			this.items.add(new LineCode(14));
+			this.items.add(camino.get(i));
+		}
+		
+		this.items.add(new LineCode(18));
+	}
 	
 	public SpanningTree(ListenableUndirectedGraph<Vertice, Arista> graph, Vertice inicio){
 		this.graph=graph;
@@ -36,6 +55,7 @@ public class SpanningTree extends GraphAlgorithm {
 		sp=sP.getMinimumSpanningTreeEdgeSet();
 		spanningTree = new ArrayList<Arista>(sp);
 		Logger.getLogger(this.getClass().getSimpleName()).info("Inicié el algoritmo");
+		createItemList();
 	}
 	
 	public String siguiente() throws NextStepNotExistsException {
@@ -46,6 +66,24 @@ public class SpanningTree extends GraphAlgorithm {
 			v.select(true);
 		}
 		return "";
+		
+		
+//		if(this.indiceSiguientePaso < this.items.size()) {
+//			Selectable v = this.items.get(this.indiceSiguientePaso);
+//			v.select(true);
+//			return getSalida(indiceSiguientePaso++ - 1);
+//		}
+//		else {
+//			throw new NextStepNotExistsException("No hay paso siguiente");
+//		}
+	}
+	
+	public String getSalida(int indice){
+		StringBuilder sB = new StringBuilder();
+		for(int i=0;i<(indice+1) / 4;i++){
+			sB.append(camino.get(i)).append("-");
+		}
+		return sB.toString();
 	}
 
 	public String anterior() {
@@ -105,7 +143,7 @@ public class SpanningTree extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/arbol-expansion-coste-minimo-pseudocode.html");
+		return this.getClass().getResource("/algorithms/arbol-expansion-coste-minimo-pseudocode.txt");
 	}
 
 	public String getTitulo() {

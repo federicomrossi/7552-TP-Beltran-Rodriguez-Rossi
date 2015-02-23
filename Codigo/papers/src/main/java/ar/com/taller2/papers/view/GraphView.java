@@ -94,6 +94,7 @@ public class GraphView extends mxGraphComponent{
 	    edge.put(mxConstants.STYLE_STROKECOLOR, "#000000"); // default is #6482B9
 	    edge.put(mxConstants.STYLE_FONTCOLOR, "#446299");
 	    edge.put(mxConstants.STYLE_DELETABLE, true);
+	    edge.put(mxConstants.STYLE_FONTSIZE, "15");
 
 		Map<String, Object> vertex = new HashMap<String, Object>();
 		vertex.put(mxConstants.STYLE_SHAPE, mxConstants.SHAPE_ELLIPSE);
@@ -102,6 +103,8 @@ public class GraphView extends mxGraphComponent{
 		vertex.put(mxConstants.STYLE_GRADIENTCOLOR, mxUtils.parseColor("#FFFFFF"));
 		vertex.put(mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
 		vertex.put(mxConstants.STYLE_PERIMETER, mxConstants.PERIMETER_ELLIPSE);
+		vertex.put(mxConstants.STYLE_FONTSIZE, "15");
+		vertex.put(mxConstants.STYLE_FONTCOLOR, "#333");
 		
 	    mxStylesheet edgeStyle = new mxStylesheet();
 	    edgeStyle.setDefaultEdgeStyle(edge);
@@ -119,7 +122,7 @@ public class GraphView extends mxGraphComponent{
 	public void actualizar(){
 		this.graph.getModel().beginUpdate();
         for (Entry<Vertice,mxICell> cell : this.graph.getVertexToCellMap().entrySet()) {
-        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#FF8000;gradientDirection=south;gradientColor=#B25900;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true; font-size: 30px;" );
+        	this.graph.getModel().setStyle(cell.getValue(),cell.getKey().isSelected() ? "shape=ellipse;fillColor=#FF8000;gradientDirection=south;gradientColor=#B25900;glass=true;fontBold=true": "shape=ellipse;fillColor=#3cdbfe;gradientDirection=south;gradientColor=#2ca0ba;glass=true;fontBold=true" );
         }
         StringBuilder sb = new StringBuilder();
         sb.append(mxConstants.STYLE_ROUNDED).append("=").append(true).append(";");
@@ -137,7 +140,8 @@ public class GraphView extends mxGraphComponent{
         
         for (Entry<Arista,mxICell> cell : this.graph.getEdgeToCellMap().entrySet()) {
         	StringBuilder sb2 = new StringBuilder(sb);
-        	sb.append(mxConstants.STYLE_STROKECOLOR).append("=").append(cell.getKey().isSelected() ? "#FF00FF": "#000000").append(";");
+        	sb.append(mxConstants.STYLE_STROKECOLOR).append("=").append(cell.getKey().isSelected() ? "#FF8000": "#000000").append(";");
+        	sb.append(mxConstants.STYLE_STROKEWIDTH).append("=").append(cell.getKey().isSelected() ? "5": "1").append(";");
         	this.graph.getModel().setStyle(cell.getValue(),sb.toString());
         }
         this.graph.getModel().endUpdate();

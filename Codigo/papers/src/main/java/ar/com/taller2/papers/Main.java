@@ -446,10 +446,14 @@ public class Main extends JApplet {
 	
 	public void removeSourceDestSelectionListener(){
 		adapter.removeSourceDestSelectionListener();
+		aprendiendoGrafos.getModelo().setSourceVertex(null);
+		aprendiendoGrafos.getModelo().setDestVertex(null);
 	}
 	
 	public void removeSourceSelectionListener(){
 		adapter.removeSourceSelectionListener();
+		aprendiendoGrafos.getModelo().setSourceVertex(null);
+		aprendiendoGrafos.getModelo().setDestVertex(null);
 	}
 	
 	public void addMenuAyudaAcercaDeActionListener(ActionListener a){
@@ -684,6 +688,7 @@ public class Main extends JApplet {
 		graphView.ordernarVertices(v);
 		
 	}
+	
 
 
 	

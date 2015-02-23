@@ -161,6 +161,7 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     	}
 	}
     
+    
     public void addSourceSelectionListener(AprendiendoGrafos app) {
     	if(sourceSelListener == null){
     		this.sourceSelListener = new SourceSelectionListener(app);

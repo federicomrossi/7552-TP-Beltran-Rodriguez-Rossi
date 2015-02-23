@@ -14,13 +14,15 @@ public class SourceDestSelectionListener implements mxIEventListener {
 	AprendiendoGrafos app;
 	Vertice source =null;
 	Vertice dest=null;
+	boolean activo = true;
+	
 	
 	public SourceDestSelectionListener(AprendiendoGrafos app){
 		this.app=app;
 	}
 	
 	public void invoke(Object sender, mxEventObject evt) {
-		if(!app.getVista().isModoEdicion()){
+		if(!app.getVista().isModoEdicion() && activo){
 		mxCell cell = (mxCell) app.getVista().getGraph().getSelectionCell();
 		if(cell != null && cell.isVertex()){
 			if(app.getModelo().getSourceVertex() == null){
@@ -38,6 +40,11 @@ public class SourceDestSelectionListener implements mxIEventListener {
 			Logger.getLogger(this.getClass().getName()).info("Seleccione, pero no era vertice!");
 		}
 		}
+	}
+
+	public void activar(boolean b) {
+		activo = b;
+		
 	}
 
 }

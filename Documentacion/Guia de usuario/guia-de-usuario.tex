@@ -1138,17 +1138,15 @@ Para ejecutar el algoritmo en modo aprendizaje sobre el grafo existente en la zo
 
 	\item \textbf{Haga click} sobre la opción \textbf{Aprendizaje} del panel de \textbf{Modo de Ejecución};
 
-	\item \textbf{Haga click} sobre la opción \textbf{Recorrido en Profundidad} del panel de \textbf{Algoritmos};
-
-	\item \textbf{Haga click} sobre el \textbf{vértice} que desee sea considerado el \textbf{vértice origen}. Deberá aparecer un cuadro de diálogo que indicará que el vértice de origen fue elgido;
+	\item \textbf{Haga click} sobre la opción \textbf{Algoritmo de Floyd} del panel de \textbf{Algoritmos};
 
 	\item Inicie la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución} ubicado en la parte superior de la ventana;
 
-	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución};
+	\item Podrá visualizar sobre el panel de \textbf{Salida} una matriz de \textit{NxN}, donde \textit{N} es la cantidad de vértices que contiene el grafo, y en donde los casilleros se llenarán con el valor de la distancia desde el vértice \textit{i} al \textit{j}, o el valor \textit{Infinity} si no existe un camino que los una; 
 
-	\item A medida que avance verá que los vértices se irán iluminando indicando el recorrido sobre el grafo. Verá sobre el panel de \textbf{Salida} la secuencia del recorrido;
+	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución}. Al avanzar, la matriz ubicada sobre el panel de \textbf{Salida} se irá actualizando hasta llegar a una matriz con distancias mínimas;
 
-	\item \textbf{Haga click} sobre el botón \textbf{Fin} de la barra de \textbf{Controles de ejecución} para ir directamente al \textbf{final del algoritmo}. Sobre el panel de \textbf{Salida} verá la secuencia final del recorrido;
+	\item \textbf{Haga click} sobre el botón \textbf{Fin} de la barra de \textbf{Controles de ejecución} para ir directamente al \textbf{final del algoritmo}. Sobre el panel de \textbf{Salida} verá la matriz resultante final;
 
 	\item Detenga la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución}.
 
@@ -1168,15 +1166,17 @@ Para ejecutar el algoritmo en modo autoevaluación sobre el grafo existente en l
 
 	\item \textbf{Haga click} sobre la opción \textbf{Autoevaluacíón} del panel de \textbf{Modo de Ejecución};
 
-	\item \textbf{Haga click} sobre la opción \textbf{Recorrido en Profundidad} del panel de \textbf{Algoritmos};
-
-	\item \textbf{Haga click} sobre el \textbf{vértice} que desee sea considerado el \textbf{vértice origen}. Deberá aparecer un cuadro de diálogo que indicará que el vértice de origen fue elgido;
+	\item \textbf{Haga click} sobre la opción \textbf{Cerradura Transitiva} del panel de \textbf{Algoritmos};
 
 	\item Inicie la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución} ubicado en la parte superior de la ventana;
 
-	\item \textbf{Haga click} sobre el vértice que cree que será elegido por el algoritmo en el paso siguiente.
+	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución}.
 
-	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución}. Si el vértice que ha elegido es el correcto, verá un mensaje que así lo indique. De lo contrario, se le indicará que la elección fue incorrecta y deberá volver a elegir un nuevo vértice, para luego volver a intentar pasar al siguiente paso del algoritmo;
+	\item Se abrirá una nueva ventana en donde se muestra una matriz de \textit{NxN}, donde \textit{N} es la cantidad de vértices que contiene el grafo. Deberá \textbf{completar} cada \textbf{casillero} de la matriz con el valor del la distancia que existe desde el vértice \textit{i} al \textit{j}, o el valor \textit{Infinity} en caso de no existir un camino entre estos;
+
+	\item Una vez que haya completado la matriz, \textbf{presione} el botón \textbf{Aceptar}. Si la matriz contiene los valores correctos, verá un mensaje que así lo indique. De lo contrario, se le indicará que la respuesta fue incorrecta y deberá volver a intentarlo;
+
+	\item El programa le indicará cuando ya no hayan mas pasos por ejecutar mediante una ventana de diálogo;
 
 	\item Detenga la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución}.
 
@@ -1203,17 +1203,17 @@ Para ejecutar el algoritmo en modo aprendizaje sobre el grafo existente en la zo
 
 	\item \textbf{Haga click} sobre la opción \textbf{Aprendizaje} del panel de \textbf{Modo de Ejecución};
 
-	\item \textbf{Haga click} sobre la opción \textbf{Recorrido en Profundidad} del panel de \textbf{Algoritmos};
-
-	\item \textbf{Haga click} sobre el \textbf{vértice} que desee sea considerado el \textbf{vértice origen}. Deberá aparecer un cuadro de diálogo que indicará que el vértice de origen fue elgido;
+	\item \textbf{Haga click} sobre la opción \textbf{Algoritmo de Ford-Fulkerson} del panel de \textbf{Algoritmos};
 
 	\item Inicie la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución} ubicado en la parte superior de la ventana;
 
 	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución};
 
-	\item A medida que avance verá que los vértices se irán iluminando indicando el recorrido sobre el grafo. Verá sobre el panel de \textbf{Salida} la secuencia del recorrido;
+	\item A medida que avance verá que las aristas se irán iluminando indicando distintos caminos del flujo. Estos caminos serán flujos parciales.
 
-	\item \textbf{Haga click} sobre el botón \textbf{Fin} de la barra de \textbf{Controles de ejecución} para ir directamente al \textbf{final del algoritmo}. Sobre el panel de \textbf{Salida} verá la secuencia final del recorrido;
+	\item Sobre el panel de \textbf{Salida} podrá ver el \textit{Camino de flujo parcial} en donde se muestra la secuencia de vértices por los que pasa el flujo. Además se muestra el valor del \textit{Flujo parcial}, es decir, el valor del flujo del camino iluminado, y el valor del \textit{Flujo total}, el cual es la suma de todos los pasos;
+
+	\item \textbf{Haga click} sobre el botón \textbf{Fin} de la barra de \textbf{Controles de ejecución} para ir directamente al \textbf{final del algoritmo};
 
 	\item Detenga la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución}.
 
@@ -1233,15 +1233,17 @@ Para ejecutar el algoritmo en modo autoevaluación sobre el grafo existente en l
 
 	\item \textbf{Haga click} sobre la opción \textbf{Autoevaluacíón} del panel de \textbf{Modo de Ejecución};
 
-	\item \textbf{Haga click} sobre la opción \textbf{Recorrido en Profundidad} del panel de \textbf{Algoritmos};
-
-	\item \textbf{Haga click} sobre el \textbf{vértice} que desee sea considerado el \textbf{vértice origen}. Deberá aparecer un cuadro de diálogo que indicará que el vértice de origen fue elgido;
+	\item \textbf{Haga click} sobre la opción \textbf{Algoritmo de Ford-Fulkerson} del panel de \textbf{Algoritmos};
 
 	\item Inicie la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución} ubicado en la parte superior de la ventana;
 
-	\item \textbf{Haga click} sobre el vértice que cree que será elegido por el algoritmo en el paso siguiente.
+	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución};
 
-	\item Avance sobre el algoritmo \textbf{haciendo click} sobre el botón \textbf{Avanzar} ubicado a la derecha del botón \textit{Comenzar} de la barra de \textbf{Controles de ejecución}. Si el vértice que ha elegido es el correcto, verá un mensaje que así lo indique. De lo contrario, se le indicará que la elección fue incorrecta y deberá volver a elegir un nuevo vértice, para luego volver a intentar pasar al siguiente paso del algoritmo;
+	\item Se abrirá una nueva ventana en donde se muestran dos casilleros para completar. En estos deberá ingresar el valor del \textit{Flujo parcial} y el valor del \textit{Flujo total};
+
+	\item Una vez que haya completado los casilleros, \textbf{presione} el botón \textbf{Aceptar}. Si se ingresaron los valores correctos, verá un mensaje que así lo indique. De lo contrario, se le indicará que la respuesta fue incorrecta y deberá volver a intentarlo;
+
+	\item El programa le indicará cuando ya no hayan mas pasos por ejecutar mediante una ventana de diálogo;
 
 	\item Detenga la ejecución \textbf{haciendo Click} sobre el botón \textbf{Comenzar/Finalizar} de la barra de \textbf{Controles de ejecución}.
 

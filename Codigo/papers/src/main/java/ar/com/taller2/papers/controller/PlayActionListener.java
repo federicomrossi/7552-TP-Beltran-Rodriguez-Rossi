@@ -17,24 +17,24 @@ public class PlayActionListener implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		if ( app.getTutor().esModoEvaluacion() ) {
+		/*if ( app.getTutor().esModoEvaluacion() ) {
 			// Agregar listener al grafo para esperar respuesta del usuario 
-		    if(on){
-		    	app.getVista().activarSourceDestListeners(true);
-		    }else{
-		    	app.getVista().activarSourceDestListeners(false);
-		    }
 			app.getVista().addAdapterVertexListener();
 		    Logger.getLogger(this.getClass().getName()).info("Modo Evaluacion: Agregué el vertex listener");
 		}
 		else {
 		    app.getVista().removeAdapterVertexListener();
 			Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");
-		}
+		}*/
 		
 		try {
 			if (on) {
 				app.getModelo().stopAlgorithm();
+				if(app.getTutor().esModoEvaluacion()){
+					app.getVista().removeAdapterVertexListener();
+					Logger.getLogger(this.getClass().getName()).info("Modo Aprendizaje: Ejecuto el algoritmo normalmente");
+					app.getVista().activarSourceDestListeners(true);
+				}
 				on = false;
 				app.getVista().bloquearToolbar();
 				app.getVista().desbloquearPanel();
@@ -48,6 +48,11 @@ public class PlayActionListener implements ActionListener {
 			else {
 				app.getModelo().startAlgorithm();
 				on = true;
+				if(app.getTutor().esModoEvaluacion()){
+					app.getVista().activarSourceDestListeners(false);
+					app.getVista().addAdapterVertexListener();
+				    Logger.getLogger(this.getClass().getName()).info("Modo Evaluacion: Agregué el vertex listener");
+				}
 				app.getVista().desbloquearToolbar();
 				app.getVista().bloquearPanel();
 			}

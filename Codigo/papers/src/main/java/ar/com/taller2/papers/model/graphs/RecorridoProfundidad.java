@@ -182,6 +182,7 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 					return Boolean.TRUE;
 				}
 			}
+			this.indiceSiguientePaso--;
 		}
 		return Boolean.FALSE;
 	}

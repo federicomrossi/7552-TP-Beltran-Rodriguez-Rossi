@@ -12,8 +12,8 @@ import com.mxgraph.util.mxEventSource.mxIEventListener;
 public class SourceDestSelectionListener implements mxIEventListener {
 
 	AprendiendoGrafos app;
-	Vertice source;
-	Vertice dest;
+	Vertice source =null;
+	Vertice dest=null;
 	
 	public SourceDestSelectionListener(AprendiendoGrafos app){
 		this.app=app;

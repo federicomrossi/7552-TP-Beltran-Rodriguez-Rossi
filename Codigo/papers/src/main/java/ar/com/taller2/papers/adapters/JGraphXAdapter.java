@@ -187,6 +187,16 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     	this.addListener(mxEvent.CELLS_REMOVED, new RemovedCellListener(app));
     }
     
+    
+    public void activarSourceDestListeners(boolean b){
+    	if(sourceDestSelListener != null){
+    		sourceDestSelListener.activar(b);
+    	}
+    	if(sourceSelListener != null){
+    		sourceSelListener.activar(b);
+    	}
+    }
+    
     /*
      * GETTERS
      */

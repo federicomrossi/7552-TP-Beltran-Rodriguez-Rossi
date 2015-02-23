@@ -688,6 +688,12 @@ public class Main extends JApplet {
 		graphView.ordernarVertices(v);
 		
 	}
+
+
+	public void activarSourceDestListeners(boolean b) {
+		adapter.activarSourceDestListeners(b);
+		
+	}
 	
 
 

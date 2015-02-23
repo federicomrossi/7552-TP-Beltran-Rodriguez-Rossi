@@ -19,7 +19,12 @@ public class PlayActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if ( app.getTutor().esModoEvaluacion() ) {
 			// Agregar listener al grafo para esperar respuesta del usuario 
-		    app.getVista().addAdapterVertexListener();
+		    if(on){
+		    	app.getVista().activarSourceDestListeners(true);
+		    }else{
+		    	app.getVista().activarSourceDestListeners(false);
+		    }
+			app.getVista().addAdapterVertexListener();
 		    Logger.getLogger(this.getClass().getName()).info("Modo Evaluacion: Agregué el vertex listener");
 		}
 		else {

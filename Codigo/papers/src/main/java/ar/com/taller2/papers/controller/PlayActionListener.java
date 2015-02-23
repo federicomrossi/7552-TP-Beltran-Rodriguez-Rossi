@@ -4,8 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+import org.jgrapht.graph.ListenableDirectedWeightedGraph;
+
 import ar.com.taller2.papers.exceptions.CondicionInicialExcepcion;
 import ar.com.taller2.papers.model.TIPO_GRAFO;
+import ar.com.taller2.papers.model.graphs.CerraduraTransitiva;
 
 public class PlayActionListener implements ActionListener {
 
@@ -46,6 +49,9 @@ public class PlayActionListener implements ActionListener {
 				app.getVista().borrarSalida();
 			}
 			else {
+				if(app.getModelo().getAlgorithm() instanceof CerraduraTransitiva){
+					((CerraduraTransitiva) app.getModelo().getAlgorithm()).setGraph((ListenableDirectedWeightedGraph)app.getModelo().getGraph());
+				}
 				app.getModelo().startAlgorithm();
 				on = true;
 				if(app.getTutor().esModoEvaluacion()){

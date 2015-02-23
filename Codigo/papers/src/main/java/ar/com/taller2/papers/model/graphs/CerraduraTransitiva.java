@@ -45,6 +45,11 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 		Logger.getLogger("MATRIX").info(getAdjacencyMatrix(graph));
 	}
 	
+	public void setGraph(ListenableDirectedWeightedGraph<Vertice, Arista> graph){
+		Graphs.addGraph(this.graph, graph);
+		Logger.getLogger("MATRIX").info(getAdjacencyMatrix(graph));
+	}
+	
 	public void iniciar() {
 		this.indiceSiguientePaso = 0;
 		Logger.getLogger(this.getClass().getName()).info("Inicie el algoritmo");
@@ -88,7 +93,7 @@ public class CerraduraTransitiva extends GraphAlgorithm {
 
 	public void terminar() {
         this.graph = new ListenableDirectedWeightedGraph<Vertice, Arista>(Arista.class);
-        Graphs.addGraph(this.graph, recorrido.get(0));
+        //Graphs.addGraph(this.graph, recorrido.get(0));
         recorrido = new ArrayList<ListenableDirectedWeightedGraph<Vertice, Arista>>();
 	}
 

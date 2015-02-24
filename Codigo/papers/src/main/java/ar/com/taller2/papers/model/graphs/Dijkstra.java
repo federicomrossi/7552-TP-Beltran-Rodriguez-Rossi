@@ -42,16 +42,7 @@ public class Dijkstra extends GraphAlgorithm {
 	
 	
 	
-	private void createItemList() {
-		this.items.add(new LineCode(2));
-		this.items.add(new LineCode(3));
-		for (int i = 0; i < camino.size(); i++) {
-			this.items.add(new LineCode(4));
-			this.items.add(new LineCode(5));
-			this.items.add(camino.get(i));
-			this.items.add(new LineCode(6));
-		}
-	}
+	private void createItemList() {	}
 	
 	public Dijkstra(ListenableDirectedWeightedGraph<Vertice, Arista> graph){
 		this.graph = graph;

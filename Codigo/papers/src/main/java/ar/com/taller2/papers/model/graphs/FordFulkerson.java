@@ -61,9 +61,6 @@ public class FordFulkerson extends GraphAlgorithm {
 	
 	private void createItemList() {
 		//TODO falta agregar el algoritmo
-		for (int i = 0; i < camino.size(); i++) {
-			this.items.add(camino.get(i));
-		}
 	}
 	
 	public FordFulkerson(ListenableDirectedGraph<Vertice, Arista> graph){

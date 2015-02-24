@@ -210,6 +210,12 @@ public class GraphModel {
 		return this.graph.addEdge(source, dest);
 	}
 	
+	public Arista agregarEdge(Vertice source, Vertice dest, Double peso){
+		Arista a = this.graph.addEdge(source, dest);
+		setWeight(a, peso);
+		return a;
+	}
+	
 	public void removerVertice(Vertice v){
 		this.graph.removeVertex(v);
 	}

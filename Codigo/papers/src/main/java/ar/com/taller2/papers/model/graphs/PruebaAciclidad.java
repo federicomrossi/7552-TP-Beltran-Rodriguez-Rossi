@@ -145,7 +145,7 @@ public class PruebaAciclidad extends GraphAlgorithm {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/prueba-aciclidad-pseudocode.html");
+		return this.getClass().getResource("/algorithms/prueba-aciclidad-pseudocode.txt");
 	}
 
 	public String getTitulo() {

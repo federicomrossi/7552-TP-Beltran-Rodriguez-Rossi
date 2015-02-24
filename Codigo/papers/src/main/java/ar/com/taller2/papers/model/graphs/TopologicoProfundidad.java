@@ -33,16 +33,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	private List<Selectable> items = new ArrayList<Selectable>();
 
 	
-	private void createItemList() {
-		this.items.add(new LineCode(2));
-		this.items.add(new LineCode(3));
-		for (int i = 0; i < camino.size(); i++) {
-			this.items.add(new LineCode(4));
-			this.items.add(camino.get(i));
-			this.items.add(new LineCode(6));
-			this.items.add(new LineCode(7));
-		}
-	}
+	private void createItemList() { }
 	
 	
 	public TopologicoProfundidad(ListenableDirectedGraph<Vertice, Arista> graph){
@@ -54,12 +45,12 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 		camino = new ArrayList<Vertice>();
 		topologico(graph,camino);
 		this.indiceSiguientePaso = 0;
-		Logger.getLogger("RecorridoAnchura").info("Inicie el algoritmo");
+		Logger.getLogger("RecorridoProfundidad").info("Inicie el algoritmo");
 		createItemList();
 	}
 	
 	public String siguiente() throws NextStepNotExistsException {
-		Logger.getLogger("RecorridoAnchura").info("Siguiente");
+		Logger.getLogger("RecorridoProfundidad").info("Siguiente");
 
 		/*if(this.indiceSiguientePaso < this.items.size()) {
 			Selectable v = this.items.get(this.indiceSiguientePaso++);
@@ -76,7 +67,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public String anterior() {
-		Logger.getLogger("RecorridoAnchura").info("Anterior");
+		Logger.getLogger("RecorridoProfundidad").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
 			Selectable v = this.items.get(--this.indiceSiguientePaso);
@@ -87,7 +78,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 	
 	public String principio() {
-		Logger.getLogger("RecorridoAnchura").info("Principio");
+		Logger.getLogger("RecorridoProfundidad").info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
 			Selectable v = this.items.get(this.indiceSiguientePaso);
@@ -110,7 +101,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 	
 	public String fin() {
-		Logger.getLogger("RecorridoAnchura").info("Fin");
+		Logger.getLogger("RecorridoProfundidad").info("Fin");
 		
 		while(this.indiceSiguientePaso < this.camino.size()) {
 			Selectable v = this.items.get(this.indiceSiguientePaso++);
@@ -143,15 +134,15 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-pseudocode.txt");
+		return this.getClass().getResource("/algorithms/recorrido-topologico-profundidad-pseudocodigo.txt");
 	}
 
 	public String getTitulo() {
-		return "Recorrido Topológico en Anchura";
+		return "Recorrido Topológico en Profundiad";
 	}
 
 	public URL getDescripcion() {
-		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-info.html");
+		return this.getClass().getResource("/algorithms/recorrido-topologico-profundidad-info.html");
 	}
 
 	public Boolean isSourceDest() {

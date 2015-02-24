@@ -43,7 +43,12 @@ public class NextActionListener implements ActionListener {
 				String result = app.getModelo().nextStepAlgorithm();
 				app.getVista().borrarSalida();
 				app.getVista().agregarASalida(result);
-				//app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
+				
+				// Pseudocodigo
+				try {
+					app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
+				}
+				catch (Exception e1) { }
 			}
 			app.getVista().actualizar();
 		} catch (NextStepNotExistsException e1) {

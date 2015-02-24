@@ -41,14 +41,7 @@ public class FloydWarshall extends GraphAlgorithm {
 	
 	TableModel model;
 	
-	private void createItemList() {
-		for (int i = 0; i < camino.size(); i++) {
-			this.items.add(new LineCode(2));
-			this.items.add(new LineCode(3));
-			this.items.add(camino.get(i));
-		}
-		this.items.add(new LineCode(4));
-	}
+	private void createItemList() { }
 	
 	public FloydWarshall(ListenableGraph<Vertice, Arista> graph){
 		this.graph=graph;

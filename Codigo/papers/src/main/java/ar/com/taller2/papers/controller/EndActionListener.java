@@ -18,15 +18,19 @@ public class EndActionListener implements ActionListener {
 		Vertice vCorrecto;
 
 		while (app.getModelo().hasNextStepAlgorithm()) {
+			
 			try {
 				String result = app.getModelo().nextStepAlgorithm();
-				app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
 				app.getVista().borrarSalida();
 				app.getVista().agregarASalida(result);
+				
 			} catch (NextStepNotExistsException e1) {
 				app.getVista().mostrarMensajeEquivocacion(e1.getMessage());
 			}
 			
+			try {
+				app.getVista().setPseudocodeCurrent(app.getModelo().getAlgorithm().getCurrentItem());
+			} catch(Exception e2) {	}
 		}
 		app.getVista().actualizar();
 	}

@@ -92,12 +92,6 @@ public class RecorridoProfundidad extends GraphAlgorithm implements Executable {
 			return getSalida(indiceSiguientePaso-1);
 		}
 
-
-//		if(this.indiceSiguientePaso - 1 >= 0) {
-//			Vertice v = this.camino.get(--this.indiceSiguientePaso);
-//			v.select(false);
-//			return true;
-//		}
 		return "";
 	}
 	

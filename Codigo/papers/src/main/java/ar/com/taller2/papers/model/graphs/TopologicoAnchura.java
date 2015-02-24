@@ -31,16 +31,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	private List<Selectable> items = new ArrayList<Selectable>();
 
 	
-	private void createItemList() {
-		this.items.add(new LineCode(2));
-		this.items.add(new LineCode(3));
-		for (int i = 0; i < camino.size(); i++) {
-			this.items.add(new LineCode(4));
-			this.items.add(camino.get(i));
-			this.items.add(new LineCode(6));
-			this.items.add(new LineCode(7));
-		}
-	}
+	private void createItemList() { }
 	
 	
 	public TopologicoAnchura(ListenableDirectedGraph<Vertice, Arista> graph, Vertice inicio){
@@ -139,7 +130,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	}
 
 	public URL getAlgoritmo() {
-		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-pseudocode.txt");
+		return this.getClass().getResource("/algorithms/recorrido-topologico-anchura-pseudocodigo.txt");
 	}
 
 	public String getTitulo() {

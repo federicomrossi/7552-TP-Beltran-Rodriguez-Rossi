@@ -15,6 +15,6 @@ public class MenuArchivoAbrirActionListener implements ActionListener {
 		
 		app.getVista().getFileManager().open();
 		app.getVista().desbloquearMenuGuardar();
-		
+		app.getVista().runLayout();
 	}
 }

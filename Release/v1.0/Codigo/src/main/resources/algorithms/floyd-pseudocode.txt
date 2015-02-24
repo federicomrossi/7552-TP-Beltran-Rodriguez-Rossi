@@ -1,0 +1,4 @@
+FloydWarshall()
+    para k: = 0 hasta n - 1
+        camino[i][j] = MIN(camino[i][j], camino[i][k]+camino[k][j])    
+    fin para

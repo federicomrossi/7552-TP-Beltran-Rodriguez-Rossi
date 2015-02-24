@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>Algoritmo de Floyd</title>
+	<meta name="description" content="Algoritmo de Floyd">
+	<meta name="author" content="The Papers">
+
+</head>
+
+<body style="padding:10px">
+
+	<p>El algoritmo de Floyd-Warshall compara todos los posibles caminos a través del grafo entre cada par de vértices. Lo hace mejorando paulatinamente una estimación del camino más corto entre dos vértices, hasta que se sabe que la estimación es óptima. </p>
+	
+	<p>Sea un grafo G con conjunto de vértices V, numerados de 1 a N. Sea además una función CaminoMinimo(i,j,k) que devuelve el camino mínimo de i a j usando únicamente los vértices de 1 a k como puntos intermedios en el camino. Ahora, dada esta función, nuestro objetivo es encontrar el camino mínimo desde cada i a cada j usando únicamente los vértices de 1 hasta k+1.</p>
+	
+	<p>Hay dos candidatos para este camino: un camino mínimo, que utiliza únicamente los vértices del conjunto (1...k); o bien existe un camino que va desde i hasta k+1, y de k+1 hasta j, que es mejor. Sabemos que el camino óptimo de i a j que únicamente utiliza los vértices de 1 hasta k está definido por \textrm{caminoMinimo}(i,j,k), y está claro que si hubiera un camino mejor de i a k+1 a j, la longitud de este camino sería la concatenación del camino mínimo de i a k+1 (utilizando vértices de  (1...k) ) y el camino mínimo de k+1 a j (que también utiliza los vértices en  (1...k) ). </p>
+
+	<p>Por lo tanto, podemos definir caminoMinimo(i,j,k) de forma recursiva:
+	CaminoMinimo(i,j,k) = MIN(CaminoMinimo(i,j,k-1),CaminoMinimo(i,k,k-1) + CaminoMinimo(k,j,k-1));
+
+	CaminoMinimo(i,j,0) = PesoArista(i,j);</p>
+
+	<p>Esta fórmula es la base del algoritmo Floyd-Warshall. Funciona ejecutando primero caminoMinimo(i,j,1) para todos los pares (i,j), usándolos para después hallar caminoMinimo(i,j,2) para todos los pares (i,j)... Este proceso continúa hasta que k=n, y habremos encontrado el camino más corto para todos los pares de vértices (i,j) usando algún vértice intermedio.</p>
+
+</body>
+</html>
+
+
+

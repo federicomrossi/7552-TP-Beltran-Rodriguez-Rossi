@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+
+	<title>Algoritmo de Dijkstra</title>
+	<meta name="description" content="Algoritmo de Dijkstra">
+	<meta name="author" content="The Papers">
+
+</head>
+
+<body style="padding:10px">
+	<div id="mw-content-text" lang="es" dir="ltr" class="mw-content-ltr">
+	<p>El <b>algoritmo de Dijkstra</b>, también llamado <b>algoritmo de caminos mínimos</b>, es un <a href="http://es.wikipedia.org/wiki/Algoritmo" title="Algoritmo">algoritmo</a> para la determinación del <a href="http://es.wikipedia.org/wiki/Problema_de_los_caminos_m%C3%A1s_cortos" title="Problema de los caminos más cortos" class="mw-redirect">camino más corto</a> dado un <a href="http://es.wikipedia.org/wiki/V%C3%A9rtice_(Teor%C3%ADa_de_grafos)" title="Vértice (Teoría de grafos)" class="mw-redirect">vértice</a> origen al resto de vértices en un <a href="http://es.wikipedia.org/wiki/Grafo" title="Grafo">grafo</a> con pesos en cada <a href="http://es.wikipedia.org/wiki/Arista_(Teor%C3%ADa_de_grafos)" title="Arista (Teoría de grafos)" class="mw-redirect">arista</a>. Su nombre se refiere a <a href="http://es.wikipedia.org/wiki/Edsger_Dijkstra" title="Edsger Dijkstra">Edsger Dijkstra</a>, quien lo describió por primera vez en 1959.</p>
+	<p>La idea subyacente en este algoritmo consiste en ir explorando todos los caminos más cortos que parten del vértice origen y que llevan a todos los demás vértices; cuando se obtiene el camino más corto desde el vértice origen, al resto de vértices que componen el grafo, el algoritmo se detiene. El algoritmo es una especialización de la búsqueda de costo uniforme, y como tal, no funciona en grafos con aristas de coste negativo (al elegir siempre el nodo con distancia menor, pueden quedar excluidos de la búsqueda nodos que en próximas iteraciones bajarían el costo general del camino al pasar por una arista con costo negativo).</p>
+	<p></p>
+	<div id="toc" class="toc">
+	<div id="toctitle">
+	
+	<h2><span class="mw-headline" id="Algoritmo">Algoritmo</span></h2>
+	<p>Teniendo un grafo dirigido ponderado de N nodos no aislados, sea x el nodo inicial, un vector D de tamaño N guardará al final del algoritmo las distancias desde x al resto de los nodos.</p>
+	<ol>
+	<li>Inicializar todas las distancias en D con un valor infinito relativo ya que son desconocidas al principio, exceptuando la de x que se debe colocar en 0 debido a que la distancia de x a x sería 0.</li>
+	<li>Sea a = x (tomamos a como nodo actual).</li>
+	<li>Recorremos todos los nodos adyacentes de <i>a</i>, excepto los nodos marcados, llamaremos a estos nodos no marcados v<sub>i</sub>.</li>
+	<li>Para el nodo actual, calculamos la distancia tentativa desde dicho nodo a sus vecinos con la siguiente fórmula: dt(v<sub>i</sub>) = D<sub>a</sub> + d(a,v<sub>i</sub>). Es decir, la distancia tentativa del nodo ‘v<sub>i</sub>’ es la distancia que actualmente tiene el nodo en el vector D más la distancia desde dicho el nodo ‘a’ (el actual) al nodo v<sub>i</sub>. Si la distancia tentativa es menor que la distancia almacenada en el vector, actualizamos el vector con esta distancia tentativa. Es decir: Si dt(v<sub>i</sub>) &lt; D<sub>vi</sub> → D<sub>vi</sub> = dt(v<sub>i</sub>)</li>
+	<li>Marcamos como completo el nodo a.</li>
+	<li>Tomamos como próximo nodo actual el de menor valor en D (puede hacerse almacenando los valores en una cola de prioridad) y volvemos al paso 3 mientras existan nodos no marcados.</li>
+	</ol>
+	<p>Una vez terminado al algoritmo, D estará completamente lleno.</p>
+
+	<h2><span class="mw-headline" id="Complejidad">Complejidad</span></h2>
+	<p>Orden de complejidad del algoritmo: <i>O</i>(|<i>V</i>|<sup>2</sup>+|E|) = <i>O</i>(|<i>V</i>|<sup>2</sup>) sin utilizar cola de prioridad, <i>O</i>((|<i>E</i>|+|<i>V</i>|) log |<i>V</i>|) utilizando cola de prioridad (por ejemplo un montículo).</p>
+	<p>Podemos estimar la complejidad computacional del algoritmo de Dijkstra (en términos de sumas y comparaciones). El <a href="http://es.wikipedia.org/wiki/Algoritmo" title="Algoritmo">algoritmo</a> realiza a lo más n-1 iteraciones, ya que en cada iteración se añade un vértice al conjunto distinguido. Para estimar el número total de operaciones basta estimar el número de operaciones que se llevan a cabo en cada iteración. Podemos identificar el vértice con la menor etiqueta entre los que no están en S<sub>k</sub> realizando n-1 comparaciones o menos. Después hacemos una suma y una comparación para actualizar la etiqueta de cada uno de los vértices que no están en S<sub>k</sub>. Por tanto, en cada iteración se realizan a lo sumo 2(n-1) operaciones, ya que no puede haber más de n-1 etiquetas por actualizar en cada iteración. Como no se realizan más de n-1 iteraciones, cada una de las cuales supone a lo más 2(n-1) operaciones, llegamos al siguiente teorema.</p>
+	<p><i><b>TEOREMA:</b></i> El Algoritmo de Dijkstra realiza O(n<sup>2</sup>) operaciones (sumas y comparaciones) para determinar la longitud del camino más corto entre dos vértices de un grafo ponderado simple, conexo y no dirigido con n vértices.</p>
+
+</body>
+</html>
+
+
+

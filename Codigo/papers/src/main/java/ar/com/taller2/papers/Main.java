@@ -105,7 +105,7 @@ public class Main extends JFrame {
 	 * @throws IOException 
 	 */
 	public Main() {
-		
+		super("Graferator");
 		setJMenuBar(menuBar);
 
 		getContentPane().setLayout(new GridLayout(0, 1, 0, 0));

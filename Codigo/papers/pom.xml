@@ -94,6 +94,11 @@
           </execution>
         </executions>
         <configuration>
+        	<archive>
+					<manifest>
+						<mainClass>ar.com.taller2.papers.Main</mainClass>
+					</manifest>
+			</archive>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>

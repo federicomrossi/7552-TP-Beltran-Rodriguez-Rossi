@@ -108,7 +108,7 @@
 		\Large Belén Beltran \\
 		\large \textit{belubeltran@gmail.com} \\ \medskip
 		\Large Pablo Ariel Rodriguez \\
-		\large \textit{prodriguez@fi.uba.ar} \\ \medskip
+		\large \textit{rodriguez.pabloariel@gmail.com} \\ \medskip
 		\Large Federico Martin Rossi \\ 
 		\large \textit{federicomrossi@gmail.com} \\
 
@@ -224,6 +224,8 @@ Los usuarios podrán hacer uso de dos modalidades de ejecución, a saber:
 	\begin{itemize}
 		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
 		\itemsep=10pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=10pt
+		
+		\item \textbf{Modo edición}: perimite editar el grafo agregando nuevos vértices y aristas. 
 		
 		\item \textbf{Modo aprendizaje}: resolución paso a paso con avance a solicitud del aprendiz (al siguiente paso o al resultado final).
 
@@ -361,15 +363,19 @@ En la presente sección se detallarán aquellas herramientas elegidas para lleva
 
 \subsection{Lenguaje Java}
 
-Se ha optado como lenguaje principal de desarrollo el \textit{Lenguaje Java}. Java es un lenguaje de programación de propósito general,concurrente y orientado a objetos, que fue diseñado específicamente paratener tan pocas dependencias de implementación como fuera posible.
+Se ha optado como lenguaje principal de desarrollo el \textit{Lenguaje Java} versión 1.8. Java es un lenguaje de programación de propósito general,concurrente y orientado a objetos, que fue diseñado específicamente paratener tan pocas dependencias de implementación como fuera posible.
 \par
 Se ha optado por la utilización de este lenguaje dada la necesidad de queGraferator sea ejecutado al menos en los sistemas operativos MicrosoftWindows y aquellos basados en GNU/Linux. El motivo es que Java ha sidointencionalmente concebido para permitir que los desarrolladores deaplicaciones escriban programas una única vez y lo ejecuten en cualquierdispositivo (esto se conoce en inglés como WORA o Write Once, Run Anywhere. Es decir, el código que es ejecutado en una plataforma no tiene que serrecompilado nuevamente para poder correr en otra distinta.
+\par
+Para el desarrollo de esta aplicación se debe contar con la \textit{Java Development Kit 8} la cual se puede descargar de http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 \medskip
 
 
 \subsection{Eclipse IDE}
 
 Si bien sería posible programar en Java mediante un editor de texto simple, hemos optado por la utilización de un IDE el cual, en nuestro caso será \textit{Eclipse}. Este nos proporciona un ambiente mas ameno para no solo llevar a cabo el desarrollo en sí sino que consigo incluye herramientas de debug, pruebas (JUnit), controladores de versiones, entre otras.
+\par
+El mismo se puede descargar de https://eclipse.org/downloads/
 \medskip
 
 
@@ -402,6 +408,22 @@ Git es un software de control de versiones diseñado por Linus Torvalds, pensand
 Por su parte, hemos optado por utilizar los servicios de Github.com, la cual es una plataforma online de desarrollo colaborativo de software para alogar proyectos utilizando Git. El uso de estos proporcionan varias herramientas útiles que mejoran en gran medida el trabajo en equipo.
 \medskip
 
+% CAPITULO 2
+% Librerías utilizadas
+\section{Librerías utilizadas}
+Para el desarrollo de la aplicación se utilizaron las siguientes librerías:
+\begin{itemize}
+		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
+		\itemsep=10pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=10pt
+		
+		\item \textbf{JGraphT}: Es una librería que permite la representación teórica de un grafo.
+		
+		\item \textbf{JGraphX}: Es una librería que permite la representación gráfica de un grafo.
+
+		\item \textbf{Log4J}: Es una librería que permite loggear fácilmente información y errores en un archivo. 
+
+	\end{itemize}
+
 
 % CAPITULO 2
 % Herramientas para documentación
@@ -414,8 +436,6 @@ Latex es un sistema de composición de textos, orientado a la creación de docum
 La realización de los diagramas que componen los documentos se realizarán utilizando la herramienta online \textit{Draw.io}, la cual es comparable con el software Microsoft Visio para la confección de planos y diagramas técnicos.
 \par
 Finalmente, para el diseño de Mockups de la interfaz gráfica de Graferator, se utilizará la herramienta online \textit{Moqups.com}.
-
-
 
 
 
@@ -542,6 +562,8 @@ Por último, la interfaz Executable establece los métodos a través de los cual
 % Vista
 \section{Vista}
 
+\subsection{Mockups}
+
 Para el desarrollo de la vista se ha utilizado, como ya se ha mencionado en el Capítulo 2, el diseñador de GUIs de Java \textit{WindowBuilder}. Nos limitaremos aquí a mostrar los distintos mockups que definirán la interfaz gráfica de Graferator.
 \par
 En la \textit{Imagen 3.6} se puede observar la pantalla inicial que verán los usuarios al iniciar la aplicación. Inicialmente no se abrirá ninguna ventana. Se contará con un menú superior donde se encontrarán las opciones de inicialización. Allí se podrá crear un grafo orientado o no orientado vacío, como así también se encontrará la opción de crear un grafo aleatorio de estos mismos tipos. En este mismo menú se encontrarán las opciones de guardar y abrir, cuya funcionalidad se orienta a poder persistir el grafo creado por los usuarios para abrirlo y utilizarlo en un futuro.
@@ -590,14 +612,95 @@ Se poseerá además, en la parte inferior, una ventana de salida en donde se pod
 Por último, ubicado en el centro de la ventana central se encuentra la zona de trabajo principal. Allí los usuarios deberán confeccionar el grafo deseado. Para esto tendrán que hacer uso del menú editar de la barra superior, en donde encontrarán las opciones para agregar nuevos vértices y aristas. Luego podrán posicionar estos sobre dicha área para su posterior ejecución.
 \bigskip
 
+\subsection{Diagramas de Clases}
+
+En cuanto se refiere al diseño de la vista en sí podemos destacar las siguientes clases importantes:
+\medskip
+
+	\begin{itemize}
+		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
+		\itemsep=10pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=10pt
+		
+		\item \textbf{Main}: Contiene los componentes generales.
+		
+		\item \textbf{GraphView}: Contiene la representación gráfica del grafo. 
+		
+		\item \textbf{PanelAlgoritmos}: Contiene los botones de selección de algoritmos.
+		
+		\item \textbf{PanelInformación}: Contiene la información de los algoritmos.
+		
+		\item \textbf{PanelModo}: Contiene los botones de selección de modo.
+		
+		\item \textbf{PanelPseudocódigo}: Contiene el pseudocódigo de los algoritmos.
+		
+		\item \textbf{PapersMenu}: Contiene el menú de la aplicación.
+		
+		\item \textbf{PapersToolbar}: Contiene los botones de Inicio/Fin, siguiente y atrás de la ejecución de los algoritmos.
+
+	\end{itemize}
+	\medskip
+
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.8}.
+
+\bigskip
+
+% Imagen 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/vista.png}
+	\medskip
+	\caption{Diagrama de clases de la Vista.}
+	\medskip
+\end{figure}
+\bigskip
 
 % CAPITULO 3
 % Controlador
 \section{Controlador}
 
-\textbf{[ COLOCAR TEXTO AQUÍ ]}
+El módulo Controlador contiene las clases que gestionan las acciones del usuario (selección de algoritmos, modo, creación de aristas, etc.) y es el encargado de reflejar dichas acciones tanto en modelo como en la vista.
 
+\subsection{Listeners del Menú}
 
+Son las clases que contienen la gestión de las acciones de los diferentes menús.
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.9}.
+% Imagen 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/menu.png}
+	\medskip
+	\caption{Diagrama de clases de los listeners del Menú.}
+	\medskip
+\end{figure}
+\bigskip
+
+\subsection{Listeners del Mouse}
+
+Son las clases que contienen la gestión de las acciones realizadas con el Mouse (selección de vértices, creación de vértices y aristas, etc.).
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.10}.
+% Imagen 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/mouse.png}
+	\medskip
+	\caption{Diagrama de clases de los listeners del mouse.}
+	\medskip
+\end{figure}
+\bigskip
+
+\subsection{Listeners de ejecución}
+
+Son las clases que contienen la gestión de las acciones que conciernen a la ejecución de los algoritmos (siguiente, atrás, inicio/fin, etc.).
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.11}.
+% Imagen 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/ejecucion.png}
+	\medskip
+	\caption{Diagrama de clases de los listeners de ejecución}
+	\medskip
+\end{figure}
+\bigskip
 
 
 % CAPITULO 3

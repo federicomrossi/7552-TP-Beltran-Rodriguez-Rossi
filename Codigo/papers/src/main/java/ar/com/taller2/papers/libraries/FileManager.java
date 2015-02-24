@@ -7,7 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import com.mxgraph.model.mxICell;
+
 import ar.com.taller2.papers.controller.AprendiendoGrafos;
+import ar.com.taller2.papers.controller.jgraphx.ChangeWeightListener;
+import ar.com.taller2.papers.controller.jgraphx.MoveCellListener;
+import ar.com.taller2.papers.controller.jgraphx.NewEdgeListener;
+import ar.com.taller2.papers.controller.jgraphx.NewVertexListener;
+import ar.com.taller2.papers.model.Vertice;
 
 public class FileManager {
 	
@@ -93,15 +100,33 @@ public class FileManager {
 		}
 		while (nextVertexExists()) {
 			this.app.getModelo().agregarVertice(getNextVertex());
+			//this.app.getModelo().agregarVertice();
 		}
 		if (!buffer.isEmpty() && !buffer.contains("}")) {
-			this.app.getModelo().agregarArista(getNextEdgeSource(), getNextEdgeDest(), getWeight());			
+			Vertice v = new Vertice(getNextEdgeSource(),false);
+			Vertice v2 = new Vertice(getNextEdgeDest(),false);
+			mxICell source = app.getVista().getGraph().getVertexToCellMap().get(v);
+			mxICell dest = app.getVista().getGraph().getVertexToCellMap().get(v2);
+			Vertice v3 = app.getVista().getGraph().getCellToVertexMap().get(source);
+			Vertice v4 = app.getVista().getGraph().getCellToVertexMap().get(dest);
+			app.getModelo().agregarEdge(v3,v4,getWeight());
+			//this.app.getModelo().agregarArista(getNextEdgeSource(), getNextEdgeDest(), getWeight());			
 		}
 		while (nextEdgeExists()) {
-			this.app.getModelo().agregarArista(getNextEdgeSource(), getNextEdgeDest(), getWeight());			
+			Vertice v = new Vertice(getNextEdgeSource(),false);
+			Vertice v2 = new Vertice(getNextEdgeDest(),false);
+			mxICell source = app.getVista().getGraph().getVertexToCellMap().get(v);
+			mxICell dest = app.getVista().getGraph().getVertexToCellMap().get(v2);
+			Vertice v3 = app.getVista().getGraph().getCellToVertexMap().get(source);
+			Vertice v4 = app.getVista().getGraph().getCellToVertexMap().get(dest);
+			app.getModelo().agregarEdge(v3,v4,getWeight());
+			//this.app.getModelo().agregarArista(getNextEdgeSource(), getNextEdgeDest(), getWeight());			
 		}
 		this.app.getVista().rerenderGrafo();
 		this.app.getVista().actualizar();
+		this.app.getVista().desbloquearPanelEdicion();
+		//app.getVista().bloquearOrientado();
+		app.getVista().desbloquearMenuGuardar();
 	}
 	
 	private String getGraphType() throws IOException {

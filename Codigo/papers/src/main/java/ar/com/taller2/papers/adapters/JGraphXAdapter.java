@@ -226,5 +226,16 @@ public class JGraphXAdapter<V,E> extends mxGraph implements GraphListener<V, E> 
     	return this.graphT;
     }
 
-	
+    
+	@Override
+    public boolean isCellEditable(Object cell){
+		if(cell instanceof mxCell){
+			mxCell cell2 = (mxCell) cell;
+			if(cell2.isEdge() && cellsEditable){
+				return true;
+			}
+		}
+		return false;
+	}
+    
 }

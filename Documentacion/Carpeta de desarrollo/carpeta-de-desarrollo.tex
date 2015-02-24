@@ -225,7 +225,7 @@ Los usuarios podrán hacer uso de dos modalidades de ejecución, a saber:
 		\renewcommand{\labelitemi}{\scriptsize\tiny$\blacksquare$} 
 		\itemsep=10pt \topsep=0pt \partopsep=0pt \parskip=0pt \parsep=10pt
 		
-		\item \textbf{Modo edición}: perimite editar el grafo agregando nuevos vértices y aristas. 
+		\item \textbf{Modo edición}: permite editar el grafo agregando nuevos vértices y aristas. 
 		
 		\item \textbf{Modo aprendizaje}: resolución paso a paso con avance a solicitud del aprendiz (al siguiente paso o al resultado final).
 
@@ -365,7 +365,7 @@ En la presente sección se detallarán aquellas herramientas elegidas para lleva
 
 Se ha optado como lenguaje principal de desarrollo el \textit{Lenguaje Java} versión 1.8. Java es un lenguaje de programación de propósito general,concurrente y orientado a objetos, que fue diseñado específicamente paratener tan pocas dependencias de implementación como fuera posible.
 \par
-Se ha optado por la utilización de este lenguaje dada la necesidad de queGraferator sea ejecutado al menos en los sistemas operativos MicrosoftWindows y aquellos basados en GNU/Linux. El motivo es que Java ha sidointencionalmente concebido para permitir que los desarrolladores deaplicaciones escriban programas una única vez y lo ejecuten en cualquierdispositivo (esto se conoce en inglés como WORA o Write Once, Run Anywhere. Es decir, el código que es ejecutado en una plataforma no tiene que serrecompilado nuevamente para poder correr en otra distinta.
+Se ha optado por la utilización de este lenguaje dada la necesidad de queGraferator sea ejecutado al menos en los sistemas operativos MicrosoftWindows y aquellos basados en GNU/Linux. El motivo es que Java ha sido intencionalmente concebido para permitir que los desarrolladores de  aplicaciones escriban programas una única vez y lo ejecuten en cualquier dispositivo (esto se conoce en inglés como WORA o Write Once, Run Anywhere. Es decir, el código que es ejecutado en una plataforma no tiene que ser recompilado nuevamente para poder correr en otra distinta.
 \par
 Para el desarrollo de esta aplicación se debe contar con la \textit{Java Development Kit 8} la cual se puede descargar de http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 \medskip
@@ -405,7 +405,7 @@ Para la gestión de los diversos archivos y cambios que puedan surgir sobre esto
 \par
 Git es un software de control de versiones diseñado por Linus Torvalds, pensando en la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones cuando estas tienen un gran número de archivos de código fuente.
 \par
-Por su parte, hemos optado por utilizar los servicios de Github.com, la cual es una plataforma online de desarrollo colaborativo de software para alogar proyectos utilizando Git. El uso de estos proporcionan varias herramientas útiles que mejoran en gran medida el trabajo en equipo.
+Por su parte, hemos optado por utilizar los servicios de Github.com, la cual es una plataforma online de desarrollo colaborativo de software para alojar proyectos utilizando Git. El uso de estos proporcionan varias herramientas útiles que mejoran en gran medida el trabajo en equipo.
 \medskip
 
 % CAPITULO 2
@@ -491,7 +491,7 @@ Por otro lado, la clase Vertice también implementa las interfaces \textit{Seria
 	\centering
 	\includegraphics[width=0.95\textwidth]{images/01-01.png}
 	\medskip
-	\caption{texto \\ texto}
+	\caption{Diagrama de clases de los componentes básicos del modelo}
 	\medskip
 \end{figure}
 \medskip
@@ -512,10 +512,6 @@ Conformadas las componentes básicas, necesitamos una entidad que modele al graf
 	\caption{Diagrama de clases de la representación \\ de los grafos.}
 	\medskip
 \end{figure}
-\bigskip
-
-
-Retornando a la clase GraphModel, .... \textbf{[ COLOCAR TEXTO AQUÍ ]}
 \bigskip
 
 
@@ -580,9 +576,9 @@ En la \textit{Imagen 3.6} se puede observar la pantalla inicial que verán los u
 \bigskip
 
 Una vez elegido el tipo de grafo con el que se desea trabajar, se habilitarán las distintas ventanas internas que conforman el entorno del software (\textit{Imagen 3.7}). Este último estará conformado por un panel izquierdo cuya zona superior contendrá un listado de los algoritmos disponibles dispuestos con radio buttons forzando a que solo pueda ser elegido uno a la vez. En la zona inferior se podrá elegir el modo con el que se ejecutará el algoritmo (modo aprendizaje, modo autoevaluación y modo edición).
-\par
+\newpage
 A la derecha se encontrará un panel con dos pestañas: \textit{Información} y \textit{Algoritmo}. En la pestaña Información se podrán visualizar datos generales referentes al algoritmo activo (historia, particularidades, etcétera). En cambio, en la pestaña Algoritmo se encontrará el pseudocódigo correspndiente con La particularidad de que al iniciar la ejecución y avanzar o retroceder, los usuarios tendrán a disposición la línea del pseudocódigo activa resaltada con color. Esto permitirá un seguimiento mas ilustrativo de todo el proceso de análisis y estudio.
-\par
+
 En la parte superior central, justo debajo de la barra de menú, se encontrará la barra de control. Esta barra contendrá los controles necesarios para llevar a cabo la ejecución de los algoritmos, es decir, tendrá los botones de \textit{Iniciar}, \textit{Avanzar}, \textit{Retroceder}, \textit{Ir al final} y \textit{Volver al inicio}.
 \bigskip
 
@@ -597,7 +593,9 @@ En la parte superior central, justo debajo de la barra de menú, se encontrará 
 \bigskip
 
 Se poseerá además, en la parte inferior, una ventana de salida en donde se podrán leer los resultados o mensajes provenientes de la ejecución y de los propios algoritmos. Allí se visualizarán los resultados finales de ejecución con formatos legibles y podrán ser fácilmente copiados para su utilización en medios externos a Graferator.
-\bigskip
+\par
+Por último, ubicado en el centro de la ventana central se encuentra la zona de trabajo principal. Allí los usuarios deberán confeccionar el grafo deseado. Para esto tendrán que hacer uso del menú editar de la barra superior, en donde encontrarán las opciones para agregar nuevos vértices y aristas. Luego podrán posicionar estos sobre dicha área para su posterior ejecución.
+\newpage
 
 % Imagen 
 \begin{figure}[H]
@@ -609,8 +607,7 @@ Se poseerá además, en la parte inferior, una ventana de salida en donde se pod
 \end{figure}
 \bigskip
 
-Por último, ubicado en el centro de la ventana central se encuentra la zona de trabajo principal. Allí los usuarios deberán confeccionar el grafo deseado. Para esto tendrán que hacer uso del menú editar de la barra superior, en donde encontrarán las opciones para agregar nuevos vértices y aristas. Luego podrán posicionar estos sobre dicha área para su posterior ejecución.
-\bigskip
+
 
 \subsection{Diagramas de Clases}
 
@@ -640,34 +637,36 @@ En cuanto se refiere al diseño de la vista en sí podemos destacar las siguient
 	\end{itemize}
 	\medskip
 
-Las relaciones entre las mismas se detallan en la \textit{Imagen 3.8}.
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.9}.
 
-\bigskip
+\newpage
 
 % Imagen 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/vista.png}
+	\includegraphics[width=1\textwidth]{images/vista.png}
 	\medskip
 	\caption{Diagrama de clases de la Vista.}
 	\medskip
 \end{figure}
 \bigskip
 
+\newpage
 % CAPITULO 3
 % Controlador
 \section{Controlador}
 
 El módulo Controlador contiene las clases que gestionan las acciones del usuario (selección de algoritmos, modo, creación de aristas, etc.) y es el encargado de reflejar dichas acciones tanto en modelo como en la vista.
+\medskip
 
 \subsection{Listeners del Menú}
 
 Son las clases que contienen la gestión de las acciones de los diferentes menús.
-Las relaciones entre las mismas se detallan en la \textit{Imagen 3.9}.
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.10}.
 % Imagen 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/menu.png}
+	\includegraphics[width=1\textwidth]{images/menu.png}
 	\medskip
 	\caption{Diagrama de clases de los listeners del Menú.}
 	\medskip
@@ -677,11 +676,11 @@ Las relaciones entre las mismas se detallan en la \textit{Imagen 3.9}.
 \subsection{Listeners del Mouse}
 
 Son las clases que contienen la gestión de las acciones realizadas con el Mouse (selección de vértices, creación de vértices y aristas, etc.).
-Las relaciones entre las mismas se detallan en la \textit{Imagen 3.10}.
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.11}.
 % Imagen 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/mouse.png}
+	\includegraphics[width=0.6\textwidth]{images/mouse.png}
 	\medskip
 	\caption{Diagrama de clases de los listeners del mouse.}
 	\medskip
@@ -691,7 +690,7 @@ Las relaciones entre las mismas se detallan en la \textit{Imagen 3.10}.
 \subsection{Listeners de ejecución}
 
 Son las clases que contienen la gestión de las acciones que conciernen a la ejecución de los algoritmos (siguiente, atrás, inicio/fin, etc.).
-Las relaciones entre las mismas se detallan en la \textit{Imagen 3.11}.
+Las relaciones entre las mismas se detallan en la \textit{Imagen 3.12}.
 % Imagen 
 \begin{figure}[H]
 	\centering
@@ -701,32 +700,7 @@ Las relaciones entre las mismas se detallan en la \textit{Imagen 3.11}.
 	\medskip
 \end{figure}
 \bigskip
-
-
-% CAPITULO 3
-% []
-% \section{[]}
-
-
-
-
-%
-% CAPITULO 4
-%
-% \chapter{Distribución de tareas}
-
-% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-% tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-% quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-% consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-% cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-% proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-% CAPITULO 4
-% []
-% \section{[]}
-
+\newpage
 
 
 

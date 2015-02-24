@@ -183,6 +183,7 @@ public class GraphModel {
 	public Vertice agregarVertice(String nombre) {
 		Vertice v = new Vertice(nombre, false);
 		this.graph.addVertex(v);
+		++vertice_contador;
 		return v;
 	}
 	

@@ -52,8 +52,8 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	public String siguiente() throws NextStepNotExistsException {
 		Logger.getLogger("RecorridoAnchura").info("Siguiente");
 
-		if(this.indiceSiguientePaso < this.items.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
+		if(this.indiceSiguientePaso < this.camino.size()) {
+			Selectable v = this.camino.get(this.indiceSiguientePaso++);
 			v.select(true);
 			return v.toString();
 		}else {
@@ -66,7 +66,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Selectable v = this.items.get(--this.indiceSiguientePaso);
+			Selectable v = this.camino.get(--this.indiceSiguientePaso);
 			v.select(false);
 			return "";
 		}
@@ -77,7 +77,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
+			Selectable v = this.camino.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
 
@@ -88,7 +88,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	public void terminar() {
 		
 		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
+			Selectable v = this.camino.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
 		this.indiceSiguientePaso = 0;
@@ -100,7 +100,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 		Logger.getLogger("RecorridoAnchura").info("Fin");
 		
 		while(this.indiceSiguientePaso < this.camino.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
+			Selectable v = this.camino.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
 //		while(this.indiceSiguientePaso < this.camino.size()) {
@@ -111,7 +111,7 @@ public class TopologicoAnchura extends GraphAlgorithm implements Executable {
 	}
 
 	public boolean tieneSiguiente() {
-		return (this.indiceSiguientePaso < this.items.size());
+		return (this.indiceSiguientePaso < this.camino.size());
 //		return (this.indiceSiguientePaso < this.camino.size());
 	}
 

@@ -70,7 +70,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 		Logger.getLogger("RecorridoProfundidad").info("Anterior");
 
 		if(this.indiceSiguientePaso - 1 >= 0) {
-			Selectable v = this.items.get(--this.indiceSiguientePaso);
+			Selectable v = this.camino.get(--this.indiceSiguientePaso);
 			v.select(false);
 			return "";
 		}
@@ -81,7 +81,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 		Logger.getLogger("RecorridoProfundidad").info("Principio");
 				
 		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
+			Selectable v = this.camino.get(this.indiceSiguientePaso);
 			v.select(false);
 		}
 
@@ -90,10 +90,13 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public void terminar() {
-		
+		try{
 		while(--this.indiceSiguientePaso >= 0) {
-			Selectable v = this.items.get(this.indiceSiguientePaso);
+			Selectable v = this.camino.get(this.indiceSiguientePaso);
 			v.select(false);
+		}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		this.indiceSiguientePaso = 0;
 		Logger.getLogger(this.getClass().getName()).info("Algoritmo finalizado");
@@ -104,7 +107,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 		Logger.getLogger("RecorridoProfundidad").info("Fin");
 		
 		while(this.indiceSiguientePaso < this.camino.size()) {
-			Selectable v = this.items.get(this.indiceSiguientePaso++);
+			Selectable v = this.camino.get(this.indiceSiguientePaso++);
 			v.select(true);
 		}
 //		while(this.indiceSiguientePaso < this.camino.size()) {
@@ -115,7 +118,7 @@ public class TopologicoProfundidad extends GraphAlgorithm implements Executable 
 	}
 
 	public boolean tieneSiguiente() {
-		return (this.indiceSiguientePaso < this.items.size());
+		return (this.indiceSiguientePaso < this.camino.size());
 //		return (this.indiceSiguientePaso < this.camino.size());
 	}
 

@@ -22,7 +22,7 @@ AprendiendoGrafos app;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		AleatoryDialog dialog = new AleatoryDialog((Frame)SwingUtilities.windowForComponent(app.getVista()));
+		AleatoryDialog dialog = new AleatoryDialog(app.getVista());
 		int vertices = Integer.parseInt(dialog.getCantVertices());
 		int aristas = Integer.parseInt(dialog.getCantAristas());
 		this.app.getModelo().nuevoGrafoNoDirigidoAleatorio(vertices, aristas);

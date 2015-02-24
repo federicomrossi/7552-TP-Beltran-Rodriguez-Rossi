@@ -1,8 +1,6 @@
 package ar.com.taller2.papers;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -13,14 +11,13 @@ import java.net.URL;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JApplet;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
@@ -48,7 +45,7 @@ import com.mxgraph.layout.mxParallelEdgeLayout;
 import com.mxgraph.swing.handler.mxKeyboardHandler;
 import com.mxgraph.util.mxEventSource.mxIEventListener;
 
-public class Main extends JApplet {
+public class Main extends JFrame {
 
 	private static final long serialVersionUID = 5320477892293342036L;
 	private static final Logger logger = LogManager.getLogger();
@@ -107,7 +104,7 @@ public class Main extends JApplet {
 	 * Create the applet.
 	 * @throws IOException 
 	 */
-	public Main() throws IOException {
+	public Main() {
 		
 		setJMenuBar(menuBar);
 
@@ -189,32 +186,24 @@ public class Main extends JApplet {
 		
 		aprendiendoGrafos = new AprendiendoGrafos(this);
 
+		this.setName("Graferator");
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+		this.setVisible(true);
 		
-		//
-        // TEMP: Carga inicial de la info y el pseudocodigo. En el futuro, cada clase tendrá su resource almacenada y se le pedira el contenido
-        //
-//        Dijkstra_old dijkstra = new Dijkstra_old();
-//        lblTituloInformacion.setText(dijkstra.getTitulo());
-//        lblTituloAlgoritmo.setText(dijkstra.getTitulo());
-//        textPaneContenidoInformacion.setPage(dijkstra.getDescripcion());
-//        textPaneContenidoAlgoritmo.setPage(dijkstra.getAlgoritmo());
-        // END TEMP
-        
-//        try {
-//            // Set System L&F
-//        UIManager.setLookAndFeel(
-//            UIManager.getSystemLookAndFeelClassName());
-//	    } 
-//	    catch (Exception e) {
-//	       // handle exception
-//	    }
 	}	
 
+	public static void main(String[] args){
+		//JFrame f = new JFrame();
+		Main m = new Main();
+	}
 	
+	/*
     @Override
     public void init(  ) {
     	// TODO Para utilizar al ensamblar con sitio web.
-    }
+    }*/
     
     public void mostrarMensajeEquivocacion(String mensaje) {
     	Frame padre = (Frame)SwingUtilities.windowForComponent(this.panelCentro);

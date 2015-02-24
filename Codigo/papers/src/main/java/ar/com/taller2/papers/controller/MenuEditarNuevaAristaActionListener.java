@@ -24,7 +24,7 @@ public class MenuEditarNuevaAristaActionListener implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		//Vertice v = app.getModelo().agregarVertice();
-		AristaDialog dialog = new AristaDialog((Frame)SwingUtilities.windowForComponent(app.getVista()));
+		AristaDialog dialog = new AristaDialog(app.getVista());
 		Vertice v = new Vertice(dialog.getOrigen(),false);
 		Vertice v2 = new Vertice(dialog.getDestino(),false);
 		mxICell source = app.getVista().getGraph().getVertexToCellMap().get(v);
